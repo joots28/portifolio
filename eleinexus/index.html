@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2d26">
+  <meta name="description" content="EleiNexus — informação cívica transparente, fontes oficiais e ferramentas para organizar suas prioridades. Independente e apartidário.">
+  <meta property="og:title" content="EleiNexus — informação transparente, decisão sua">
+  <meta property="og:description" content="Consulte fontes oficiais, entenda pesquisas eleitorais e organize suas prioridades cívicas sem recomendação de voto.">
+  <meta property="og:type" content="website">
+  <title>EleiNexus — Suas ideias. Informação transparente. Sua decisão.</title>
+  <style>
+    :root{
+      color-scheme:light;
+      --bg:#f6f8f4;--paper:#fff;--paper2:#eef4ee;--ink:#132a25;--muted:#66756f;
+      --line:#dce6dd;--green:#146b45;--green2:#0b4a35;--yellow:#ffce45;--blue:#2355a6;
+      --softgreen:#e1f3e8;--shadow:0 20px 60px rgba(16,54,39,.08);--radius:24px;
+      --max:1180px;
+    }
+    [data-theme="dark"]{
+      color-scheme:dark;--bg:#0b1714;--paper:#12231e;--paper2:#1a3028;--ink:#f0f7f2;
+      --muted:#a5b7ad;--line:#294138;--green:#64d49a;--green2:#a0e8bd;--yellow:#ffce45;--blue:#8eb3ff;
+      --softgreen:#1b3d2d;--shadow:0 20px 60px rgba(0,0,0,.2);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:94px}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s,color .2s}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    button,a{ -webkit-tap-highlight-color:transparent }
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+    .shell{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .topline{height:5px;background:linear-gradient(90deg,#149451 0 33.3%,#ffce45 33.3% 66.6%,#2355a6 66.6%)}
+    .header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .brandmark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--green2);color:#fff;box-shadow:0 6px 18px rgba(20,107,69,.2)}
+    .brandmark svg{width:26px;height:26px}
+    .brandname{font-size:19px;line-height:1.1;font-weight:850;letter-spacing:-.6px}
+    .brandtag{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1.25px;margin-top:5px;font-weight:750}
+    .navlinks{display:flex;align-items:center;gap:23px;font-size:13px;font-weight:750;color:var(--muted)}
+    .navlinks a:hover,.navlinks a.active{color:var(--green)}
+    .navtools{display:flex;align-items:center;gap:9px}
+    .iconbtn{width:42px;height:42px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+    .iconbtn svg{width:19px;height:19px}
+    .menu-toggle{display:none}
+    .btn{border:0;border-radius:14px;padding:13px 18px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:14px;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(20,107,69,.18)}
+    [data-theme="dark"] .btn-primary{color:#092118}
+    .btn-primary:hover{background:var(--green2)}
+    .btn-outline{background:var(--paper);border:1px solid var(--line);color:var(--ink)}
+    .btn-light{background:#fff;color:#17382a}
+    .btn svg{width:17px;height:17px;flex:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:850;font-size:11px;letter-spacing:1.4px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:22px;height:2px;background:var(--yellow);border-radius:9px}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(42px,6.5vw,76px);line-height:.99;letter-spacing:-3.6px;margin:22px 0 22px;font-weight:900;max-width:760px}
+    h2{font-size:clamp(30px,4vw,45px);line-height:1.08;letter-spacing:-1.9px;margin:12px 0 15px;font-weight:880}
+    h3{font-size:19px;letter-spacing:-.5px;line-height:1.25;margin:0 0 10px}
+    .lead{font-size:clamp(17px,2vw,20px);line-height:1.7;color:var(--muted);max-width:640px}
+    .hero{position:relative;overflow:hidden;padding:74px 0 64px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+    .hero-copy{position:relative;z-index:2}
+    .hero h1 .accent{color:var(--green)}
+    [data-theme="dark"] .hero h1 .accent{color:var(--green)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:25px;color:var(--muted);font-size:12px;font-weight:700}
+    .hero-meta span{display:flex;gap:7px;align-items:center}
+    .dot{width:7px;height:7px;border-radius:99px;background:#28a76a;display:inline-block}
+    .hero-art{min-height:390px;position:relative;display:grid;place-items:center}
+    .art-orb{position:absolute;width:min(390px,95%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fcecae 0 7%,transparent 7.5%),linear-gradient(135deg,#d9f1df 0%,#a7dec1 40%,#2c895b 40%,#14543c 100%);opacity:.92;transform:rotate(-12deg)}
+    [data-theme="dark"] .art-orb{background:radial-gradient(circle at 35% 28%,#ffce45 0 7%,transparent 7.5%),linear-gradient(135deg,#254e3b 0%,#1b6a45 43%,#103c2d 43%,#0b281e 100%);opacity:.96}
+    .art-ring{position:absolute;width:112%;aspect-ratio:1;border:1px solid var(--line);border-radius:50%;transform:rotate(22deg)}
+    .art-ring:before,.art-ring:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 7px color-mix(in srgb,var(--yellow) 18%,transparent)}
+    .art-ring:before{top:18%;left:15%}.art-ring:after{bottom:14%;right:21%;background:var(--blue)}
+    .art-card{position:relative;width:min(330px,84%);padding:23px;border-radius:24px;background:color-mix(in srgb,var(--paper) 90%,transparent);border:1px solid color-mix(in srgb,var(--paper) 60%,var(--line));box-shadow:0 28px 70px rgba(0,30,15,.2);backdrop-filter:blur(14px);transform:rotate(3deg)}
+    .art-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:17px;border-bottom:1px solid var(--line)}
+    .mini-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:30px;background:var(--softgreen);color:var(--green);font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+    .art-line{margin-top:18px;display:flex;gap:12px;align-items:center}
+    .art-icon{width:42px;height:42px;border-radius:14px;background:var(--softgreen);color:var(--green);display:grid;place-items:center;flex:none}
+    .art-icon svg{width:20px;height:20px}
+    .fake-lines{flex:1}
+    .fake-lines span{height:7px;background:var(--line);display:block;border-radius:8px;margin:6px 0}
+    .fake-lines span:first-child{width:77%;background:color-mix(in srgb,var(--green) 35%,var(--line))}
+    .fake-lines span:last-child{width:48%}
+    .art-note{font-size:11px;color:var(--muted);margin:17px 0 0}
+    .section{padding:80px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:32px}
+    .section-head .copy{max-width:650px}
+    .section-head p{max-width:580px;margin:0;color:var(--muted)}
+    .section-tag{font-size:11px;font-weight:850;color:var(--muted);text-transform:uppercase;letter-spacing:1.3px;white-space:nowrap}
+    .stats{padding:0 0 28px}
+    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .stat{background:var(--paper);border:1px solid var(--line);border-radius:19px;padding:19px 21px;display:flex;align-items:center;gap:13px}
+    .stat-symbol{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--softgreen);color:var(--green);flex:none}
+    .stat-symbol svg{width:22px;height:22px}
+    .stat strong{display:block;font-size:15px;line-height:1.2}
+    .stat small{color:var(--muted);font-size:12px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature-card{background:var(--paper);border:1px solid var(--line);padding:27px;border-radius:var(--radius);box-shadow:var(--shadow);min-height:290px;display:flex;flex-direction:column;transition:transform .2s,border .2s}
+    .feature-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--green) 35%,var(--line))}
+    .feature-card .symbol{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--softgreen);color:var(--green);margin-bottom:24px}
+    .symbol svg{width:23px;height:23px}
+    .feature-card p{color:var(--muted);font-size:14px;line-height:1.75;margin-bottom:24px}
+    .text-link{color:var(--green);font-weight:850;font-size:13px;display:inline-flex;align-items:center;gap:8px;margin-top:auto}
+    .text-link svg{width:16px;height:16px}
+    .text-link:hover{text-decoration:underline;text-underline-offset:4px}
+    .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,4vw,38px);box-shadow:var(--shadow)}
+    .candidate-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:stretch}
+    .deep-card{background:var(--green2);color:#fff;position:relative;overflow:hidden;padding:33px;border-radius:var(--radius);display:flex;flex-direction:column}
+    .deep-card:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:-90px;bottom:-90px;box-shadow:0 0 0 30px rgba(255,255,255,.035),0 0 0 60px rgba(255,255,255,.025)}
+    .deep-card .eyebrow{color:#c3f2d5}
+    .deep-card h3{font-size:25px;line-height:1.17;margin-top:20px;max-width:340px}
+    .deep-card p{color:rgba(255,255,255,.76);font-size:14px}
+    .deep-card .btn{margin-top:auto;align-self:flex-start;position:relative;z-index:1}
+    .checklist{display:grid;gap:0}
+    .checkrow{display:flex;gap:13px;padding:17px 0;border-bottom:1px solid var(--line)}
+    .checkrow:first-child{padding-top:0}.checkrow:last-child{border:0;padding-bottom:0}
+    .checknum{width:30px;height:30px;border-radius:10px;background:var(--paper2);display:grid;place-items:center;font-size:12px;font-weight:900;color:var(--green);flex:none}
+    .checkrow strong{display:block;font-size:14px;margin:0 0 3px}
+    .checkrow p{font-size:13px;color:var(--muted);margin:0}
+    .notice{display:flex;gap:13px;align-items:flex-start;padding:18px 20px;background:var(--paper2);border:1px solid var(--line);border-radius:18px;margin-top:20px;color:var(--muted);font-size:13px}
+    .notice svg{width:20px;height:20px;flex:none;color:var(--green);margin-top:1px}
+    .notice strong{color:var(--ink)}
+    .proposal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .topic-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:21px;min-height:168px}
+    .topic-card .topicicon{font-size:21px}
+    .topic-card h3{font-size:16px;margin:13px 0 7px}
+    .topic-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.65}
+    .criteria{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+    .criterion{padding:19px;background:var(--paper);border:1px solid var(--line);border-radius:17px}
+    .criterion strong{display:block;font-size:14px;margin-bottom:5px}
+    .criterion p{font-size:13px;color:var(--muted);margin:0}
+    .research-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .research-main{padding:32px;border-radius:var(--radius);background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .research-main.primary{background:var(--paper2)}
+    .research-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:23px}
+    .research-icon{width:50px;height:50px;border-radius:16px;background:var(--softgreen);color:var(--green);display:grid;place-items:center}
+    .research-icon svg{width:23px;height:23px}
+    .research-main p{color:var(--muted);font-size:14px}
+    .source-tag{display:inline-block;border:1px solid var(--line);color:var(--muted);padding:5px 9px;border-radius:9px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px}
+    .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:23px}
+    .how-step{padding:18px;border-top:2px solid var(--yellow);background:var(--paper);border-radius:0 0 14px 14px}
+    .how-step b{font-size:13px;display:block;margin-bottom:6px}
+    .how-step p{font-size:12px;color:var(--muted);margin:0}
+    .results-box{background:linear-gradient(125deg,#123c2b,#0b291f);color:#fff;padding:clamp(26px,4vw,44px);border-radius:28px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;overflow:hidden;position:relative}
+    .results-box:after{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.1);border-radius:50%;right:110px;top:-190px;box-shadow:0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.02)}
+    .results-box .eyebrow{color:#c5efd6}
+    .results-box h2{max-width:700px;font-size:clamp(30px,4vw,42px)}
+    .results-box p{color:rgba(255,255,255,.76);margin:0;max-width:650px}
+    .results-box .btn{position:relative;z-index:1;white-space:nowrap}
+    .priority-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:28px;align-items:start}
+    .priority-info{position:sticky;top:105px}
+    .priority-info p{color:var(--muted)}
+    .priority-info .notice{margin-top:16px}
+    .priority-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:0 0 19px}
+    .filter-input{flex:1;min-width:180px;border:1px solid var(--line);border-radius:13px;background:var(--paper);color:var(--ink);padding:11px 13px;font-size:13px}
+    .priority-list{display:grid;gap:10px}
+    .priority-item{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:17px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
+    .priority-item strong{display:block;font-size:14px}
+    .priority-item small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+    .rating{display:flex;gap:4px}
+    .rating button{width:29px;height:32px;padding:0;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--muted);font-size:12px;font-weight:850;cursor:pointer}
+    .rating button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+    [data-theme="dark"] .rating button[aria-pressed="true"]{color:#072216}
+    .priority-output{margin-top:17px;padding:20px;border:1px dashed var(--line);border-radius:17px;background:var(--paper2)}
+    .priority-output strong{font-size:14px}
+    .priority-output p{font-size:13px;color:var(--muted);margin:6px 0 14px}
+    .priority-output .btn{padding:10px 13px;font-size:12px}
+    .source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+    .source-card{display:flex;gap:12px;align-items:flex-start;padding:18px;background:var(--paper);border:1px solid var(--line);border-radius:17px}
+    .source-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--paper2);color:var(--green);font-weight:900;font-size:12px;flex:none}
+    .source-card strong{display:block;font-size:13px;margin:1px 0 4px}
+    .source-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+    .source-card a{display:inline-block;color:var(--green);font-size:12px;font-weight:850;margin-top:8px}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    details{border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:19px 20px}
+    summary{cursor:pointer;font-weight:800;font-size:14px;list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";font-size:22px;color:var(--green);font-weight:500}
+    details[open] summary:after{content:"−"}
+    details p{color:var(--muted);font-size:13px;margin:14px 0 0}
+    .footer{padding:46px 0 28px;border-top:1px solid var(--line);margin-top:65px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:35px}
+    .footer p{font-size:13px;color:var(--muted);max-width:365px;margin:14px 0}
+    .footer h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:13px}
+    .footer-links{display:grid;gap:8px;font-size:13px;color:var(--muted)}
+    .footer-links a:hover{color:var(--green)}
+    .foot-bottom{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:11px}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:100;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);font-size:13px;font-weight:750;transition:all .2s;max-width:calc(100% - 32px)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .muted{color:var(--muted)}
+    .small{font-size:12px}
+    .surface{background:var(--paper2)}
+    .spacer{height:14px}
+    @media(max-width:980px){
+      .navlinks{gap:13px}.navlinks a{font-size:12px}
+      .hero-grid{gap:25px}.hero-art{min-height:330px}
+      .cards,.proposal-grid{grid-template-columns:repeat(2,1fr)}
+      .feature-card:last-child{grid-column:span 2;min-height:230px}
+      .how-grid{grid-template-columns:repeat(2,1fr)}
+      .source-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:760px){
+      .shell{width:min(var(--max),calc(100% - 30px))}
+      .nav{height:68px}.brandtag{display:none}
+      .menu-toggle{display:grid}
+      .navlinks{position:absolute;top:68px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:15px 20px 20px;display:none;grid-template-columns:1fr 1fr;gap:5px}
+      .navlinks.open{display:grid}
+      .navlinks a{padding:11px;border-radius:10px;font-size:13px}
+      .navlinks a:hover{background:var(--paper2)}
+      .navtools .btn{display:none}
+      .hero{padding:55px 0 40px}
+      .hero-grid{grid-template-columns:1fr;gap:5px}
+      h1{font-size:clamp(42px,12vw,64px);letter-spacing:-2.6px;max-width:610px}
+      .hero-art{min-height:290px;max-width:480px;width:100%;margin:0 auto}
+      .art-orb{width:270px}.art-ring{width:310px}.art-card{width:275px;padding:19px}
+      .section{padding:57px 0}
+      .section-head{display:block;margin-bottom:24px}
+      .section-tag{display:block;margin-top:12px;white-space:normal}
+      .stats-grid{grid-template-columns:1fr;gap:9px}
+      .stat{padding:14px 16px}
+      .cards,.proposal-grid{grid-template-columns:1fr}
+      .feature-card,.feature-card:last-child{grid-column:auto;min-height:0;padding:23px}
+      .feature-card .symbol{margin-bottom:16px}
+      .candidate-layout,.research-layout,.priority-layout{grid-template-columns:1fr}
+      .deep-card{min-height:265px;padding:26px}
+      .criteria{grid-template-columns:1fr}
+      .results-box{grid-template-columns:1fr;gap:23px}
+      .results-box .btn{justify-self:start;white-space:normal}
+      .priority-info{position:static}
+      .source-grid,.faq-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr;gap:22px}
+      .footer{margin-top:42px}
+      .foot-bottom{display:block}.foot-bottom span{display:block;margin:6px 0}
+    }
+    @media(max-width:400px){
+      .brandname{font-size:17px}.brandmark{width:38px;height:38px}
+      .hero-actions .btn{width:100%}
+      .how-grid{grid-template-columns:1fr}
+      .priority-item{grid-template-columns:1fr;gap:10px}
+      .rating button{width:33px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="topline" aria-hidden="true"></div>
+  <header class="header">
+    <div class="shell nav">
+      <a class="brand" href="#inicio" aria-label="EleiNexus — início">
+        <span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5 12 3l8 3.5-8 3.7L4 6.5Z" fill="#FFCE45"/><path d="M5 10.2 12 13l7-2.8v5.5L12 19l-7-3.3v-5.5Z" fill="#fff"/><path d="M7 16.3v2.1L12 21l5-2.6v-2.1L12 18.7l-5-2.4Z" fill="#6DD69C"/></svg></span>
+        <span><span class="brandname">EleiNexus</span><span class="brandtag">Informação cívica independente</span></span>
+      </a>
+      <nav class="navlinks" id="mainNav" aria-label="Navegação principal">
+        <a href="#candidatos">Candidatos</a><a href="#propostas">Propostas</a><a href="#pesquisas">Pesquisas</a><a href="#resultados">Resultados</a><a href="#prioridades">Minhas prioridades</a><a href="#fontes">Fontes</a>
+      </nav>
+      <div class="navtools">
+        <button class="iconbtn" id="themeToggle" type="button" aria-label="Ativar tema escuro" title="Alternar tema"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 13A8.5 8.5 0 0 1 11 3.2 8.5 8.5 0 1 0 20.8 13Z"/></svg></button>
+        <button class="iconbtn menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Cidadania com clareza</span>
+          <h1>Suas ideias.<br><span class="accent">Informação transparente.</span><br>Sua decisão.</h1>
+          <p class="lead">Um lugar independente para consultar fontes eleitorais oficiais, entender pesquisas e organizar as pautas que importam para você — sem dizer em quem votar.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#candidatos">Explorar fontes oficiais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-outline" href="#prioridades">Organizar minhas prioridades</a>
+          </div>
+          <div class="hero-meta">
+            <span><i class="dot"></i> Apartidário e independente</span>
+            <span><i class="dot"></i> Sem login</span>
+            <span><i class="dot"></i> Sem coleta de opinião política</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-ring"></div><div class="art-orb"></div>
+          <div class="art-card">
+            <div class="art-card-head"><div><div class="small muted">Seu guia cívico</div><strong>Decida com contexto</strong></div><span class="mini-pill">Fontes oficiais</span></div>
+            <div class="art-line"><span class="art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></span><div class="fake-lines"><span></span><span></span></div></div>
+            <div class="art-line"><span class="art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M7 15l4-5 3 2 5-7"/></svg></span><div class="fake-lines"><span></span><span></span></div></div>
+            <div class="art-line"><span class="art-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 7v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></span><div class="fake-lines"><span></span><span></span></div></div>
+            <p class="art-note">Informação verificável. Contexto antes da conclusão.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="shell stats-grid">
+        <div class="stat"><span class="stat-symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.3 10.5 15 16 9"/></svg></span><div><strong>Fontes primárias</strong><small>Consulte direto nos portais oficiais</small></div></div>
+        <div class="stat"><span class="stat-symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4m0 16h16M8 16l3-4 3 2 5-7"/></svg></span><div><strong>Contexto, não palpite</strong><small>Pesquisas não são resultados oficiais</small></div></div>
+        <div class="stat"><span class="stat-symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18m9-9H3"/><circle cx="12" cy="12" r="9"/></svg></span><div><strong>Suas pautas, suas regras</strong><small>Organização privada no próprio navegador</small></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="explorar">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Explore o EleiNexus</span><h2>Informação para cada etapa da sua pesquisa.</h2><p>Atalhos para os principais registros eleitorais e ferramentas simples para avaliar informações com cuidado.</p></div><span class="section-tag">Navegação rápida</span></div>
+        <div class="cards">
+          <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h3a4.5 4.5 0 0 1 4.5 4.5V20M16 5.5a3 3 0 0 1 0 5.8M18 14.5a4.2 4.2 0 0 1 3 4V20"/></svg></span><h3>Conheça candidaturas</h3><p>Consulte registros, situação e dados declarados no canal oficial da Justiça Eleitoral. Evitamos listas locais que possam ficar desatualizadas.</p><a class="text-link" href="#candidatos">Abrir área de candidatos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
+          <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v17H5zM8 8h8M8 12h8M8 16h5"/><path d="M9 4V2h6v2"/></svg></span><h3>Analise propostas</h3><p>Veja como localizar programas e documentos oficiais e compare temas equivalentes, sem confundir falta de informação com oposição.</p><a class="text-link" href="#propostas">Entender como comparar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
+          <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M7 15l3-4 3 2 4-6"/></svg></span><h3>Leia pesquisas com contexto</h3><p>Consulte registros e detalhes metodológicos. Instituto, amostra, período de campo e margem de erro fazem diferença.</p><a class="text-link" href="#pesquisas">Ver fontes de pesquisas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="candidatos">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Candidaturas</span><h2>Consulte o registro original.</h2><p>O cadastro eleitoral muda ao longo do processo. Para reduzir o risco de informação vencida, o EleiNexus leva você à fonte primária em vez de apresentar uma lista não verificada.</p></div><span class="section-tag">Fonte: Justiça Eleitoral</span></div>
+        <div class="candidate-layout">
+          <div class="deep-card"><span class="eyebrow">Consulta oficial</span><h3>Dados de candidatura direto na origem.</h3><p>Nome, número, partido, cargo, situação do registro e outras informações declaradas devem ser confirmados na página oficial.</p><a class="btn btn-light" href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Abrir DivulgaCandContas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></div>
+          <div class="panel"><h3>O que verificar antes de compartilhar</h3><div class="checklist">
+            <div class="checkrow"><span class="checknum">01</span><div><strong>Situação da candidatura</strong><p>Confira o estado mais recente do registro e se houve decisão ou atualização posterior.</p></div></div>
+            <div class="checkrow"><span class="checknum">02</span><div><strong>Cargo, eleição e circunscrição</strong><p>Certifique-se de que você está olhando a eleição, o cargo e a unidade federativa corretos.</p></div></div>
+            <div class="checkrow"><span class="checknum">03</span><div><strong>Documentos e prestação de contas</strong><p>Use os documentos oficiais disponíveis para conferir informações e evitar recortes fora de contexto.</p></div></div>
+          </div><div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg><div><strong>Por que abrir o portal oficial?</strong><br>Portais podem mudar, exigir filtros ou bloquear consultas automatizadas. Aqui não simulamos uma busca nem inventamos registros quando a integração não está disponível.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="propostas">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Programas e propostas</span><h2>Compare temas, evidências e compromissos.</h2><p>Não basta uma frase de efeito. Procure a proposta completa, o custo previsto, o prazo, as condições de execução e como o resultado seria medido.</p></div><span class="section-tag">Método de comparação</span></div>
+        <div class="proposal-grid">
+          <article class="topic-card"><span class="topicicon">📚</span><h3>Educação</h3><p>Metas de aprendizagem, valorização profissional, infraestrutura e indicadores de acompanhamento.</p></article>
+          <article class="topic-card"><span class="topicicon">🩺</span><h3>Saúde</h3><p>Acesso, atenção básica, filas, profissionais, financiamento e metas mensuráveis.</p></article>
+          <article class="topic-card"><span class="topicicon">🛡️</span><h3>Segurança pública</h3><p>Prevenção, gestão, transparência, proteção de direitos e avaliação de resultados.</p></article>
+          <article class="topic-card"><span class="topicicon">🌱</span><h3>Meio ambiente</h3><p>Proteção de biomas, saneamento, adaptação climática e recursos para execução.</p></article>
+          <article class="topic-card"><span class="topicicon">📈</span><h3>Economia e trabalho</h3><p>Emprego, renda, produtividade, impacto fiscal e quem é afetado por cada medida.</p></article>
+          <article class="topic-card"><span class="topicicon">🏘️</span><h3>Infraestrutura e cidade</h3><p>Habitação, mobilidade, saneamento, cronogramas, orçamento e responsabilidades.</p></article>
+        </div>
+        <div class="criteria">
+          <div class="criterion"><strong>01. Localize o documento completo</strong><p>Use o portal oficial e confirme autoria, versão, data e contexto da proposta.</p></div>
+          <div class="criterion"><strong>02. Separe promessa de plano executável</strong><p>Procure ações específicas, responsáveis, prazo, custo e fonte de recursos.</p></div>
+          <div class="criterion"><strong>03. Compare o mesmo tema</strong><p>Use critérios equivalentes para todas as candidaturas; não compare frases isoladas.</p></div>
+          <div class="criterion"><strong>04. Registre o que não está claro</strong><p>“Não localizado” ou “sem detalhe” não significa que a pessoa seja contra a pauta.</p></div>
+        </div>
+        <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg><div><strong>Encontre documentos na fonte primária.</strong><br>Os programas e documentos vinculados a candidaturas podem estar disponíveis nos registros eleitorais. Consulte o <a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer"><strong>DivulgaCandContas do TSE</strong></a> e confirme qual documento corresponde à candidatura pesquisada.</div></div>
+      </div>
+    </section>
+
+    <section class="section surface" id="pesquisas">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Pesquisas eleitorais</span><h2>Um número sem método conta só parte da história.</h2><p>Consulte o registro original e leia os detalhes da pesquisa. O EleiNexus não gera estimativas, não altera percentuais e não transforma pesquisa em resultado oficial.</p></div><span class="section-tag">Fonte: PesqEle / TSE</span></div>
+        <div class="research-layout">
+          <article class="research-main primary"><div class="research-top"><span class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M8 11h5M10.5 8.5v5"/></svg></span><span class="source-tag">Fonte oficial</span></div><h3>Pesquisas registradas nos últimos 30 dias</h3><p>Consulte os registros recentes, confira o protocolo e abra os dados completos na plataforma do Tribunal Superior Eleitoral.</p><a class="btn btn-primary" href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Consultar pesquisas recentes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></article>
+          <article class="research-main"><div class="research-top"><span class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M7 15l3-4 3 2 4-6"/></svg></span><span class="source-tag">Consulta estatística</span></div><h3>Lista estatística de pesquisas</h3><p>Use a consulta estatística oficial para localizar registros conforme os filtros e critérios oferecidos pelo sistema.</p><a class="btn btn-outline" href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listarEstatisticos.xhtml" target="_blank" rel="noopener noreferrer">Abrir consulta estatística <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></article>
+        </div>
+        <h3 style="margin:34px 0 0">Checklist para ler uma pesquisa</h3>
+        <div class="how-grid">
+          <div class="how-step"><b>01. Registro</b><p>Confirme protocolo, solicitante e instituto no sistema oficial.</p></div>
+          <div class="how-step"><b>02. Período de campo</b><p>Confira as datas da coleta e quando o levantamento foi divulgado.</p></div>
+          <div class="how-step"><b>03. Amostra e margem</b><p>Leia universo pesquisado, tamanho da amostra e margem de erro.</p></div>
+          <div class="how-step"><b>04. Cenário pesquisado</b><p>Verifique pergunta, opções apresentadas e abrangência geográfica.</p></div>
+        </div>
+        <p class="muted small" style="margin-top:16px">A margem de erro não é uma garantia de que o resultado real estará dentro de um intervalo fixo. Pesquisas diferentes podem usar métodos, amostras e períodos distintos.</p>
+      </div>
+    </section>
+
+    <section class="section" id="resultados">
+      <div class="shell">
+        <div class="results-box">
+          <div><span class="eyebrow">Apuração oficial</span><h2>Resultado se confirma na urna apurada, não em pesquisa.</h2><p>Para votos contabilizados, comparecimento e resultados por localidade, acesse a divulgação oficial da Justiça Eleitoral. Não exibimos projeções como se fossem resultados.</p></div>
+          <a class="btn btn-light" href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Consultar resultados do TSE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="prioridades">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Ferramenta pessoal</span><h2>O que merece sua atenção?</h2><p>Organize a importância dos temas que gostaria de estudar. Este exercício não classifica partidos, não pontua candidatos e não recomenda voto.</p></div><span class="section-tag">Processamento local</span></div>
+        <div class="priority-layout">
+          <aside class="priority-info"><h3>Suas pautas, sem uma resposta pronta.</h3><p>Marque de 1 a 5 para indicar a importância de cada tema para sua própria leitura. Você pode avaliar todos os temas; não há limite de escolhas.</p><p class="small muted">1 = menos importante para mim<br>5 = prioridade muito alta para mim</p><div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 7v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Privacidade por design.</strong><br>As escolhas ficam na memória desta página durante a visita, não são enviadas a um servidor e não são salvas em conta alguma.</div></div></aside>
+          <div>
+            <div class="priority-controls"><input class="filter-input" id="topicSearch" type="search" placeholder="Filtrar temas..." aria-label="Filtrar temas de prioridade"><button class="btn btn-outline" id="resetPriorities" type="button">Limpar notas</button></div>
+            <div class="priority-list" id="priorityList"></div>
+            <div class="priority-output" id="priorityOutput" aria-live="polite"><strong>Seu resumo de prioridades</strong><p>Escolha uma nota em qualquer tema para começar a montar seu resumo pessoal.</p><button class="btn btn-primary" id="copyPriorities" type="button" disabled>Copiar meu resumo</button></div>
+            <p class="small muted" style="margin-top:11px">O resumo não inclui candidatos, partidos nem correspondência ideológica. Ele serve apenas como roteiro de leitura pessoal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fontes">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Rastreabilidade</span><h2>Comece pelas fontes oficiais.</h2><p>Links primários para confirmar registros, documentos e resultados. Sempre confira a página de origem, a data e o contexto do conteúdo.</p></div><span class="section-tag">Links externos</span></div>
+        <div class="source-grid">
+          <article class="source-card"><span class="source-mark">TSE</span><div><strong>Tribunal Superior Eleitoral</strong><p>Portal institucional, eleições, legislação e comunicados.</p><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar TSE ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">DC</span><div><strong>DivulgaCandContas</strong><p>Registro de candidaturas e dados de campanha disponíveis no sistema.</p><a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar cadastro ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">PE</span><div><strong>PesqEle</strong><p>Consulta oficial de registros de pesquisas eleitorais.</p><a href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Acessar PesqEle ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">R</span><div><strong>Resultados TSE</strong><p>Divulgação oficial dos resultados da apuração.</p><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar resultados ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">DA</span><div><strong>Dados abertos do TSE</strong><p>Conjuntos e arquivos públicos para análise e reutilização.</p><a href="https://dadosabertos.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar dados abertos ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">CD</span><div><strong>Câmara dos Deputados</strong><p>Dados legislativos, proposições e votações na Câmara.</p><a href="https://dadosabertos.camara.leg.br/" target="_blank" rel="noopener noreferrer">Acessar dados abertos ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="metodologia">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Compromisso editorial</span><h2>Transparência também é admitir limites.</h2><p>O EleiNexus prioriza dados de origem identificável, leitura crítica e autonomia de quem consulta. Não vendemos certezas políticas.</p></div><span class="section-tag">Metodologia e privacidade</span></div>
+        <div class="faq-grid">
+          <details><summary>O EleiNexus é ligado a partido ou candidato?</summary><p>Não. O projeto se apresenta como uma ferramenta cívica independente e apartidária. Os links externos levam aos sites das instituições identificadas e não significam endosso político.</p></details>
+          <details><summary>Por que não mostrar números de pesquisas na página inicial?</summary><p>Não exibimos percentuais eleitorais sem uma integração confiável com a fonte primária e confirmação do registro, contexto e data. O portal oficial é a referência para consultar a versão atual.</p></details>
+          <details><summary>Como conferir uma informação compartilhada?</summary><p>Abra a fonte original, confira data e contexto, procure o documento completo e compare com outra fonte primária pertinente. Não se baseie apenas em uma imagem ou recorte de postagem.</p></details>
+          <details><summary>O site guarda minhas opiniões ou prioridades?</summary><p>Não enviamos as notas da ferramenta de prioridades para servidor algum. As escolhas ficam apenas na memória desta página durante a visita e somem quando a página é recarregada ou fechada.</p></details>
+          <details><summary>O site atualiza dados eleitorais automaticamente?</summary><p>Esta versão é um guia de consulta e não afirma ter sincronização automática com os cadastros do TSE. Para dados atuais, abra o registro oficial e confira a última atualização na fonte.</p></details>
+          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>Não. A ferramenta de prioridades não pontua partidos ou candidaturas, não estima compatibilidade eleitoral e não substitui o julgamento individual de cada pessoa.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div><a class="brand" href="#inicio"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5 12 3l8 3.5-8 3.7L4 6.5Z" fill="#FFCE45"/><path d="M5 10.2 12 13l7-2.8v5.5L12 19l-7-3.3v-5.5Z" fill="#fff"/><path d="M7 16.3v2.1L12 21l5-2.6v-2.1L12 18.7l-5-2.4Z" fill="#6DD69C"/></svg></span><span><span class="brandname">EleiNexus</span><span class="brandtag">Cidadania com clareza</span></span></a><p>Suas ideias. Informação transparente. Sua decisão. Uma iniciativa independente para tornar a consulta cívica mais clara e verificável.</p></div>
+        <div><h3>Explorar</h3><div class="footer-links"><a href="#candidatos">Candidaturas</a><a href="#propostas">Como comparar propostas</a><a href="#pesquisas">Pesquisas eleitorais</a><a href="#resultados">Resultados oficiais</a><a href="#prioridades">Minhas prioridades</a></div></div>
+        <div><h3>Fontes e compromisso</h3><div class="footer-links"><a href="#fontes">Fontes oficiais</a><a href="#metodologia">Metodologia</a><a href="#metodologia">Privacidade</a><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial do TSE ↗</a></div></div>
+      </div>
+      <div class="foot-bottom"><span>© <span id="year"></span> EleiNexus · Projeto independente.</span><span>Sem anúncios, login obrigatório ou recomendações de voto.</span><span>Dados eleitorais devem ser confirmados nas fontes primárias.</span></div>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function(){
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const sunIcon = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>';
+      const moonIcon = '<path d="M20.8 13A8.5 8.5 0 0 1 11 3.2 8.5 8.5 0 1 0 20.8 13Z"/>';
+      let savedTheme = null;
+      try { savedTheme = localStorage.getItem('eleinexus-theme'); } catch(e) {}
+      if(savedTheme === 'dark') body.dataset.theme = 'dark';
+      function paintTheme(){
+        const dark = body.dataset.theme === 'dark';
+        themeIcon.innerHTML = dark ? sunIcon : moonIcon;
+        themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+        themeToggle.title = dark ? 'Ativar tema claro' : 'Ativar tema escuro';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#0b1714' : '#0b2d26';
+      }
+      paintTheme();
+      themeToggle.addEventListener('click', function(){
+        body.dataset.theme = body.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('eleinexus-theme', body.dataset.theme); } catch(e) {}
+        paintTheme();
+      });
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      menuToggle.addEventListener('click', function(){
+        const open = mainNav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      });
+      mainNav.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){
+        mainNav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Abrir menu');
+      });});
+      document.getElementById('year').textContent = new Date().getFullYear();
+      let toastTimer;
+      function toast(message){
+        const el = document.getElementById('toast');
+        el.textContent = message;el.classList.add('show');
+        clearTimeout(toastTimer);toastTimer = setTimeout(function(){el.classList.remove('show');},2700);
+      }
+      const topics = [
+        ['Educação','Aprendizagem, escolas, ensino técnico e valorização de profissionais.'],
+        ['Saúde','Acesso a serviços, atenção básica, filas e prevenção.'],
+        ['Segurança pública','Prevenção, investigação, direitos e gestão pública.'],
+        ['Economia e trabalho','Emprego, renda, empreendedorismo e produtividade.'],
+        ['Meio ambiente','Conservação, saneamento, clima e uso sustentável de recursos.'],
+        ['Transporte e mobilidade','Transporte coletivo, estradas, acessibilidade e segurança viária.'],
+        ['Habitação e urbanismo','Moradia, planejamento urbano, regularização e espaços públicos.'],
+        ['Assistência e proteção social','Proteção social, redução de vulnerabilidades e acesso a serviços.'],
+        ['Ciência e tecnologia','Pesquisa, inovação, conectividade e inclusão digital.'],
+        ['Combate à corrupção e transparência','Integridade, fiscalização, dados públicos e prestação de contas.'],
+        ['Direitos e cidadania','Acesso à Justiça, igualdade perante a lei e proteção de direitos.'],
+        ['Cultura e esporte','Equipamentos culturais, esporte de base e oportunidades comunitárias.'],
+        ['Agricultura e segurança alimentar','Produção, abastecimento, alimentação e desenvolvimento rural.'],
+        ['Energia e infraestrutura','Confiabilidade, custo, transição energética e obras públicas.'],
+        ['Política fiscal e orçamento','Receitas, despesas, dívida pública e qualidade do gasto.']
+      ];
+      const scores = {};
+      const list = document.getElementById('priorityList');
+      const search = document.getElementById('topicSearch');
+      const out = document.getElementById('priorityOutput');
+      function renderTopics(){
+        const term = search.value.trim().toLocaleLowerCase('pt-BR');
+        list.innerHTML = '';
+        topics.filter(function(t){return t[0].toLocaleLowerCase('pt-BR').includes(term) || t[1].toLocaleLowerCase('pt-BR').includes(term);}).forEach(function(topic){
+          const row = document.createElement('div');row.className = 'priority-item';
+          const info = document.createElement('div');
+          const title = document.createElement('strong');title.textContent = topic[0];
+          const desc = document.createElement('small');desc.textContent = topic[1];
+          info.appendChild(title);info.appendChild(desc);
+          const rating = document.createElement('div');rating.className = 'rating';rating.setAttribute('role','group');rating.setAttribute('aria-label','Importância: '+topic[0]);
+          for(let n=1;n<=5;n++){
+            const b = document.createElement('button');b.type = 'button';b.textContent = String(n);b.setAttribute('aria-label',n+' de 5 para '+topic[0]);b.setAttribute('aria-pressed',String(scores[topic[0]] === n));
+            b.addEventListener('click',function(){if(scores[topic[0]] === n){delete scores[topic[0]];}else{scores[topic[0]] = n;}renderTopics();renderSummary();});
+            rating.appendChild(b);
+          }
+          row.appendChild(info);row.appendChild(rating);list.appendChild(row);
+        });
+        if(!list.children.length){const empty=document.createElement('p');empty.className='muted small';empty.textContent='Nenhum tema corresponde à sua busca.';list.appendChild(empty);}
+      }
+      function summaryText(){
+        const entries = Object.keys(scores).map(function(name){return {name:name,score:scores[name]};}).sort(function(a,b){return b.score-a.score || a.name.localeCompare(b.name,'pt-BR');});
+        if(!entries.length)return '';
+        return 'Minhas prioridades para leitura cívica — EleiNexus\\n\\n'+entries.map(function(e){return e.score+'/5 — '+e.name;}).join('\\n')+'\\n\\nEste é um roteiro pessoal de leitura, não uma recomendação de voto nem uma avaliação de candidaturas.';
+      }
+      function renderSummary(){
+        const entries = Object.keys(scores).map(function(name){return {name:name,score:scores[name]};}).sort(function(a,b){return b.score-a.score || a.name.localeCompare(b.name,'pt-BR');});
+        out.innerHTML = '';
+        const title = document.createElement('strong');title.textContent = 'Seu resumo de prioridades';
+        const desc = document.createElement('p');
+        const copy = document.createElement('button');copy.type = 'button';copy.className = 'btn btn-primary';copy.id = 'copyPriorities';
+        copy.textContent = 'Copiar meu resumo';copy.disabled = !entries.length;
+        if(!entries.length){desc.textContent = 'Escolha uma nota em qualquer tema para começar a montar seu resumo pessoal.';}
+        else {desc.textContent = entries.length+' tema(s) avaliado(s). O resumo fica neste navegador até você sair da página.';}
+        out.appendChild(title);out.appendChild(desc);
+        if(entries.length){
+          const chips = document.createElement('div');chips.style.display = 'flex';chips.style.gap = '7px';chips.style.flexWrap = 'wrap';chips.style.marginBottom = '14px';
+          entries.slice(0,5).forEach(function(e){const c=document.createElement('span');c.className='mini-pill';c.textContent=e.score+'/5 · '+e.name;chips.appendChild(c);});
+          out.appendChild(chips);
+        }
+        out.appendChild(copy);
+        copy.addEventListener('click', async function(){
+          const text = summaryText();
+          try {await navigator.clipboard.writeText(text);toast('Resumo copiado.');}
+          catch(e){const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(err){}ta.remove();toast(ok?'Resumo copiado.':'Não foi possível copiar automaticamente.');}
+        });
+      }
+      search.addEventListener('input',renderTopics);
+      document.getElementById('resetPriorities').addEventListener('click',function(){Object.keys(scores).forEach(function(k){delete scores[k];});search.value='';renderTopics();renderSummary();toast('Notas limpas.');});
+      renderTopics();renderSummary();
+      document.querySelectorAll('a[href^="#"]').forEach(function(link){
+        link.addEventListener('click',function(e){
+          const id = link.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if(target){e.preventDefault();target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});if(history.replaceState)history.replaceState(null,'','#'+id);}
+        });
+      });
+      document.querySelectorAll('a[target="_blank"]').forEach(function(a){a.setAttribute('rel','noopener noreferrer');});
+    })();
+  </script>
+</body>
+</html>
