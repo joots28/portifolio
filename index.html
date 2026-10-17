@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assistant.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -451,5 +452,34 @@
     <div class="footer-links"><a href="https://github.com/joots28" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/jonathan-otiniel-053a12290" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="curriculo-jonathan.html">Currículo ↗</a><a href="#inicio">Voltar ao topo ↑</a></div>
     <span class="footer-year mono">© <span id="year">2026</span></span>
   </footer>
+  <section class="nexus-widget" id="nexusWidget" aria-label="Assistente Nexus">
+    <button class="nexus-launcher" id="nexusLauncher" type="button" aria-expanded="false" aria-controls="nexusPanel" aria-label="Abrir assistente Nexus">
+      <span class="nexus-launcher-orb" aria-hidden="true"><span></span></span>
+      <span class="nexus-launcher-label"><strong>Nexus AI</strong><small>Vamos conversar?</small></span>
+      <span class="nexus-launcher-arrow" aria-hidden="true">↗</span>
+    </button>
+    <section class="nexus-panel" id="nexusPanel" aria-labelledby="nexusTitle" hidden>
+      <header class="nexus-panel-header">
+        <div class="nexus-avatar" aria-hidden="true"><span></span></div>
+        <div class="nexus-heading"><p class="nexus-eyebrow">PORTFÓLIO / ASSISTENTE</p><h2 id="nexusTitle">Nexus <span>AI</span></h2><p class="nexus-status"><span></span> Pronto para ajudar</p></div>
+        <button class="nexus-close" id="nexusClose" type="button" aria-label="Fechar assistente">×</button>
+      </header>
+      <div class="nexus-intro" id="nexusIntro"><p class="nexus-kicker">OI, EU SOU O NEXUS.</p><h3>O que você quer<br>descobrir hoje?</h3><p>Posso apresentar os projetos do Jonathan ou conversar sobre desenvolvimento e tecnologia.</p></div>
+      <div class="nexus-shortcuts" id="nexusShortcuts" aria-label="Perguntas rápidas">
+        <button type="button" data-nexus-prompt="Apresente o portfólio do Jonathan.">Conhecer o portfólio <span>↗</span></button>
+        <button type="button" data-nexus-prompt="Explique o projeto ChurchManager e sua arquitetura.">Ver o ChurchManager <span>↗</span></button>
+        <button type="button" data-nexus-prompt="Quais tecnologias e linguagens aparecem neste portfólio?">Tecnologias e stack <span>↗</span></button>
+        <button type="button" data-nexus-prompt="Explique como funciona uma API REST em C# e ASP.NET Core.">Dúvida de programação <span>↗</span></button>
+      </div>
+      <div class="nexus-messages" id="nexusMessages" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Mensagens da conversa"></div>
+      <form class="nexus-composer" id="nexusForm">
+        <label class="nexus-sr-only" for="nexusInput">Digite sua pergunta</label>
+        <textarea id="nexusInput" name="message" rows="1" maxlength="1200" placeholder="Pergunte sobre projetos ou código..." required></textarea>
+        <button type="submit" id="nexusSend" aria-label="Enviar pergunta"><span aria-hidden="true">↑</span></button>
+      </form>
+      <p class="nexus-disclaimer">Respostas geradas por IA podem conter erros. Não envie dados pessoais ou senhas.</p>
+    </section>
+  </section>
+  <script src="assistant.js" defer></script>
 </body>
 </html>
