@@ -28,6 +28,8 @@ O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecn
 - Estatísticas públicas do GitHub consultadas pela API oficial.
 - Cartões de projetos com links diretos para os repositórios.
 - Área pessoal com referências a Muay Thai, kickboxing e leitura.
+- Formação na Etec — curso de Desenvolvimento de Sistemas.
+- Seção com vídeos técnicos públicos da Microsoft Learn, com fonte identificada.
 - Easter egg interativo com frases clássicas do boxe e frases originais.
 - Preferência por movimento reduzido respeitada.
 - Metadados básicos para compartilhamento e mecanismos de busca.
@@ -98,6 +100,14 @@ Site publicado: [jhon-otiniel-portfolio.onrender.com](https://jhon-otiniel-portf
 
 Os projetos estão em diferentes estágios de evolução. O conteúdo do portfólio descreve o escopo conhecido sem afirmar que trabalhos em desenvolvimento estejam prontos para produção.
 
+## Formação
+
+- Etec — Curso de Desenvolvimento de Sistemas. A página apresenta essa experiência de estudo sem presumir data de conclusão ou título de conclusão.
+
+## Vídeos técnicos
+
+A seção de vídeos incorpora conteúdo público da Microsoft Learn sobre desenvolvimento web com .NET e APIs. Os vídeos são identificados como referências externas; os projetos próprios permanecem vinculados aos repositórios GitHub.
+
 ## Certificações
 
 A fonte oficial é o [perfil de Jhon no LinkedIn](https://www.linkedin.com/in/jonathan-otiniel-053a12290/details/certifications/). A lista individual será incorporada ao portfólio após validação dos nomes, instituições e datas, evitando publicar credenciais incorretas.
@@ -106,7 +116,7 @@ A fonte oficial é o [perfil de Jhon no LinkedIn](https://www.linkedin.com/in/jo
 
 - GitHub: [github.com/joots28](https://github.com/joots28)
 - LinkedIn: [Jonathan Otiniel](https://www.linkedin.com/in/jonathan-otiniel-053a12290)
-- E-mail: [jonathanotiniel@gmail.com](mailto:jonathanotiniel@gmail.com)
+- E-mail profissional de contato: [otinieljonathan2804@gmail.com](mailto:otinieljonathan2804@gmail.com)
 
 ---
 
