@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const API_URL = "https://nexus-portfolio-api.onrender.com/api/chat";
+  const API_URL = "https://nexus-portfolio-api-csb6.onrender.com/api/chat";
   const launcher = document.getElementById("nexusLauncher");
   const panel = document.getElementById("nexusPanel");
   const closeButton = document.getElementById("nexusClose");
