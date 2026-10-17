@@ -31,10 +31,11 @@ O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecn
 - Currículo em formato web imprimível, com opção de salvar como PDF pelo navegador.
 - Área pessoal com referências a Muay Thai, kickboxing e leitura.
 - Formação na Etec — curso de Desenvolvimento de Sistemas.
-- Seção com vídeos técnicos públicos da Microsoft Learn, com fonte identificada.
-- Easter egg interativo com frases clássicas do boxe e frases originais.
+- Seção de vídeos técnicos em português do Brasil, com fontes originais identificadas e reprodução incorporada.
+- Easter egg interativo com contexto externo para todas as frases, incluindo links de inspiração para as frases originais.
 - Preferência por movimento reduzido respeitada.
 - Metadados básicos para compartilhamento e mecanismos de busca.
+- Jornada full-stack expandida: lógica, fundamentos web, React, APIs com C#/.NET, SQL/MySQL, integração, testes, segurança e publicação.
 - HTML, CSS e JavaScript separados, sem framework ou dependência de build.
 
 ## Tecnologias
@@ -115,7 +116,8 @@ Os projetos estão em diferentes estágios de evolução. O conteúdo do portfó
 
 ## Vídeos técnicos
 
-A seção de vídeos incorpora conteúdo público da Microsoft Learn sobre desenvolvimento web com .NET e APIs. Os vídeos são identificados como referências externas; os projetos próprios permanecem vinculados aos repositórios GitHub.
+A seção de vídeos foi organizada em português do Brasil e reúne referências públicas do Curso em Vídeo, DevClub e Gustavo Caetano sobre fundamentos web, React com consumo de API, construção de APIs com C#/.NET/Entity Framework Core/MySQL e fundamentos relacionais. Os vídeos são materiais de terceiros, identificados com links diretos para os canais originais.
+
 
 ## Certificações
 
