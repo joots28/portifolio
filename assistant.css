@@ -1,0 +1,49 @@
+/* Nexus AI — estilos isolados para o widget de conversa */
+.nexus-widget{position:fixed;z-index:1000;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,28px);font-family:var(--display,"Space Grotesk",sans-serif);color:var(--paper,#f1f0e8)}
+.nexus-widget *{box-sizing:border-box}
+.nexus-launcher{display:flex;align-items:center;gap:11px;min-height:62px;padding:9px 14px 9px 10px;border:1px solid rgba(100,181,255,.46);border-radius:18px;background:rgba(16,17,15,.94);color:var(--paper,#f1f0e8);box-shadow:0 14px 48px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.05);cursor:pointer;backdrop-filter:blur(16px);transition:transform .2s,border-color .2s,box-shadow .2s}
+.nexus-launcher:hover{transform:translateY(-3px);border-color:var(--blue,#64b5ff);box-shadow:0 18px 52px rgba(0,0,0,.4),0 0 24px rgba(100,181,255,.1)}
+.nexus-launcher:focus-visible,.nexus-widget button:focus-visible,.nexus-widget textarea:focus-visible{outline:2px solid var(--blue,#64b5ff);outline-offset:3px}
+.nexus-launcher-orb,.nexus-avatar{display:grid;place-items:center;flex:none;border:1px solid rgba(100,181,255,.7);border-radius:50%;background:radial-gradient(circle at 35% 30%,#244d71 0,#14293c 42%,#10110f 78%);box-shadow:inset 0 0 16px rgba(100,181,255,.18),0 0 18px rgba(100,181,255,.1)}
+.nexus-launcher-orb{width:39px;height:39px}
+.nexus-launcher-orb span,.nexus-avatar span{width:12px;height:12px;border:2px solid #a8d8ff;border-radius:50%;box-shadow:0 0 12px #64b5ff,0 0 25px rgba(100,181,255,.6)}
+.nexus-launcher-label{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.nexus-launcher-label strong{font-size:13px;letter-spacing:.01em}
+.nexus-launcher-label small{font-size:10px;color:#aebed0}
+.nexus-launcher-arrow{margin-left:5px;color:var(--blue,#64b5ff);font-size:16px}
+.nexus-panel{position:absolute;right:0;bottom:76px;display:flex;flex-direction:column;width:min(390px,calc(100vw - 28px));height:min(650px,calc(100dvh - 112px));min-height:430px;overflow:hidden;border:1px solid rgba(100,181,255,.28);border-radius:22px;background:#111722;box-shadow:0 24px 90px rgba(0,0,0,.56),0 0 35px rgba(45,111,174,.09);animation:nexus-appear .2s ease-out}
+.nexus-panel[hidden]{display:none}
+@keyframes nexus-appear{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.nexus-panel-header{display:flex;align-items:center;gap:11px;padding:16px 17px;border-bottom:1px solid rgba(241,240,232,.1);background:linear-gradient(110deg,rgba(100,181,255,.1),transparent 68%)}
+.nexus-avatar{width:39px;height:39px}
+.nexus-heading{min-width:0;flex:1}
+.nexus-eyebrow,.nexus-kicker{margin:0;color:#8dbfe9;font:9px var(--mono,"DM Mono",monospace);letter-spacing:.12em}
+.nexus-heading h2{margin:3px 0 2px;font-size:18px;line-height:1.15;letter-spacing:-.04em}
+.nexus-heading h2 span{color:var(--blue,#64b5ff)}
+.nexus-status{display:flex;align-items:center;gap:6px;margin:0;color:#9baec2;font-size:10px}
+.nexus-status span{width:6px;height:6px;border-radius:50%;background:#6bd6a2;box-shadow:0 0 9px rgba(107,214,162,.55)}
+.nexus-close{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(241,240,232,.13);border-radius:10px;background:rgba(255,255,255,.03);color:#d9e5f1;font-size:23px;line-height:1;cursor:pointer}
+.nexus-intro{padding:17px 19px 10px}
+.nexus-intro h3{margin:7px 0 8px;font-size:25px;line-height:1.06;letter-spacing:-.06em}
+.nexus-intro>p:last-child{margin:0;color:#aab8c8;font-size:12px;line-height:1.65}
+.nexus-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:5px 15px 13px}
+.nexus-shortcuts button{display:flex;justify-content:space-between;align-items:center;gap:7px;min-height:49px;padding:10px 11px;border:1px solid rgba(100,181,255,.18);border-radius:11px;background:rgba(100,181,255,.045);color:#d8e8f7;text-align:left;font:500 11px/1.4 var(--display,"Space Grotesk",sans-serif);cursor:pointer;transition:background .18s,border-color .18s}
+.nexus-shortcuts button:hover{background:rgba(100,181,255,.1);border-color:rgba(100,181,255,.5)}
+.nexus-shortcuts button span{flex:none;color:var(--blue,#64b5ff)}
+.nexus-messages{display:flex;flex:1;flex-direction:column;gap:12px;min-height:0;overflow:auto;padding:12px 15px;scroll-behavior:smooth}
+.nexus-message{max-width:91%;padding:11px 13px;border:1px solid rgba(241,240,232,.09);border-radius:13px;background:#1a2431;color:#dce7f1;font-size:12px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.nexus-message--user{align-self:flex-end;border-color:rgba(100,181,255,.28);background:rgba(48,104,151,.24);color:#eef7ff}
+.nexus-message--assistant{align-self:flex-start}
+.nexus-message--error{border-color:rgba(255,180,100,.35);color:#ffdbb3}
+.nexus-message a{color:#8dcaff;text-decoration:underline;text-underline-offset:3px}
+.nexus-message a:hover{color:#c5e5ff}
+.nexus-message.is-typing{color:#a9c7df}
+.nexus-composer{display:flex;align-items:flex-end;gap:8px;margin:0 13px;padding:9px;border:1px solid rgba(100,181,255,.25);border-radius:15px;background:#0d121a}
+.nexus-composer textarea{display:block;flex:1;min-width:0;max-height:100px;resize:none;border:0;outline:0;background:transparent;color:#f1f5f9;font:12px/1.55 var(--display,"Space Grotesk",sans-serif)}
+.nexus-composer textarea::placeholder{color:#8191a2}
+.nexus-composer button{display:grid;place-items:center;flex:none;width:35px;height:35px;border:0;border-radius:10px;background:var(--blue,#64b5ff);color:#101820;font-size:22px;font-weight:700;cursor:pointer}
+.nexus-composer button:disabled{opacity:.48;cursor:wait}
+.nexus-disclaimer{margin:8px 15px 11px;color:#7e8fa1;font-size:9px;line-height:1.45;text-align:center}
+.nexus-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:480px){.nexus-widget{right:12px;bottom:12px}.nexus-launcher{min-height:56px;padding:8px 12px 8px 8px;border-radius:16px}.nexus-launcher-orb{width:36px;height:36px}.nexus-panel{position:fixed;inset:auto 8px 8px;width:auto;height:min(690px,calc(100dvh - 16px));min-height:min(450px,calc(100dvh - 16px));border-radius:20px}.nexus-panel-header{padding:13px 14px}.nexus-intro{padding:14px 16px 8px}.nexus-intro h3{font-size:23px}.nexus-shortcuts{padding:5px 12px 10px;gap:6px}.nexus-shortcuts button{min-height:45px;padding:9px;font-size:10px}.nexus-messages{padding:10px 12px}.nexus-disclaimer{margin-bottom:9px}}
+@media(prefers-reduced-motion:reduce){.nexus-panel{animation:none}.nexus-launcher,.nexus-shortcuts button{transition:none}.nexus-messages{scroll-behavior:auto}}
