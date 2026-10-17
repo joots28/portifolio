@@ -343,7 +343,31 @@
     .quiz-result-item strong{display:block;font-size:12px;margin-bottom:5px;color:var(--green)}
     .quiz-result-item p{margin:0;font-size:13px;line-height:1.65}
     .quiz-results[hidden]{display:none!important}
+    .quiz-profile-banner{padding:17px 18px;border-radius:16px;background:var(--paper2);border:1px solid var(--line);margin:18px 0}
+    .quiz-profile-banner strong{display:block;font-size:15px;margin-bottom:5px}
+    .quiz-profile-banner p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+    .match-results{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+    .match-results h3{font-size:22px;margin:8px 0}
+    .match-explainer{font-size:13px;line-height:1.7;color:var(--muted);max-width:820px;margin-bottom:14px}
+    .match-candidate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+    .match-candidate{min-width:0;padding:18px;border-radius:18px;background:var(--paper);border:1px solid var(--line)}
+    .match-candidate-head{display:flex;align-items:center;gap:12px;min-width:0}
+    .match-candidate-head img{width:58px;height:70px;object-fit:cover;object-position:center 18%;border-radius:12px;border:1px solid var(--line);background:var(--paper2);flex:none}
+    .match-candidate-head h4{font-size:15px;letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 3px}
+    .match-candidate-head p{font-size:11px;color:var(--muted);margin:0}
+    .match-score-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:19px}
+    .match-score{font-size:30px;font-weight:900;letter-spacing:-1.2px;line-height:1}
+    .match-score-label{color:var(--muted);font-size:10px;text-align:right;max-width:115px}
+    .match-track{height:8px;border-radius:99px;background:var(--paper2);overflow:hidden;margin:11px 0 13px}
+    .match-track span{display:block;height:100%;border-radius:99px;background:var(--green)}
+    .match-topics{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 13px}
+    .match-topics strong{color:var(--ink)}
+    .match-links{display:flex;gap:8px;flex-wrap:wrap}
+    .match-links a{font-size:11px;font-weight:850;color:var(--green);text-decoration:underline;text-underline-offset:3px}
+    .match-footnote{font-size:11px;line-height:1.7;color:var(--muted);margin:16px 0 0;padding:13px 15px;background:var(--paper2);border-radius:13px}
     @media(max-width:760px){
+      .match-candidate-grid{grid-template-columns:1fr}
+      .match-candidate{padding:16px}
       .pres-card-top{grid-template-columns:68px minmax(0,1fr)}
       .pres-photo{width:68px;height:86px}
       .quiz-question{padding:17px}
@@ -428,13 +452,13 @@
           <div class="copy">
             <span class="eyebrow">Questionário de perfil político</span>
             <h2>Entenda suas próprias prioridades.</h2>
-            <p>Responda a perguntas sobre economia, serviços públicos, segurança, direitos, meio ambiente e governança. No final, o EleiNexus organiza suas preferências por assunto — sem transformar respostas complexas em um rótulo único.</p>
+            <p>Responda sobre economia, trabalho, serviços públicos, segurança, direitos, meio ambiente e gestão. No final, você verá seu mapa de prioridades e uma comparação temática com os programas das candidaturas do segundo turno.</p>
           </div>
           <span class="section-tag">10 perguntas · local e privado</span>
         </div>
         <div class="quiz-intro">
           <div class="quiz-intro-icon" aria-hidden="true">✳</div>
-          <div><strong>Você mantém o controle da decisão.</strong><p>O questionário não escolhe candidato, não calcula compatibilidade com candidaturas e não ordena nomes. Ele resume suas respostas; depois você pode comparar os programas presidenciais lado a lado.</p></div>
+          <div><strong>Você mantém o controle da decisão.</strong><p>O questionário compara suas escolhas com temas identificados nos programas oficiais. O resultado mostra correspondência temática estimada, não qualidade do plano, garantia de cumprimento nem recomendação de voto.</p></div>
         </div>
         <form id="politicalQuizForm" class="political-quiz">
           <div id="politicalQuizQuestions"></div>
@@ -445,7 +469,15 @@
         </form>
         <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
           <div class="quiz-results-head"><span class="eyebrow">Seu resultado</span><h3>Seu mapa de prioridades políticas</h3><p>Este resumo descreve as opções que você marcou, não sua identidade inteira nem um endosso a qualquer candidatura.</p></div>
+          <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
           <div class="quiz-results-list" id="politicalQuizResultItems"></div>
+          <section class="match-results" id="matchResults" aria-labelledby="match-title">
+            <span class="eyebrow">Comparação temática</span>
+            <h3 id="match-title">Quais programas mais se aproximam das suas respostas?</h3>
+            <p class="match-explainer">Compare as duas candidaturas que disputam o segundo turno. O índice usa as opções marcadas e uma matriz editorial baseada nos temas publicados nos planos oficiais do TSE. Leia os destaques e as fontes antes de tirar sua própria conclusão.</p>
+            <div class="match-candidate-grid" id="matchCandidateResults"></div>
+            <p class="match-footnote"><strong>Como ler a pontuação:</strong> cada resposta recebe 0, 1 ou 2 pontos de correspondência temática para cada plano, de acordo com a matriz editorial do EleiNexus. O percentual é uma estimativa limitada aos 10 temas deste questionário — não é pesquisa científica, nota de qualidade, avaliação de histórico, previsão de desempenho ou recomendação de voto. O resultado é calculado no seu navegador e não é enviado a servidor algum.</p>
+          </section>
           <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg><div><strong>Privacidade por design.</strong><br>As respostas são processadas no seu navegador e não são enviadas a servidor algum nem salvas em uma conta. Ao sair ou recarregar a página, o resultado desaparece.</div></div>
           <div class="quiz-results-actions"><a class="btn btn-primary" href="#candidatos">Comparar as propostas presidenciais</a><button class="btn btn-outline" id="editPoliticalQuiz" type="button">Editar respostas</button></div>
         </div>
@@ -713,7 +745,7 @@
           <details><summary>Como conferir uma informação compartilhada?</summary><p>Abra a fonte original, confira data e contexto, procure o documento completo e compare com outra fonte primária pertinente. Não se baseie apenas em uma imagem ou recorte de postagem.</p></details>
           <details><summary>O site guarda minhas opiniões ou prioridades?</summary><p>Não enviamos as notas da ferramenta de prioridades para servidor algum. As escolhas ficam apenas na memória desta página durante a visita e somem quando a página é recarregada ou fechada.</p></details>
           <details><summary>O site atualiza dados eleitorais automaticamente?</summary><p>Esta versão é um guia de consulta e não afirma ter sincronização automática com os cadastros do TSE. Para dados atuais, abra o registro oficial e confira a última atualização na fonte.</p></details>
-          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>Não. A ferramenta de prioridades não pontua partidos ou candidaturas, não estima compatibilidade eleitoral e não substitui o julgamento individual de cada pessoa.</p></details>
+          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>Não. O comparador mostra apenas a correspondência estimada entre suas respostas e temas resumidos dos planos oficiais das candidaturas do segundo turno. A pontuação é uma matriz editorial limitada, não um endosso nem recomendação de voto; consulte as fontes, compare propostas e decida por conta própria.</p></details>
         </div>
       </div>
     </section>
@@ -998,6 +1030,40 @@
           ]
         }
       ];
+      // Matriz editorial de correspondência: 0 = pouca relação identificada, 1 = parcial/neutra, 2 = maior convergência temática.
+      // A matriz foi construída a partir dos tópicos publicados nos planos do TSE; não é uma classificação oficial.
+      const candidateMatchProfiles = [
+        {
+          id:'flavio',
+          name:'Flávio Bolsonaro',
+          party:'PL · número 22',
+          photo:'https://www.tse.jus.br/imagens/imagens/flavio-bolsonaro/@@images/image-200-7092d276831e3453f70c59d07d5c9ae7.png',
+          source:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro',
+          scores:{
+            economia:[2,1,0,1],trabalho:[2,1,0,1],servicos:[2,1,0,1],seguranca:[2,1,1,1],
+            direitos:[1,1,1,1],ambiente:[2,1,0,1],governanca:[2,1,0,1],exterior:[2,1,0,1],
+            social:[2,1,0,1],campo:[2,1,0,1]
+          }
+        },
+        {
+          id:'lula',
+          name:'Lula',
+          party:'PT · número 13',
+          photo:'https://www.tse.jus.br/imagens/imagens/lula/@@images/image-200-93d51d895f8ebc8900bf3e02c7052bef.png',
+          source:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo',
+          scores:{
+            economia:[0,1,2,1],trabalho:[0,1,2,1],servicos:[0,1,2,1],seguranca:[1,1,2,1],
+            direitos:[1,1,2,1],ambiente:[0,1,2,1],governanca:[0,1,2,1],exterior:[0,1,2,1],
+            social:[0,1,2,1],campo:[0,1,2,1]
+          }
+        }
+      ];
+      const politicalProfileLabels = [
+        'Preferência por soluções orientadas ao mercado e por um Estado mais enxuto',
+        'Preferência por combinar instrumentos públicos e privados',
+        'Preferência por atuação pública e ampliação da proteção social',
+        'Perfil pragmático: avaliar cada proposta conforme contexto, evidências e resultados'
+      ];
       const quizContainer = document.getElementById('politicalQuizQuestions');
       const quizForm = document.getElementById('politicalQuizForm');
       const quizResults = document.getElementById('politicalQuizResults');
@@ -1010,23 +1076,140 @@
       quizForm.addEventListener('submit',function(e){
         e.preventDefault();
         quizResultItems.innerHTML = '';
+        const answers = {};
+        const profileCounts = [0,0,0,0];
         quizQuestions.forEach(function(q){
           const chosen = quizForm.querySelector('input[name="'+q.id+'"]:checked');
           if(!chosen)return;
+          const optionIndex = Number(chosen.value);
+          answers[q.id] = optionIndex;
+          profileCounts[optionIndex] += 1;
           const item = document.createElement('article');
           item.className = 'quiz-result-item';
           const title = document.createElement('strong');
           title.textContent = q.theme;
           const detail = document.createElement('p');
-          detail.textContent = q.options[Number(chosen.value)].profile;
-          item.appendChild(title);item.appendChild(detail);quizResultItems.appendChild(item);
+          detail.textContent = q.options[optionIndex].profile;
+          item.appendChild(title);
+          item.appendChild(detail);
+          quizResultItems.appendChild(item);
         });
+
+        const orderedProfileCounts = profileCounts.slice().sort(function(a,b){return b-a;});
+        const topProfileIndex = profileCounts.indexOf(orderedProfileCounts[0]);
+        const secondProfileCount = orderedProfileCounts[1] || 0;
+        let profileTitle = 'Perfil misto: suas respostas combinam prioridades diferentes';
+        let profileDescription = 'Suas escolhas não apontam para uma única orientação dominante. Vale comparar cada assunto separadamente, em vez de resumir seu perfil a um rótulo.';
+        if(orderedProfileCounts[0] - secondProfileCount >= 2){
+          profileTitle = politicalProfileLabels[topProfileIndex];
+          profileDescription = 'Esta descrição resume a tendência mais frequente entre suas respostas; ela não define sua identidade política e pode mudar conforme o tema.';
+        }
+        const profileBanner = document.getElementById('politicalProfileSummary');
+        profileBanner.innerHTML = '';
+        const profileHeading = document.createElement('strong');
+        profileHeading.textContent = profileTitle;
+        const profileText = document.createElement('p');
+        profileText.textContent = profileDescription + ' Distribuição das escolhas: mercado/Estado enxuto ' + profileCounts[0] + ', combinação de soluções ' + profileCounts[1] + ', Estado ativo/proteção social ' + profileCounts[2] + ', pragmatismo/contexto ' + profileCounts[3] + '.';
+        profileBanner.appendChild(profileHeading);
+        profileBanner.appendChild(profileText);
+
+        const answeredQuestions = quizQuestions.filter(function(q){return Object.prototype.hasOwnProperty.call(answers,q.id);});
+        const maxPoints = answeredQuestions.length * 2;
+        const rankedCandidates = candidateMatchProfiles.map(function(candidate){
+          let points = 0;
+          const matchingTopics = [];
+          answeredQuestions.forEach(function(q){
+            const score = candidate.scores[q.id][answers[q.id]];
+            points += score;
+            if(score >= 2) matchingTopics.push(q.theme);
+          });
+          return {
+            candidate:candidate,
+            points:points,
+            percent:maxPoints ? Math.round((points / maxPoints) * 100) : 0,
+            matchingTopics:matchingTopics
+          };
+        }).sort(function(a,b){return b.percent-a.percent;});
+
+        const matchContainer = document.getElementById('matchCandidateResults');
+        matchContainer.innerHTML = '';
+        rankedCandidates.forEach(function(result){
+          const candidate = result.candidate;
+          const card = document.createElement('article');
+          card.className = 'match-candidate';
+
+          const head = document.createElement('div');
+          head.className = 'match-candidate-head';
+          const photo = document.createElement('img');
+          photo.src = candidate.photo;
+          photo.alt = 'Foto oficial de ' + candidate.name;
+          photo.loading = 'lazy';
+          photo.decoding = 'async';
+          const identity = document.createElement('div');
+          const name = document.createElement('h4');
+          name.textContent = candidate.name;
+          const party = document.createElement('p');
+          party.textContent = candidate.party;
+          identity.appendChild(name);
+          identity.appendChild(party);
+          head.appendChild(photo);
+          head.appendChild(identity);
+
+          const scoreRow = document.createElement('div');
+          scoreRow.className = 'match-score-row';
+          const score = document.createElement('strong');
+          score.className = 'match-score';
+          score.textContent = result.percent + '%';
+          const scoreLabel = document.createElement('span');
+          scoreLabel.className = 'match-score-label';
+          scoreLabel.textContent = 'correspondência temática estimada';
+          scoreRow.appendChild(score);
+          scoreRow.appendChild(scoreLabel);
+
+          const track = document.createElement('div');
+          track.className = 'match-track';
+          track.setAttribute('role','img');
+          track.setAttribute('aria-label','Correspondência temática estimada: ' + result.percent + '%');
+          const fill = document.createElement('span');
+          fill.style.width = result.percent + '%';
+          track.appendChild(fill);
+
+          const topicText = document.createElement('p');
+          topicText.className = 'match-topics';
+          const topicStrong = document.createElement('strong');
+          topicStrong.textContent = 'Temas com maior correspondência na matriz: ';
+          topicText.appendChild(topicStrong);
+          topicText.appendChild(document.createTextNode(result.matchingTopics.length ? result.matchingTopics.join(' · ') : 'nenhum tema teve correspondência alta nesta matriz; consulte os resumos completos.'));
+
+          const links = document.createElement('div');
+          links.className = 'match-links';
+          const siteLink = document.createElement('a');
+          siteLink.href = '#candidatos';
+          siteLink.textContent = 'Ver resumos no EleiNexus';
+          const sourceLink = document.createElement('a');
+          sourceLink.href = candidate.source;
+          sourceLink.target = '_blank';
+          sourceLink.rel = 'noopener noreferrer';
+          sourceLink.textContent = 'Fonte oficial no TSE';
+          links.appendChild(siteLink);
+          links.appendChild(sourceLink);
+
+          card.appendChild(head);
+          card.appendChild(scoreRow);
+          card.appendChild(track);
+          card.appendChild(topicText);
+          card.appendChild(links);
+          matchContainer.appendChild(card);
+        });
+
         quizResults.hidden = false;
         quizResults.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
       });
       quizForm.addEventListener('reset',function(){
         quizResults.hidden = true;
         quizResultItems.innerHTML = '';
+        document.getElementById('matchCandidateResults').innerHTML = '';
+        document.getElementById('politicalProfileSummary').innerHTML = '';
       });
       document.getElementById('editPoliticalQuiz').addEventListener('click',function(){
         document.getElementById('perfil-politico').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
