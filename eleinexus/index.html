@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b2d26">
-  <meta name="description" content="EleiNexus — informação cívica transparente, fontes oficiais e ferramentas para organizar suas prioridades. Independente e apartidário.">
+  <meta name="description" content="EleiNexus — propostas dos presidenciáveis 2026, planos oficiais por assunto, fontes do TSE e organização de prioridades. Independente e apartidário.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://eleinexus-civico.onrender.com/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://eleinexus-civico.onrender.com/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="EleiNexus — informação transparente, decisão sua">
-  <meta property="og:description" content="Consulte fontes oficiais, entenda pesquisas eleitorais e organize suas prioridades cívicas sem recomendação de voto.">
+  <meta property="og:description" content="Explore os planos das candidaturas à Presidência em 2026, consulte propostas por tema e leia documentos oficiais do TSE, sem recomendação de voto.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="EleiNexus — informação transparente, decisão sua">
@@ -253,6 +253,65 @@
       .rating button{width:33px}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  
+    /* Presidential proposal explorer */
+    .pres-source-note{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:15px;align-items:center;padding:17px 19px;background:var(--paper);border:1px solid var(--line);border-radius:18px;margin:0 0 23px}
+    .pres-source-note p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+    .pres-source-note p strong{color:var(--ink)}
+    .pres-source-note>a{display:inline-flex;align-items:center;gap:7px;color:var(--green);font-size:12px;font-weight:850;white-space:nowrap}
+    .pres-source-note>a svg,.pres-card-actions svg{width:14px;height:14px;flex:none}
+    .pres-source-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:var(--softgreen);color:var(--green);font-weight:950;font-size:12px}
+    .candidate-toolbar{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;margin:20px 0 26px}
+    .candidate-toolbar .filter-input{width:100%;min-width:0;min-height:47px;font-size:14px}
+    .subsection-heading{font-size:23px;letter-spacing:-.6px;margin:0 0 5px}
+    .subsection-copy{color:var(--muted);font-size:13px;margin:0 0 18px;line-height:1.65}
+    .pres-candidate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+    .pres-card{display:flex;flex-direction:column;min-width:0;padding:23px;background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);gap:13px}
+    .pres-card[hidden]{display:none!important}
+    .pres-card-top{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:center}
+    .pres-monogram{height:48px;width:48px;display:grid;place-items:center;border-radius:15px;background:var(--green2);color:#fff;font-weight:950;font-size:15px;letter-spacing:.3px}
+    [data-theme="dark"] .pres-monogram{color:#0b1714}
+    .pres-card-title h3{font-size:18px;line-height:1.25;margin:0 0 3px}
+    .pres-card-title p{font-size:12px;color:var(--muted);margin:0;font-weight:750}
+    .candidate-status{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;padding:6px 9px;border-radius:9px;font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+    .candidate-status.current{background:var(--softgreen);color:var(--green)}
+    .candidate-status.archived{background:var(--paper2);color:var(--muted)}
+    .pres-card h4{font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin:2px 0 -3px}
+    .proposal-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .proposal-list li{font-size:13px;line-height:1.58;padding:0 0 10px 13px;border-bottom:1px solid var(--line);position:relative;color:var(--ink)}
+    .proposal-list li:last-child{border-bottom:0;padding-bottom:0}
+    .proposal-list li:before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+    .proposal-kind{display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--green);font-weight:900;margin-bottom:2px}
+    .pres-card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+    .pres-card-actions .btn{font-size:12px;padding:10px 12px;flex:1;min-width:140px}
+    .archive-candidates{margin-top:26px}
+    .archive-candidates details{padding:20px;background:var(--paper);border-radius:20px}
+    .archive-candidates summary{font-size:15px}
+    .archive-candidates details[open] summary{margin-bottom:12px}
+    .archive-candidates .pres-candidate-grid{margin-top:12px}
+    .candidate-empty{margin:22px 0;padding:16px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:13px}
+    .candidate-source-foot{margin:20px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+    .topic-filter-btn{border:0;background:transparent;padding:0;cursor:pointer;text-align:left;align-self:flex-start}
+    .topic-filter-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:4px}
+    .topic-card{display:flex;flex-direction:column;align-items:flex-start}
+    .topic-card p{margin-bottom:17px}
+    .topic-card .topic-filter-btn{margin-top:auto}
+    @media(max-width:980px){
+      .pres-candidate-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pres-source-note{grid-template-columns:auto 1fr}
+      .pres-source-note>a{grid-column:2}
+    }
+    @media(max-width:760px){
+      .candidate-toolbar{grid-template-columns:1fr;gap:9px}
+      .pres-candidate-grid{grid-template-columns:1fr}
+      .pres-source-note{grid-template-columns:1fr}
+      .pres-source-note>a{grid-column:auto;white-space:normal}
+      .pres-card{padding:20px}
+      .pres-card-actions{display:grid;grid-template-columns:1fr}
+      .pres-card-actions .btn{width:100%;justify-content:center}
+      .archive-candidates details{padding:15px}
+    }
+
   </style>
 </head>
 <body>
@@ -264,7 +323,7 @@
         <span><span class="brandname">EleiNexus</span><span class="brandtag">Informação cívica independente</span></span>
       </a>
       <nav class="navlinks" id="mainNav" aria-label="Navegação principal">
-        <a href="#candidatos">Candidatos</a><a href="#propostas">Propostas</a><a href="#pesquisas">Pesquisas</a><a href="#resultados">Resultados</a><a href="#prioridades">Minhas prioridades</a><a href="#fontes">Fontes</a>
+        <a href="#candidatos">Presidência</a><a href="#propostas">Propostas</a><a href="#pesquisas">Pesquisas</a><a href="#resultados">Resultados</a><a href="#prioridades">Minhas prioridades</a><a href="#fontes">Fontes</a>
       </nav>
       <div class="navtools">
         <button class="iconbtn" id="themeToggle" type="button" aria-label="Ativar tema escuro" title="Alternar tema"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 13A8.5 8.5 0 0 1 11 3.2 8.5 8.5 0 1 0 20.8 13Z"/></svg></button>
@@ -279,9 +338,9 @@
         <div class="hero-copy">
           <span class="eyebrow">Cidadania com clareza</span>
           <h1>Suas ideias.<br><span class="accent">Informação transparente.</span><br>Sua decisão.</h1>
-          <p class="lead">Um lugar independente para consultar fontes eleitorais oficiais, entender pesquisas e organizar as pautas que importam para você — sem dizer em quem votar.</p>
+          <p class="lead">Um lugar independente para explorar os planos das candidaturas à Presidência em 2026, consultar fontes oficiais, entender pesquisas e organizar as pautas que importam para você — sem dizer em quem votar.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#candidatos">Explorar fontes oficiais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-primary" href="#candidatos">Ver planos presidenciais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             <a class="btn btn-outline" href="#prioridades">Organizar minhas prioridades</a>
           </div>
           <div class="hero-meta">
@@ -315,7 +374,7 @@
       <div class="shell">
         <div class="section-head"><div class="copy"><span class="eyebrow">Explore o EleiNexus</span><h2>Informação para cada etapa da sua pesquisa.</h2><p>Atalhos para os principais registros eleitorais e ferramentas simples para avaliar informações com cuidado.</p></div><span class="section-tag">Navegação rápida</span></div>
         <div class="cards">
-          <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h3a4.5 4.5 0 0 1 4.5 4.5V20M16 5.5a3 3 0 0 1 0 5.8M18 14.5a4.2 4.2 0 0 1 3 4V20"/></svg></span><h3>Conheça candidaturas</h3><p>Consulte registros, situação e dados declarados no canal oficial da Justiça Eleitoral. Evitamos listas locais que possam ficar desatualizadas.</p><a class="text-link" href="#candidatos">Abrir área de candidatos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
+          <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h3a4.5 4.5 0 0 1 4.5 4.5V20M16 5.5a3 3 0 0 1 0 5.8M18 14.5a4.2 4.2 0 0 1 3 4V20"/></svg></span><h3>Planos presidenciais 2026</h3><p>Explore os planos das candidaturas à Presidência e abra as propostas oficiais organizadas por assunto.</p><a class="text-link" href="#candidatos">Ver planos presidenciais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
           <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v17H5zM8 8h8M8 12h8M8 16h5"/><path d="M9 4V2h6v2"/></svg></span><h3>Analise propostas</h3><p>Veja como localizar programas e documentos oficiais e compare temas equivalentes, sem confundir falta de informação com oposição.</p><a class="text-link" href="#propostas">Entender como comparar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
           <article class="feature-card"><span class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M7 15l3-4 3 2 4-6"/></svg></span><h3>Leia pesquisas com contexto</h3><p>Consulte registros e detalhes metodológicos. Instituto, amostra, período de campo e margem de erro fazem diferença.</p><a class="text-link" href="#pesquisas">Ver fontes de pesquisas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></article>
         </div>
@@ -324,36 +383,236 @@
 
     <section class="section surface" id="candidatos">
       <div class="shell">
-        <div class="section-head"><div class="copy"><span class="eyebrow">Candidaturas</span><h2>Consulte o registro original.</h2><p>O cadastro eleitoral muda ao longo do processo. Para reduzir o risco de informação vencida, o EleiNexus leva você à fonte primária em vez de apresentar uma lista não verificada.</p></div><span class="section-tag">Fonte: Justiça Eleitoral</span></div>
-        <div class="candidate-layout">
-          <div class="deep-card"><span class="eyebrow">Consulta oficial</span><h3>Dados de candidatura direto na origem.</h3><p>Nome, número, partido, cargo, situação do registro e outras informações declaradas devem ser confirmados na página oficial.</p><a class="btn btn-light" href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Abrir DivulgaCandContas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></div>
-          <div class="panel"><h3>O que verificar antes de compartilhar</h3><div class="checklist">
-            <div class="checkrow"><span class="checknum">01</span><div><strong>Situação da candidatura</strong><p>Confira o estado mais recente do registro e se houve decisão ou atualização posterior.</p></div></div>
-            <div class="checkrow"><span class="checknum">02</span><div><strong>Cargo, eleição e circunscrição</strong><p>Certifique-se de que você está olhando a eleição, o cargo e a unidade federativa corretos.</p></div></div>
-            <div class="checkrow"><span class="checknum">03</span><div><strong>Documentos e prestação de contas</strong><p>Use os documentos oficiais disponíveis para conferir informações e evitar recortes fora de contexto.</p></div></div>
-          </div><div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg><div><strong>Por que abrir o portal oficial?</strong><br>Portais podem mudar, exigir filtros ou bloquear consultas automatizadas. Aqui não simulamos uma busca nem inventamos registros quando a integração não está disponível.</div></div></div>
+        <div class="section-head">
+          <div class="copy">
+            <span class="eyebrow">Presidência da República · Eleições 2026</span>
+            <h2>As propostas dos presidenciáveis, aqui.</h2>
+            <p>Explore destaques de cada plano de governo. Cada cartão leva ao índice oficial do TSE, com propostas organizadas por assunto, e ao documento completo apresentado pela candidatura.</p>
+          </div>
+          <span class="section-tag">Fonte primária: TSE</span>
         </div>
+        <div class="pres-source-note">
+          <span class="pres-source-icon" aria-hidden="true">TSE</span>
+          <p><strong>Como foi organizado:</strong> os destaques abaixo são resumos de tópicos que aparecem no índice oficial de propostas do TSE. Não representam uma avaliação do plano nem substituem sua leitura integral.</p>
+          <a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026-segundo-turno" target="_blank" rel="noopener noreferrer">Página oficial do 2º turno <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+        </div>
+        <div class="candidate-toolbar">
+          <input class="filter-input" id="candidateSearch" type="search" placeholder="Buscar candidato, partido ou proposta..." aria-label="Buscar entre os planos presidenciais">
+          <select class="filter-input" id="presThemeFilter" aria-label="Filtrar propostas por tema">
+            <option value="todos">Todos os temas</option>
+            <option value="economia">Economia, trabalho e responsabilidade fiscal</option>
+            <option value="saude">Saúde pública e assistência</option>
+            <option value="seguranca">Segurança pública e justiça</option>
+            <option value="educacao">Educação</option>
+            <option value="externa">Política externa</option>
+            <option value="direitos">Direitos humanos e inclusão</option>
+            <option value="ambiente">Meio ambiente e questão agrária</option>
+            <option value="governanca">Governança e reformas do Estado</option>
+          </select>
+        </div>
+        <h3 class="subsection-heading">Candidaturas do 2º turno</h3>
+        <p class="subsection-copy">Planos das duas candidaturas que avançaram para a segunda etapa, conforme a página oficial do TSE.</p>
+        <div class="pres-candidate-grid" id="secondRoundCandidates"><article class="pres-card" data-pres-card data-round="second" data-themes="economia saude seguranca educacao externa direitos governanca">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">FB</div>
+      <div class="pres-card-title"><h3>Flávio Bolsonaro</h3><p>PL · número 22</p></div>
+      <span class="candidate-status current">Candidatura no 2º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Redução de impostos, reforma tributária e reformulação das regras fiscais.</li><li data-theme="saude"><span class="proposal-kind">Saúde</span>Digitalização do SUS, telessaúde e agendamento com inteligência artificial.</li><li data-theme="seguranca"><span class="proposal-kind">Segurança</span>Combate a facções, monitoramento de fronteiras e reconhecimento facial.</li><li data-theme="educacao"><span class="proposal-kind">Educação</span>Alfabetização pelo método fônico, ensino técnico e escolas em tempo integral.</li><li data-theme="externa"><span class="proposal-kind">Política externa</span>Abertura comercial, defesa nacional e adesão à OCDE.</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Corte de ministérios e digitalização de serviços públicos.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pl" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="second" data-themes="economia saude seguranca direitos ambiente externa">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">L</div>
+      <div class="pres-card-title"><h3>Lula</h3><p>PT · número 13</p></div>
+      <span class="candidate-status current">Candidatura no 2º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Responsabilidade fiscal, reforma tributária, política industrial e renegociação de dívidas pelo Desenrola Brasil.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Fim da escala 6x1 e redução da jornada semanal para 40 horas — proposta listada no programa.</li><li data-theme="ambiente"><span class="proposal-kind">Meio ambiente</span>Plano de Transformação Ecológica e investimentos em infraestrutura pelo Novo PAC.</li><li data-theme="seguranca"><span class="proposal-kind">Segurança</span>Fortalecimento do Sistema Único de Segurança Pública e de políticas de segurança nas fronteiras.</li><li data-theme="direitos"><span class="proposal-kind">Direitos e inclusão</span>Combate ao racismo, políticas para mulheres e inclusão de pessoas com deficiência.</li><li data-theme="externa"><span class="proposal-kind">Política externa</span>Integração sul-americana, BRICS e atuação multilateral.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article></div>
+        <div class="archive-candidates" id="firstRoundArchive">
+          <details id="firstRoundDetails">
+            <summary>Consultar também os outros 11 planos apresentados no 1º turno</summary>
+            <p class="subsection-copy">Estes planos permanecem disponíveis para consulta. A indicação de 1º turno distingue o registro histórico da disputa atualmente em andamento.</p>
+            <div class="pres-candidate-grid" id="firstRoundCandidates"><article class="pres-card" data-pres-card data-round="first" data-themes="economia saude seguranca educacao direitos governanca ambiente">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">CB</div>
+      <div class="pres-card-title"><h3>Clariana Barão</h3><p>DC · número 27</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Ambiente de negócios simplificado, crédito para pequenos negócios e responsabilidade fiscal.</li><li data-theme="saude"><span class="proposal-kind">Saúde</span>Atenção primária, telemedicina e regulação inteligente de filas.</li><li data-theme="educacao"><span class="proposal-kind">Educação</span>Alfabetização, ensino técnico, tecnologia nas escolas e apoio a professores.</li><li data-theme="direitos"><span class="proposal-kind">Direitos e inclusão</span>Autonomia econômica das mulheres e proteção de crianças e adolescentes.</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Gestão por metas, avaliação de programas e compras públicas rastreáveis.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/clariana-barao-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/plano-de-governo-1" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia direitos">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">EC</div>
+      <div class="pres-card-title"><h3>Edmilson Costa</h3><p>PCB · número 21</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Jornada de 30 horas semanais e fim da escala 6x1 sem redução salarial.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Revogação do arcabouço fiscal e de leis que o programa caracteriza como neoliberais.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Nacionalização e estatização do sistema financeiro e bancário, com criação do Banco dos Trabalhadores.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Reestruturação e auditoria da dívida pública, com suspensão de juros.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/edmilson-costa-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pcb" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia saude seguranca direitos externa governanca">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">EA</div>
+      <div class="pres-card-title"><h3>Escritor Augusto Cury</h3><p>AVANTE · número 70</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Banco do Empreendedor, crédito produtivo e simplificação tributária.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Eficiência dos gastos públicos e meta de déficit público próximo de zero.</li><li data-theme="saude"><span class="proposal-kind">Saúde</span>Saúde mental, prevenção, detecção precoce de câncer e telemedicina.</li><li data-theme="seguranca"><span class="proposal-kind">Segurança</span>Combate estruturado a facções criminosas, lavagem de dinheiro e controle de fronteiras.</li><li data-theme="direitos"><span class="proposal-kind">Direitos e inclusão</span>Autonomia econômica feminina e iniciativas de inclusão neurodiversa.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/escritor-augusto-cury-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-avante" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia direitos">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">HD</div>
+      <div class="pres-card-title"><h3>Hertz Dias</h3><p>PSTU · número 16</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Fim da escala 6x1 sem redução de salários e direitos.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Redução da jornada de trabalho para 36 horas semanais, rumo ao pleno emprego.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Aumento de 100% no salário mínimo, rumo ao piso do DIEESE.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Revogação da reforma trabalhista e da lei das terceirizações.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Expropriação de grandes empresas estratégicas, conforme descrito no programa.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/hertz-dias-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pstu" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia governanca">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">LA</div>
+      <div class="pres-card-title"><h3>Leonardo Avalanche</h3><p>PRTB · número 28</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Substituição de múltiplos tributos por um imposto único de 3,5%, conforme o plano.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Financiamento de veículos sem imposto e redução de taxas para motoristas de aplicativo.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>IPVA fixo de R$ 50 por mês para carros de passeio e isenção para caminhoneiros.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Desoneração fiscal para reindustrialização e processamento de minerais estratégicos.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/leonardo-avalanche" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-prtb/@@display-file/file/proposta-prtb.pdf" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia saude educacao governanca direitos">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">RS</div>
+      <div class="pres-card-title"><h3>Renan Santos</h3><p>MISSÃO · número 14</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Ajuste fiscal e desindexação de despesas, incluindo proposta de PEC do Equilíbrio Fiscal.</li><li data-theme="saude"><span class="proposal-kind">Saúde</span>Desvinculação dos pisos de saúde, educação e Fundeb, conforme consta no programa.</li><li data-theme="direitos"><span class="proposal-kind">Direitos e inclusão</span>Frentes Cidadãs: proposta de substituir o Bolsa Família por trabalho remunerado em ações comunitárias.</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Reforma do funcionalismo público e combate a supersalários.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/renan-santos-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-missao" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia ambiente governanca">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">RC</div>
+      <div class="pres-card-title"><h3>Ronaldo Caiado</h3><p>PSD · número 55</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Agenda nacional de produtividade e estratégia de crescimento Brasil 2040.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Controle de despesas obrigatórias e estabilização fiscal.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Reindustrialização, modernização do mercado de trabalho e fortalecimento de micro e pequenas empresas.</li><li data-theme="ambiente"><span class="proposal-kind">Meio ambiente</span>Investimentos em infraestrutura e logística, conforme o plano.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/ronaldo-caiado-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-psd" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia direitos">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">RC</div>
+      <div class="pres-card-title"><h3>Rui Costa Pimenta</h3><p>PCO · número 29</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Aumento emergencial de 50% nos salários e reposição integral das perdas, conforme o plano.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Auxílio-desemprego igual ao último salário recebido.</li><li data-theme="direitos"><span class="proposal-kind">Direitos e inclusão</span>Bolsa Família de pelo menos um salário mínimo.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Anulação das dívidas dos trabalhadores com o sistema financeiro.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Escala móvel de salários com reajuste automático a cada 3% de inflação.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/rui-costa-pimenta-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/pcoprogramadegoverno2026-1" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia direitos">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">SM</div>
+      <div class="pres-card-title"><h3>Samara Martins</h3><p>UP · número 80</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Aumento de 100% no salário mínimo e reajustes.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Fim da escala 6x1 e implementação da escala 4x3 com jornada de 30/36 horas.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Frentes emergenciais de trabalho e emprego público.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Nacionalização dos bancos e estatização do sistema financeiro.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Controle popular e planificação democrática da economia.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/samara-propostas-de-governo" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-up" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia governanca">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">VW</div>
+      <div class="pres-card-title"><h3>Veterinário Wilson Grassi</h3><p>DEMOCRATA · número 35</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Abertura, alteração e baixa de empresas por meio de ambiente único digital.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Extinção da contribuição patronal sobre a folha de pagamentos.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Isenção do Imposto de Renda da Pessoa Física para rendimentos de até cinco salários mínimos.</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Simplificação de obrigações tributárias e desoneração da folha.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/wilson-grassi" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-democrata" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article>
+<article class="pres-card" data-pres-card data-round="first" data-themes="economia governanca">
+    <div class="pres-card-top">
+      <div class="pres-monogram" aria-hidden="true">RZ</div>
+      <div class="pres-card-title"><h3>Romeu Zema</h3><p>NOVO · número 30</p></div>
+      <span class="candidate-status archived">Plano do 1º turno</span>
+    </div>
+    <h4>Destaques do plano oficial</h4>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Choque fiscal e estabilização da relação dívida/PIB.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Privatização de todas as empresas estatais, conforme o programa.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Redução gradual do Imposto de Renda das empresas (IRPJ).</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Reforma administrativa para reduzir ministérios e cargos.</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Reforma da Previdência envolvendo estados, municípios e regimes rural e militar.</li></ul>
+    <div class="pres-card-actions">
+      <a class="btn btn-primary" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/zema" target="_blank" rel="noopener noreferrer">Ver propostas por assunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+      <a class="btn btn-outline" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-novo" target="_blank" rel="noopener noreferrer">Plano completo (PDF) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+    </div>
+  </article></div>
+          </details>
+        </div>
+        <p class="candidate-empty" id="candidateEmpty" hidden>Nenhum plano encontrado com esses filtros. Tente outra palavra ou escolha “Todos os temas”.</p>
+        <p class="candidate-source-foot">Fonte: Tribunal Superior Eleitoral (TSE). Confirme contexto e versão diretamente nos documentos oficiais, que podem receber atualizações.</p>
       </div>
     </section>
 
     <section class="section" id="propostas">
       <div class="shell">
-        <div class="section-head"><div class="copy"><span class="eyebrow">Programas e propostas</span><h2>Compare temas, evidências e compromissos.</h2><p>Não basta uma frase de efeito. Procure a proposta completa, o custo previsto, o prazo, as condições de execução e como o resultado seria medido.</p></div><span class="section-tag">Método de comparação</span></div>
+        <div class="section-head">
+          <div class="copy">
+            <span class="eyebrow">Navegação por assunto</span>
+            <h2>Compare propostas no mesmo tema.</h2>
+            <p>Escolha uma área para filtrar os planos no EleiNexus. Os nomes dos temas seguem a organização usada pelo índice oficial do TSE, e os resumos mantêm um link para a fonte original.</p>
+          </div>
+          <span class="section-tag">Oito macrotemas do TSE</span>
+        </div>
         <div class="proposal-grid">
-          <article class="topic-card"><span class="topicicon">📚</span><h3>Educação</h3><p>Metas de aprendizagem, valorização profissional, infraestrutura e indicadores de acompanhamento.</p></article>
-          <article class="topic-card"><span class="topicicon">🩺</span><h3>Saúde</h3><p>Acesso, atenção básica, filas, profissionais, financiamento e metas mensuráveis.</p></article>
-          <article class="topic-card"><span class="topicicon">🛡️</span><h3>Segurança pública</h3><p>Prevenção, gestão, transparência, proteção de direitos e avaliação de resultados.</p></article>
-          <article class="topic-card"><span class="topicicon">🌱</span><h3>Meio ambiente</h3><p>Proteção de biomas, saneamento, adaptação climática e recursos para execução.</p></article>
-          <article class="topic-card"><span class="topicicon">📈</span><h3>Economia e trabalho</h3><p>Emprego, renda, produtividade, impacto fiscal e quem é afetado por cada medida.</p></article>
-          <article class="topic-card"><span class="topicicon">🏘️</span><h3>Infraestrutura e cidade</h3><p>Habitação, mobilidade, saneamento, cronogramas, orçamento e responsabilidades.</p></article>
+          <article class="topic-card"><span class="topicicon">📊</span><h3>Economia, trabalho e responsabilidade fiscal</h3><p>Impostos, emprego, renda, atividade econômica, contas públicas e propostas para o mercado de trabalho.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="economia">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">🩺</span><h3>Saúde pública e assistência</h3><p>SUS, prevenção, acesso a serviços, assistência social e organização do atendimento.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="saude">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">🛡️</span><h3>Segurança pública e justiça</h3><p>Prevenção, combate ao crime, investigação, sistema prisional e justiça criminal.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="seguranca">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">📚</span><h3>Educação</h3><p>Alfabetização, escolas, professores, ensino técnico, universidade, ciência e inovação.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="educacao">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">🌐</span><h3>Política externa e inserção global</h3><p>Diplomacia, relações internacionais, comércio exterior, defesa e integração regional.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="externa">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">🤝</span><h3>Direitos humanos, equidade e inclusão</h3><p>Direitos, combate à discriminação, proteção social, acessibilidade e igualdade de oportunidades.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="direitos">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">🌱</span><h3>Questão agrária, propriedade e meio ambiente</h3><p>Uso da terra, agricultura, conservação ambiental, clima e desenvolvimento sustentável.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="ambiente">Ver propostas neste tema →</button></article>
+          <article class="topic-card"><span class="topicicon">🏛️</span><h3>Governança, transparência e reformas do Estado</h3><p>Gestão pública, integridade, transparência, ministérios, orçamento e reformas administrativas.</p><button class="text-link topic-filter-btn" type="button" data-theme-choice="governanca">Ver propostas neste tema →</button></article>
         </div>
-        <div class="criteria">
-          <div class="criterion"><strong>01. Localize o documento completo</strong><p>Use o portal oficial e confirme autoria, versão, data e contexto da proposta.</p></div>
-          <div class="criterion"><strong>02. Separe promessa de plano executável</strong><p>Procure ações específicas, responsáveis, prazo, custo e fonte de recursos.</p></div>
-          <div class="criterion"><strong>03. Compare o mesmo tema</strong><p>Use critérios equivalentes para todas as candidaturas; não compare frases isoladas.</p></div>
-          <div class="criterion"><strong>04. Registre o que não está claro</strong><p>“Não localizado” ou “sem detalhe” não significa que a pessoa seja contra a pauta.</p></div>
-        </div>
-        <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg><div><strong>Encontre documentos na fonte primária.</strong><br>Os programas e documentos vinculados a candidaturas podem estar disponíveis nos registros eleitorais. Consulte o <a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer"><strong>DivulgaCandContas do TSE</strong></a> e também a <a href="https://dadosabertos.tse.jus.br/pt_BR/dataset/candidatos-2026" target="_blank" rel="noopener noreferrer"><strong>base oficial de candidatos 2026, que inclui arquivos de propostas de governo</strong></a>; confirme qual documento corresponde à candidatura pesquisada.</div></div>
+        <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg><div><strong>Leitura responsável.</strong><br>Uma proposta aparecer em um tema não significa que ela seja comparável em todos os detalhes a outra. Leia o texto, procure metas, prazos, orçamento e condições de execução. A lista completa de cada candidatura está no TSE.</div></div>
       </div>
     </section>
 
@@ -404,11 +663,11 @@
         <div class="section-head"><div class="copy"><span class="eyebrow">Rastreabilidade</span><h2>Comece pelas fontes oficiais.</h2><p>Links primários para confirmar registros, documentos e resultados. Sempre confira a página de origem, a data e o contexto do conteúdo.</p></div><span class="section-tag">Links externos</span></div>
         <div class="source-grid">
           <article class="source-card"><span class="source-mark">TSE</span><div><strong>Tribunal Superior Eleitoral</strong><p>Portal institucional, eleições, legislação e comunicados.</p><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar TSE ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">DC</span><div><strong>DivulgaCandContas</strong><p>Registro de candidaturas e dados de campanha disponíveis no sistema.</p><a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar cadastro ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">DC</span><div><strong>DivulgaCandContas</strong><p>Registro de candidaturas e dados de campanha disponíveis no sistema.</p><a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Consultar registro eleitoral ↗</a></div></article>
           <article class="source-card"><span class="source-mark">PE</span><div><strong>PesqEle</strong><p>Consulta oficial de registros de pesquisas eleitorais.</p><a href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Acessar PesqEle ↗</a></div></article>
           <article class="source-card"><span class="source-mark">R</span><div><strong>Resultados TSE</strong><p>Divulgação oficial dos resultados da apuração.</p><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar resultados ↗</a></div></article>
           <article class="source-card"><span class="source-mark">DA</span><div><strong>Dados abertos do TSE</strong><p>Conjuntos e arquivos públicos para análise e reutilização.</p><a href="https://dadosabertos.tse.jus.br/pt_BR/dataset/candidatos-2026" target="_blank" rel="noopener noreferrer">Ver base de candidatos 2026 ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">CD</span><div><strong>Câmara dos Deputados</strong><p>Dados legislativos, proposições e votações na Câmara.</p><a href="https://dadosabertos.camara.leg.br/" target="_blank" rel="noopener noreferrer">Acessar dados abertos ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">PG</span><div><strong>Planos presidenciais 2026</strong><p>Índice oficial do TSE com os programas apresentados pelas candidaturas à Presidência.</p><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026" target="_blank" rel="noopener noreferrer">Consultar todos os planos ↗</a></div></article>
         </div>
       </div>
     </section>
@@ -558,6 +817,42 @@
         });
       });
       document.querySelectorAll('a[target="_blank"]').forEach(function(a){a.setAttribute('rel','noopener noreferrer');});
+
+      const candidateSearch = document.getElementById('candidateSearch');
+      const presThemeFilter = document.getElementById('presThemeFilter');
+      const candidateEmpty = document.getElementById('candidateEmpty');
+      const firstRoundDetails = document.getElementById('firstRoundDetails');
+      function filterPresCandidates(){
+        const term = candidateSearch.value.trim().toLocaleLowerCase('pt-BR');
+        const theme = presThemeFilter.value;
+        let visibleCurrent = 0;
+        let visibleArchive = 0;
+        document.querySelectorAll('[data-pres-card]').forEach(function(card){
+          const text = card.textContent.toLocaleLowerCase('pt-BR');
+          const themes = (card.dataset.themes || '').split(/\\s+/);
+          const matchesText = !term || text.includes(term);
+          const matchesTheme = theme === 'todos' || themes.includes(theme);
+          const visible = matchesText && matchesTheme;
+          card.hidden = !visible;
+          if(visible && card.dataset.round === 'second') visibleCurrent++;
+          if(visible && card.dataset.round === 'first') visibleArchive++;
+        });
+        const isFiltering = Boolean(term) || theme !== 'todos';
+        if(isFiltering && visibleArchive > 0) firstRoundDetails.open = true;
+        if(!isFiltering) firstRoundDetails.open = false;
+        candidateEmpty.hidden = (visibleCurrent + visibleArchive) > 0;
+      }
+      candidateSearch.addEventListener('input',filterPresCandidates);
+      presThemeFilter.addEventListener('change',filterPresCandidates);
+      document.querySelectorAll('[data-theme-choice]').forEach(function(button){
+        button.addEventListener('click',function(){
+          presThemeFilter.value = button.dataset.themeChoice;
+          filterPresCandidates();
+          document.getElementById('candidatos').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+          candidateSearch.focus({preventScroll:true});
+        });
+      });
+      filterPresCandidates();
     })();
   </script>
 </body>

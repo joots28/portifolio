@@ -2,48 +2,50 @@
 
 **Suas ideias. Informação transparente. Sua decisão.**
 
-Portal cívico independente e apartidário, desenvolvido para funcionar como site estático, responsivo e sem dependências pagas.
+Portal cívico independente e apartidário, focado nas candidaturas à Presidência da República nas Eleições 2026.
 
-## O que já funciona
+## O que está implementado
 
-- Layout adaptável a computador e celular.
-- Modo claro e escuro, com preferência de tema guardada localmente no navegador.
-- Navegação por candidaturas, propostas, pesquisas, resultados, metodologia e fontes.
-- Ferramenta para organizar prioridades cívicas, sem classificar partidos ou recomendar votos.
-- Links para portais oficiais do TSE e da Câmara dos Deputados.
-- Ícone, metadados para compartilhamento, manifesto web, `robots.txt` e sitemap.
+- Interface responsiva para celular e computador, com modo claro/escuro.
+- Área do 2º turno com Lula (PT) e Flávio Bolsonaro (PL), baseada na página oficial do TSE.
+- Área expansível com os planos dos outros 11 presidenciáveis do 1º turno.
+- Destaques de propostas organizados por assunto, com busca e filtros por macrotema.
+- Links para o índice temático e para o PDF oficial de cada plano de governo.
+- Seções para pesquisas, resultados, método de leitura e fontes eleitorais.
+- Ferramenta pessoal para organizar prioridades, sem pontuar candidatos ou recomendar voto.
+- Metadados de compartilhamento, favicon, manifesto web, `robots.txt` e sitemap.
 
-## Limites importantes
+## Fontes e precisão
 
-Esta versão **não é uma integração automática** com os dados do TSE. Ela abre as fontes oficiais para que a pessoa confira cadastros, documentos, pesquisas e resultados atuais. Não apresenta percentuais de pesquisa nem listas locais de candidatura sem verificação.
+As propostas destacadas em cada cartão são resumos de assuntos indicados no índice oficial de planos de governo do Tribunal Superior Eleitoral (TSE). Cada cartão inclui dois links de fonte primária: a página temática da candidatura e o PDF integral do plano.
 
-As notas da ferramenta de prioridades são processadas na página e não são enviadas a uma API ou servidor. Não há login, anúncios, rastreadores ou base de dados própria.
+Os destaques não são uma avaliação, ranking nem uma transcrição integral. Abra o documento oficial para confirmar o contexto, o texto completo e eventuais atualizações.
 
-## Tecnologia e edição
-
-- HTML, CSS e JavaScript nativos, em `index.html`.
-- Nenhuma dependência externa, instalação de pacotes ou etapa de compilação.
-- Os metadados e os arquivos auxiliares ficam na pasta `eleinexus/`.
-
-Para editar pelo GitHub, abra [`index.html`](https://github.com/joots28/portifolio/blob/eleinexus-site/eleinexus/index.html), use o botão de edição, faça a alteração e grave um commit na branch `eleinexus-site`.
-
-## Publicação
-
-O site é publicado em [https://eleinexus-civico.onrender.com](https://eleinexus-civico.onrender.com).
-
-Configuração do serviço estático no Render:
-- Branch: `eleinexus-site`
-- Pasta publicada: `eleinexus`
-- Comando de build: `echo "EleiNexus static site ready"`
-- Deploy automático: ativado para novos commits nessa branch.
-
-A hospedagem estática do Render tem opção gratuita, mas permanece sujeita às franquias mensais de banda e minutos de build da plataforma. Para evitar qualquer cobrança, não faça upgrade de plano nem adicione forma de pagamento sem necessidade.
-
-## Fontes primárias incluídas
-
-- [Tribunal Superior Eleitoral](https://www.tse.jus.br/)
+Fontes centrais:
+- [Planos presidenciais do 2º turno — TSE](https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026-segundo-turno)
+- [Planos presidenciais do 1º turno — TSE](https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026)
 - [DivulgaCandContas](https://divulgacandcontas.tse.jus.br/)
 - [PesqEle](https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml)
 - [Resultados oficiais](https://resultados.tse.jus.br/)
-- [Dados abertos do TSE](https://dadosabertos.tse.jus.br/)
-- [Dados abertos da Câmara](https://dadosabertos.camara.leg.br/)
+
+## Tecnologia e privacidade
+
+- HTML, CSS e JavaScript nativos, em `index.html`.
+- Sem dependências externas nem etapa de compilação.
+- Busca e filtros funcionam localmente no navegador.
+- As notas de prioridades não são enviadas a uma API ou servidor.
+- Não há login, anúncios ou base de dados própria.
+
+## Edição e publicação
+
+- Repositório e pasta: [`eleinexus/`](https://github.com/joots28/portifolio/tree/eleinexus-site/eleinexus)
+- Arquivo principal: [`index.html`](https://github.com/joots28/portifolio/blob/eleinexus-site/eleinexus/index.html)
+- Site: [https://eleinexus-civico.onrender.com](https://eleinexus-civico.onrender.com)
+
+Configuração de publicação no Render:
+- Branch: `eleinexus-site`
+- Pasta publicada: `eleinexus`
+- Comando de build: `echo "EleiNexus static site ready"`
+- Deploy automático: ativado para novos commits nessa branch; se demorar, solicite deploy manual no painel.
+
+A hospedagem estática tem opção gratuita, mas sujeita aos limites de uso da plataforma. Não faça upgrade nem ative faturamento para manter-se no plano gratuito.
