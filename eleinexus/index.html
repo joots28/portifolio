@@ -829,7 +829,7 @@
         let visibleArchive = 0;
         document.querySelectorAll('[data-pres-card]').forEach(function(card){
           const text = card.textContent.toLocaleLowerCase('pt-BR');
-          const themes = (card.dataset.themes || '').split(/\\s+/);
+          const themes = (card.dataset.themes || '').split(/\s+/);
           const matchesText = !term || text.includes(term);
           const matchesTheme = theme === 'todos' || themes.includes(theme);
           const visible = matchesText && matchesTheme;
