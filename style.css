@@ -267,3 +267,55 @@ blockquote span{display:block;color:#7f8475;font:9px/1.5 var(--mono);letter-spac
 .contact-section .button-blue:hover{background:#1a2b42;border-color:#1a2b42;color:#fff}
 .contact-section .button-outline{border-color:rgba(16,17,15,.45);color:#10110f}
 .contact-section .button-outline:hover{background:rgba(16,17,15,.08);border-color:#10110f;color:#10110f}
+
+
+/* Interests and quote easter egg */
+.outside-code{margin-top:62px;padding-top:30px;border-top:1px solid var(--line)}
+.outside-code-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:22px}
+.outside-code-kicker{margin:0 0 9px;color:var(--blue);font-size:9px;letter-spacing:.13em}
+.outside-code-heading h3{max-width:620px;margin:0;font-size:clamp(25px,3vw,36px);line-height:1.12;letter-spacing:-.055em;font-weight:500}
+.outside-code-heading>p{max-width:340px;margin:0;color:#aebed1;font-size:12px;line-height:1.8}
+.interest-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.interest-card{display:flex;flex-direction:column;min-height:228px;padding:19px;border:1px solid rgba(100,181,255,.18);border-radius:10px;background:linear-gradient(145deg,#19283a,#141b27)}
+.interest-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#92a9c3;font:9px var(--mono);letter-spacing:.06em}
+.interest-symbol{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(100,181,255,.28);border-radius:8px;color:var(--blue);font-size:16px}
+.interest-card h4{margin:19px 0 9px;font-size:18px;line-height:1.2;letter-spacing:-.035em;font-weight:600;color:var(--paper)}
+.interest-card p{margin:0 0 17px;color:#b9c7d6;font-size:12px;line-height:1.8}
+.interest-tag{margin-top:auto;padding-top:13px;border-top:1px solid rgba(241,240,232,.09);color:#80b9f0;font:8px/1.6 var(--mono);letter-spacing:.04em}
+.round-egg{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:12px;padding:18px 20px;border:1px solid rgba(100,181,255,.28);border-radius:10px;background:rgba(100,181,255,.07)}
+.round-egg-copy{min-width:0;flex:1}
+.round-egg-copy>span{color:var(--blue);font-size:9px;letter-spacing:.11em}
+.round-egg-copy>p{margin:7px 0 0;color:#b4c3d3;font-size:11px;line-height:1.7}
+.round-egg-button{display:inline-flex;align-items:center;justify-content:center;gap:18px;flex:0 0 auto;min-height:44px;padding:11px 15px;border:1px solid rgba(100,181,255,.48);border-radius:7px;background:#64b5ff;color:#101725;font:700 11px var(--display);cursor:pointer;transition:transform .2s ease,background .2s ease}
+.round-egg-button:hover{transform:translateY(-2px);background:#a6d5ff}
+.round-egg-button:focus-visible{outline:3px solid #eaf5ff;outline-offset:3px}
+.round-quote{margin:13px 0 0;padding:13px 0 0 15px;border-left:2px solid var(--blue);color:var(--paper)}
+.round-quote[hidden]{display:none}
+.round-quote p{margin:0 0 6px;font-size:17px;line-height:1.45;font-weight:600;letter-spacing:-.02em}
+.round-quote cite{display:block;color:#9eb2c8;font:9px/1.7 var(--mono);font-style:normal}
+.round-quote a{display:inline-block;margin-top:5px;color:var(--blue);font:9px/1.5 var(--mono);text-decoration:underline;text-underline-offset:3px}
+.round-quote a:hover{color:#a6d5ff}
+.easter-trigger{font:inherit}
+.note-left{left:-1%;top:0%;transform:rotate(-5deg)}
+.note-right{right:-2%;bottom:0%;transform:rotate(4deg)}
+@media(max-width:820px){
+  .outside-code{margin-top:45px;padding-top:25px}
+  .outside-code-heading{align-items:flex-start;flex-direction:column;gap:10px}
+  .outside-code-heading>p{max-width:560px}
+  .interest-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .round-egg{align-items:stretch;flex-direction:column;gap:14px}
+  .round-egg-button{align-self:flex-start}
+  .note-left{left:0;top:0}
+  .note-right{right:0;bottom:0}
+}
+@media(max-width:560px){
+  .site-nav{gap:10px}
+  .interest-grid{grid-template-columns:1fr}
+  .interest-card{min-height:0;padding:18px}
+  .interest-card h4{margin-top:15px}
+  .round-egg{padding:16px}
+  .round-egg-button{width:100%;align-self:stretch}
+  .outside-code-heading h3{font-size:27px}
+  .note-left{left:0;top:-1%}
+  .note-right{right:0;bottom:-1%}
+}
