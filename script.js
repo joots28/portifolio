@@ -55,6 +55,59 @@
   const projectsGrid = document.getElementById("projectsGrid");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const easterTrigger = document.getElementById("easterTrigger");
+  const easterQuote = document.getElementById("easterQuote");
+  const easterQuoteText = document.getElementById("easterQuoteText");
+  const easterQuoteCredit = document.getElementById("easterQuoteCredit");
+  const easterSource = document.getElementById("easterSource");
+  const easterEggQuotes = [
+    {
+      text: "“Float like a butterfly, sting like a bee.”",
+      credit: "Drew “Bundini” Brown — frase popularizada por Muhammad Ali.",
+      url: "https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1992/rt9201/01140352.htm"
+    },
+    {
+      text: "“I am the greatest!”",
+      credit: "Muhammad Ali.",
+      url: "https://www.bbc.co.uk/sport/boxing/16146367"
+    },
+    {
+      text: "Round termina. Aprendizado continua.",
+      credit: "Frase original do portfólio.",
+      url: ""
+    },
+    {
+      text: "A técnica se afina na repetição; a curiosidade abre o próximo round.",
+      credit: "Frase original do portfólio.",
+      url: ""
+    }
+  ];
+  let easterQuoteIndex = -1;
+
+  if (easterTrigger && easterQuote && easterQuoteText && easterQuoteCredit) {
+    easterTrigger.addEventListener("click", () => {
+      easterQuoteIndex = (easterQuoteIndex + 1) % easterEggQuotes.length;
+      const quote = easterEggQuotes[easterQuoteIndex];
+
+      easterQuoteText.textContent = quote.text;
+      easterQuoteCredit.textContent = quote.credit;
+      easterQuote.hidden = false;
+
+      if (easterSource) {
+        easterSource.hidden = !quote.url;
+        if (quote.url) {
+          easterSource.href = quote.url;
+        } else {
+          easterSource.removeAttribute("href");
+        }
+      }
+
+      easterTrigger.firstChild.textContent =
+        easterQuoteIndex === easterEggQuotes.length - 1 ? "Ver de novo " : "Outra frase ";
+      easterTrigger.setAttribute("aria-label", "Mostrar a próxima frase escondida");
+    });
+  }
+
   if (menuToggle && siteNav) {
     menuToggle.addEventListener("click", () => {
       const open = menuToggle.getAttribute("aria-expanded") !== "true";
