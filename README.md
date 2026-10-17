@@ -1,196 +1,112 @@
 <div align="center">
-  <img src="./assets/header.svg" alt="Jhon - Software Developer" width="100%"/>
-</div>
 
-<br/>
+# Jhon Otiniel — Portfólio
 
-<div align="center">
+**Desenvolvimento de sistemas · Web · APIs · Mobile**
 
-<a href="https://github.com/joots28">
-  <img src="https://img.shields.io/badge/GitHub-joots28-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-</a>
-<a href="https://www.linkedin.com/in/jonathan-otiniel-053a12290">
-  <img src="https://img.shields.io/badge/LinkedIn-Jhon-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-</a>
-<a href="mailto:jonathanotiniel@gmail.com">
-  <img src="https://img.shields.io/badge/Email-Contato-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-</a>
+Uma casa digital para acompanhar projetos, tecnologias e a evolução de Jhon na jornada full-stack.
 
-</div>
-
-<div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2800&pause=900&color=58A6FF&center=true&vCenter=true&width=700&lines=C%23+%7C+.NET+%7C+React+%7C+React+Native+%7C+Kotlin;Desenvolvimento+Web+%7C+Mobile+%7C+APIs;Aprendendo%2C+construindo+e+evoluindo+todos+os+dias." alt="Typing SVG"/>
-</div>
-
----
-
-## 👨‍💻 Sobre mim
-
-> **Desenvolvedor de Sistemas em formação**, apaixonado por transformar ideias em aplicações reais.
-
-Gosto de trabalhar entre **backend, frontend e mobile**, explorando desde a lógica e arquitetura de sistemas até interfaces modernas e experiências de usuário.
-
-Meu foco atual está em quatro tecnologias que quero levar cada vez mais a fundo:
-
-<div align="center">
-
-| ⚙️ Backend | ⚛️ Frontend | 📱 Mobile | 🚀 Android |
-|:---:|:---:|:---:|:---:|
-| **C# / .NET** | **React** | **React Native** | **Kotlin** |
-| APIs • lógica • sistemas | UI • componentes • web | apps multiplataforma | apps Android • Kotlin |
+[![GitHub](https://img.shields.io/badge/GitHub-joots28-10110f?style=for-the-badge&logo=github&logoColor=d8ff53)](https://github.com/joots28)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Jhon-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonathan-otiniel-053a12290)
 
 </div>
 
 ---
 
-# 🧠 Minha Stack
+## ✦ Sobre o projeto
 
-<div align="center">
+Portfólio pessoal desenvolvido para apresentar a jornada de **Jhon Otiniel** em desenvolvimento de software, com uma interface editorial, visual próprio e foco em conteúdo real.
 
-### ⭐ Stack principal
+O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecnologias em estudo, linha de evolução e acesso ao perfil de certificações do LinkedIn.
 
-<a href="https://learn.microsoft.com/dotnet/csharp/"><img src="https://img.shields.io/badge/C%23-%23512BD4.svg?style=for-the-badge&logo=csharp&logoColor=white" alt="C#"/></a>
-<a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-%23512BD4.svg?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET"/></a>
-<a href="https://react.dev/"><img src="https://img.shields.io/badge/React-%2320232A.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React"/></a>
-<a href="https://reactnative.dev/"><img src="https://img.shields.io/badge/React_Native-%2320232A.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React Native"/></a>
-<a href="https://kotlinlang.org/"><img src="https://img.shields.io/badge/Kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin"/></a>
+## Recursos
 
-<br/>
+- Layout responsivo para celular, tablet e desktop.
+- Identidade visual própria, com animações de entrada e efeitos sutis.
+- Navegação mobile com acessibilidade por teclado.
+- Filtros de projetos por área.
+- Estatísticas públicas do GitHub consultadas pela API oficial.
+- Cartões de projetos com links diretos para os repositórios.
+- Preferência por movimento reduzido respeitada.
+- Metadados básicos para compartilhamento e mecanismos de busca.
+- HTML, CSS e JavaScript separados, sem framework ou dependência de build.
 
-### 🌐 Web & Base
+## Tecnologias
 
-<img src="https://skillicons.dev/icons?i=html,css,js,git,github" alt="Web e Git"/>
+| Camada | Tecnologias |
+| --- | --- |
+| Marcação | HTML5 semântico |
+| Estilo | CSS3, Grid, Flexbox, custom properties e media queries |
+| Interatividade | JavaScript moderno (vanilla) |
+| Integrações | GitHub REST API e links oficiais do LinkedIn |
+| Publicação prevista | Render Static Site |
 
-### 🧰 Ferramentas
+## Estrutura
 
-<img src="https://skillicons.dev/icons?i=vscode,figma,canva,visualstudio,idea" alt="Ferramentas"/>
+\`\`\`text
+portifolio/
+├── index.html       # Conteúdo e estrutura da página
+├── style.css        # Identidade visual, responsividade e animações
+├── script.js        # Filtros, navegação e integração com GitHub
+├── favicon.svg      # Ícone próprio
+├── assets/
+│   └── header.svg   # Arte já usada no perfil do GitHub
+└── README.md        # Documentação do projeto
+\`\`\`
 
-</div>
+## Executar localmente
 
----
+Como o projeto é estático, não é necessário instalar dependências.
 
-## 🎯 Atualmente focado em
+1. Clone o repositório:
 
-<div align="center">
+   \`\`\`bash
+   git clone https://github.com/joots28/portifolio.git
+   cd portifolio
+   \`\`\`
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  C# / .NET        → APIs, sistemas, arquitetura e backend  │
-│  React            → interfaces, componentes e aplicações  │
-│  React Native     → aplicações mobile multiplataforma    │
-│  Kotlin           → desenvolvimento Android               │
-└─────────────────────────────────────────────────────────────┘
-```
+2. Abra \`index.html\` no navegador ou inicie um servidor local:
 
-</div>
+   \`\`\`bash
+   python -m http.server 5500
+   \`\`\`
 
----
+3. Acesse \`http://localhost:5500\`.
 
-## 🚀 O que estou construindo
+## Publicação no Render
 
-**Backend & APIs**  
-Aplicações em C#/.NET com foco em organização de código, regras de negócio e integração entre serviços.
+Configuração prevista para um **Static Site** conectado ao repositório:
 
-**Frontend**  
-Interfaces em React com componentes reutilizáveis, responsividade e atenção à experiência do usuário.
+| Campo | Valor |
+| --- | --- |
+| Repository | \`https://github.com/joots28/portifolio\` |
+| Branch | \`main\` |
+| Build command | \`echo "Static site — no build step required"\` |
+| Publish directory | \`.\` |
 
-**Mobile**  
-Projetos com React Native para aplicações multiplataforma e estudos em Kotlin para o ecossistema Android.
+A URL pública só deve ser adicionada a esta documentação depois que a criação do serviço e a publicação forem confirmadas no Render.
 
-**Fundamentos**  
-Lógica de programação, estruturas condicionais, orientação a objetos, Git/GitHub e construção de projetos do zero.
+## Projetos em destaque
 
----
+- [ChurchMennager / ChurchManager](https://github.com/joots28/ChurchMennager) — projeto acadêmico full-stack para gestão comunitária.
+- [SPIUsuarios_2DS](https://github.com/joots28/SPIUsuarios_2DS) — solução de estudos com o projeto APIUsuarios01.
+- [Lanchonete](https://github.com/joots28/lanchonete) — projeto desktop em Windows Forms.
+- [Estruturas condicionais](https://github.com/joots28/estruturas-condicionais) — estudos de lógica de programação.
 
-## 📂 Projetos
+Os projetos estão em diferentes estágios de evolução. O conteúdo do portfólio descreve o escopo conhecido sem afirmar que trabalhos em desenvolvimento estejam prontos para produção.
 
-<div align="center">
+## Certificações
 
-<a href="https://github.com/joots28/SPIUsuarios_2DS">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=joots28&repo=SPIUsuarios_2DS&theme=github_dark&hide_border=true" alt="SPIUsuarios_2DS"/>
-</a>
-<a href="https://github.com/joots28/site_garido">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=joots28&repo=site_garido&theme=github_dark&hide_border=true" alt="site_garido"/>
-</a>
+A fonte oficial é o [perfil de Jhon no LinkedIn](https://www.linkedin.com/in/jonathan-otiniel-053a12290/details/certifications/). A lista individual será incorporada ao portfólio após validação dos nomes, instituições e datas, evitando publicar credenciais incorretas.
 
-<br/>
+## Contato
 
-<a href="https://github.com/joots28/estruturas-condicionais">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=joots28&repo=estruturas-condicionais&theme=github_dark&hide_border=true" alt="estruturas-condicionais"/>
-</a>
-<a href="https://github.com/joots28/lanchonete">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=joots28&repo=lanchonete&theme=github_dark&hide_border=true" alt="lanchonete"/>
-</a>
-
-</div>
-
----
-
-## 📊 GitHub Analytics
-
-<div align="center">
-
-<img height="175" src="https://github-readme-stats.vercel.app/api?username=joots28&show_icons=true&hide_border=true&theme=github_dark&include_all_commits=true&count_private=true&rank_icon=github" alt="GitHub Stats"/>
-
-<img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joots28&layout=compact&hide_border=true&theme=github_dark&langs_count=8" alt="Top Languages"/>
-
-<br/><br/>
-
-<img src="https://streak-stats.demolab.com?user=joots28&theme=github-dark-blue&hide_border=true" alt="GitHub Streak"/>
-
-<br/><br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=joots28&bg_color=0d1117&color=58a6ff&line=7c3aed&point=ffffff&area=true&hide_border=true" alt="Contribution Graph" width="95%"/>
-
-</div>
-
----
-
-## 🏆 GitHub Achievements
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=joots28&theme=algolia&no-frame=true&no-bg=true&margin-w=8&row=1&column=7" alt="GitHub Trophies"/>
-
-</div>
-
----
-
-## 💡 Filosofia de desenvolvimento
-
-<div align="center">
-
-> **Código bom não é só código que funciona.**  
-> É código que pode ser entendido, mantido e evoluído.
-
-</div>
-
----
-
-## 🌐 Vamos nos conectar?
-
-<div align="center">
-
-<a href="https://github.com/joots28">
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-</a>
-<a href="https://www.linkedin.com/in/jonathan-otiniel-053a12290">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-</a>
-<a href="mailto:jonathanotiniel@gmail.com">
-  <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-</a>
-
-<br/><br/>
-
-<img src="https://komarev.com/ghpvc/?username=joots28&style=for-the-badge&color=58A6FF&label=PROFILE+VIEWS" alt="Profile Views"/>
-
-</div>
+- GitHub: [github.com/joots28](https://github.com/joots28)
+- LinkedIn: [Jonathan Otiniel](https://www.linkedin.com/in/jonathan-otiniel-053a12290)
+- E-mail: [jonathanotiniel@gmail.com](mailto:jonathanotiniel@gmail.com)
 
 ---
 
 <div align="center">
-
-### ✨ Construindo projetos. Aprendendo tecnologias. Evoluindo como desenvolvedor.
-
+Feito com intenção, curiosidade e commits reais.
 </div>
