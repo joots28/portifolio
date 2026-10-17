@@ -68,7 +68,7 @@
     {
       text: "“Float like a butterfly, sting like a bee.”",
       credit: "Drew “Bundini” Brown — frase popularizada por Muhammad Ali.",
-      url: "https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1992/rt9201/01140352.htm",
+      url: "https://alicenter.org/exhibits/float-like-a-butterfly-garden/",
       linkLabel: "Ver contexto da frase ↗"
     },
     {
