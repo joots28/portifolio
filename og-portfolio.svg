@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0B1423"/><stop offset="1" stop-color="#10110f"/></linearGradient><radialGradient id="glow"><stop stop-color="#2F7DCE" stop-opacity=".42"/><stop offset="1" stop-color="#2F7DCE" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/><circle cx="940" cy="280" r="360" fill="url(#glow)"/>
+<g transform="translate(790 130)" fill="none" stroke="#64B5FF" stroke-width="8"><ellipse cx="150" cy="150" rx="126" ry="48"/><ellipse cx="150" cy="150" rx="126" ry="48" transform="rotate(60 150 150)"/><ellipse cx="150" cy="150" rx="126" ry="48" transform="rotate(120 150 150)"/></g><circle cx="940" cy="280" r="17" fill="#EAF5FF"/>
+<text x="90" y="155" fill="#94A3B8" font-family="Arial,Helvetica,sans-serif" font-size="22" letter-spacing="6">PORTFÓLIO • DESENVOLVIMENTO DE SISTEMAS</text>
+<text x="85" y="300" fill="#F8FAFC" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="700">JONATHAN</text><text x="85" y="390" fill="#F8FAFC" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="700">OTINIEL</text>
+<rect x="90" y="435" width="340" height="5" rx="2" fill="#64B5FF"/><text x="90" y="495" fill="#CBD5E1" font-family="Arial,Helvetica,sans-serif" font-size="27">C# / .NET  •  React  •  Kotlin</text>
+<text x="90" y="560" fill="#64748B" font-family="Arial,Helvetica,sans-serif" font-size="20">INTERFACES · APIs · APLICAÇÕES · SISTEMAS</text>
+</svg>
