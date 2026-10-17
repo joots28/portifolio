@@ -9,6 +9,7 @@
       category: "fullstack",
       title: "ChurchManager",
       description: "Sistema web de gestão comunitária em desenvolvimento acadêmico, pensado para conectar interface responsiva, API e banco de dados relacional.",
+      detail: "Interface React/Vite, API REST em ASP.NET Core e persistência MySQL, com módulos separados. O repositório também documenta limitações e validações pendentes.",
       tags: ["React", "C# / .NET", "MySQL"],
       status: "EM EVOLUÇÃO",
       visual: "visual-church",
@@ -20,6 +21,7 @@
       category: "backend",
       title: "SPI — API de usuários",
       description: "Solução de estudos com o projeto APIUsuarios01, praticando a organização de uma aplicação voltada a usuários e serviços.",
+      detail: "Projeto de estudos organizado como uma solution da plataforma .NET, voltado à estruturação de uma aplicação de API. Consulte o código para verificar a implementação detalhada.",
       tags: ["API", "Solution .NET", "Back-end"],
       status: "ESTUDO",
       visual: "visual-api",
@@ -31,6 +33,7 @@
       category: "desktop",
       title: "Lanchonete",
       description: "Projeto desktop em Windows Forms para praticar a construção de telas e a organização de fluxos em uma aplicação.",
+      detail: "Aplicação desktop de estudo para praticar a construção de telas e a organização de fluxos em Windows Forms com C#.",
       tags: ["C#", "Windows Forms", "Desktop"],
       status: "PRÁTICA",
       visual: "visual-desktop",
@@ -42,6 +45,7 @@
       category: "learning",
       title: "Estruturas condicionais",
       description: "Exercícios de lógica de programação para fortalecer o raciocínio, a tomada de decisão e a base necessária para sistemas maiores.",
+      detail: "Exercícios introdutórios organizados por atividade para praticar condicionais, raciocínio lógico e decomposição de problemas.",
       tags: ["Lógica", "Programação", "Fundamentos"],
       status: "BASE",
       visual: "visual-logic",
@@ -248,6 +252,14 @@
       tags.appendChild(tag);
     });
 
+    const details = document.createElement("details");
+    details.className = "project-details";
+    const summary = document.createElement("summary");
+    summary.textContent = config.category === "fullstack" ? "O que a arquitetura reúne" : "Foco de estudo";
+    const detailText = document.createElement("p");
+    detailText.textContent = config.detail;
+    details.append(summary, detailText);
+
     const link = document.createElement("a");
     link.className = "project-link";
     link.href = repository && repository.html_url ? repository.html_url : "https://github.com/" + githubUser + "/" + config.repo;
@@ -259,7 +271,18 @@
     arrow.setAttribute("aria-hidden", "true");
     link.appendChild(arrow);
 
-    body.append(topline, title, description, tags, link);
+    body.append(topline, title, description, tags, details, link);
+    if (config.category === "fullstack") {
+      const caseLink = document.createElement("a");
+      caseLink.className = "project-link project-case-link";
+      caseLink.href = "#estudo-de-caso";
+      caseLink.append(document.createTextNode("Ler estudo de caso "));
+      const caseArrow = document.createElement("span");
+      caseArrow.textContent = "↘";
+      caseArrow.setAttribute("aria-hidden", "true");
+      caseLink.appendChild(caseArrow);
+      body.appendChild(caseLink);
+    }
     card.appendChild(body);
     return card;
   }
