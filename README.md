@@ -136,40 +136,24 @@ Feito com intenção, curiosidade e commits reais.
 </div>
 
 
-## Nexus AI — assistente do portfólio
+## Nexus — assistente gratuito do portfólio
 
-O site inclui um widget acessível com atalhos e conversa com IA para apresentar os projetos e responder dúvidas de programação.
+O site inclui um assistente responsivo com atalhos e respostas locais sobre o portfólio e conceitos introdutórios de programação. **A versão atual é 100% gratuita e não depende de chave de API, conta de IA paga, banco de dados ou servidor de chat.**
 
-### Arquitetura
+### Como funciona
 
-- assistant.css e assistant.js: interface isolada do restante do site.
-- server.js e package.json: API Node.js/Express para Render.
-- POST /api/chat: envia o histórico recente ao modelo configurado no servidor.
-- GET /health: verificação simples de disponibilidade.
+- `assistant.css` e `assistant.js`: interface e lógica isoladas do restante do site.
+- As respostas são escolhidas no próprio navegador a partir de um guia de conteúdo incluído no JavaScript.
+- A conversa não é enviada a uma API externa nem armazenada em um servidor pelo assistente.
+- Os atalhos apresentam o portfólio, o currículo, o GitHub, o ChurchManager e tecnologias estudadas.
+- Perguntas técnicas comuns recebem explicações locais sobre front-end, APIs REST, SQL e lógica de programação.
 
-### Configuração da API
+### Limitações
 
-No serviço Web do Render, configure as variáveis de ambiente:
+Esta versão não é uma IA generativa: não cria respostas novas a partir de um modelo e só consegue responder aos temas previstos no guia local. Para manter o custo em zero, perguntas muito específicas recebem uma resposta geral explicando o que o assistente consegue abordar. O guia pode ser ampliado editando `assistant.js`.
 
-- OPENAI_API_KEY: chave da API do provedor; configure apenas no painel privado do serviço, nunca no HTML, CSS, JavaScript do navegador ou GitHub.
-- OPENAI_MODEL: opcional; padrão gpt-5.5.
-- ALLOWED_ORIGIN: opcional; origem do site que pode chamar a API. Em produção, use https://jhon-otiniel-portfolio.onrender.com.
+### Publicação
 
-Sem OPENAI_API_KEY, os atalhos de conteúdo continuam disponíveis e a API informa que a conexão de IA ainda não foi configurada. O uso da API do modelo pode gerar custos conforme a conta e o modelo escolhidos.
+O assistente roda dentro do site estático já publicado no Render. Não é necessário configurar `OPENAI_API_KEY`, instalar dependências ou criar outro serviço para que os atalhos funcionem.
 
-### Segurança e privacidade
-
-- Validação do tamanho e formato das mensagens.
-- Limite simples de requisições por endereço IP.
-- CORS limitado à origem do portfólio.
-- A chave de API permanece no servidor.
-- O histórico é mantido apenas na sessão da página; não é gravado em banco de dados pelo widget.
-- Não registrar conteúdo de conversas nos logs do servidor.
-
-### Executar localmente
-
-1. Instale uma versão recente do Node.js.
-2. Execute npm install.
-3. Defina OPENAI_API_KEY no ambiente local, se quiser ativar respostas com IA.
-4. Execute npm start.
-5. Abra o site estático em um servidor local e configure ALLOWED_ORIGIN para essa origem.
+Os arquivos `server.js` e `package.json` permanecem no repositório como artefatos da tentativa anterior de integração por API; a versão gratuita do widget não os utiliza. Nenhuma chave de API deve ser adicionada ao front-end.
