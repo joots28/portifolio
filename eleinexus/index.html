@@ -150,6 +150,54 @@
     .research-icon svg{width:23px;height:23px}
     .research-main p{color:var(--muted);font-size:14px}
     .source-tag{display:inline-block;border:1px solid var(--line);color:var(--muted);padding:5px 9px;border-radius:9px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px}
+    .stats-dashboard{margin-top:34px}
+    .stats-dashboard-head{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;margin-bottom:18px}
+    .stats-dashboard-head h3{font-size:clamp(24px,3vw,31px);margin:7px 0 8px;letter-spacing:-.7px}
+    .stats-dashboard-head p{font-size:14px;color:var(--muted);margin:0;max-width:760px}
+    .stat-panel{min-width:0;margin-top:18px;padding:clamp(20px,3vw,28px);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .stat-panel h4{font-size:20px;letter-spacing:-.35px;margin:0 0 8px}
+    .stat-panel .chart-copy{font-size:13px;line-height:1.65;color:var(--muted);margin:0}
+    .stat-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .poll-legend{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0 4px}
+    .poll-legend span{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;font-weight:700}
+    .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+    .dot-flavio{background:#2f66b1}
+    .dot-lula{background:#16835c}
+    .poll-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .poll-card{min-width:0;border:1px solid var(--line);border-radius:18px;padding:18px}
+    .poll-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}
+    .poll-card h5{font-size:16px;margin:0 0 4px}
+    .poll-card .poll-meta{font-size:11px;color:var(--muted);line-height:1.5;margin:0}
+    .poll-card-head a,.stat-source a{color:var(--green);font-size:12px;font-weight:800;text-decoration:none}
+    .poll-card-head a{white-space:nowrap}
+    .poll-line{margin-top:12px}
+    .poll-line-label{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:var(--muted);margin-bottom:6px}
+    .poll-line-label strong{color:var(--ink);font-size:13px;white-space:nowrap}
+    .bar-track{height:10px;border-radius:100px;background:var(--paper2);border:1px solid var(--line);overflow:hidden;width:100%}
+    .bar-fill{display:block;height:100%;border-radius:100px}
+    .bar-flavio{background:#2f66b1}
+    .bar-lula{background:#16835c}
+    .poll-card-foot{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;font-size:11px;line-height:1.6;color:var(--muted)}
+    .chart-scale{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:6px}
+    .stats-secondary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .data-lines{margin-top:18px}
+    .data-line{margin-top:16px}
+    .data-line-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:7px;font-size:13px;color:var(--muted)}
+    .data-line-label strong{font-size:14px;color:var(--ink);white-space:nowrap}
+    .data-line .bar-track{height:12px}
+    .bar-year-2022{background:#718c7c}
+    .bar-year-2026{background:#d0a62e}
+    .stat-highlight{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;margin-top:18px;border:1px solid var(--line);background:var(--paper2);border-radius:15px}
+    .stat-highlight strong{font-size:19px}
+    .stat-highlight span{font-size:12px;color:var(--muted)}
+    .stat-source{font-size:12px;line-height:1.65;color:var(--muted);margin-top:14px}
+    .stat-alert{margin-top:18px;padding:14px 16px;background:var(--paper2);border:1px solid var(--line);border-radius:15px;font-size:12px;color:var(--muted);line-height:1.65}
+    @media(max-width:760px){
+      .stats-dashboard-head{align-items:flex-start;flex-direction:column;gap:12px}
+      .poll-grid,.stats-secondary-grid{grid-template-columns:1fr}
+      .poll-card{padding:16px}
+      .stat-panel-head{flex-direction:column;gap:10px}
+    }
     .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:23px}
     .how-step{padding:18px;border-top:2px solid var(--yellow);background:var(--paper);border-radius:0 0 14px 14px}
     .how-step b{font-size:13px;display:block;margin-bottom:6px}
@@ -687,6 +735,114 @@
           <article class="research-main primary"><div class="research-top"><span class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M8 11h5M10.5 8.5v5"/></svg></span><span class="source-tag">Fonte oficial</span></div><h3>Pesquisas registradas nos últimos 30 dias</h3><p>Consulte os registros recentes, confira o protocolo e abra os dados completos na plataforma do Tribunal Superior Eleitoral.</p><a class="btn btn-primary" href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Consultar pesquisas recentes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></article>
           <article class="research-main"><div class="research-top"><span class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M7 15l3-4 3 2 4-6"/></svg></span><span class="source-tag">Consulta estatística</span></div><h3>Lista estatística de pesquisas</h3><p>Use a consulta estatística oficial para localizar registros conforme os filtros e critérios oferecidos pelo sistema.</p><a class="btn btn-outline" href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listarEstatisticos.xhtml" target="_blank" rel="noopener noreferrer">Abrir consulta estatística <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></article>
         </div>
+        <div class="stats-dashboard" aria-labelledby="stats-dashboard-title">
+          <div class="stats-dashboard-head">
+            <div>
+              <span class="eyebrow">Painel estatístico</span>
+              <h3 id="stats-dashboard-title">Gráficos e estatísticas eleitorais</h3>
+              <p>Uma leitura visual das pesquisas mais recentes consultadas, do resultado do primeiro turno e da participação eleitoral. Cada gráfico informa período, metodologia disponível e fonte.</p>
+            </div>
+            <span class="section-tag">Atualizado em 17/10/2026</span>
+          </div>
+
+          <section class="stat-panel" aria-labelledby="poll-chart-title">
+            <div class="stat-panel-head">
+              <div>
+                <h4 id="poll-chart-title">Segundo turno — intenção de voto em votos válidos</h4>
+                <p class="chart-copy">Percentuais divulgados por cada instituto. As barras usam escala de 0% a 100%; os resultados não foram calculados por média entre pesquisas.</p>
+              </div>
+              <span class="source-tag">Pesquisas, não apuração</span>
+            </div>
+            <div class="poll-legend" aria-label="Legenda do gráfico">
+              <span><i class="legend-dot dot-flavio" aria-hidden="true"></i>Flávio Bolsonaro</span>
+              <span><i class="legend-dot dot-lula" aria-hidden="true"></i>Lula</span>
+            </div>
+            <div class="poll-grid">
+              <article class="poll-card">
+                <div class="poll-card-head">
+                  <div><h5>PoderData / AYA</h5><p class="poll-meta">Divulgada em 16/10 · campo: 13–15/10</p></div>
+                  <a href="https://noticias.uol.com.br/eleicoes/2026/10/16/poderdata-lula-flavio-bolsonaro-presidencia-republica-segundo-turno.ghtm" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                </div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>50,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:50%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>50,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:50%"></span></div></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+                <div class="poll-card-foot">Amostra: 3.000 · margem de erro: ±1,8 p.p. · registro TSE: BR-04258/2026.</div>
+              </article>
+
+              <article class="poll-card">
+                <div class="poll-card-head">
+                  <div><h5>CNT / MDA</h5><p class="poll-meta">Divulgada em 16/10 · campo: 13–15/10</p></div>
+                  <a href="https://www.cnnbrasil.com.br/eleicoes/cnt-mda-flavio-tem-505-dos-votos-validos-no-2o-turno-lula-495/" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                </div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>50,5%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:50.5%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>49,5%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:49.5%"></span></div></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+                <div class="poll-card-foot">Amostra: 2.014 · margem de erro: ±2,2 p.p. · registro TSE: BR-00652/2026.</div>
+              </article>
+
+              <article class="poll-card">
+                <div class="poll-card-head">
+                  <div><h5>Futura / 100% Cidades</h5><p class="poll-meta">Divulgada em 16/10 · campo: 14–15/10</p></div>
+                  <a href="https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-508-dos-votos-validos-no-2o-turno-lula-492/" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                </div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>50,8%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:50.8%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>49,2%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:49.2%"></span></div></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+                <div class="poll-card-foot">Amostra: 2.000 · margem de erro: ±2,2 p.p. · registro TSE: BR-03764/2026.</div>
+              </article>
+
+              <article class="poll-card">
+                <div class="poll-card-head">
+                  <div><h5>Datafolha</h5><p class="poll-meta">Divulgada em 15/10 · campo: 13–14/10</p></div>
+                  <a href="https://www1.folha.uol.com.br/poder/2026/10/datafolha-divulga-nova-pesquisa-de-2o-turno-para-presidente-nesta-quinta-15-live-comenta-resultados.shtml" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                </div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>51,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:51%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>49,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:49%"></span></div></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+                <div class="poll-card-foot">Amostra: 2.520 · margem de erro: ±2,0 p.p. · registro TSE: BR-00466/2026.</div>
+              </article>
+            </div>
+            <div class="stat-alert"><strong>Como interpretar:</strong> as diferenças informadas estão dentro ou no limite das margens de erro divulgadas, então não devem ser lidas como previsão de vencedor. Os institutos usam métodos e datas de coleta diferentes. Confira a metodologia e o registro de cada levantamento no TSE antes de comparar.</div>
+          </section>
+
+          <div class="stats-secondary-grid">
+            <section class="stat-panel" aria-labelledby="first-round-chart-title">
+              <div class="stat-panel-head">
+                <div>
+                  <h4 id="first-round-chart-title">Primeiro turno — votos válidos apurados</h4>
+                  <p class="chart-copy">Percentual de votos válidos após a apuração divulgada como concluída. Os demais candidatos não aparecem neste recorte.</p>
+                </div>
+                <span class="source-tag">Resultado apurado</span>
+              </div>
+              <div class="data-lines">
+                <div class="data-line"><div class="data-line-label"><span>Flávio Bolsonaro</span><strong>47,03%</strong></div><div class="bar-track" role="img" aria-label="Flávio Bolsonaro: 47,03% dos votos válidos"><span class="bar-fill bar-flavio" style="width:47.03%"></span></div><p class="poll-meta">Cerca de 56,1 milhões de votos</p></div>
+                <div class="data-line"><div class="data-line-label"><span>Lula</span><strong>45,16%</strong></div><div class="bar-track" role="img" aria-label="Lula: 45,16% dos votos válidos"><span class="bar-fill bar-lula" style="width:45.16%"></span></div><p class="poll-meta">Cerca de 53,8 milhões de votos</p></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+              </div>
+              <p class="stat-source">Fonte para consulta oficial: <a href="https://resultados.tse.jus.br/oficial/app/index.html" target="_blank" rel="noopener noreferrer">Resultados do TSE ↗</a>. Números e percentuais publicados pela CNN Brasil após a apuração do primeiro turno.</p>
+            </section>
+
+            <section class="stat-panel" aria-labelledby="abstention-chart-title">
+              <div class="stat-panel-head">
+                <div>
+                  <h4 id="abstention-chart-title">Abstenção no primeiro turno</h4>
+                  <p class="chart-copy">Parcela do eleitorado que não compareceu para votar, segundo dados do TSE citados pela imprensa.</p>
+                </div>
+                <span class="source-tag">Participação</span>
+              </div>
+              <div class="data-lines">
+                <div class="data-line"><div class="data-line-label"><span>2022</span><strong>20,79%</strong></div><div class="bar-track" role="img" aria-label="Abstenção em 2022: 20,79%"><span class="bar-fill bar-year-2022" style="width:20.79%"></span></div></div>
+                <div class="data-line"><div class="data-line-label"><span>2026</span><strong>21,08%</strong></div><div class="bar-track" role="img" aria-label="Abstenção em 2026: 21,08%"><span class="bar-fill bar-year-2026" style="width:21.08%"></span></div></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+                <div class="stat-highlight"><div><strong>+0,29 p.p.</strong><br><span>variação entre os dois primeiros turnos</span></div><span>alta da abstenção</span></div>
+              </div>
+              <p class="stat-source">Fonte: <a href="https://www1.folha.uol.com.br/poder/2026/10/abstencao-cai-entre-jovens-idosos-e-menos-instruidos-no-1o-turno-segundo-tse.shtml" target="_blank" rel="noopener noreferrer">dados do TSE reportados pela Folha ↗</a>.</p>
+            </section>
+          </div>
+
+          <p class="stat-source">Os dados deste painel são estáticos e precisam ser revistos quando novos levantamentos forem divulgados. Última conferência desta versão: 17/10/2026. Pesquisas de intenção de voto não são resultados eleitorais e não substituem a apuração oficial.</p>
+        </div>
+
         <h3 style="margin:34px 0 0">Checklist para ler uma pesquisa</h3>
         <div class="how-grid">
           <div class="how-step"><b>01. Registro</b><p>Confirme protocolo, solicitante e instituto no sistema oficial.</p></div>
