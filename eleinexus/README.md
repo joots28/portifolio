@@ -7,9 +7,12 @@ Portal cívico independente e apartidário, focado nas candidaturas à Presidên
 ## O que está implementado
 
 - Interface responsiva para celular e computador, com modo claro/escuro.
+- Fotos oficiais dos 13 presidenciáveis, creditadas ao TSE.
 - Área do 2º turno com Lula (PT) e Flávio Bolsonaro (PL), baseada na página oficial do TSE.
 - Área expansível com os planos dos outros 11 presidenciáveis do 1º turno.
-- Destaques de propostas organizados por assunto, com busca e filtros por macrotema.
+- Destaques de propostas resumidos dentro do próprio site, organizados por assunto, com busca e filtros por macrotema.
+- Referências para a página temática e o plano integral do TSE ficam abaixo das propostas de cada candidatura.
+- Questionário de 10 perguntas que gera um mapa de preferências em vários temas, sem recomendar candidato nem classificar candidaturas.
 - Links para o índice temático e para o PDF oficial de cada plano de governo.
 - Seções para pesquisas, resultados, método de leitura e fontes eleitorais.
 - Ferramenta pessoal para organizar prioridades, sem pontuar candidatos ou recomendar voto.
@@ -32,7 +35,8 @@ Fontes centrais:
 
 - HTML, CSS e JavaScript nativos, em `index.html`.
 - Sem dependências externas nem etapa de compilação.
-- Busca e filtros funcionam localmente no navegador.
+- Busca, filtros e questionário funcionam localmente no navegador.
+- O questionário não envia nem salva respostas; o resultado desaparece ao recarregar ou sair.
 - As notas de prioridades não são enviadas a uma API ou servidor.
 - Não há login, anúncios ou base de dados própria.
 
