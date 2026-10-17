@@ -30,7 +30,7 @@ Fontes recomendadas para consulta:
 
 ## Créditos das texturas
 
-As texturas planetárias vêm do **Solar System Scope / INOVE**: https://www.solarsystemscope.com/textures/ e são distribuídas sob a licença **Creative Commons Attribution 4.0 International (CC BY 4.0)**: https://creativecommons.org/licenses/by/4.0/. As imagens são mapas visuais de textura baseados parcialmente em dados e imagens planetárias da NASA; cores e áreas sem mapeamento podem ser interpretadas/estimadas pelos autores. Consulte a fonte original para detalhes da licença e atribuição completa. Este projeto não é afiliado à NASA.
+As texturas planetárias vêm do **Solar System Scope / INOVE**: https://ssi.solarsystemscope.com/textures/ e são distribuídas sob a licença **Creative Commons Attribution 4.0 International (CC BY 4.0)**: https://creativecommons.org/licenses/by/4.0/. As imagens são mapas visuais de textura baseados parcialmente em dados e imagens planetárias da NASA; cores e áreas sem mapeamento podem ser interpretadas/estimadas pelos autores. Consulte a fonte original para detalhes da licença e atribuição completa. Este projeto não é afiliado à NASA.
 
 ## Acessibilidade e desempenho
 
