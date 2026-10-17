@@ -8,7 +8,7 @@ const PLANETS = [
     fact:"Uma rotação muito lenta", factNote:"o dia solar dura cerca de 176 dias terrestres",
     copy:"Mercúrio é um planeta denso, rico em metais, com grandes diferenças entre o lado iluminado e o lado noturno. Apesar de estar perto do Sol, não é o planeta mais quente: esse posto é de Vênus.",
     tags:["Crateras antigas","Núcleo metálico","Sem luas"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_mercury.jpg", color:"#b1a394", glow:"rgba(183,153,125,.22)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_mercury.jpg", color:"#b1a394", glow:"rgba(183,153,125,.22)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · MERCÚRIO",
     curiosity:"Mercúrio completa três rotações a cada duas órbitas ao redor do Sol."
   },
@@ -21,7 +21,7 @@ const PLANETS = [
     fact:"Gira em sentido retrógrado", factNote:"sua rotação é muito lenta",
     copy:"Sob nuvens brilhantes, Vênus guarda uma superfície vulcânica com planícies e montanhas. A pressão atmosférica em sua superfície é esmagadora em comparação com a terrestre.",
     tags:["Efeito estufa extremo","Vulcanismo","Sem luas"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_venus_surface.jpg", color:"#d3a36d", glow:"rgba(227,167,98,.2)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_venus_surface.jpg", color:"#d3a36d", glow:"rgba(227,167,98,.2)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · VÊNUS",
     curiosity:"Em Vênus, um dia sideral dura mais do que seu ano."
   },
@@ -34,7 +34,7 @@ const PLANETS = [
     fact:"Um sistema climático ativo", factNote:"a atmosfera e os oceanos redistribuem calor",
     copy:"A Terra tem água líquida abundante na superfície e uma atmosfera rica em nitrogênio e oxigênio. Seu campo magnético ajuda a desviar partículas carregadas vindas do Sol.",
     tags:["Água líquida","Campo magnético","Vida conhecida"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_earth_daymap.jpg", color:"#2d76db", glow:"rgba(53,128,255,.25)", clouds:"https://www.solarsystemscope.com/textures/download/2k_earth_clouds.jpg",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_earth_daymap.jpg", color:"#2d76db", glow:"rgba(53,128,255,.25)", clouds:"https://ssi.solarsystemscope.com/textures/download/2k_earth_clouds.jpg",
     caption:"TEXTURA PLANETÁRIA · TERRA",
     curiosity:"A Terra não é uma esfera perfeita: sua rotação a deixa ligeiramente achatada nos polos."
   },
@@ -47,7 +47,7 @@ const PLANETS = [
     fact:"Tem o maior vulcão conhecido", factNote:"Olympus Mons se ergue cerca de 22 km",
     copy:"Marte conserva canais, deltas e minerais que se formam na presença de água. Missões robóticas estudam suas rochas e clima para reconstruir sua história e avaliar sua habitabilidade passada.",
     tags:["Gelo de água","Olympus Mons","Duas luas"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_mars.jpg", color:"#bf6545", glow:"rgba(220,91,55,.22)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_mars.jpg", color:"#bf6545", glow:"rgba(220,91,55,.22)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · MARTE",
     curiosity:"Um dia marciano é apenas um pouco mais longo que um dia terrestre."
   },
@@ -60,7 +60,7 @@ const PLANETS = [
     fact:"A Grande Mancha Vermelha", factNote:"uma tempestade observada há séculos",
     copy:"Júpiter é formado principalmente por hidrogênio e hélio. Seu intenso campo magnético e suas luas — incluindo Europa, com um oceano sob o gelo — fazem dele um laboratório natural extraordinário.",
     tags:["Grande Mancha Vermelha","Campo magnético","Luas geladas"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_jupiter.jpg", color:"#c59776", glow:"rgba(206,151,105,.23)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_jupiter.jpg", color:"#c59776", glow:"rgba(206,151,105,.23)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · JÚPITER",
     curiosity:"Júpiter gira tão rapidamente que completa um dia em aproximadamente dez horas."
   },
@@ -73,7 +73,7 @@ const PLANETS = [
     fact:"Os anéis são vastos e muito finos", factNote:"a espessura típica é minúscula perto da largura",
     copy:"Saturno possui um sistema complexo de anéis e luas. Titã tem lagos de hidrocarbonetos na superfície; Encélado lança jatos de água e gelo, revelando um oceano sob sua crosta.",
     tags:["Anéis de gelo","Lua Titã","Encélado"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_saturn.jpg", color:"#d2b98e", glow:"rgba(218,185,128,.22)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_saturn.jpg", color:"#d2b98e", glow:"rgba(218,185,128,.22)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · SATURNO",
     curiosity:"A densidade média de Saturno é menor que a da água — uma comparação física, não um cenário real de flutuação."
   },
@@ -86,7 +86,7 @@ const PLANETS = [
     fact:"Seu eixo é extremamente inclinado", factNote:"o planeta parece girar de lado",
     copy:"A inclinação de Urano é de cerca de 98 graus. Essa geometria incomum provoca temporadas de luz solar muito diferentes das que experimentamos na Terra.",
     tags:["Eixo inclinado","Anéis discretos","Atmosfera gelada"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_uranus.jpg", color:"#8bd8dd", glow:"rgba(96,220,229,.2)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_uranus.jpg", color:"#8bd8dd", glow:"rgba(96,220,229,.2)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · URANO",
     curiosity:"Uma única órbita de Urano dura 84 anos terrestres."
   },
@@ -99,7 +99,7 @@ const PLANETS = [
     fact:"Foi identificado por cálculos", factNote:"sua descoberta confirmou previsões matemáticas",
     copy:"Netuno foi localizado em 1846 após previsões baseadas em perturbações na órbita de Urano. A Voyager 2 continua sendo a única sonda a ter visitado o planeta de perto.",
     tags:["Ventos intensos","Anéis tênues","Tritão"],
-    image:"https://www.solarsystemscope.com/textures/download/2k_neptune.jpg", color:"#436ce2", glow:"rgba(64,100,247,.24)", clouds:"",
+    image:"https://ssi.solarsystemscope.com/textures/download/2k_neptune.jpg", color:"#436ce2", glow:"rgba(64,100,247,.24)", clouds:"",
     caption:"TEXTURA PLANETÁRIA · NETUNO",
     curiosity:"Netuno leva cerca de 165 anos terrestres para completar uma órbita ao redor do Sol."
   }
