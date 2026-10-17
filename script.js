@@ -68,22 +68,26 @@
     {
       text: "“Float like a butterfly, sting like a bee.”",
       credit: "Drew “Bundini” Brown — frase popularizada por Muhammad Ali.",
-      url: "https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1992/rt9201/01140352.htm"
+      url: "https://scholar.lib.vt.edu/VA-news/ROA-Times/issues/1992/rt9201/01140352.htm",
+      linkLabel: "Ver contexto da frase ↗"
     },
     {
       text: "“I am the greatest!”",
       credit: "Muhammad Ali.",
-      url: "https://www.bbc.co.uk/sport/boxing/16146367"
+      url: "https://www.bbc.co.uk/sport/boxing/16146367",
+      linkLabel: "Ver contexto da frase ↗"
     },
     {
       text: "Round termina. Aprendizado continua.",
-      credit: "Frase original do portfólio.",
-      url: ""
+      credit: "Frase original do portfólio; inspirada na ideia de aprendizado contínuo.",
+      url: "https://www.alura.com.br/artigos/aprendizado-continuo-habito-aprender-mundo-mudancas",
+      linkLabel: "Explorar a ideia de aprendizado contínuo ↗"
     },
     {
       text: "A técnica se afina na repetição; a curiosidade abre o próximo round.",
-      credit: "Frase original do portfólio.",
-      url: ""
+      credit: "Frase original do portfólio; inspirada na prática deliberada e no aperfeiçoamento gradual.",
+      url: "https://www.alura.com.br/artigos/aprenda-a-programar-em-10-anos",
+      linkLabel: "Entender a prática deliberada ↗"
     }
   ];
   let easterQuoteIndex = -1;
@@ -98,11 +102,16 @@
       easterQuote.hidden = false;
 
       if (easterSource) {
-        easterSource.hidden = !quote.url;
-        if (quote.url) {
+        const hasContext = typeof quote.url === "string" && quote.url.trim().length > 0;
+        easterSource.hidden = !hasContext;
+        if (hasContext) {
           easterSource.href = quote.url;
+          easterSource.textContent = quote.linkLabel || "Ver contexto da frase ↗";
+          easterSource.target = "_blank";
+          easterSource.rel = "noopener noreferrer";
         } else {
           easterSource.removeAttribute("href");
+          easterSource.textContent = "Contexto indisponível";
         }
       }
 
