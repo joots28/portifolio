@@ -6,7 +6,7 @@
 
 Uma casa digital para acompanhar projetos, tecnologias e a evolução de Jhon na jornada full-stack.
 
-[![GitHub](https://img.shields.io/badge/GitHub-joots28-10110f?style=for-the-badge&logo=github&logoColor=d8ff53)](https://github.com/joots28)
+[![GitHub](https://img.shields.io/badge/GitHub-joots28-10110f?style=for-the-badge&logo=github&logoColor=64B5FF)](https://github.com/joots28)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Jhon-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonathan-otiniel-053a12290)
 
 </div>
@@ -27,6 +27,8 @@ O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecn
 - Filtros de projetos por área.
 - Estatísticas públicas do GitHub consultadas pela API oficial.
 - Cartões de projetos com links diretos para os repositórios.
+- Área pessoal com referências a Muay Thai, kickboxing e leitura.
+- Easter egg interativo com frases clássicas do boxe e frases originais.
 - Preferência por movimento reduzido respeitada.
 - Metadados básicos para compartilhamento e mecanismos de busca.
 - HTML, CSS e JavaScript separados, sem framework ou dependência de build.
@@ -39,7 +41,7 @@ O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecn
 | Estilo | CSS3, Grid, Flexbox, custom properties e media queries |
 | Interatividade | JavaScript moderno (vanilla) |
 | Integrações | GitHub REST API e links oficiais do LinkedIn |
-| Publicação prevista | Render Static Site |
+| Publicação | Render Static Site |
 
 ## Estrutura
 
@@ -50,6 +52,7 @@ portifolio/
 ├── script.js        # Filtros, navegação e integração com GitHub
 ├── favicon.svg      # Ícone próprio
 ├── assets/
+│   ├── atom.svg     # Símbolo vetorial usado na marca do site
 │   └── header.svg   # Arte já usada no perfil do GitHub
 └── README.md        # Documentação do projeto
 \`\`\`
@@ -84,7 +87,7 @@ Configuração prevista para um **Static Site** conectado ao repositório:
 | Build command | \`echo "Static site — no build step required"\` |
 | Publish directory | \`.\` |
 
-A URL pública só deve ser adicionada a esta documentação depois que a criação do serviço e a publicação forem confirmadas no Render.
+Site publicado: [jhon-otiniel-portfolio.onrender.com](https://jhon-otiniel-portfolio.onrender.com). As alterações da branch `main` são acompanhadas pelo Render para novas publicações.
 
 ## Projetos em destaque
 
