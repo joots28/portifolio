@@ -134,3 +134,42 @@ A fonte oficial é o [perfil de Jonathan no LinkedIn](https://www.linkedin.com/i
 <div align="center">
 Feito com intenção, curiosidade e commits reais.
 </div>
+
+
+## Nexus AI — assistente do portfólio
+
+O site inclui um widget acessível com atalhos e conversa com IA para apresentar os projetos e responder dúvidas de programação.
+
+### Arquitetura
+
+- assistant.css e assistant.js: interface isolada do restante do site.
+- server.js e package.json: API Node.js/Express para Render.
+- POST /api/chat: envia o histórico recente ao modelo configurado no servidor.
+- GET /health: verificação simples de disponibilidade.
+
+### Configuração da API
+
+No serviço Web do Render, configure as variáveis de ambiente:
+
+- OPENAI_API_KEY: chave da API do provedor; configure apenas no painel privado do serviço, nunca no HTML, CSS, JavaScript do navegador ou GitHub.
+- OPENAI_MODEL: opcional; padrão gpt-5.5.
+- ALLOWED_ORIGIN: opcional; origem do site que pode chamar a API. Em produção, use https://jhon-otiniel-portfolio.onrender.com.
+
+Sem OPENAI_API_KEY, os atalhos de conteúdo continuam disponíveis e a API informa que a conexão de IA ainda não foi configurada. O uso da API do modelo pode gerar custos conforme a conta e o modelo escolhidos.
+
+### Segurança e privacidade
+
+- Validação do tamanho e formato das mensagens.
+- Limite simples de requisições por endereço IP.
+- CORS limitado à origem do portfólio.
+- A chave de API permanece no servidor.
+- O histórico é mantido apenas na sessão da página; não é gravado em banco de dados pelo widget.
+- Não registrar conteúdo de conversas nos logs do servidor.
+
+### Executar localmente
+
+1. Instale uma versão recente do Node.js.
+2. Execute npm install.
+3. Defina OPENAI_API_KEY no ambiente local, se quiser ativar respostas com IA.
+4. Execute npm start.
+5. Abra o site estático em um servidor local e configure ALLOWED_ORIGIN para essa origem.
