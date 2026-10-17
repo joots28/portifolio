@@ -1,13 +1,13 @@
 <div align="center">
 
-# Jhon Otiniel — Portfólio
+# Jonathan Otiniel — Portfólio
 
 **Desenvolvimento de sistemas · Web · APIs · Mobile**
 
-Uma casa digital para acompanhar projetos, tecnologias e a evolução de Jhon na jornada full-stack.
+Uma casa digital para acompanhar projetos, tecnologias e a evolução de Jonathan na jornada full-stack.
 
 [![GitHub](https://img.shields.io/badge/GitHub-joots28-10110f?style=for-the-badge&logo=github&logoColor=64B5FF)](https://github.com/joots28)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Jhon-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonathan-otiniel-053a12290)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Jonathan-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonathan-otiniel-053a12290)
 
 </div>
 
@@ -15,7 +15,7 @@ Uma casa digital para acompanhar projetos, tecnologias e a evolução de Jhon na
 
 ## ✦ Sobre o projeto
 
-Portfólio pessoal desenvolvido para apresentar a jornada de **Jhon Otiniel** em desenvolvimento de software, com uma interface editorial, visual próprio e foco em conteúdo real.
+Portfólio pessoal desenvolvido para apresentar a jornada de **Jonathan Otiniel** em desenvolvimento de software, com uma interface editorial, visual próprio e foco em conteúdo real.
 
 O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecnologias em estudo, linha de evolução e acesso ao perfil de certificações do LinkedIn.
 
@@ -54,7 +54,7 @@ portifolio/
 ├── index.html       # Conteúdo, projetos e estudo de caso
 ├── style.css        # Identidade visual, responsividade e animações
 ├── script.js        # Filtros, navegação e integração com GitHub
-├── curriculo-jhon.html   # Currículo web com impressão / salvar como PDF
+├── curriculo-jonathan.html   # Currículo web com impressão / salvar como PDF
 ├── curriculo.css    # Estilos responsivos e de impressão
 ├── curriculo.js     # Ação de impressão e ano dinâmico
 ├── favicon.svg      # Ícone próprio
@@ -66,7 +66,7 @@ portifolio/
 
 ## Currículo em PDF
 
-Abra [curriculo-jhon.html](curriculo-jhon.html) e use **Imprimir / salvar em PDF**. No menu de impressão do navegador, escolha **Salvar como PDF**. O currículo contém informações conhecidas sobre formação e projetos; o ChurchManager é identificado como projeto em desenvolvimento e inclui suas limitações documentadas.
+Abra [curriculo-jonathan.html](curriculo-jonathan.html) e use **Imprimir / salvar em PDF**. No menu de impressão do navegador, escolha **Salvar como PDF**. O currículo contém informações conhecidas sobre formação e projetos; o ChurchManager é identificado como projeto em desenvolvimento e inclui suas limitações documentadas.
 
 ## Executar localmente
 
@@ -119,7 +119,7 @@ A seção de vídeos incorpora conteúdo público da Microsoft Learn sobre desen
 
 ## Certificações
 
-A fonte oficial é o [perfil de Jhon no LinkedIn](https://www.linkedin.com/in/jonathan-otiniel-053a12290/details/certifications/). A lista individual será incorporada ao portfólio após validação dos nomes, instituições e datas, evitando publicar credenciais incorretas.
+A fonte oficial é o [perfil de Jonathan no LinkedIn](https://www.linkedin.com/in/jonathan-otiniel-053a12290/details/certifications/). A lista individual será incorporada ao portfólio após validação dos nomes, instituições e datas, evitando publicar credenciais incorretas.
 
 ## Contato
 
