@@ -12,17 +12,19 @@ Portal cívico independente e apartidário, focado nas candidaturas à Presidên
 - Área expansível com os planos dos outros 11 presidenciáveis do 1º turno.
 - Destaques de propostas resumidos dentro do próprio site, organizados por assunto, com busca e filtros por macrotema.
 - Referências para a página temática e o plano integral do TSE ficam abaixo das propostas de cada candidatura.
-- Questionário de 10 perguntas que gera um mapa de preferências em vários temas, sem recomendar candidato nem classificar candidaturas.
+- Questionário de 10 perguntas que resume o perfil de prioridades e estima a correspondência temática entre as respostas e os planos do 2º turno.
 - Links para o índice temático e para o PDF oficial de cada plano de governo.
 - Seções para pesquisas, resultados, método de leitura e fontes eleitorais.
-- Ferramenta pessoal para organizar prioridades, sem pontuar candidatos ou recomendar voto.
+- Ferramenta separada para organizar prioridades pessoais de leitura cívica.
 - Metadados de compartilhamento, favicon, manifesto web, `robots.txt` e sitemap.
 
 ## Fontes e precisão
 
 As propostas destacadas em cada cartão são resumos de assuntos indicados no índice oficial de planos de governo do Tribunal Superior Eleitoral (TSE). Cada cartão inclui dois links de fonte primária: a página temática da candidatura e o PDF integral do plano.
 
-Os destaques não são uma avaliação, ranking nem uma transcrição integral. Abra o documento oficial para confirmar o contexto, o texto completo e eventuais atualizações.
+Os destaques não são uma avaliação de mérito nem uma transcrição integral. Abra o documento oficial para confirmar o contexto, o texto completo e eventuais atualizações.
+
+A comparação do questionário usa uma matriz editorial explícita, limitada aos dez temas e às duas candidaturas do 2º turno. O percentual é uma estimativa de correspondência temática, não índice oficial, pesquisa científica, previsão de desempenho ou recomendação de voto. As respostas são processadas localmente e não são enviadas ao servidor.
 
 Fontes centrais:
 - [Planos presidenciais do 2º turno — TSE](https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026-segundo-turno)
