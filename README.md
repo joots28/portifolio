@@ -26,7 +26,9 @@ O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecn
 - Navegação mobile com acessibilidade por teclado.
 - Filtros de projetos por área.
 - Estatísticas públicas do GitHub consultadas pela API oficial.
-- Cartões de projetos com links diretos para os repositórios.
+- Cartões de projetos com links diretos, notas de estudo e detalhes recolhíveis.
+- Estudo de caso do ChurchManager com arquitetura, objetivo, status e pendências documentadas.
+- Currículo em formato web imprimível, com opção de salvar como PDF pelo navegador.
 - Área pessoal com referências a Muay Thai, kickboxing e leitura.
 - Formação na Etec — curso de Desenvolvimento de Sistemas.
 - Seção com vídeos técnicos públicos da Microsoft Learn, com fonte identificada.
@@ -49,15 +51,22 @@ O site combina uma apresentação pessoal, projetos selecionados do GitHub, tecn
 
 \`\`\`text
 portifolio/
-├── index.html       # Conteúdo e estrutura da página
+├── index.html       # Conteúdo, projetos e estudo de caso
 ├── style.css        # Identidade visual, responsividade e animações
 ├── script.js        # Filtros, navegação e integração com GitHub
+├── curriculo.html   # Currículo web com impressão / salvar como PDF
+├── curriculo.css    # Estilos responsivos e de impressão
+├── curriculo.js     # Ação de impressão e ano dinâmico
 ├── favicon.svg      # Ícone próprio
 ├── assets/
 │   ├── atom.svg     # Símbolo vetorial usado na marca do site
 │   └── header.svg   # Arte já usada no perfil do GitHub
 └── README.md        # Documentação do projeto
 \`\`\`
+
+## Currículo em PDF
+
+Abra [curriculo.html](curriculo.html) e use **Imprimir / salvar em PDF**. No menu de impressão do navegador, escolha **Salvar como PDF**. O currículo contém informações conhecidas sobre formação e projetos; o ChurchManager é identificado como projeto em desenvolvimento e inclui suas limitações documentadas.
 
 ## Executar localmente
 
