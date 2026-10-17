@@ -54,7 +54,7 @@ portifolio/
 ├── index.html       # Conteúdo, projetos e estudo de caso
 ├── style.css        # Identidade visual, responsividade e animações
 ├── script.js        # Filtros, navegação e integração com GitHub
-├── curriculo.html   # Currículo web com impressão / salvar como PDF
+├── curriculo-jhon.html   # Currículo web com impressão / salvar como PDF
 ├── curriculo.css    # Estilos responsivos e de impressão
 ├── curriculo.js     # Ação de impressão e ano dinâmico
 ├── favicon.svg      # Ícone próprio
@@ -66,7 +66,7 @@ portifolio/
 
 ## Currículo em PDF
 
-Abra [curriculo.html](curriculo.html) e use **Imprimir / salvar em PDF**. No menu de impressão do navegador, escolha **Salvar como PDF**. O currículo contém informações conhecidas sobre formação e projetos; o ChurchManager é identificado como projeto em desenvolvimento e inclui suas limitações documentadas.
+Abra [curriculo-jhon.html](curriculo-jhon.html) e use **Imprimir / salvar em PDF**. No menu de impressão do navegador, escolha **Salvar como PDF**. O currículo contém informações conhecidas sobre formação e projetos; o ChurchManager é identificado como projeto em desenvolvimento e inclui suas limitações documentadas.
 
 ## Executar localmente
 
