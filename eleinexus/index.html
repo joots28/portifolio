@@ -343,7 +343,7 @@
           <div class="criterion"><strong>03. Compare o mesmo tema</strong><p>Use critérios equivalentes para todas as candidaturas; não compare frases isoladas.</p></div>
           <div class="criterion"><strong>04. Registre o que não está claro</strong><p>“Não localizado” ou “sem detalhe” não significa que a pessoa seja contra a pauta.</p></div>
         </div>
-        <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg><div><strong>Encontre documentos na fonte primária.</strong><br>Os programas e documentos vinculados a candidaturas podem estar disponíveis nos registros eleitorais. Consulte o <a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer"><strong>DivulgaCandContas do TSE</strong></a> e confirme qual documento corresponde à candidatura pesquisada.</div></div>
+        <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg><div><strong>Encontre documentos na fonte primária.</strong><br>Os programas e documentos vinculados a candidaturas podem estar disponíveis nos registros eleitorais. Consulte o <a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer"><strong>DivulgaCandContas do TSE</strong></a> e também a <a href="https://dadosabertos.tse.jus.br/pt_BR/dataset/candidatos-2026" target="_blank" rel="noopener noreferrer"><strong>base oficial de candidatos 2026, que inclui arquivos de propostas de governo</strong></a>; confirme qual documento corresponde à candidatura pesquisada.</div></div>
       </div>
     </section>
 
@@ -513,7 +513,7 @@
       function summaryText(){
         const entries = Object.keys(scores).map(function(name){return {name:name,score:scores[name]};}).sort(function(a,b){return b.score-a.score || a.name.localeCompare(b.name,'pt-BR');});
         if(!entries.length)return '';
-        return 'Minhas prioridades para leitura cívica — EleiNexus\\n\\n'+entries.map(function(e){return e.score+'/5 — '+e.name;}).join('\\n')+'\\n\\nEste é um roteiro pessoal de leitura, não uma recomendação de voto nem uma avaliação de candidaturas.';
+        return 'Minhas prioridades para leitura cívica — EleiNexus\n\n'+entries.map(function(e){return e.score+'/5 — '+e.name;}).join('\n')+'\n\nEste é um roteiro pessoal de leitura, não uma recomendação de voto nem uma avaliação de candidaturas.';
       }
       function renderSummary(){
         const entries = Object.keys(scores).map(function(name){return {name:name,score:scores[name]};}).sort(function(a,b){return b.score-a.score || a.name.localeCompare(b.name,'pt-BR');});
