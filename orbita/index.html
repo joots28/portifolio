@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b17">
+  <meta name="description" content="Uma viagem interativa pelos oito planetas do Sistema Solar. Explore mundos, compare dimensões e descubra fatos científicos.">
+  <meta property="og:title" content="ÓRBITA — Uma viagem pelo Sistema Solar">
+  <meta property="og:description" content="Oito mundos. Uma jornada extraordinária. Explore o Sistema Solar.">
+  <meta property="og:type" content="website">
+  <title>ÓRBITA — Uma viagem pelo Sistema Solar</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://www.solarsystemscope.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="cosmos" aria-hidden="true">
+    <div class="stars stars-a"></div>
+    <div class="stars stars-b"></div>
+    <div class="nebula nebula-one"></div>
+    <div class="nebula nebula-two"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="ÓRBITA, início">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7.5" stroke="currentColor" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="17" ry="7.5" transform="rotate(-32 20 20)" stroke="currentColor" stroke-width="1.3"/><circle cx="32.1" cy="11.8" r="2.4" fill="#74E5FF"/></svg></span>
+      <span class="brand-word">ÓRBITA<span class="brand-period">.</span><small>ATLAS CÓSMICO</small></span>
+    </a>
+    <nav class="header-links" aria-label="Navegação principal">
+      <a class="header-link active" href="#explorar">Explorar</a>
+      <a class="header-link" href="#perspectiva">Perspectiva</a>
+      <a class="header-link" href="#missoes">Missões</a>
+    </nav>
+    <a class="header-cta" href="#explorar"><span>Iniciar jornada</span><span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="inicio">
+    <section class="explorer section-wrap" id="explorar" aria-labelledby="planet-name">
+      <div class="section-kicker"><span class="live-dot"></span><span>UMA VIAGEM PELO SISTEMA SOLAR</span><span class="kicker-line"></span><span class="mono kicker-index" id="top-index">03 / 08</span></div>
+
+      <nav class="planet-nav" id="planet-nav" aria-label="Escolha um planeta">
+        <button class="planet-tab" data-planet="0" type="button">Mercúrio</button>
+        <button class="planet-tab" data-planet="1" type="button">Vênus</button>
+        <button class="planet-tab is-active" data-planet="2" type="button" aria-current="true">Terra</button>
+        <button class="planet-tab" data-planet="3" type="button">Marte</button>
+        <button class="planet-tab" data-planet="4" type="button">Júpiter</button>
+        <button class="planet-tab" data-planet="5" type="button">Saturno</button>
+        <button class="planet-tab" data-planet="6" type="button">Urano</button>
+        <button class="planet-tab" data-planet="7" type="button">Netuno</button>
+      </nav>
+
+      <div class="hero-grid" id="planet-stage">
+        <div class="planet-side">
+          <div class="planet-backdrop" aria-hidden="true"></div>
+          <div class="orbit orbit-outer" aria-hidden="true"></div>
+          <div class="orbit orbit-inner" aria-hidden="true"></div>
+          <div class="planet-system" id="planet-system" data-planet="earth">
+            <div class="saturn-ring" id="saturn-ring" aria-hidden="true"></div>
+            <div class="uranus-ring" id="uranus-ring" aria-hidden="true"></div>
+            <div class="planet-globe" id="planet-globe" role="img" aria-label="Planeta Terra, com oceanos azuis, continentes e nuvens.">
+              <div class="planet-clouds" id="planet-clouds" aria-hidden="true"></div>
+              <div class="planet-shade" aria-hidden="true"></div>
+              <div class="planet-glow" aria-hidden="true"></div>
+            </div>
+            <div class="planet-shadow" aria-hidden="true"></div>
+          </div>
+          <div class="visual-caption"><span class="visual-caption-dot"></span><span id="visual-caption">IMAGEM TEXTURIZADA · VISTA ILUSTRATIVA</span></div>
+          <div class="planet-controls">
+            <button class="circle-control" id="previous-planet" type="button" aria-label="Planeta anterior"><span aria-hidden="true">←</span></button>
+            <div class="planet-count"><span class="mono" id="current-count">03</span><span class="count-divider"></span><span class="mono count-total">08</span></div>
+            <button class="circle-control circle-control-next" id="next-planet" type="button" aria-label="Próximo planeta"><span aria-hidden="true">→</span></button>
+          </div>
+          <p class="swipe-hint"><span class="swipe-symbol" aria-hidden="true">↔</span> DESLIZE PARA DESCOBRIR OUTROS MUNDOS</p>
+        </div>
+
+        <div class="planet-content" aria-live="polite" aria-atomic="true">
+          <div class="content-eyebrow"><span class="eyebrow-pill" id="planet-type">PLANETA ROCHOSO</span><span class="mono content-number" id="content-number">03 — TERRA</span></div>
+          <h1 id="planet-name">Terra<span class="title-period">.</span></h1>
+          <p class="planet-tagline" id="planet-tagline">O único mundo que conhecemos onde a vida floresce.</p>
+          <p class="planet-description" id="planet-description">Um planeta dinâmico, com oceanos líquidos, continentes em movimento e uma atmosfera que protege uma extraordinária diversidade de vida.</p>
+          <div class="planet-facts">
+            <div class="fact-card">
+              <span class="fact-label">DIÂMETRO EQUATORIAL</span>
+              <strong id="fact-diameter">12.742 <small>km</small></strong>
+              <span class="fact-note">de ponta a ponta</span>
+            </div>
+            <div class="fact-card">
+              <span class="fact-label">DISTÂNCIA MÉDIA DO SOL</span>
+              <strong id="fact-distance">149,6 <small>mi km</small></strong>
+              <span class="fact-note" id="fact-distance-note">1 unidade astronômica</span>
+            </div>
+            <div class="fact-card">
+              <span class="fact-label">DURAÇÃO DO ANO</span>
+              <strong id="fact-year">365,25 <small>dias</small></strong>
+              <span class="fact-note">uma órbita completa</span>
+            </div>
+            <div class="fact-card">
+              <span class="fact-label">DURAÇÃO DO DIA</span>
+              <strong id="fact-day">23h 56m</strong>
+              <span class="fact-note">rotação aproximada</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="primary-button" href="#detalhes"><span>Explorar este mundo</span><span class="button-arrow" aria-hidden="true">↗</span></a>
+            <span class="data-note"><span class="data-note-icon" aria-hidden="true">✳</span> DADOS ASTRONÔMICOS APROXIMADOS</span>
+          </div>
+        </div>
+      </div>
+      <div class="explorer-bottomline"><span>01 SISTEMA · 08 PLANETAS</span><span>UMA PERSPECTIVA ALÉM DA TERRA</span><span class="mono">SCROLL PARA CONTINUAR ↓</span></div>
+    </section>
+
+    <section class="detail-section section-wrap" id="detalhes" aria-labelledby="detail-heading">
+      <div class="section-heading">
+        <div><div class="section-kicker"><span class="live-dot"></span><span>ARQUIVO PLANETÁRIO</span></div><h2 id="detail-heading">Um mundo.<br><span>Infinitas perguntas.</span></h2></div>
+        <p class="section-intro">Cada planeta guarda pistas sobre a formação do nosso sistema. Explore os dados, compare condições extremas e descubra o que torna cada mundo único.</p>
+      </div>
+      <div class="detail-layout">
+        <article class="detail-feature">
+          <div class="feature-top"><span class="mono" id="detail-index">DOSSIÊ 03.08</span><span class="feature-symbol" aria-hidden="true">✳</span></div>
+          <div class="feature-orbit" aria-hidden="true"><span class="feature-orbit-planet"></span></div>
+          <span class="feature-label">UM OLHAR MAIS DE PERTO</span>
+          <h3 id="detail-title">Nossa casa azul</h3>
+          <p id="detail-copy">A Terra tem água líquida abundante na superfície e uma atmosfera rica em nitrogênio e oxigênio. Seu campo magnético ajuda a desviar partículas carregadas vindas do Sol.</p>
+          <div class="detail-tags" id="detail-tags"><span>Água líquida</span><span>Campo magnético</span><span>Vida conhecida</span></div>
+        </article>
+        <div class="detail-metrics">
+          <div class="metric-row"><div><span class="metric-label">TIPO DE PLANETA</span><strong id="metric-type">Rochoso</strong></div><span class="metric-icon">◈</span></div>
+          <div class="metric-row"><div><span class="metric-label">TEMPERATURA CARACTERÍSTICA</span><strong id="metric-temp">≈ +15 °C</strong><small id="metric-temp-note">média global aproximada</small></div><span class="metric-icon">⌁</span></div>
+          <div class="metric-row"><div><span class="metric-label">COMPOSIÇÃO / ATMOSFERA</span><strong id="metric-atmosphere">Nitrogênio e oxigênio</strong><small id="metric-atmosphere-note">atmosfera de superfície</small></div><span class="metric-icon">◎</span></div>
+          <div class="metric-row"><div><span class="metric-label">UM FATO SURPREENDENTE</span><strong id="metric-fact">Um sistema climático ativo</strong><small id="metric-fact-note">a atmosfera e os oceanos redistribuem calor</small></div><span class="metric-icon">✧</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scale-section section-wrap" id="perspectiva" aria-labelledby="scale-heading">
+      <div class="section-heading scale-heading">
+        <div><div class="section-kicker"><span class="live-dot"></span><span>ESCALA & PERSPECTIVA</span></div><h2 id="scale-heading">O tamanho<br><span>do extraordinário.</span></h2></div>
+        <p class="section-intro">Do pequeno Mercúrio ao gigante Júpiter, as dimensões mudam radicalmente. Selecione qualquer planeta para voltar ao seu dossiê.</p>
+      </div>
+      <div class="scale-card">
+        <div class="scale-axis"><span>DIÂMETRO EQUATORIAL RELATIVO</span><span class="mono">ESCALA VISUAL · NÃO É UMA REPRESENTAÇÃO DE DISTÂNCIAS</span></div>
+        <div class="scale-planets" id="scale-planets">
+          <button class="scale-planet" data-planet="0" type="button" aria-label="Explorar Mercúrio"><span class="scale-orb" style="--planet-size: 10px; --orb-color: #9d9185"></span><span class="scale-name">Mercúrio</span><span class="scale-value">4.879 km</span></button>
+          <button class="scale-planet" data-planet="1" type="button" aria-label="Explorar Vênus"><span class="scale-orb" style="--planet-size: 20px; --orb-color: #d6aa6d"></span><span class="scale-name">Vênus</span><span class="scale-value">12.104 km</span></button>
+          <button class="scale-planet is-selected" data-planet="2" type="button" aria-label="Explorar Terra"><span class="scale-orb" style="--planet-size: 21px; --orb-color: #388bea"></span><span class="scale-name">Terra</span><span class="scale-value">12.742 km</span></button>
+          <button class="scale-planet" data-planet="3" type="button" aria-label="Explorar Marte"><span class="scale-orb" style="--planet-size: 12px; --orb-color: #d26f4b"></span><span class="scale-name">Marte</span><span class="scale-value">6.779 km</span></button>
+          <button class="scale-planet" data-planet="4" type="button" aria-label="Explorar Júpiter"><span class="scale-orb" style="--planet-size: 58px; --orb-color: #c89a73"></span><span class="scale-name">Júpiter</span><span class="scale-value">139.820 km</span></button>
+          <button class="scale-planet" data-planet="5" type="button" aria-label="Explorar Saturno"><span class="scale-orb" style="--planet-size: 49px; --orb-color: #d8bd8d"></span><span class="scale-name">Saturno</span><span class="scale-value">116.460 km</span></button>
+          <button class="scale-planet" data-planet="6" type="button" aria-label="Explorar Urano"><span class="scale-orb" style="--planet-size: 31px; --orb-color: #8bd6dc"></span><span class="scale-name">Urano</span><span class="scale-value">50.724 km</span></button>
+          <button class="scale-planet" data-planet="7" type="button" aria-label="Explorar Netuno"><span class="scale-orb" style="--planet-size: 30px; --orb-color: #5279e8"></span><span class="scale-name">Netuno</span><span class="scale-value">49.244 km</span></button>
+        </div>
+        <div class="scale-footnote"><span class="scale-footnote-mark">i</span> Os tamanhos dos círculos são aproximados em relação ao diâmetro equatorial. Planetas pequenos recebem um mínimo visual para continuar legíveis.</div>
+      </div>
+    </section>
+
+    <section class="missions-section section-wrap" id="missoes" aria-labelledby="missions-heading">
+      <div class="section-heading">
+        <div><div class="section-kicker"><span class="live-dot"></span><span>EXPLORAÇÃO HUMANA</span></div><h2 id="missions-heading">Mais longe.<br><span>Mais curiosos.</span></h2></div>
+        <p class="section-intro">Robôs, sondas e telescópios transformaram pontos de luz em mundos que podemos estudar. A exploração continua — uma descoberta de cada vez.</p>
+      </div>
+      <div class="mission-grid">
+        <article class="mission-card mission-earth">
+          <div class="mission-card-top"><span class="mission-icon">01</span><span class="mono">1977 — PRESENTE</span></div>
+          <div class="mission-art art-voyager" aria-hidden="true"><span class="voyager-dish"></span><span class="voyager-boom"></span></div>
+          <p class="mission-eyebrow">ESPAÇO INTERESTELAR</p><h3>Voyager 1 & 2</h3><p>As sondas revelaram detalhes dos gigantes exteriores e continuam sua jornada para além da heliosfera.</p><a href="https://science.nasa.gov/mission/voyager/" target="_blank" rel="noreferrer">Conheça a missão <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="mission-card">
+          <div class="mission-card-top"><span class="mission-icon">02</span><span class="mono">1997 — 2017</span></div>
+          <div class="mission-art art-cassini" aria-hidden="true"><span class="cassini-antenna"></span><span class="cassini-body"></span><span class="cassini-panel"></span></div>
+          <p class="mission-eyebrow">SATURNO & SEUS ANÉIS</p><h3>Cassini–Huygens</h3><p>Uma exploração prolongada de Saturno, de suas luas e de ambientes capazes de ampliar nossa compreensão.</p><a href="https://science.nasa.gov/mission/cassini/" target="_blank" rel="noreferrer">Conheça a missão <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="mission-card">
+          <div class="mission-card-top"><span class="mission-icon">03</span><span class="mono">2011 — PRESENTE</span></div>
+          <div class="mission-art art-juno" aria-hidden="true"><span class="juno-core"></span><span class="juno-wing wing-left"></span><span class="juno-wing wing-right"></span></div>
+          <p class="mission-eyebrow">O MAIOR PLANETA</p><h3>Juno</h3><p>Estuda a gravidade, o campo magnético e a estrutura interna de Júpiter para investigar sua origem.</p><a href="https://science.nasa.gov/mission/juno/" target="_blank" rel="noreferrer">Conheça a missão <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing section-wrap">
+      <div class="closing-star" aria-hidden="true">✳</div>
+      <p class="section-kicker">O UNIVERSO É MAIOR DO QUE PARECE</p>
+      <h2>O próximo mundo<br>está a <span>um toque.</span></h2>
+      <button class="primary-button closing-button" id="back-to-planets" type="button"><span>Continuar explorando</span><span class="button-arrow" aria-hidden="true">↑</span></button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#inicio" aria-label="ÓRBITA, voltar ao início"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7.5" stroke="currentColor" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="17" ry="7.5" transform="rotate(-32 20 20)" stroke="currentColor" stroke-width="1.3"/><circle cx="32.1" cy="11.8" r="2.4" fill="#74E5FF"/></svg></span><span class="brand-word">ÓRBITA<span class="brand-period">.</span><small>ATLAS CÓSMICO</small></span></a>
+    <p>Feito para curiosos do cosmos.</p>
+    <div class="footer-links"><a href="https://science.nasa.gov/solar-system/planets/" target="_blank" rel="noreferrer">Dados: NASA</a><a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noreferrer">Texturas: Solar System Scope</a><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">Licença CC BY 4.0</a></div>
+    <p class="footer-small">Informações aproximadas para fins educativos. As texturas planetárias são ilustrativas e licenciadas por seus autores; este projeto não é afiliado à NASA.</p>
+  </footer>
+</body>
+</html>
