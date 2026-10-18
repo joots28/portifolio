@@ -134,6 +134,13 @@ blockquote span{display:block;color:#7f8475;font:9px/1.5 var(--mono);letter-spac
 .desktop-bar{display:flex;gap:5px;padding:10px;border-bottom:1px solid #4a453d}.desktop-bar i{width:5px;height:5px;background:#64b5ff;border-radius:50%}
 .desktop-content{display:grid;grid-template-columns:48px 1fr;gap:9px;padding:18px}.desktop-content>span:not(.desktop-square):not(.desktop-pill){height:7px;background:#5a6051;border-radius:2px;margin-top:5px}.desktop-square{grid-row:span 2;width:43px;height:43px;background:#64b5ff;border-radius:5px}.desktop-content .desktop-pill{grid-column:2;height:18px;background:#7368a7;border-radius:3px}
 .desktop-label{position:absolute;bottom:20px;right:18px;color:#79543e;font-size:8px}
+
+.visual-eleinexus{background:radial-gradient(circle at 50% 44%,rgba(245,213,80,.17),transparent 35%),linear-gradient(135deg,#103a2d 0%,#153452 58%,#223f3a 100%);color:#f5f3df}
+.visual-eleinexus .visual-stamp{color:#d7e0c8}
+.eleinexus-mark{display:flex;flex-direction:column;align-items:center;gap:4px;transform:rotate(-5deg);font:700 38px/.9 var(--mono);letter-spacing:-.1em;text-shadow:0 12px 28px rgba(0,0,0,.2)}
+.eleinexus-mark span{color:#f1d45d;font-size:31px;letter-spacing:.12em}
+.eleinexus-mark strong{color:#b5e1aa;font-size:45px;font-weight:700}
+.visual-eleinexus .logic-number{color:#dce9bd}
 .visual-logic{background:#172333;color:#64b5ff}
 .visual-logic .visual-stamp{color:#909884}
 .logic-code{font:16px/1.9 var(--mono);color:#eff2e6;transform:rotate(-3deg);border-left:1px solid #3d5b7a;padding-left:20px}
