@@ -1653,13 +1653,13 @@
         };
         const paletteButtons=shareBox.querySelectorAll('[data-share-palette]');
         function setSharePalette(name){
-          if(!sharePalettes[name])name='brasil';
+          if(!sharePalettes[name])name='claro';
           selectedSharePalette=name;
           document.getElementById('shareCardPreview').dataset.theme=name;
           paletteButtons.forEach(function(button){button.setAttribute('aria-pressed',button.getAttribute('data-share-palette')===name?'true':'false');});
         }
         paletteButtons.forEach(function(button){button.addEventListener('click',function(){setSharePalette(button.getAttribute('data-share-palette'));});});
-        setSharePalette('brasil');
+        setSharePalette('claro');
 
         function shareCaption(){
           return 'No EleiNexus, a distribuição das minhas respostas foi: '+percent.flavio+'% das opções escolhidas associadas a posições públicas da campanha de Flávio Bolsonaro e '+percent.lula+'% à campanha de Lula. É uma contagem das respostas, não uma medida de afinidade política nem recomendação de voto.';
