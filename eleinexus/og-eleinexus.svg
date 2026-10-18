@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071b15"/><stop offset=".58" stop-color="#0b2d26"/><stop offset="1" stop-color="#123d32"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#42b878" stop-opacity=".34"/><stop offset="1" stop-color="#42b878" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe584"/><stop offset="1" stop-color="#ffce45"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<rect width="400" height="10" fill="#149451"/><rect x="400" width="400" height="10" fill="#ffce45"/><rect x="800" width="400" height="10" fill="#2355a6"/>
+<circle cx="1015" cy="260" r="330" fill="url(#glow)"/>
+<g fill="none" stroke="#9acfb0" stroke-opacity=".15" stroke-width="2">
+  <path d="M842 565C965 465 996 328 1106 151"/><path d="M913 575C1038 453 1065 337 1161 221"/>
+  <path d="M858 496C908 487 936 459 953 413C905 421 877 447 858 496Z"/>
+  <path d="M919 425C970 416 1000 386 1016 339C965 349 936 376 919 425Z"/>
+  <path d="M980 347C1033 334 1057 301 1070 256C1022 269 994 297 980 347Z"/>
+  <path d="M1041 270C1091 257 1117 224 1128 180C1081 193 1054 219 1041 270Z"/>
+  <path d="M895 526C872 475 879 438 914 403C934 451 927 489 895 526Z"/>
+  <path d="M960 451C938 401 946 366 981 332C1000 379 993 416 960 451Z"/>
+  <path d="M1021 375C998 329 1005 293 1041 259C1059 307 1053 342 1021 375Z"/>
+</g>
+<circle cx="1010" cy="300" r="190" fill="none" stroke="#ffce45" stroke-opacity=".18" stroke-width="2"/>
+<circle cx="1010" cy="300" r="150" fill="none" stroke="#6dd69c" stroke-opacity=".18" stroke-width="2"/>
+<g>
+  <rect x="88" y="201" width="148" height="148" rx="36" fill="#0b4a35" stroke="#a8d7b7" stroke-opacity=".32" stroke-width="2"/>
+  <path d="M108 242L162 218L216 242L162 270Z" fill="url(#gold)"/>
+  <path d="M119 264L162 284L205 264V292L162 315L119 292Z" fill="#fff"/>
+  <path d="M135 291L162 304L189 291V307L162 323L135 307Z" fill="#6dd69c"/>
+  <circle cx="211" cy="224" r="7" fill="#2355a6" stroke="#fff" stroke-opacity=".55" stroke-width="2"/>
+</g>
+<text x="278" y="268" font-family="Arial,Helvetica,sans-serif" font-size="83" font-weight="800" letter-spacing="-3" fill="#f7fbf8">Elei<tspan fill="#ffce45">Nexus</tspan></text>
+<text x="283" y="324" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="500" fill="#d1e5d8">Informação transparente. Decisão sua.</text>
+<rect x="283" y="359" width="95" height="5" rx="2.5" fill="#ffce45"/>
+<text x="94" y="461" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="2.4" fill="#a8d7b7">CIDADANIA COM CLAREZA</text>
+<text x="94" y="511" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#e1eee6">Planos presidenciais  •  Fontes oficiais do TSE</text>
+<text x="94" y="555" font-family="Arial,Helvetica,sans-serif" font-size="15" letter-spacing="1.3" fill="#8eafa0">ELEINEXUS-CIVICO.ONRENDER.COM</text>
+<path d="M0 620H420" stroke="#149451" stroke-width="10"/><path d="M420 620H800" stroke="#ffce45" stroke-width="10"/><path d="M800 620H1200" stroke="#2355a6" stroke-width="10"/>
+</svg>
