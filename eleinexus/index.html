@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b2d26">
-  <meta name="description" content="EleiNexus — propostas dos presidenciáveis 2026, planos oficiais por assunto, fontes do TSE e organização de prioridades. Independente e apartidário.">
+  <meta name="description" content="EleiNexus: resumos objetivos dos planos presidenciais e links oficiais do TSE. Informação cívica independente.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://eleinexus-civico.onrender.com/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,12 +13,12 @@
   <meta property="og:url" content="https://eleinexus-civico.onrender.com/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="EleiNexus — informação transparente, decisão sua">
-  <meta property="og:description" content="Explore os planos das candidaturas à Presidência em 2026, consulte propostas por tema e leia documentos oficiais do TSE, sem recomendação de voto.">
+  <meta property="og:description" content="Resumos objetivos dos planos presidenciais e links oficiais do TSE. Compare informações e decida por conta própria.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="EleiNexus — informação transparente, decisão sua">
-  <meta name="twitter:description" content="Fontes eleitorais oficiais, leitura crítica e prioridades cívicas sem recomendação de voto.">
-  <title>EleiNexus — Suas ideias. Informação transparente. Sua decisão.</title>
+  <meta name="twitter:description" content="Resumos de planos presidenciais e fontes oficiais do TSE.">
+  <title>EleiNexus — Planos presidenciais em resumo</title>
   <style>
     :root{
       color-scheme:light;
@@ -475,6 +475,65 @@
       .pres-source-ref{gap:6px}
     }
 
+  
+    /* Simplificação geral e melhor leitura em telas pequenas. */
+    .section{padding:38px 0}
+    .hero{padding:34px 0 24px}
+    .hero-grid{display:block}
+    .hero-art{display:none}
+    h1{font-size:clamp(36px,5.8vw,54px);line-height:1.02;letter-spacing:-1.7px;margin:12px 0 14px}
+    h2{font-size:clamp(26px,3.5vw,36px);letter-spacing:-.8px;margin:8px 0 10px}
+    .lead{font-size:16px;line-height:1.5}
+    .hero-meta{display:none}
+    .hero-actions{margin-top:18px}
+    .section-head{margin-bottom:18px;align-items:start}
+    .section-head .section-tag{display:none}
+    .topic-card{padding:16px;min-height:0;border-radius:16px}
+    .topic-card h3{margin:8px 0 5px}
+    .topic-card p,.feature-card p{line-height:1.5}
+    .pres-source-note{padding:12px 14px;gap:10px}
+    .candidate-toolbar{gap:8px}
+    .pres-card{padding:18px}
+    .pres-card .proposal-list{gap:8px;margin:12px 0}
+    .pres-card .proposal-list li{font-size:13px;line-height:1.45}
+    .political-quiz{padding:18px}
+    .quiz-step-header{margin-bottom:10px}
+    .quiz-question legend{font-size:20px;line-height:1.25}
+    .quiz-prompt{font-size:13px;margin:6px 0 12px}
+    .quiz-option{padding:11px 12px}
+    .quiz-results.panel{margin-top:18px;padding:18px}
+    .quiz-results-head p,.match-explainer,.match-footnote{display:none}
+    .quiz-profile-banner{padding:12px 14px;margin:12px 0}
+    .comparison-columns{gap:12px}
+    .comparison-candidate{padding:15px}
+    .comparison-candidate p{font-size:13px;line-height:1.5;margin:9px 0}
+    .comparison-candidate a{font-size:13px}
+    #explorar,#pesquisas,#resultados,#prioridades,#metodologia{display:none!important}
+    .footer{padding-top:24px}
+    .footer-grid{gap:18px}
+    .footer p{font-size:13px;line-height:1.5}
+    @media(max-width:760px){
+      .shell{width:min(var(--max),calc(100% - 28px))}
+      .nav{height:62px;gap:10px}
+      .brandmark{width:36px;height:36px;border-radius:11px}
+      .brandname{font-size:17px}
+      .brandtag{font-size:9px;letter-spacing:.7px}
+      .navlinks{gap:11px;font-size:12px}
+      .section{padding:28px 0}
+      .proposal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+      .topic-card{padding:12px}
+      .topic-card .topicicon{font-size:18px}
+      .topic-card h3{font-size:14px}
+      .topic-card p{font-size:12px}
+      .candidate-toolbar{display:grid;grid-template-columns:1fr}
+      .pres-candidate-grid{grid-template-columns:1fr}
+      .comparison-columns{grid-template-columns:1fr}
+      .quiz-actions{grid-template-columns:1fr 1fr}
+      .quiz-actions .btn{width:100%;padding:11px 10px}
+      .quiz-results-actions{display:grid;grid-template-columns:1fr 1fr}
+      .hero-actions .btn{flex:1 1 180px}
+    }
+
   </style>
 </head>
 <body>
@@ -486,7 +545,7 @@
         <span><span class="brandname">EleiNexus</span><span class="brandtag">Informação cívica independente</span></span>
       </a>
       <nav class="navlinks" id="mainNav" aria-label="Navegação principal">
-        <a href="#candidatos">Presidência</a><a href="#perfil-politico">Perfil político</a><a href="#propostas">Propostas</a><a href="#pesquisas">Pesquisas</a><a href="#resultados">Resultados</a><a href="#prioridades">Minhas prioridades</a><a href="#fontes">Fontes</a>
+        <a href="#candidatos">Planos</a><a href="#perfil-politico">Questionário</a><a href="#fontes">Fontes oficiais</a>
       </nav>
       <div class="navtools">
         <button class="iconbtn" id="themeToggle" type="button" aria-label="Ativar tema escuro" title="Alternar tema"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 13A8.5 8.5 0 0 1 11 3.2 8.5 8.5 0 1 0 20.8 13Z"/></svg></button>
@@ -500,17 +559,13 @@
       <div class="shell hero-grid">
         <div class="hero-copy">
           <span class="eyebrow">Cidadania com clareza</span>
-          <h1>Suas ideias.<br><span class="accent">Informação transparente.</span><br>Sua decisão.</h1>
-          <p class="lead">Um lugar independente para explorar os planos das candidaturas à Presidência em 2026, consultar fontes oficiais, entender pesquisas e organizar as pautas que importam para você — sem dizer em quem votar.</p>
+          <h1>Planos presidenciais.<br><span class="accent">Sem enrolação.</span></h1>
+          <p class="lead">Resumos curtos dos planos de governo, duas perguntas rápidas e links diretos para as fontes oficiais do TSE.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#candidatos">Ver planos presidenciais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-outline" href="#perfil-politico">Descobrir meu perfil político</a>
+            <a class="btn btn-primary" href="#candidatos">Ver planos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-outline" href="#perfil-politico">Responder 2 perguntas</a>
           </div>
-          <div class="hero-meta">
-            <span><i class="dot"></i> Apartidário e independente</span>
-            <span><i class="dot"></i> Sem login</span>
-            <span><i class="dot"></i> Sem coleta de opinião política</span>
-          </div>
+          
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="art-ring"></div><div class="art-orb"></div>
@@ -545,82 +600,57 @@
     </section>
 
     <section class="section surface" id="perfil-politico">
-      <div class="shell">
-        <div class="section-head">
-          <div class="copy">
-            <span class="eyebrow">Questionário e comparação por perfil</span>
-            <h2>Suas respostas organizam a comparação.</h2>
-            <p>Responda sobre economia, trabalho, serviços públicos, segurança, direitos, meio ambiente e gestão. O sistema mostrará como os planos oficiais tratam cada tema escolhido, lado a lado, sem dar nota a candidatos nem sugerir voto.</p>
-          </div>
-          <span class="section-tag">10 perguntas · local e privado</span>
-        </div>
-        <div class="quiz-intro">
-          <div class="quiz-intro-icon" aria-hidden="true">✳</div>
-          <div><strong>Comparação guiada pelas suas respostas.</strong><p>Suas respostas definem quais temas serão explicados e em que contexto. O sistema não calcula compatibilidade, não classifica candidatos e não recomenda voto; ele apresenta os dois planos para você avaliar por conta própria.</p></div>
-        </div>
-        <form id="politicalQuizForm" class="political-quiz">
-          <div class="quiz-step-header" aria-live="polite">
-            <div>
-              <span class="eyebrow">Questionário guiado</span>
-              <strong id="quizStepTitle">Pergunta 1 de 10</strong>
-            </div>
-            <span class="quiz-step-percent" id="quizStepPercent">10%</span>
-          </div>
-          <div class="quiz-progress" id="quizProgress" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1">
-            <span class="quiz-progress-fill" id="quizProgressFill"></span>
-          </div>
-          <div id="politicalQuizQuestions"></div>
-          <div class="quiz-actions">
-            <button class="btn btn-outline" type="button" id="quizPrevious" disabled>← Voltar</button>
-            <button class="btn btn-primary" type="button" id="quizNext" disabled>Próxima →</button>
-            <button class="btn btn-primary" type="submit" id="quizFinish" hidden>Ver meu perfil político →</button>
-            <button class="btn btn-outline" type="reset" id="resetPoliticalQuiz">Recomeçar</button>
-          </div>
-        </form>
-        <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
-          <div class="quiz-results-head"><span class="eyebrow">Resultado do questionário</span><h3>Seu perfil político e suas prioridades</h3><p>Esta é uma descrição aproximada das respostas que você marcou, não uma definição permanente da sua identidade nem uma recomendação de voto.</p></div>
-          <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
-          <div class="quiz-results-list" id="politicalQuizResultItems"></div>
-          <section class="match-results" id="matchResults" aria-labelledby="match-title">
-            <span class="eyebrow">Modo de comparação por perfil</span>
-            <h3 id="match-title">Compare os planos nos temas das suas respostas</h3>
-            <p class="match-explainer">Em cada tema, mostramos a alternativa que você marcou e como os resumos dos dois planos se relacionam com ela. Os rótulos são uma leitura editorial limitada ao texto resumido — não são notas de candidatos nem uma classificação geral.</p>
-            <div class="profile-comparison-list" id="matchCandidateResults"></div>
-            <p class="match-footnote"><strong>Como ler os rótulos:</strong> “Relação direta no resumo” significa que o resumo cita proposta claramente ligada à alternativa; “Relação parcial” indica uma conexão indireta ou incompleta; “O resumo não permite concluir” significa que não há informação suficiente neste recorte. Isso não prova apoio ou oposição no plano completo. As classificações são editoriais, sem pontuação total, ranking ou recomendação de voto. Confira os documentos oficiais do TSE. As respostas ficam apenas no navegador.</p>
-            <section class="profile-next-step" aria-labelledby="profile-next-step-title">
-              <span class="eyebrow">Próximo passo</span>
-              <h4 id="profile-next-step-title">Agora confira os dois planos completos</h4>
-              <p>Seu perfil resume as respostas que você marcou. Ele não determina qual candidatura seria “mais viável”: isso também exige analisar financiamento, metas, prazos, histórico e condições de execução. Consulte as fontes e faça sua própria avaliação.</p>
-              <div class="profile-plan-links">
-                <a class="profile-plan-link" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro" target="_blank" rel="noopener noreferrer">
-                  <span><strong>Plano de Flávio Bolsonaro</strong><small>Consultar o documento e as propostas no TSE</small></span><span aria-hidden="true">↗</span>
-                </a>
-                <a class="profile-plan-link" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo" target="_blank" rel="noopener noreferrer">
-                  <span><strong>Plano de Lula</strong><small>Consultar o documento e as propostas no TSE</small></span><span aria-hidden="true">↗</span>
-                </a>
-              </div>
-              <p class="profile-neutral-note">Informação cívica independente — não é propaganda, endosso nem recomendação de voto.</p>
-            </section>
-          </section>
-          <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg><div><strong>Privacidade por design.</strong><br>As respostas são processadas no seu navegador e não são enviadas a servidor algum nem salvas em uma conta. Ao sair ou recarregar a página, o resultado desaparece.</div></div>
-          <div class="quiz-results-actions"><a class="btn btn-primary" href="#candidatos">Comparar as propostas presidenciais</a><button class="btn btn-outline" id="editPoliticalQuiz" type="button">Editar respostas</button></div>
-        </div>
+  <div class="shell">
+    <div class="section-head">
+      <div class="copy">
+        <span class="eyebrow">Questionário rápido</span>
+        <h2>Duas perguntas. Sua pauta em foco.</h2>
+        <p>Responda e veja um resumo das suas prioridades, junto dos dois planos. O questionário não recomenda voto.</p>
       </div>
-    </section>
+    </div>
+    <form id="politicalQuizForm" class="political-quiz">
+      <div class="quiz-step-header" aria-live="polite">
+        <div><span class="eyebrow">Etapa rápida</span><strong id="quizStepTitle">Pergunta 1 de 2</strong></div>
+        <span class="quiz-step-percent" id="quizStepPercent">50%</span>
+      </div>
+      <div class="quiz-progress" id="quizProgress" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1"><span class="quiz-progress-fill" id="quizProgressFill"></span></div>
+      <div id="politicalQuizQuestions"></div>
+      <div class="quiz-actions">
+        <button class="btn btn-outline" type="button" id="quizPrevious" disabled>← Voltar</button>
+        <button class="btn btn-primary" type="button" id="quizNext" disabled>Próxima →</button>
+        <button class="btn btn-primary" type="submit" id="quizFinish" hidden>Ver resumo →</button>
+        <button class="btn btn-outline" type="reset" id="resetPoliticalQuiz">Recomeçar</button>
+      </div>
+    </form>
+    <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
+      <div class="quiz-results-head"><span class="eyebrow">Seu resultado</span><h3>Suas prioridades e os planos</h3><p>Este resumo organiza suas respostas. Compare as propostas e tire suas próprias conclusões.</p></div>
+      <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
+      <div class="quiz-results-list" id="politicalQuizResultItems" hidden></div>
+      <section class="match-results" id="matchResults" aria-labelledby="match-title">
+        <h3 id="match-title">Planos de governo em resumo</h3>
+        <div class="profile-comparison-list comparison-columns" id="matchCandidateResults"></div>
+      </section>
+      <div class="quiz-results-actions">
+        <button class="btn btn-outline" type="button" id="editPoliticalQuiz">Editar respostas</button>
+        <button class="btn btn-outline" type="reset" form="politicalQuizForm">Recomeçar</button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="section surface" id="candidatos">
       <div class="shell">
         <div class="section-head">
           <div class="copy">
-            <span class="eyebrow">Presidência da República · Eleições 2026</span>
-            <h2>As propostas dos presidenciáveis, aqui.</h2>
-            <p>Explore destaques de cada plano de governo. Cada cartão leva ao índice oficial do TSE, com propostas organizadas por assunto, e ao documento completo apresentado pela candidatura.</p>
+            <span class="eyebrow">Presidência · 2026</span>
+            <h2>Planos de governo em resumo.</h2>
+            <p>Veja os principais pontos e consulte a versão completa no TSE.</p>
           </div>
           <span class="section-tag">Fonte primária: TSE</span>
         </div>
         <div class="pres-source-note">
           <span class="pres-source-icon" aria-hidden="true">TSE</span>
-          <p><strong>Como foi organizado:</strong> os destaques abaixo são resumos de tópicos que aparecem no índice oficial de propostas do TSE. Não representam uma avaliação do plano nem substituem sua leitura integral.</p>
+          <p><strong>Resumo informativo.</strong> Confira o documento completo antes de tirar conclusões.</p>
           <a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026-segundo-turno" target="_blank" rel="noopener noreferrer">Página oficial do 2º turno <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
         </div>
         <div class="candidate-toolbar">
@@ -638,7 +668,7 @@
           </select>
         </div>
         <h3 class="subsection-heading">Candidaturas do 2º turno</h3>
-        <p class="subsection-copy">Planos das duas candidaturas que avançaram para a segunda etapa, conforme a página oficial do TSE.</p>
+        <p class="subsection-copy">Dois planos, lado a lado.</p>
         <div class="pres-candidate-grid" id="secondRoundCandidates"><article class="pres-card" data-pres-card data-round="second" data-themes="economia saude seguranca educacao externa direitos governanca">
     <div class="pres-card-top">
       <img class="pres-photo" src="https://www.tse.jus.br/imagens/imagens/flavio-bolsonaro/@@images/image-200-7092d276831e3453f70c59d07d5c9ae7.png" alt="Foto oficial de Flávio Bolsonaro" loading="lazy" decoding="async" width="96" height="120">
@@ -646,7 +676,7 @@
       <span class="candidate-status current">Candidatura no 2º turno</span>
     </div>
     <h4>Destaques do plano oficial</h4>
-    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Redução de impostos, reforma tributária e reformulação das regras fiscais.</li><li data-theme="saude"><span class="proposal-kind">Saúde</span>Digitalização do SUS, telessaúde e agendamento com inteligência artificial.</li><li data-theme="seguranca"><span class="proposal-kind">Segurança</span>Combate a facções, monitoramento de fronteiras e reconhecimento facial.</li><li data-theme="educacao"><span class="proposal-kind">Educação</span>Alfabetização pelo método fônico, ensino técnico e escolas em tempo integral.</li><li data-theme="externa"><span class="proposal-kind">Política externa</span>Abertura comercial, defesa nacional e adesão à OCDE.</li><li data-theme="governanca"><span class="proposal-kind">Governança</span>Corte de ministérios e digitalização de serviços públicos.</li></ul>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia</span>Redução de impostos, reforma tributária e regras fiscais.</li><li data-theme="saude"><span class="proposal-kind">Saúde e educação</span>Digitalização do SUS, telessaúde, alfabetização e ensino técnico.</li><li data-theme="seguranca"><span class="proposal-kind">Segurança</span>Combate a facções e segurança de fronteiras.</li><li data-theme="externa"><span class="proposal-kind">Gestão e exterior</span>Serviços digitais, abertura comercial e defesa nacional.</li></ul>
     <div class="pres-source-ref"><span class="source-label">Fontes:</span><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro" target="_blank" rel="noopener noreferrer">Propostas organizadas por assunto · TSE</a><span aria-hidden="true">·</span><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pl" target="_blank" rel="noopener noreferrer">Plano de governo completo (PDF)</a><span class="pres-photo-credit">Foto oficial: TSE</span></div>
   </article>
 <article class="pres-card" data-pres-card data-round="second" data-themes="economia saude seguranca direitos ambiente externa">
@@ -656,7 +686,7 @@
       <span class="candidate-status current">Candidatura no 2º turno</span>
     </div>
     <h4>Destaques do plano oficial</h4>
-    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Responsabilidade fiscal, reforma tributária, política industrial e renegociação de dívidas pelo Desenrola Brasil.</li><li data-theme="economia"><span class="proposal-kind">Economia e trabalho</span>Fim da escala 6x1 e redução da jornada semanal para 40 horas — proposta listada no programa.</li><li data-theme="ambiente"><span class="proposal-kind">Meio ambiente</span>Plano de Transformação Ecológica e investimentos em infraestrutura pelo Novo PAC.</li><li data-theme="seguranca"><span class="proposal-kind">Segurança</span>Fortalecimento do Sistema Único de Segurança Pública e de políticas de segurança nas fronteiras.</li><li data-theme="direitos"><span class="proposal-kind">Direitos e inclusão</span>Combate ao racismo, políticas para mulheres e inclusão de pessoas com deficiência.</li><li data-theme="externa"><span class="proposal-kind">Política externa</span>Integração sul-americana, BRICS e atuação multilateral.</li></ul>
+    <ul class="proposal-list"><li data-theme="economia"><span class="proposal-kind">Economia</span>Reforma tributária, regras fiscais, política industrial e renegociação de dívidas.</li><li data-theme="economia"><span class="proposal-kind">Trabalho</span>Proposta de mudar a escala 6x1 e reduzir a jornada para 40 horas.</li><li data-theme="saude"><span class="proposal-kind">Serviços e inclusão</span>Ações em saúde, educação e inclusão social.</li><li data-theme="ambiente"><span class="proposal-kind">Ambiente e exterior</span>Transição ecológica, integração regional e BRICS.</li></ul>
     <div class="pres-source-ref"><span class="source-label">Fontes:</span><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo" target="_blank" rel="noopener noreferrer">Propostas organizadas por assunto · TSE</a><span aria-hidden="true">·</span><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt" target="_blank" rel="noopener noreferrer">Plano de governo completo (PDF)</a><span class="pres-photo-credit">Foto oficial: TSE</span></div>
   </article></div>
         <div class="archive-candidates" id="firstRoundArchive">
@@ -784,9 +814,9 @@
       <div class="shell">
         <div class="section-head">
           <div class="copy">
-            <span class="eyebrow">Navegação por assunto</span>
-            <h2>Compare propostas no mesmo tema.</h2>
-            <p>Escolha uma área para filtrar os planos no EleiNexus. Os nomes dos temas seguem a organização usada pelo índice oficial do TSE, e os resumos mantêm um link para a fonte original.</p>
+            <span class="eyebrow">Por tema</span>
+            <h2>Explore por assunto.</h2>
+            <p>Filtre os resumos e abra o plano completo no TSE.</p>
           </div>
           <span class="section-tag">Oito macrotemas do TSE</span>
         </div>
@@ -986,11 +1016,11 @@
   <footer class="footer">
     <div class="shell">
       <div class="footer-grid">
-        <div><a class="brand" href="#inicio"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5 12 3l8 3.5-8 3.7L4 6.5Z" fill="#FFCE45"/><path d="M5 10.2 12 13l7-2.8v5.5L12 19l-7-3.3v-5.5Z" fill="#fff"/><path d="M7 16.3v2.1L12 21l5-2.6v-2.1L12 18.7l-5-2.4Z" fill="#6DD69C"/></svg></span><span><span class="brandname">EleiNexus</span><span class="brandtag">Cidadania com clareza</span></span></a><p>Suas ideias. Informação transparente. Sua decisão. Uma iniciativa independente para tornar a consulta cívica mais clara e verificável.</p></div>
-        <div><h3>Explorar</h3><div class="footer-links"><a href="#candidatos">Candidaturas</a><a href="#propostas">Como comparar propostas</a><a href="#pesquisas">Pesquisas eleitorais</a><a href="#resultados">Resultados oficiais</a><a href="#prioridades">Minhas prioridades</a></div></div>
-        <div><h3>Fontes e compromisso</h3><div class="footer-links"><a href="#fontes">Fontes oficiais</a><a href="#metodologia">Metodologia</a><a href="#metodologia">Privacidade</a><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial do TSE ↗</a></div></div>
+        <div><a class="brand" href="#inicio"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5 12 3l8 3.5-8 3.7L4 6.5Z" fill="#FFCE45"/><path d="M5 10.2 12 13l7-2.8v5.5L12 19l-7-3.3v-5.5Z" fill="#fff"/><path d="M7 16.3v2.1L12 21l5-2.6v-2.1L12 18.7l-5-2.4Z" fill="#6DD69C"/></svg></span><span><span class="brandname">EleiNexus</span><span class="brandtag">Cidadania com clareza</span></span></a><p>Informação cívica independente, com resumos e fontes oficiais.</p></div>
+        <div><h3>Explorar</h3><div class="footer-links"><a href="#candidatos">Candidaturas</a><a href="#propostas">Como comparar propostas</a><a href="#pesquisas">Pesquisas eleitorais</a><a href="#resultados">Resultados oficiais</a></div></div>
+        <div><h3>Fontes e compromisso</h3><div class="footer-links"><a href="#fontes">Fontes oficiais</a><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial do TSE ↗</a></div></div>
       </div>
-      <div class="foot-bottom"><span>© <span id="year"></span> EleiNexus · Projeto independente.</span><span>Sem anúncios, login obrigatório ou recomendações de voto.</span><span>Dados eleitorais devem ser confirmados nas fontes primárias.</span></div>
+      <div class="foot-bottom"><span>© <span id="year"></span> EleiNexus · Projeto independente.</span><span>Independente e sem recomendação de voto.</span></div>
     </div>
   </footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1152,113 +1182,27 @@
 
       const quizQuestions = [
         {
-          id:'economia',theme:'Economia e impostos',
-          title:'1. Qual caminho econômico você tende a priorizar?',
-          prompt:'Pense em impostos, regras para empreender, investimento e papel do Estado.',
+          id:'prioridade',theme:'Sua principal pauta',
+          title:'1. Qual pauta mais importa para você?',
+          prompt:'Escolha o tema que quer priorizar.',
           options:[
-            {label:'Simplificar regras, reduzir a carga tributária e ampliar a iniciativa privada.',profile:'Você dá mais peso à iniciativa privada, à simplificação e a uma menor carga de impostos.'},
-            {label:'Combinar atividade privada, serviços públicos e regras fiscais previsíveis.',profile:'Você tende a buscar combinação entre mercado, ação pública e previsibilidade fiscal.'},
-            {label:'Ampliar investimento público, regulação e redistribuição de renda.',profile:'Você dá mais peso à atuação do Estado, à regulação e à redistribuição.'},
-            {label:'Ainda não tenho posição formada; depende da proposta concreta.',profile:'Sua posição econômica segue em aberto ou depende dos detalhes de cada proposta.'}
+            {label:'Emprego, renda e impostos',profile:'Sua pauta principal é emprego, renda e impostos.'},
+            {label:'Saúde e educação',profile:'Sua pauta principal é saúde e educação.'},
+            {label:'Segurança pública',profile:'Sua pauta principal é segurança pública.'},
+            {label:'Meio ambiente e direitos',profile:'Sua pauta principal é meio ambiente e direitos.'},
+            {label:'Todas são importantes',profile:'Você considera várias pautas importantes.'}
           ]
         },
         {
-          id:'trabalho',theme:'Trabalho e renda',
-          title:'2. O que deveria orientar as políticas de trabalho?',
-          prompt:'Considere jornada, direitos, contratação, produtividade e renda.',
+          id:'criterio',theme:'Como avaliar propostas',
+          title:'2. O que você mais valoriza em um plano?',
+          prompt:'Escolha o critério que mais pesa para você.',
           options:[
-            {label:'Mais flexibilidade nas relações de trabalho e espaço para negociação.',profile:'Você dá mais peso à flexibilidade e às negociações nas relações de trabalho.'},
-            {label:'Equilibrar flexibilidade, proteção trabalhista e produtividade.',profile:'Você busca equilibrar flexibilidade, garantias e produtividade.'},
-            {label:'Reforçar garantias trabalhistas e ampliar a proteção de renda.',profile:'Você dá mais peso às garantias trabalhistas e à proteção de renda.'},
-            {label:'Depende do setor e do efeito demonstrado da medida.',profile:'Sua posição sobre trabalho depende do setor e dos efeitos concretos da política.'}
-          ]
-        },
-        {
-          id:'servicos',theme:'Saúde e educação',
-          title:'3. Como os serviços essenciais deveriam ser organizados?',
-          prompt:'Pense em acesso, financiamento, escolha individual e responsabilidade do poder público.',
-          options:[
-            {label:'Ampliar opções de escolha e o espaço de prestadores privados.',profile:'Você dá mais peso à liberdade de escolha e ao uso de prestadores privados.'},
-            {label:'Manter uma base pública forte, com parcerias quando bem reguladas.',profile:'Você favorece combinar uma base pública com parcerias sujeitas a regras e fiscalização.'},
-            {label:'Priorizar serviços públicos universais e ampliar investimento direto.',profile:'Você dá mais peso à universalidade dos serviços e ao investimento público direto.'},
-            {label:'Avaliar caso a caso, conforme custo, acesso e qualidade.',profile:'Você prefere avaliar os modelos pelo custo, pelo acesso e pela qualidade entregue.'}
-          ]
-        },
-        {
-          id:'seguranca',theme:'Segurança pública e justiça',
-          title:'4. Qual abordagem deve receber mais prioridade na segurança pública?',
-          prompt:'Considere prevenção, investigação, policiamento, sistema prisional e reinserção.',
-          options:[
-            {label:'Reforçar investigação, policiamento e aplicação de penas.',profile:'Você dá mais peso à investigação, ao policiamento e à aplicação de penas.'},
-            {label:'Combinar aplicação da lei, prevenção e avaliação de resultados.',profile:'Você busca combinar aplicação da lei, prevenção e avaliação de resultados.'},
-            {label:'Priorizar prevenção, redução das causas da violência e reinserção.',profile:'Você dá mais peso à prevenção, às causas sociais da violência e à reinserção.'},
-            {label:'Depende do tipo de crime e das evidências de eficácia.',profile:'Sua preferência em segurança depende do crime e das evidências sobre cada medida.'}
-          ]
-        },
-        {
-          id:'direitos',theme:'Direitos e inclusão',
-          title:'5. Como políticas públicas devem lidar com desigualdades?',
-          prompt:'Considere igualdade perante a lei, liberdades individuais e medidas específicas de inclusão.',
-          options:[
-            {label:'Priorizar regras gerais iguais para todos e a autonomia individual.',profile:'Você dá mais peso a regras gerais iguais e à autonomia individual.'},
-            {label:'Combinar direitos universais com medidas específicas bem avaliadas.',profile:'Você busca combinar direitos universais e medidas específicas avaliadas por resultados.'},
-            {label:'Ampliar políticas específicas para reduzir desigualdades e barreiras.',profile:'Você dá mais peso a políticas específicas de inclusão e redução de desigualdades.'},
-            {label:'Analisar cada proposta, seus efeitos e a proteção de direitos.',profile:'Você prefere examinar cada medida e seus efeitos sobre os direitos.'}
-          ]
-        },
-        {
-          id:'ambiente',theme:'Meio ambiente e desenvolvimento',
-          title:'6. Como equilibrar proteção ambiental e atividade econômica?',
-          prompt:'Pense em licenciamento, clima, conservação, agricultura, energia e empregos.',
-          options:[
-            {label:'Dar prioridade à produção e tornar regras ambientais mais simples e previsíveis.',profile:'Você dá mais peso à produção e à previsibilidade das regras ambientais.'},
-            {label:'Buscar equilíbrio entre conservação, empregos e desenvolvimento.',profile:'Você busca equilibrar conservação, empregos e desenvolvimento.'},
-            {label:'Priorizar conservação e metas climáticas mesmo exigindo mudanças econômicas.',profile:'Você dá mais peso à conservação e às metas climáticas, mesmo quando exigem ajustes econômicos.'},
-            {label:'Avaliar os custos, os riscos ambientais e as alternativas disponíveis.',profile:'Você prefere comparar custos, riscos ambientais e alternativas antes de decidir.'}
-          ]
-        },
-        {
-          id:'governanca',theme:'Gestão pública e orçamento',
-          title:'7. O que mais importa ao reformar o Estado?',
-          prompt:'Considere gastos, qualidade dos serviços, transparência e participação cidadã.',
-          options:[
-            {label:'Reduzir custos, estruturas e burocracia governamental.',profile:'Você dá mais peso à redução de custos, estruturas e burocracia.'},
-            {label:'Melhorar transparência, metas, auditoria e qualidade dos serviços.',profile:'Você dá mais peso à transparência, às metas e à qualidade do serviço público.'},
-            {label:'Fortalecer a capacidade de execução do Estado e a participação social.',profile:'Você dá mais peso à capacidade de execução do Estado e à participação social.'},
-            {label:'Depende dos resultados e da prestação de contas de cada proposta.',profile:'Você avalia reformas pelo resultado e pela prestação de contas.'}
-          ]
-        },
-        {
-          id:'exterior',theme:'Política externa',
-          title:'8. Qual orientação internacional parece mais adequada?',
-          prompt:'Pense em comércio, defesa, autonomia diplomática e cooperação internacional.',
-          options:[
-            {label:'Priorizar abertura comercial e acordos com parceiros estratégicos.',profile:'Você dá mais peso à abertura comercial e a acordos com parceiros estratégicos.'},
-            {label:'Manter relações pragmáticas e diversificadas com diferentes blocos.',profile:'Você favorece relações pragmáticas e diversificadas com diferentes blocos.'},
-            {label:'Ampliar autonomia diplomática e cooperação regional e multilateral.',profile:'Você dá mais peso à autonomia diplomática e à cooperação regional e multilateral.'},
-            {label:'Decidir conforme o tema e os interesses concretos do Brasil.',profile:'Sua preferência em política externa depende do assunto e dos interesses envolvidos.'}
-          ]
-        },
-        {
-          id:'social',theme:'Proteção social',
-          title:'9. Como programas sociais deveriam ser desenhados?',
-          prompt:'Considere combate à pobreza, transferências de renda, serviços e acesso ao trabalho.',
-          options:[
-            {label:'Focalizar benefícios em quem mais precisa e reforçar caminhos para o emprego.',profile:'Você dá mais peso a programas focalizados e a caminhos para o emprego.'},
-            {label:'Combinar benefícios focalizados com serviços universais acessíveis.',profile:'Você busca combinar apoio focalizado com serviços universais.'},
-            {label:'Ampliar a proteção social e a cobertura dos serviços públicos.',profile:'Você dá mais peso à ampliação da cobertura de proteção social e serviços.'},
-            {label:'Avaliar cada programa por cobertura, custo e redução efetiva da pobreza.',profile:'Você prefere avaliar os programas por cobertura, custo e efeitos sobre a pobreza.'}
-          ]
-        },
-        {
-          id:'campo',theme:'Agricultura, moradia e cidades',
-          title:'10. Qual prioridade deve orientar o uso da terra e o desenvolvimento urbano?',
-          prompt:'Pense em propriedade, produção rural, conservação, moradia e infraestrutura.',
-          options:[
-            {label:'Proteger a propriedade e facilitar produção, investimento e construção.',profile:'Você dá mais peso à proteção da propriedade e à facilitação da atividade produtiva.'},
-            {label:'Combinar segurança jurídica, infraestrutura e regras de interesse público.',profile:'Você busca combinar segurança jurídica, infraestrutura e objetivos públicos.'},
-            {label:'Priorizar acesso à moradia, reforma agrária e proteção de comunidades e territórios.',profile:'Você dá mais peso à ampliação do acesso à moradia e à proteção de comunidades e territórios.'},
-            {label:'Avaliar caso a caso, equilibrando direitos, impacto e viabilidade.',profile:'Você prefere avaliar caso a caso e equilibrar direitos, impactos e viabilidade.'}
+            {label:'Metas claras e resultados práticos',profile:'Você valoriza metas claras e resultados práticos.'},
+            {label:'Serviços públicos e proteção social',profile:'Você valoriza serviços públicos e proteção social.'},
+            {label:'Menos burocracia e incentivo a negócios',profile:'Você valoriza menos burocracia e incentivo a negócios.'},
+            {label:'Equilíbrio entre crescimento e proteção',profile:'Você valoriza equilíbrio entre crescimento e proteção.'},
+            {label:'Analisar cada proposta caso a caso',profile:'Você prefere avaliar cada proposta caso a caso.'}
           ]
         }
       ];
@@ -1447,10 +1391,7 @@
         let firstUnanswered = -1;
         quizQuestions.forEach(function(q,index){
           const chosen = quizForm.querySelector('input[name="'+q.id+'"]:checked');
-          if(!chosen){
-            if(firstUnanswered < 0) firstUnanswered = index;
-            return;
-          }
+          if(!chosen){ if(firstUnanswered < 0) firstUnanswered = index; return; }
           answers[q.id] = Number(chosen.value);
         });
         if(firstUnanswered >= 0){
@@ -1459,142 +1400,46 @@
           focusCurrentQuestion();
           return;
         }
-
         quizResultItems.innerHTML = '';
-        quizQuestions.forEach(function(q){
-          const optionIndex = answers[q.id];
-          const item = document.createElement('article');
-          item.className = 'quiz-result-item';
-          const title = document.createElement('strong');
-          title.textContent = q.theme;
-          const detail = document.createElement('p');
-          detail.textContent = q.options[optionIndex].profile;
-          item.appendChild(title);
-          item.appendChild(detail);
-          quizResultItems.appendChild(item);
-        });
-
-        const profileCounts = [0,0,0,0];
-        quizQuestions.forEach(function(q){profileCounts[answers[q.id]] += 1;});
-        const sortedCounts = profileCounts.slice().sort(function(a,b){return b-a;});
-        const dominantIndex = profileCounts.indexOf(sortedCounts[0]);
-        const secondCount = sortedCounts[1] || 0;
-        const profileDescriptions = [
-          {
-            title:'Tendência a valorizar iniciativa privada, autonomia individual e aplicação firme da lei',
-            detail:'Suas respostas deram mais peso a flexibilidade, liberdade de escolha, iniciativa privada, propriedade e aplicação da lei. Essa combinação descreve apenas a tendência observada neste questionário.'
-          },
-          {
-            title:'Tendência a combinar soluções públicas e privadas',
-            detail:'Suas respostas deram mais peso a combinações entre atividade privada, serviços públicos, proteção e avaliação de resultados, em vez de uma resposta única para todos os temas.'
-          },
-          {
-            title:'Tendência a priorizar políticas públicas, inclusão e proteção social',
-            detail:'Suas respostas deram mais peso ao investimento e à capacidade do Estado, à proteção de direitos, à prevenção e à ampliação do acesso a serviços.'
-          },
-          {
-            title:'Perfil pragmático: preferência por avaliar cada tema conforme evidências e resultados',
-            detail:'Suas respostas indicam preferência por analisar custos, eficácia, riscos e contexto de cada proposta, em vez de aderir a uma solução única em todos os assuntos.'
-          }
-        ];
-        let profileTitle = 'Perfil plural: suas respostas combinam orientações diferentes';
-        let profileDetail = 'Não há uma tendência única suficientemente destacada nas suas respostas. Isso é normal: opiniões políticas podem variar conforme o assunto. Use a comparação temática abaixo para analisar cada área separadamente.';
-        if(sortedCounts[0] - secondCount >= 2){
-          profileTitle = profileDescriptions[dominantIndex].title;
-          profileDetail = profileDescriptions[dominantIndex].detail;
-        }
         const profileBanner = document.getElementById('politicalProfileSummary');
         profileBanner.innerHTML = '';
         const profileHeading = document.createElement('strong');
-        profileHeading.textContent = 'Seu perfil político é: ' + profileTitle + '.';
+        profileHeading.textContent = 'Sua pauta: ' + quizQuestions[0].options[answers.prioridade].label + '.';
         const profileText = document.createElement('p');
-        profileText.textContent = profileDetail + ' Contagem das respostas: iniciativa privada/autonomia/aplicação da lei ' + profileCounts[0] + '; combinação de soluções ' + profileCounts[1] + '; atuação pública/proteção social ' + profileCounts[2] + '; avaliação caso a caso ' + profileCounts[3] + '. O resultado é uma descrição aproximada, não um diagnóstico nem um rótulo fixo.';
+        profileText.textContent = 'Você também valoriza: ' + quizQuestions[1].options[answers.criterio].label + '.';
         profileBanner.appendChild(profileHeading);
         profileBanner.appendChild(profileText);
-
         const comparisonContainer = document.getElementById('matchCandidateResults');
         comparisonContainer.innerHTML = '';
-        quizQuestions.forEach(function(q,index){
-          const optionIndex = answers[q.id];
-          if(!Number.isInteger(optionIndex) || !proposalComparisons[q.id]) return;
-
-          const row = document.createElement('article');
-          row.className = 'comparison-topic';
-
-          const top = document.createElement('div');
-          top.className = 'comparison-topic-head';
-          const number = document.createElement('span');
-          number.className = 'comparison-topic-number';
-          number.textContent = String(index + 1).padStart(2,'0');
-          const headingWrap = document.createElement('div');
-          const heading = document.createElement('h4');
-          heading.textContent = q.theme;
-          const answer = document.createElement('p');
-          answer.className = 'comparison-answer';
-          const answerLabel = document.createElement('strong');
-          answerLabel.textContent = 'Sua resposta: ';
-          answer.appendChild(answerLabel);
-          answer.appendChild(document.createTextNode(q.options[optionIndex].label));
-          const fitIntro = document.createElement('p');
-          fitIntro.className = 'comparison-fit-intro';
-          fitIntro.textContent = 'Relação de cada plano com a alternativa escolhida (com base no resumo abaixo):';
-          headingWrap.appendChild(heading);
-          headingWrap.appendChild(answer);
-          headingWrap.appendChild(fitIntro);
-          top.appendChild(number);
-          top.appendChild(headingWrap);
-          row.appendChild(top);
-
-          const columns = document.createElement('div');
-          columns.className = 'comparison-columns';
-          [
-            {id:'flavio',name:'Flávio Bolsonaro', party:'PL', text:proposalComparisons[q.id].flavio, url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'},
-            {id:'lula',name:'Lula', party:'PT', text:proposalComparisons[q.id].lula, url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'}
-          ].forEach(function(candidate){
-            const card = document.createElement('article');
-            card.className = 'comparison-candidate';
-            const cardHead = document.createElement('div');
-            cardHead.className = 'comparison-candidate-head';
-            const name = document.createElement('strong');
-            name.textContent = candidate.name;
-            const party = document.createElement('span');
-            party.textContent = candidate.party;
-            cardHead.appendChild(name);
-            cardHead.appendChild(party);
-            const summary = document.createElement('p');
-            summary.textContent = candidate.text;
-            const source = document.createElement('a');
-            source.href = candidate.url;
-            source.target = '_blank';
-            source.rel = 'noopener noreferrer';
-            source.textContent = 'Consultar plano completo no TSE ↗';
-            const relationRow = proposalFitByAnswer[q.id] && proposalFitByAnswer[q.id][optionIndex];
-            const relation = relationRow ? relationRow[candidate.id] : 'incerta';
-            const relationBadge = document.createElement('p');
-            relationBadge.className = 'comparison-fit comparison-fit--' + relation;
-            relationBadge.textContent = relation === 'direta'
-              ? 'Relação direta no resumo'
-              : relation === 'parcial'
-                ? 'Relação parcial no resumo'
-                : 'O resumo não permite concluir';
-            const relationNote = document.createElement('p');
-            relationNote.className = 'comparison-fit-note';
-            relationNote.textContent = relation === 'direta'
-              ? 'O recorte contém tópicos diretamente ligados à preferência marcada.'
-              : relation === 'parcial'
-                ? 'Há tópicos relacionados, mas o recorte não confirma todos os aspectos da preferência.'
-                : 'O recorte não traz informação suficiente para confirmar uma relação clara; consulte o plano completo.';
-            card.appendChild(cardHead);
-            card.appendChild(relationBadge);
-            card.appendChild(relationNote);
-            card.appendChild(summary);
-            card.appendChild(source);
-            columns.appendChild(card);
-          });
-          row.appendChild(columns);
-          comparisonContainer.appendChild(row);
+        [
+          {
+            name:'Flávio Bolsonaro',party:'PL',
+            summary:'O resumo do plano destaca redução de impostos, reforma tributária, regras fiscais, incentivo a empresas, segurança nas fronteiras, digitalização da saúde e ensino técnico.',
+            url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'
+          },
+          {
+            name:'Lula',party:'PT',
+            summary:'O resumo do plano destaca reforma tributária, regras fiscais, política industrial, proposta de mudança na escala 6x1, ações em saúde e educação, inclusão social e transição ecológica.',
+            url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'
+          }
+        ].forEach(function(candidate){
+          const card = document.createElement('article');
+          card.className = 'comparison-candidate';
+          const head = document.createElement('div');
+          head.className = 'comparison-candidate-head';
+          const name = document.createElement('strong');
+          name.textContent = candidate.name;
+          const party = document.createElement('span');
+          party.textContent = candidate.party;
+          head.appendChild(name); head.appendChild(party);
+          const summary = document.createElement('p');
+          summary.textContent = candidate.summary;
+          const source = document.createElement('a');
+          source.href = candidate.url; source.target = '_blank'; source.rel = 'noopener noreferrer';
+          source.textContent = 'Plano completo no TSE ↗';
+          card.appendChild(head); card.appendChild(summary); card.appendChild(source);
+          comparisonContainer.appendChild(card);
         });
-
         quizResults.hidden = false;
         quizResults.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
       });
