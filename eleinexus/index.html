@@ -1444,7 +1444,7 @@
           let matchedItems = 0;
           proposalItems.forEach(function(item){
             const itemText = item.textContent.toLocaleLowerCase('pt-BR');
-            const itemThemes = (item.dataset.theme || '').split(/\\s+/).filter(Boolean);
+            const itemThemes = (item.dataset.theme || '').split(/\s+/).filter(Boolean);
             const matchesTheme = theme === 'todos' || itemThemes.includes(theme);
             const matchesSearch = !term || headerMatchesSearch || itemText.includes(term);
             const showItem = matchesTheme && matchesSearch;
@@ -1452,7 +1452,7 @@
             if(showItem) matchedItems++;
           });
           const hasTaggedItems = proposalItems.length > 0;
-          const matchesTopic = theme === 'todos' || (hasTaggedItems ? matchedItems > 0 : (card.dataset.themes || '').split(/\\s+/).includes(theme));
+          const matchesTopic = theme === 'todos' || (hasTaggedItems ? matchedItems > 0 : (card.dataset.themes || '').split(/\s+/).includes(theme));
           const matchesSearch = !term || headerMatchesSearch || matchedItems > 0;
           const visible = matchesTopic && matchesSearch;
           card.hidden = !visible;
