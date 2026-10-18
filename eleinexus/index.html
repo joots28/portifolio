@@ -373,6 +373,22 @@
     .quiz-intro strong{display:block;margin:1px 0 4px;font-size:14px}
     .quiz-intro p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}
     .political-quiz{display:grid;gap:13px}
+    .quiz-step-header{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin:17px 0 0}
+    .quiz-step-header strong{display:block;font-size:17px;letter-spacing:-.25px;margin-top:4px;color:var(--ink)}
+    .quiz-step-percent{font-size:13px;font-weight:850;color:var(--green);white-space:nowrap}
+    .quiz-progress{height:8px;border-radius:99px;background:var(--paper2);border:1px solid var(--line);overflow:hidden;margin:0 0 6px}
+    .quiz-progress-fill{display:block;width:10%;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green),#3ba56e);transition:width .25s ease}
+    #politicalQuizQuestions{min-width:0}
+    .quiz-question[hidden]{display:none!important}
+    .quiz-question legend{font-size:clamp(18px,2.5vw,22px);letter-spacing:-.35px}
+    .quiz-question .quiz-prompt{font-size:13px;margin:9px 0 18px}
+    .quiz-option{padding:15px;font-size:13px;min-height:70px}
+    .quiz-option:focus-within{outline:2px solid var(--green);outline-offset:2px}
+    .quiz-actions{align-items:center;justify-content:space-between}
+    .quiz-actions .btn{min-height:46px}
+    .quiz-actions #resetPoliticalQuiz{margin-left:auto}
+    #quizPrevious:disabled,#quizNext:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+    #quizFinish[hidden],#quizNext[hidden]{display:none!important}
     .quiz-question{min-width:0;margin:0;padding:21px;background:var(--paper);border:1px solid var(--line);border-radius:19px}
     .quiz-question legend{padding:0;max-width:100%;font-size:16px;font-weight:850;line-height:1.4}
     .quiz-question .quiz-prompt{color:var(--muted);font-size:12px;line-height:1.65;margin:7px 0 15px}
@@ -526,14 +542,26 @@
           <div><strong>Comparação guiada pelas suas respostas.</strong><p>Suas respostas definem quais temas serão explicados e em que contexto. O sistema não calcula compatibilidade, não classifica candidatos e não recomenda voto; ele apresenta os dois planos para você avaliar por conta própria.</p></div>
         </div>
         <form id="politicalQuizForm" class="political-quiz">
+          <div class="quiz-step-header" aria-live="polite">
+            <div>
+              <span class="eyebrow">Questionário guiado</span>
+              <strong id="quizStepTitle">Pergunta 1 de 10</strong>
+            </div>
+            <span class="quiz-step-percent" id="quizStepPercent">10%</span>
+          </div>
+          <div class="quiz-progress" id="quizProgress" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1">
+            <span class="quiz-progress-fill" id="quizProgressFill"></span>
+          </div>
           <div id="politicalQuizQuestions"></div>
           <div class="quiz-actions">
-            <button class="btn btn-primary" type="submit">Comparar propostas pelo meu perfil</button>
-            <button class="btn btn-outline" type="reset" id="resetPoliticalQuiz">Limpar respostas</button>
+            <button class="btn btn-outline" type="button" id="quizPrevious" disabled>← Voltar</button>
+            <button class="btn btn-primary" type="button" id="quizNext" disabled>Próxima →</button>
+            <button class="btn btn-primary" type="submit" id="quizFinish" hidden>Ver meu perfil político →</button>
+            <button class="btn btn-outline" type="reset" id="resetPoliticalQuiz">Recomeçar</button>
           </div>
         </form>
         <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
-          <div class="quiz-results-head"><span class="eyebrow">Seu resultado</span><h3>Seu mapa de prioridades políticas</h3><p>Este resumo descreve as opções que você marcou, não sua identidade inteira nem um endosso a qualquer candidatura.</p></div>
+          <div class="quiz-results-head"><span class="eyebrow">Resultado do questionário</span><h3>Seu perfil político e suas prioridades</h3><p>Esta é uma descrição aproximada das respostas que você marcou, não uma definição permanente da sua identidade nem uma recomendação de voto.</p></div>
           <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
           <div class="quiz-results-list" id="politicalQuizResultItems"></div>
           <section class="match-results" id="matchResults" aria-labelledby="match-title">
@@ -918,7 +946,7 @@
           <details><summary>Como conferir uma informação compartilhada?</summary><p>Abra a fonte original, confira data e contexto, procure o documento completo e compare com outra fonte primária pertinente. Não se baseie apenas em uma imagem ou recorte de postagem.</p></details>
           <details><summary>O site guarda minhas opiniões ou prioridades?</summary><p>Não enviamos as notas da ferramenta de prioridades para servidor algum. As escolhas ficam apenas na memória desta página durante a visita e somem quando a página é recarregada ou fechada.</p></details>
           <details><summary>O site atualiza dados eleitorais automaticamente?</summary><p>Esta versão é um guia de consulta e não afirma ter sincronização automática com os cadastros do TSE. Para dados atuais, abra o registro oficial e confira a última atualização na fonte.</p></details>
-          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>Não. O comparador organiza os temas conforme suas respostas e apresenta resumos dos dois planos oficiais com links para o TSE. Ele não dá notas, não cria ranking e não recomenda voto. Consulte os documentos completos e compare propostas, metas, custos e prazos antes de formar sua própria conclusão.</p></details>
+          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>O questionário apresenta uma descrição aproximada das tendências nas respostas e organiza, por tema, resumos dos dois planos oficiais com links para o TSE. Não é um diagnóstico científico, não define sua identidade política, não dá notas a candidatos, não cria ranking e não recomenda voto. Consulte os documentos completos e compare propostas, metas, custos e prazos antes de formar sua própria conclusão.</p></details>
         </div>
       </div>
     </section>
@@ -1250,20 +1278,95 @@
       const quizForm = document.getElementById('politicalQuizForm');
       const quizResults = document.getElementById('politicalQuizResults');
       const quizResultItems = document.getElementById('politicalQuizResultItems');
+      const quizStepTitle = document.getElementById('quizStepTitle');
+      const quizStepPercent = document.getElementById('quizStepPercent');
+      const quizProgress = document.getElementById('quizProgress');
+      const quizProgressFill = document.getElementById('quizProgressFill');
+      const quizPrevious = document.getElementById('quizPrevious');
+      const quizNext = document.getElementById('quizNext');
+      const quizFinish = document.getElementById('quizFinish');
+      let currentQuestionIndex = 0;
+
       quizContainer.innerHTML = quizQuestions.map(function(q){
-        return '<fieldset class="quiz-question"><legend>'+q.title+'</legend><p class="quiz-prompt">'+q.prompt+'</p><div class="quiz-options">'+q.options.map(function(o,i){
-          return '<label class="quiz-option"><input type="radio" name="'+q.id+'" value="'+i+'" required><span>'+o.label+'</span></label>';
+        return '<fieldset class="quiz-question"><legend tabindex="-1">'+q.title+'</legend><p class="quiz-prompt">'+q.prompt+'</p><div class="quiz-options">'+q.options.map(function(o,i){
+          return '<label class="quiz-option"><input type="radio" name="'+q.id+'" value="'+i+'"><span>'+o.label+'</span></label>';
         }).join('')+'</div></fieldset>';
       }).join('');
+      const questionScreens = Array.from(quizContainer.querySelectorAll('.quiz-question'));
+
+      function getCurrentQuestionInput(){
+        const q = quizQuestions[currentQuestionIndex];
+        return q ? quizForm.querySelector('input[name="'+q.id+'"]:checked') : null;
+      }
+      function updateQuizStep(){
+        const total = quizQuestions.length;
+        const step = currentQuestionIndex + 1;
+        questionScreens.forEach(function(screen,index){screen.hidden = index !== currentQuestionIndex;});
+        const percent = Math.round((step / total) * 100);
+        quizStepTitle.textContent = 'Pergunta ' + step + ' de ' + total;
+        quizStepPercent.textContent = percent + '%';
+        quizProgress.setAttribute('aria-valuenow',String(step));
+        quizProgress.setAttribute('aria-valuemax',String(total));
+        quizProgress.setAttribute('aria-valuetext','Pergunta ' + step + ' de ' + total);
+        quizProgressFill.style.width = percent + '%';
+        quizPrevious.disabled = currentQuestionIndex === 0;
+        const answered = Boolean(getCurrentQuestionInput());
+        const lastQuestion = currentQuestionIndex === total - 1;
+        quizNext.hidden = lastQuestion;
+        quizFinish.hidden = !lastQuestion;
+        quizNext.disabled = !answered;
+        quizFinish.disabled = !answered;
+      }
+      function focusCurrentQuestion(){
+        const legend = questionScreens[currentQuestionIndex].querySelector('legend');
+        if(legend){
+          legend.focus({preventScroll:true});
+          legend.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+        }
+      }
+      updateQuizStep();
+
+      quizContainer.addEventListener('change',function(event){
+        if(event.target && event.target.matches('input[type="radio"]')) updateQuizStep();
+      });
+      quizNext.addEventListener('click',function(){
+        if(!getCurrentQuestionInput()) return;
+        if(currentQuestionIndex < quizQuestions.length - 1){
+          currentQuestionIndex += 1;
+          updateQuizStep();
+          focusCurrentQuestion();
+        }
+      });
+      quizPrevious.addEventListener('click',function(){
+        if(currentQuestionIndex > 0){
+          currentQuestionIndex -= 1;
+          updateQuizStep();
+          focusCurrentQuestion();
+        }
+      });
+
       quizForm.addEventListener('submit',function(e){
         e.preventDefault();
-        quizResultItems.innerHTML = '';
         const answers = {};
-        quizQuestions.forEach(function(q){
+        let firstUnanswered = -1;
+        quizQuestions.forEach(function(q,index){
           const chosen = quizForm.querySelector('input[name="'+q.id+'"]:checked');
-          if(!chosen)return;
-          const optionIndex = Number(chosen.value);
-          answers[q.id] = optionIndex;
+          if(!chosen){
+            if(firstUnanswered < 0) firstUnanswered = index;
+            return;
+          }
+          answers[q.id] = Number(chosen.value);
+        });
+        if(firstUnanswered >= 0){
+          currentQuestionIndex = firstUnanswered;
+          updateQuizStep();
+          focusCurrentQuestion();
+          return;
+        }
+
+        quizResultItems.innerHTML = '';
+        quizQuestions.forEach(function(q){
+          const optionIndex = answers[q.id];
           const item = document.createElement('article');
           item.className = 'quiz-result-item';
           const title = document.createElement('strong');
@@ -1275,12 +1378,41 @@
           quizResultItems.appendChild(item);
         });
 
+        const profileCounts = [0,0,0,0];
+        quizQuestions.forEach(function(q){profileCounts[answers[q.id]] += 1;});
+        const sortedCounts = profileCounts.slice().sort(function(a,b){return b-a;});
+        const dominantIndex = profileCounts.indexOf(sortedCounts[0]);
+        const secondCount = sortedCounts[1] || 0;
+        const profileDescriptions = [
+          {
+            title:'Tendência a valorizar iniciativa privada, autonomia individual e aplicação firme da lei',
+            detail:'Suas respostas deram mais peso a flexibilidade, liberdade de escolha, iniciativa privada, propriedade e aplicação da lei. Essa combinação descreve apenas a tendência observada neste questionário.'
+          },
+          {
+            title:'Tendência a combinar soluções públicas e privadas',
+            detail:'Suas respostas deram mais peso a combinações entre atividade privada, serviços públicos, proteção e avaliação de resultados, em vez de uma resposta única para todos os temas.'
+          },
+          {
+            title:'Tendência a priorizar políticas públicas, inclusão e proteção social',
+            detail:'Suas respostas deram mais peso ao investimento e à capacidade do Estado, à proteção de direitos, à prevenção e à ampliação do acesso a serviços.'
+          },
+          {
+            title:'Perfil pragmático: preferência por avaliar cada tema conforme evidências e resultados',
+            detail:'Suas respostas indicam preferência por analisar custos, eficácia, riscos e contexto de cada proposta, em vez de aderir a uma solução única em todos os assuntos.'
+          }
+        ];
+        let profileTitle = 'Perfil plural: suas respostas combinam orientações diferentes';
+        let profileDetail = 'Não há uma tendência única suficientemente destacada nas suas respostas. Isso é normal: opiniões políticas podem variar conforme o assunto. Use a comparação temática abaixo para analisar cada área separadamente.';
+        if(sortedCounts[0] - secondCount >= 2){
+          profileTitle = profileDescriptions[dominantIndex].title;
+          profileDetail = profileDescriptions[dominantIndex].detail;
+        }
         const profileBanner = document.getElementById('politicalProfileSummary');
         profileBanner.innerHTML = '';
         const profileHeading = document.createElement('strong');
-        profileHeading.textContent = 'Seu perfil reúne posições diferentes conforme o tema';
+        profileHeading.textContent = 'Seu perfil político é: ' + profileTitle + '.';
         const profileText = document.createElement('p');
-        profileText.textContent = 'Em vez de resumir todas as respostas a um rótulo ideológico único, a comparação abaixo mantém cada tema separado e mostra os pontos publicados nos planos de ambas as candidaturas. Assim você pode avaliar convergências, diferenças, detalhes e lacunas diretamente nas fontes.';
+        profileText.textContent = profileDetail + ' Contagem das respostas: iniciativa privada/autonomia/aplicação da lei ' + profileCounts[0] + '; combinação de soluções ' + profileCounts[1] + '; atuação pública/proteção social ' + profileCounts[2] + '; avaliação caso a caso ' + profileCounts[3] + '. O resultado é uma descrição aproximada, não um diagnóstico nem um rótulo fixo.';
         profileBanner.appendChild(profileHeading);
         profileBanner.appendChild(profileText);
 
@@ -1353,6 +1485,8 @@
         quizResultItems.innerHTML = '';
         document.getElementById('matchCandidateResults').innerHTML = '';
         document.getElementById('politicalProfileSummary').innerHTML = '';
+        currentQuestionIndex = 0;
+        window.setTimeout(updateQuizStep,0);
       });
       document.getElementById('editPoliticalQuiz').addEventListener('click',function(){
         document.getElementById('perfil-politico').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
