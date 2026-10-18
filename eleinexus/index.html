@@ -777,7 +777,7 @@
     }
 
   
-    #matchResults > .share-result-box{width:100%;grid-column:1/-1;margin-top:16px}
+    #politicalQuizResults > .share-result-box{display:block;width:100%;max-width:100%;box-sizing:border-box;margin:16px 0}
     #shareCardPreview .share-preview-photo{display:block}
     #shareCardPreview .share-preview-row strong{font-variant-numeric:tabular-nums}
     .share-card-palette{margin-top:13px}
@@ -1827,7 +1827,7 @@
         shareBox.id='quizShareResultBox';
         shareBox.className='share-result-box';
         shareBox.innerHTML='<div class="share-result-head"><span class="eyebrow">Compartilhe</span><h4>Seu card para as redes sociais</h4><p>Mostra a proporção das opções escolhidas associadas às posições públicas de cada campanha. Não é teste de personalidade nem nota de candidato.</p></div><div class="share-card-palette" role="group" aria-label="Escolha o estilo visual do card"><span>Escolha as cores do seu card · a paleta não altera o resultado</span><button class="share-palette-choice" type="button" data-share-palette="lula" aria-pressed="false"><span class="share-palette-dots" aria-hidden="true"><i style="background:#9c1c25"></i><i style="background:#e52e37"></i><i style="background:#f5d7d8"></i></span>Vermelho · Lula</button><button class="share-palette-choice" type="button" data-share-palette="flavio" aria-pressed="false"><span class="share-palette-dots" aria-hidden="true"><i style="background:#064f35"></i><i style="background:#159657"></i><i style="background:#ffce45"></i></span>Verde/amarelo · Flávio</button><button class="share-palette-choice" type="button" data-share-palette="azul" aria-pressed="false"><span class="share-palette-dots" aria-hidden="true"><i style="background:#071b35"></i><i style="background:#8fc8ff"></i><i style="background:#f1c66e"></i></span>Azul</button><button class="share-palette-choice" type="button" data-share-palette="claro" aria-pressed="true"><span class="share-palette-dots" aria-hidden="true"><i style="background:#f3f8f5;border:1px solid #9aa"></i><i style="background:#16835c"></i><i style="background:#2f66b1"></i></span>Claro/neutro</button></div><div class="share-card-preview" id="shareCardPreview" data-theme="brasil"><div class="share-preview-brand">EleiNexus <span>RESULTADO DO QUESTIONÁRIO</span></div><h5>Distribuição das minhas escolhas</h5><div class="share-preview-candidate"><img class="share-preview-photo" id="sharePhotoFlavio" src="./share-flavio.jpg" alt="Foto oficial de Flávio Bolsonaro, fonte TSE" loading="lazy"><div class="share-preview-candidate-info"><div class="share-preview-row"><span>Flávio Bolsonaro</span><strong id="sharePctFlavio">'+percent.flavio+'%</strong></div><div class="share-preview-bar"><span id="shareBarFlavio" style="width:'+percent.flavio+'%"></span></div></div></div><div class="share-preview-candidate"><img class="share-preview-photo" id="sharePhotoLula" src="./share-lula.jpg" alt="Foto oficial de Lula, fonte TSE" loading="lazy"><div class="share-preview-candidate-info"><div class="share-preview-row"><span>Lula</span><strong id="sharePctLula">'+percent.lula+'%</strong></div><div class="share-preview-bar share-preview-bar--green"><span id="shareBarLula" style="width:'+percent.lula+'%"></span></div></div></div><p class="share-preview-note">Percentual das alternativas que marquei, não uma medida de afinidade política ou recomendação de voto.</p><p class="share-preview-invite">Conheça o EleiNexus, consulte as fontes e compartilhe: eleinexus-civico.onrender.com</p></div><div class="share-result-actions"><button class="btn btn-primary" type="button" id="shareImageButton">Compartilhar card + convite</button><button class="btn btn-outline" type="button" id="downloadShareCard">Baixar card PNG</button><button class="btn btn-outline" type="button" id="shareWhatsAppButton">WhatsApp</button><button class="btn btn-outline" type="button" id="shareXButton">X</button><button class="btn btn-outline" type="button" id="downloadInstagramCard">Baixar para Instagram</button></div><p class="share-result-foot">O card já leva o endereço do EleiNexus. A opção de compartilhar envia também uma mensagem-convite e o link quando o aplicativo escolhido aceita texto junto da imagem; WhatsApp e X têm atalhos com convite e link.</p>';
-        comparisonContainer.parentNode.insertBefore(shareBox, comparisonContainer.nextSibling);
+        profileBanner.parentNode.insertBefore(shareBox, profileBanner.nextSibling);
 
         let selectedSharePalette='claro';
         const sharePalettes={
@@ -1998,7 +1998,7 @@
         quizResults.insertBefore(shareBox,actions);
         quizForm.hidden = true;
         quizResults.hidden = false;
-        quizResults.scrollIntoView({
+        shareBox.scrollIntoView({
           behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
           block:'start'
         });
