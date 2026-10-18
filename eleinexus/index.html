@@ -1489,7 +1489,11 @@
         window.setTimeout(updateQuizStep,0);
       });
       document.getElementById('editPoliticalQuiz').addEventListener('click',function(){
+        quizResults.hidden = true;
+        currentQuestionIndex = 0;
+        updateQuizStep();
         document.getElementById('perfil-politico').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+        focusCurrentQuestion();
       });
     })();
   </script>
