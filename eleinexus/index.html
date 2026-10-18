@@ -608,6 +608,51 @@
       .quiz-results-actions .btn{padding:10px 7px;font-size:12px}
     }
 
+  
+    /* Distribuição das respostas e card exportável para redes sociais. */
+    #pesquisas{display:block!important;padding-top:42px;padding-bottom:48px}
+    #pesquisas .stats-dashboard{margin-top:28px}
+    #pesquisas .poll-grid{margin-top:15px}
+    #pesquisas .poll-card-foot{font-size:11px}
+    .campaign-count-percent{font-size:28px;font-weight:900;color:var(--green);line-height:1.1;margin-top:3px}
+    .campaign-count-track{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+    .campaign-count-fill{height:100%;display:block;border-radius:99px}
+    .campaign-count-fill--blue{background:#2f66b1}
+    .campaign-count-fill--green{background:#16835c}
+    .share-result-box{margin-top:18px;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--paper)}
+    .share-result-head h4{font-size:20px;line-height:1.2;margin:9px 0}
+    .share-result-head p{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 14px}
+    .share-card-preview{max-width:640px;margin:0 auto;padding:20px;border-radius:18px;background:linear-gradient(145deg,#0b2d26,#164b38);color:#fff;border-top:5px solid var(--yellow)}
+    .share-preview-brand{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:900;letter-spacing:.3px}
+    .share-preview-brand span{font-size:9px;letter-spacing:1px;color:#c9e5d6}
+    .share-card-preview h5{font-size:24px;line-height:1.2;margin:20px 0}
+    .share-preview-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:15px 0 6px}
+    .share-preview-row span{font-size:14px;font-weight:750}
+    .share-preview-row strong{font-size:28px;color:var(--yellow)}
+    .share-preview-bar{height:9px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+    .share-preview-bar span{height:100%;display:block;background:#8eb3ff;border-radius:99px}
+    .share-preview-bar--green span{background:#64d49a}
+    .share-preview-note{font-size:11px;line-height:1.5;color:#d7e9dd;margin:20px 0 0}
+    .share-result-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+    .share-result-actions .btn{font-size:12px;padding:11px 13px}
+    .share-result-foot{font-size:11px;color:var(--muted);line-height:1.5;margin:12px 0 0}
+    @media(max-width:760px){
+      #pesquisas{padding-top:28px;padding-bottom:34px}
+      #pesquisas .stats-dashboard{margin-top:24px}
+      #pesquisas .section-head{display:block}
+      #pesquisas .section-head .section-tag{display:none}
+      #pesquisas .stat-panel{padding:15px}
+      .campaign-count-grid{grid-template-columns:1fr}
+      .share-result-box{padding:13px}
+      .share-card-preview{padding:15px}
+      .share-card-preview h5{font-size:21px}
+      .share-preview-brand span{font-size:8px}
+      .share-preview-row span{font-size:12px}
+      .share-preview-row strong{font-size:25px}
+      .share-result-actions{display:grid;grid-template-columns:1fr 1fr}
+      .share-result-actions .btn{width:100%;min-height:44px;padding:10px 8px}
+    }
+
   </style>
 </head>
 <body>
@@ -619,7 +664,7 @@
         <span><span class="brandname">EleiNexus</span><span class="brandtag">Informação cívica independente</span></span>
       </a>
       <nav class="navlinks" id="mainNav" aria-label="Navegação principal">
-        <a href="#candidatos">Planos</a><a href="#perfil-politico">Questionário</a><a href="#fontes">Fontes oficiais</a>
+        <a href="#candidatos">Planos</a><a href="#perfil-politico">Questionário</a><a href="#pesquisas">Pesquisas</a><a href="#fontes">Fontes oficiais</a>
       </nav>
       <div class="navtools">
         <button class="iconbtn" id="themeToggle" type="button" aria-label="Ativar tema escuro" title="Alternar tema"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 13A8.5 8.5 0 0 1 11 3.2 8.5 8.5 0 1 0 20.8 13Z"/></svg></button>
@@ -916,9 +961,62 @@
       </div>
     </section>
 
-    <section class="section surface" id="pesquisas">
+    
+
+    <section class="section" id="resultados">
       <div class="shell">
-        <div class="section-head"><div class="copy"><span class="eyebrow">Pesquisas eleitorais</span><h2>Um número sem método conta só parte da história.</h2><p>Consulte o registro original e leia os detalhes da pesquisa. O EleiNexus não gera estimativas, não altera percentuais e não transforma pesquisa em resultado oficial.</p></div><span class="section-tag">Fonte: PesqEle / TSE</span></div>
+        <div class="results-box">
+          <div><span class="eyebrow">Apuração oficial</span><h2>Resultado se confirma na urna apurada, não em pesquisa.</h2><p>Para votos contabilizados, comparecimento e resultados por localidade, acesse a divulgação oficial da Justiça Eleitoral. Não exibimos projeções como se fossem resultados.</p></div>
+          <a class="btn btn-light" href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Consultar resultados do TSE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="prioridades">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Ferramenta pessoal</span><h2>O que merece sua atenção?</h2><p>Organize a importância dos temas que gostaria de estudar. Este exercício não classifica partidos, não pontua candidatos e não recomenda voto.</p></div><span class="section-tag">Processamento local</span></div>
+        <div class="priority-layout">
+          <aside class="priority-info"><h3>Suas pautas, sem uma resposta pronta.</h3><p>Marque de 1 a 5 para indicar a importância de cada tema para sua própria leitura. Você pode avaliar todos os temas; não há limite de escolhas.</p><p class="small muted">1 = menos importante para mim<br>5 = prioridade muito alta para mim</p><div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 7v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Privacidade por design.</strong><br>As escolhas ficam na memória desta página durante a visita, não são enviadas a um servidor e não são salvas em conta alguma.</div></div></aside>
+          <div>
+            <div class="priority-controls"><input class="filter-input" id="topicSearch" type="search" placeholder="Filtrar temas..." aria-label="Filtrar temas de prioridade"><button class="btn btn-outline" id="resetPriorities" type="button">Limpar notas</button></div>
+            <div class="priority-list" id="priorityList"></div>
+            <div class="priority-output" id="priorityOutput" aria-live="polite"><strong>Seu resumo de prioridades</strong><p>Escolha uma nota em qualquer tema para começar a montar seu resumo pessoal.</p><button class="btn btn-primary" id="copyPriorities" type="button" disabled>Copiar meu resumo</button></div>
+            <p class="small muted" style="margin-top:11px">O resumo não inclui candidatos, partidos nem correspondência ideológica. Ele serve apenas como roteiro de leitura pessoal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fontes">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Rastreabilidade</span><h2>Comece pelas fontes oficiais.</h2><p>Links primários para confirmar registros, documentos e resultados. Sempre confira a página de origem, a data e o contexto do conteúdo.</p></div><span class="section-tag">Links externos</span></div>
+        <div class="source-grid">
+          <article class="source-card"><span class="source-mark">TSE</span><div><strong>Tribunal Superior Eleitoral</strong><p>Portal institucional, eleições, legislação e comunicados.</p><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar TSE ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">DC</span><div><strong>DivulgaCandContas</strong><p>Registro de candidaturas e dados de campanha disponíveis no sistema.</p><a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Consultar registro eleitoral ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">PE</span><div><strong>PesqEle</strong><p>Consulta oficial de registros de pesquisas eleitorais.</p><a href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Acessar PesqEle ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">R</span><div><strong>Resultados TSE</strong><p>Divulgação oficial dos resultados da apuração.</p><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar resultados ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">DA</span><div><strong>Dados abertos do TSE</strong><p>Conjuntos e arquivos públicos para análise e reutilização.</p><a href="https://dadosabertos.tse.jus.br/pt_BR/dataset/candidatos-2026" target="_blank" rel="noopener noreferrer">Ver base de candidatos 2026 ↗</a></div></article>
+          <article class="source-card"><span class="source-mark">PG</span><div><strong>Planos presidenciais 2026</strong><p>Índice oficial do TSE com os programas apresentados pelas candidaturas à Presidência.</p><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026" target="_blank" rel="noopener noreferrer">Consultar todos os planos ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface" id="metodologia">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Compromisso editorial</span><h2>Transparência também é admitir limites.</h2><p>O EleiNexus prioriza dados de origem identificável, leitura crítica e autonomia de quem consulta. Não vendemos certezas políticas.</p></div><span class="section-tag">Metodologia e privacidade</span></div>
+        <div class="faq-grid">
+          <details><summary>O EleiNexus é ligado a partido ou candidato?</summary><p>Não. O projeto se apresenta como uma ferramenta cívica independente e apartidária. Os links externos levam aos sites das instituições identificadas e não significam endosso político.</p></details>
+          <details><summary>Por que não mostrar números de pesquisas na página inicial?</summary><p>Não exibimos percentuais eleitorais sem uma integração confiável com a fonte primária e confirmação do registro, contexto e data. O portal oficial é a referência para consultar a versão atual.</p></details>
+          <details><summary>Como conferir uma informação compartilhada?</summary><p>Abra a fonte original, confira data e contexto, procure o documento completo e compare com outra fonte primária pertinente. Não se baseie apenas em uma imagem ou recorte de postagem.</p></details>
+          <details><summary>O site guarda minhas opiniões ou prioridades?</summary><p>Não enviamos as notas da ferramenta de prioridades para servidor algum. As escolhas ficam apenas na memória desta página durante a visita e somem quando a página é recarregada ou fechada.</p></details>
+          <details><summary>O site atualiza dados eleitorais automaticamente?</summary><p>Esta versão é um guia de consulta e não afirma ter sincronização automática com os cadastros do TSE. Para dados atuais, abra o registro oficial e confira a última atualização na fonte.</p></details>
+          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>O questionário apresenta uma descrição aproximada das tendências nas respostas e organiza, por tema, resumos dos dois planos oficiais com links para o TSE. Não é um diagnóstico científico, não define sua identidade política, não dá notas a candidatos, não cria ranking e não recomenda voto. Consulte os documentos completos e compare propostas, metas, custos e prazos antes de formar sua própria conclusão.</p></details>
+        </div>
+      </div>
+    </section>
+  <section class="section surface" id="pesquisas">
+      <div class="shell">
+        <div class="section-head"><div class="copy"><span class="eyebrow">Pesquisas eleitorais</span><h2>Os números mudam conforme a pesquisa.</h2><p>Veja quatro levantamentos recentes, os dados de campo e as fontes. Compare métodos e consulte o registro no TSE.</p></div><span class="section-tag">Fonte de registro: PesqEle / TSE</span></div>
         <div class="research-layout">
           <article class="research-main primary"><div class="research-top"><span class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M8 11h5M10.5 8.5v5"/></svg></span><span class="source-tag">Fonte oficial</span></div><h3>Pesquisas registradas nos últimos 30 dias</h3><p>Consulte os registros recentes, confira o protocolo e abra os dados completos na plataforma do Tribunal Superior Eleitoral.</p><a class="btn btn-primary" href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Consultar pesquisas recentes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></article>
           <article class="research-main"><div class="research-top"><span class="research-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M7 15l3-4 3 2 4-6"/></svg></span><span class="source-tag">Consulta estatística</span></div><h3>Lista estatística de pesquisas</h3><p>Use a consulta estatística oficial para localizar registros conforme os filtros e critérios oferecidos pelo sistema.</p><a class="btn btn-outline" href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listarEstatisticos.xhtml" target="_blank" rel="noopener noreferrer">Abrir consulta estatística <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a></article>
@@ -927,17 +1025,17 @@
           <div class="stats-dashboard-head">
             <div>
               <span class="eyebrow">Painel estatístico</span>
-              <h3 id="stats-dashboard-title">Gráficos e estatísticas eleitorais</h3>
-              <p>Uma leitura visual das pesquisas mais recentes consultadas, do resultado do primeiro turno e da participação eleitoral. Cada gráfico informa período, metodologia disponível e fonte.</p>
+              <h3 id="stats-dashboard-title">Pesquisas e participação</h3>
+              <p>Veja intenção de voto, resultado já apurado e comparecimento. Cada gráfico informa a data e sua fonte.</p>
             </div>
-            <span class="section-tag">Atualizado em 17/10/2026</span>
+            <span class="section-tag">Dados conferidos em 17/10/2026</span>
           </div>
 
           <section class="stat-panel" aria-labelledby="poll-chart-title">
             <div class="stat-panel-head">
               <div>
-                <h4 id="poll-chart-title">Segundo turno — intenção de voto em votos válidos</h4>
-                <p class="chart-copy">Percentuais divulgados por cada instituto. As barras usam escala de 0% a 100%; os resultados não foram calculados por média entre pesquisas.</p>
+                <h4 id="poll-chart-title">Segundo turno — intenção de voto estimulada</h4>
+                <p class="chart-copy">Percentuais de intenção de voto sobre o total entrevistado, não votos válidos. Os métodos e as datas variam; as pesquisas são retratos do período de campo, não previsão nem resultado oficial.</p>
               </div>
               <span class="source-tag">Pesquisas, não apuração</span>
             </div>
@@ -948,46 +1046,43 @@
             <div class="poll-grid">
               <article class="poll-card">
                 <div class="poll-card-head">
-                  <div><h5>PoderData / AYA</h5><p class="poll-meta">Divulgada em 16/10 · campo: 13–15/10</p></div>
-                  <a href="https://noticias.uol.com.br/eleicoes/2026/10/16/poderdata-lula-flavio-bolsonaro-presidencia-republica-segundo-turno.ghtm" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                  <div><h5>Datafolha</h5><p class="poll-meta">Divulgada em 16/10 · campo: 13–14/10</p></div>
+                  <a href="https://datafolha.folha.uol.com.br/eleicoes/2026/10/flavio-bolsonaro-pl-tem-47-e-tem-empate-tecnico-com-lula-pt-que-aparece-com-45.shtml" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
                 </div>
-                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>50,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:50%"></span></div></div>
-                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>50,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:50%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>47,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:47%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>45,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:45%"></span></div></div>
                 <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
-                <div class="poll-card-foot">Amostra: 3.000 · margem de erro: ±1,8 p.p. · registro TSE: BR-04258/2026.</div>
+                <div class="poll-card-foot">Amostra: 2.520 pessoas · margem de erro: ±2,0 p.p. · 95% de confiança · registro TSE: BR-00466/2026. Outros/não definidos: 8%.</div>
               </article>
-
+              <article class="poll-card">
+                <div class="poll-card-head">
+                  <div><h5>Quaest</h5><p class="poll-meta">Divulgada em 14/10 · campo: 10–13/10</p></div>
+                  <a href="https://www1.folha.uol.com.br/poder/2026/10/quaest-flavio-bolsonaro-marca-46-e-lula-tem-44-no-2o-turno.shtml" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                </div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>46,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:46%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>44,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:44%"></span></div></div>
+                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+                <div class="poll-card-foot">Amostra: 2.154 pessoas · margem de erro: ±2,0 p.p. · 95% de confiança · registro TSE: BR-08729/2026. Brancos/nulos: 9% · indecisos: 1%.</div>
+              </article>
               <article class="poll-card">
                 <div class="poll-card-head">
                   <div><h5>CNT / MDA</h5><p class="poll-meta">Divulgada em 16/10 · campo: 13–15/10</p></div>
-                  <a href="https://www.cnnbrasil.com.br/eleicoes/cnt-mda-flavio-tem-505-dos-votos-validos-no-2o-turno-lula-495/" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                  <a href="https://noticias.uol.com.br/eleicoes/2026/10/16/cntmda-pesquisa-presidencial-2-turno.ghtm" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
                 </div>
-                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>50,5%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:50.5%"></span></div></div>
-                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>49,5%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:49.5%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>46,8%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:46.8%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>45,9%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:45.9%"></span></div></div>
                 <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
-                <div class="poll-card-foot">Amostra: 2.014 · margem de erro: ±2,2 p.p. · registro TSE: BR-00652/2026.</div>
+                <div class="poll-card-foot">Amostra: 2.014 pessoas · margem de erro: ±2,2 p.p. · 95% de confiança · registro TSE: BR-00652/2026. Brancos/nulos: 4,9% · indecisos: 2,4%.</div>
               </article>
-
               <article class="poll-card">
                 <div class="poll-card-head">
-                  <div><h5>Futura / 100% Cidades</h5><p class="poll-meta">Divulgada em 16/10 · campo: 14–15/10</p></div>
-                  <a href="https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-508-dos-votos-validos-no-2o-turno-lula-492/" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
+                  <div><h5>PoderData / AYA</h5><p class="poll-meta">Divulgada em 13/10 · campo: 10–12/10</p></div>
+                  <a href="https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/10/13/poderdataaya-flavio-tem-51-dos-votos-validos-e-lula-49-diferenca-cai-de-6-para-2-pontos.amp.htm" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
                 </div>
-                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>50,8%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:50.8%"></span></div></div>
-                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>49,2%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:49.2%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>48,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:48%"></span></div></div>
+                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>46,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:46%"></span></div></div>
                 <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
-                <div class="poll-card-foot">Amostra: 2.000 · margem de erro: ±2,2 p.p. · registro TSE: BR-03764/2026.</div>
-              </article>
-
-              <article class="poll-card">
-                <div class="poll-card-head">
-                  <div><h5>Datafolha</h5><p class="poll-meta">Divulgada em 15/10 · campo: 13–14/10</p></div>
-                  <a href="https://www1.folha.uol.com.br/poder/2026/10/datafolha-divulga-nova-pesquisa-de-2o-turno-para-presidente-nesta-quinta-15-live-comenta-resultados.shtml" target="_blank" rel="noopener noreferrer">Fonte ↗</a>
-                </div>
-                <div class="poll-line"><div class="poll-line-label"><span>Flávio Bolsonaro</span><strong>51,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-flavio" style="width:51%"></span></div></div>
-                <div class="poll-line"><div class="poll-line-label"><span>Lula</span><strong>49,0%</strong></div><div class="bar-track" aria-hidden="true"><span class="bar-fill bar-lula" style="width:49%"></span></div></div>
-                <div class="chart-scale"><span>0%</span><span>50%</span><span>100%</span></div>
-                <div class="poll-card-foot">Amostra: 2.520 · margem de erro: ±2,0 p.p. · registro TSE: BR-00466/2026.</div>
+                <div class="poll-card-foot">Amostra: 3.000 pessoas · margem de erro: ±1,8 p.p. · 95% de confiança · registro TSE: BR-01209/2026. Brancos/nulos: 5% · indecisos: 2%.</div>
               </article>
             </div>
             <div class="stat-alert"><strong>Como interpretar:</strong> as diferenças informadas estão dentro ou no limite das margens de erro divulgadas, então não devem ser lidas como previsão de vencedor. Os institutos usam métodos e datas de coleta diferentes. Confira a metodologia e o registro de cada levantamento no TSE antes de comparar.</div>
@@ -1041,59 +1136,7 @@
         <p class="muted small" style="margin-top:16px">A margem de erro não é uma garantia de que o resultado real estará dentro de um intervalo fixo. Pesquisas diferentes podem usar métodos, amostras e períodos distintos.</p>
       </div>
     </section>
-
-    <section class="section" id="resultados">
-      <div class="shell">
-        <div class="results-box">
-          <div><span class="eyebrow">Apuração oficial</span><h2>Resultado se confirma na urna apurada, não em pesquisa.</h2><p>Para votos contabilizados, comparecimento e resultados por localidade, acesse a divulgação oficial da Justiça Eleitoral. Não exibimos projeções como se fossem resultados.</p></div>
-          <a class="btn btn-light" href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Consultar resultados do TSE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v7H4V5h7"/></svg></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section surface" id="prioridades">
-      <div class="shell">
-        <div class="section-head"><div class="copy"><span class="eyebrow">Ferramenta pessoal</span><h2>O que merece sua atenção?</h2><p>Organize a importância dos temas que gostaria de estudar. Este exercício não classifica partidos, não pontua candidatos e não recomenda voto.</p></div><span class="section-tag">Processamento local</span></div>
-        <div class="priority-layout">
-          <aside class="priority-info"><h3>Suas pautas, sem uma resposta pronta.</h3><p>Marque de 1 a 5 para indicar a importância de cada tema para sua própria leitura. Você pode avaliar todos os temas; não há limite de escolhas.</p><p class="small muted">1 = menos importante para mim<br>5 = prioridade muito alta para mim</p><div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 7v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>Privacidade por design.</strong><br>As escolhas ficam na memória desta página durante a visita, não são enviadas a um servidor e não são salvas em conta alguma.</div></div></aside>
-          <div>
-            <div class="priority-controls"><input class="filter-input" id="topicSearch" type="search" placeholder="Filtrar temas..." aria-label="Filtrar temas de prioridade"><button class="btn btn-outline" id="resetPriorities" type="button">Limpar notas</button></div>
-            <div class="priority-list" id="priorityList"></div>
-            <div class="priority-output" id="priorityOutput" aria-live="polite"><strong>Seu resumo de prioridades</strong><p>Escolha uma nota em qualquer tema para começar a montar seu resumo pessoal.</p><button class="btn btn-primary" id="copyPriorities" type="button" disabled>Copiar meu resumo</button></div>
-            <p class="small muted" style="margin-top:11px">O resumo não inclui candidatos, partidos nem correspondência ideológica. Ele serve apenas como roteiro de leitura pessoal.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="fontes">
-      <div class="shell">
-        <div class="section-head"><div class="copy"><span class="eyebrow">Rastreabilidade</span><h2>Comece pelas fontes oficiais.</h2><p>Links primários para confirmar registros, documentos e resultados. Sempre confira a página de origem, a data e o contexto do conteúdo.</p></div><span class="section-tag">Links externos</span></div>
-        <div class="source-grid">
-          <article class="source-card"><span class="source-mark">TSE</span><div><strong>Tribunal Superior Eleitoral</strong><p>Portal institucional, eleições, legislação e comunicados.</p><a href="https://www.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar TSE ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">DC</span><div><strong>DivulgaCandContas</strong><p>Registro de candidaturas e dados de campanha disponíveis no sistema.</p><a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener noreferrer">Consultar registro eleitoral ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">PE</span><div><strong>PesqEle</strong><p>Consulta oficial de registros de pesquisas eleitorais.</p><a href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar30dias.xhtml" target="_blank" rel="noopener noreferrer">Acessar PesqEle ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">R</span><div><strong>Resultados TSE</strong><p>Divulgação oficial dos resultados da apuração.</p><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Acessar resultados ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">DA</span><div><strong>Dados abertos do TSE</strong><p>Conjuntos e arquivos públicos para análise e reutilização.</p><a href="https://dadosabertos.tse.jus.br/pt_BR/dataset/candidatos-2026" target="_blank" rel="noopener noreferrer">Ver base de candidatos 2026 ↗</a></div></article>
-          <article class="source-card"><span class="source-mark">PG</span><div><strong>Planos presidenciais 2026</strong><p>Índice oficial do TSE com os programas apresentados pelas candidaturas à Presidência.</p><a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026" target="_blank" rel="noopener noreferrer">Consultar todos os planos ↗</a></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section surface" id="metodologia">
-      <div class="shell">
-        <div class="section-head"><div class="copy"><span class="eyebrow">Compromisso editorial</span><h2>Transparência também é admitir limites.</h2><p>O EleiNexus prioriza dados de origem identificável, leitura crítica e autonomia de quem consulta. Não vendemos certezas políticas.</p></div><span class="section-tag">Metodologia e privacidade</span></div>
-        <div class="faq-grid">
-          <details><summary>O EleiNexus é ligado a partido ou candidato?</summary><p>Não. O projeto se apresenta como uma ferramenta cívica independente e apartidária. Os links externos levam aos sites das instituições identificadas e não significam endosso político.</p></details>
-          <details><summary>Por que não mostrar números de pesquisas na página inicial?</summary><p>Não exibimos percentuais eleitorais sem uma integração confiável com a fonte primária e confirmação do registro, contexto e data. O portal oficial é a referência para consultar a versão atual.</p></details>
-          <details><summary>Como conferir uma informação compartilhada?</summary><p>Abra a fonte original, confira data e contexto, procure o documento completo e compare com outra fonte primária pertinente. Não se baseie apenas em uma imagem ou recorte de postagem.</p></details>
-          <details><summary>O site guarda minhas opiniões ou prioridades?</summary><p>Não enviamos as notas da ferramenta de prioridades para servidor algum. As escolhas ficam apenas na memória desta página durante a visita e somem quando a página é recarregada ou fechada.</p></details>
-          <details><summary>O site atualiza dados eleitorais automaticamente?</summary><p>Esta versão é um guia de consulta e não afirma ter sincronização automática com os cadastros do TSE. Para dados atuais, abra o registro oficial e confira a última atualização na fonte.</p></details>
-          <details><summary>O EleiNexus recomenda em quem votar?</summary><p>O questionário apresenta uma descrição aproximada das tendências nas respostas e organiza, por tema, resumos dos dois planos oficiais com links para o TSE. Não é um diagnóstico científico, não define sua identidade política, não dá notas a candidatos, não cria ranking e não recomenda voto. Consulte os documentos completos e compare propostas, metas, custos e prazos antes de formar sua própria conclusão.</p></details>
-        </div>
-      </div>
-    </section>
-  </main>
+</main>
 
   <footer class="footer">
     <div class="shell">
@@ -1527,19 +1570,15 @@
         const planUrls={flavio:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro',lula:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'};
         const counts={flavio:0,lula:0};
         quizQuestions.forEach(function(q){counts[q.options[answers[q.id]].candidate]++;});
+        const percent={flavio:Math.round(counts.flavio/quizQuestions.length*100),lula:Math.round(counts.lula/quizQuestions.length*100)};
         const profileBanner=document.getElementById('politicalProfileSummary');
         profileBanner.innerHTML='';
         const profileHeading=document.createElement('strong');
-        if(counts.flavio>counts.lula){
-          profileHeading.textContent='Nas suas escolhas, '+counts.flavio+' de 10 alternativas foram associadas a posições de Flávio Bolsonaro e '+counts.lula+' a posições de Lula.';
-        }else if(counts.lula>counts.flavio){
-          profileHeading.textContent='Nas suas escolhas, '+counts.lula+' de 10 alternativas foram associadas a posições de Lula e '+counts.flavio+' a posições de Flávio Bolsonaro.';
-        }else{
-          profileHeading.textContent='Suas escolhas ficaram divididas: '+counts.flavio+' alternativas associadas a cada campanha.';
-        }
+        profileHeading.textContent='Distribuição das suas escolhas: '+percent.flavio+'% das alternativas selecionadas foram associadas editorialmente a posições públicas da campanha de Flávio Bolsonaro e '+percent.lula+'% à campanha de Lula.';
         const profileText=document.createElement('p');
-        profileText.textContent='Isso mostra apenas as posições que você selecionou neste questionário — não é recomendação de voto, avaliação de candidato nem previsão de resultado.';
+        profileText.textContent='A porcentagem conta as opções marcadas neste questionário. Ela não mede afinidade política, não define sua identidade e não recomenda voto.';
         profileBanner.appendChild(profileHeading);profileBanner.appendChild(profileText);
+
         const comparisonContainer=document.getElementById('matchCandidateResults');
         comparisonContainer.innerHTML='';
         const countPanel=document.createElement('div');countPanel.className='campaign-count-grid';
@@ -1548,12 +1587,106 @@
           const img=document.createElement('img');img.src=photos[id];img.alt='Foto de '+names[id];img.width=48;img.height=58;
           const content=document.createElement('div');
           const name=document.createElement('strong');name.textContent=names[id];
-          const count=document.createElement('p');count.textContent=counts[id]+' de 10 opções selecionadas';
+          const percentEl=document.createElement('div');percentEl.className='campaign-count-percent';percentEl.textContent=percent[id]+'%';
+          const count=document.createElement('p');count.textContent=counts[id]+' de 10 opções escolhidas';
+          const bar=document.createElement('div');bar.className='campaign-count-track';
+          const fill=document.createElement('span');fill.className=id==='flavio'?'campaign-count-fill campaign-count-fill--blue':'campaign-count-fill campaign-count-fill--green';fill.style.width=percent[id]+'%';bar.appendChild(fill);
           const plan=document.createElement('a');plan.href=planUrls[id];plan.target='_blank';plan.rel='noopener noreferrer';plan.textContent='Plano oficial no TSE ↗';
-          content.appendChild(name);content.appendChild(count);content.appendChild(plan);
+          content.appendChild(name);content.appendChild(percentEl);content.appendChild(count);content.appendChild(bar);content.appendChild(plan);
           card.appendChild(img);card.appendChild(content);countPanel.appendChild(card);
         });
         comparisonContainer.appendChild(countPanel);
+
+        const shareBox=document.createElement('section');
+        shareBox.className='share-result-box';
+        shareBox.innerHTML='<div class="share-result-head"><span class="eyebrow">Compartilhe</span><h4>Seu card para as redes sociais</h4><p>Mostra a proporção das opções escolhidas associadas às posições públicas de cada campanha. Não é teste de personalidade nem nota de candidato.</p></div><div class="share-card-preview" id="shareCardPreview"><div class="share-preview-brand">EleiNexus <span>RESULTADO DO QUESTIONÁRIO</span></div><h5>Distribuição das minhas escolhas</h5><div class="share-preview-row"><span>Flávio Bolsonaro</span><strong id="sharePctFlavio">'+percent.flavio+'%</strong></div><div class="share-preview-bar"><span id="shareBarFlavio" style="width:'+percent.flavio+'%"></span></div><div class="share-preview-row"><span>Lula</span><strong id="sharePctLula">'+percent.lula+'%</strong></div><div class="share-preview-bar share-preview-bar--green"><span id="shareBarLula" style="width:'+percent.lula+'%"></span></div><p class="share-preview-note">Percentual das alternativas que marquei, não uma medida de afinidade política ou recomendação de voto.</p></div><div class="share-result-actions"><button class="btn btn-primary" type="button" id="shareImageButton">Compartilhar imagem</button><button class="btn btn-outline" type="button" id="downloadShareCard">Baixar card PNG</button><button class="btn btn-outline" type="button" id="shareWhatsAppButton">WhatsApp</button><button class="btn btn-outline" type="button" id="shareXButton">X</button><button class="btn btn-outline" type="button" id="downloadInstagramCard">Baixar para Instagram</button></div><p class="share-result-foot">No Instagram, publique a imagem baixada como story ou post. No celular, “Compartilhar imagem” abre as opções de apps compatíveis.</p>';
+        comparisonContainer.appendChild(shareBox);
+
+        function shareCaption(){
+          return 'No EleiNexus, a distribuição das minhas respostas foi: '+percent.flavio+'% das opções escolhidas associadas a posições públicas da campanha de Flávio Bolsonaro e '+percent.lula+'% à campanha de Lula. É uma contagem das respostas, não uma medida de afinidade política nem recomendação de voto.';
+        }
+        function roundRect(ctx,x,y,w,h,r,fill){
+          ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();ctx.fillStyle=fill;ctx.fill();
+        }
+        function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+          const words=text.split(/\s+/);let line='',lines=0;
+          for(let i=0;i<words.length;i++){
+            const test=line?line+' '+words[i]:words[i];
+            if(ctx.measureText(test).width>maxWidth&&line){
+              ctx.fillText(line,x,y);line=words[i];y+=lineHeight;lines++;
+              if(maxLines&&lines>=maxLines)return y;
+            }else line=test;
+          }
+          if(line){ctx.fillText(line,x,y);y+=lineHeight;}
+          return y;
+        }
+        function buildShareCardBlob(){
+          return new Promise(function(resolve,reject){
+            const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
+            const ctx=canvas.getContext('2d');
+            if(!ctx){reject(new Error('Canvas indisponível'));return;}
+            const gradient=ctx.createLinearGradient(0,0,1080,1350);gradient.addColorStop(0,'#0b2d26');gradient.addColorStop(1,'#123e31');
+            ctx.fillStyle=gradient;ctx.fillRect(0,0,1080,1350);
+            ctx.fillStyle='#159657';ctx.fillRect(0,0,360,16);ctx.fillStyle='#ffce45';ctx.fillRect(360,0,360,16);ctx.fillStyle='#2355a6';ctx.fillRect(720,0,360,16);
+            ctx.globalAlpha=.14;ctx.fillStyle='#c5efd6';ctx.beginPath();ctx.arc(950,210,175,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(90,1220,210,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+            roundRect(ctx,76,66,280,48,24,'#ffce45');
+            ctx.fillStyle='#12382b';ctx.font='bold 24px Arial';ctx.fillText('ELEINEXUS · 2026',98,97);
+            ctx.fillStyle='#ffffff';ctx.font='bold 57px Arial';ctx.fillText('Distribuição das',76,205);ctx.fillText('minhas escolhas',76,273);
+            ctx.fillStyle='#d8e8de';ctx.font='26px Arial';ctx.fillText('10 perguntas · 2 alternativas por tema',78,322);
+            roundRect(ctx,64,375,952,538,28,'#f8faf7');
+            ctx.fillStyle='#142b24';ctx.font='bold 28px Arial';ctx.fillText('Proporção de opções selecionadas',102,427);
+            const rows=[{id:'flavio',name:'Flávio Bolsonaro',pct:percent.flavio,color:'#2f66b1',y:490},{id:'lula',name:'Lula',pct:percent.lula,color:'#16835c',y:690}];
+            rows.forEach(function(row){
+              ctx.fillStyle='#53645d';ctx.font='bold 27px Arial';ctx.fillText(row.name,104,row.y);
+              ctx.fillStyle=row.color;ctx.font='bold 58px Arial';ctx.textAlign='right';ctx.fillText(row.pct+'%',966,row.y+2);ctx.textAlign='left';
+              ctx.fillStyle='#dfe8e1';roundRect(ctx,104,row.y+38,862,25,12,'#dfe8e1');
+              if(row.pct>0)roundRect(ctx,104,row.y+38,862*row.pct/100,25,12,row.color);
+              ctx.fillStyle='#63756c';ctx.font='22px Arial';ctx.fillText(counts[row.id]+' de 10 opções marcadas',104,row.y+101);
+            });
+            ctx.fillStyle='#ffffff';ctx.font='bold 27px Arial';ctx.fillText('Importante',76,987);
+            ctx.fillStyle='#dcebe1';ctx.font='22px Arial';
+            let yy=1030;
+            yy=wrapCanvasText(ctx,'Percentual das alternativas que escolhi, associadas editorialmente a posições públicas de cada campanha.',76,yy,930,32,3);
+            yy+=12;
+            wrapCanvasText(ctx,'Não mede afinidade política e não recomenda voto. Consulte as fontes antes de tirar conclusões.',76,yy,930,32,3);
+            ctx.fillStyle='#ffce45';ctx.font='bold 24px Arial';ctx.fillText('eleinexus-civico.onrender.com',76,1288);
+            ctx.fillStyle='#bdd0c4';ctx.font='19px Arial';ctx.fillText('Informação cívica independente',76,1320);
+            canvas.toBlob(function(blob){if(blob)resolve(blob);else reject(new Error('Não foi possível criar a imagem'));},'image/png');
+          });
+        }
+        function downloadBlob(blob,filename){
+          const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();window.setTimeout(function(){URL.revokeObjectURL(url);},1500);
+        }
+        async function downloadCard(){
+          try{const blob=await buildShareCardBlob();downloadBlob(blob,'EleiNexus-resultado.png');toast('Card PNG baixado.');}
+          catch(err){toast('Não foi possível gerar o card neste navegador.');}
+        }
+        document.getElementById('downloadShareCard').addEventListener('click',downloadCard);
+        document.getElementById('downloadInstagramCard').addEventListener('click',function(){downloadCard();toast('Baixe a imagem e publique no Instagram.');});
+        document.getElementById('shareWhatsAppButton').addEventListener('click',function(){
+          const text=shareCaption()+' https://eleinexus-civico.onrender.com/';
+          window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');
+        });
+        document.getElementById('shareXButton').addEventListener('click',function(){
+          const text=shareCaption()+' #EleiNexus';
+          window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent('https://eleinexus-civico.onrender.com/'),'_blank','noopener,noreferrer');
+        });
+        document.getElementById('shareImageButton').addEventListener('click',async function(){
+          try{
+            const blob=await buildShareCardBlob();
+            const cardFile=new File([blob],'EleiNexus-resultado.png',{type:'image/png'});
+            if(navigator.share&&navigator.canShare&&navigator.canShare({files:[cardFile]})){
+              await navigator.share({title:'Meu resultado no EleiNexus',text:shareCaption(),files:[cardFile]});
+            }else{
+              downloadBlob(blob,'EleiNexus-resultado.png');
+              toast('Imagem baixada. Anexe-a ao app desejado.');
+            }
+          }catch(err){
+            if(err&&err.name==='AbortError')return;
+            toast('Compartilhamento de imagem indisponível. Tente baixar o PNG.');
+          }
+        });
+
         const answersList=document.getElementById('politicalQuizResultItems');
         answersList.innerHTML='';
         quizQuestions.forEach(function(q,index){
