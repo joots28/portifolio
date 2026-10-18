@@ -35,7 +35,7 @@ img{max-width:100%;display:block}
 .status-dot{display:inline-block;width:7px;height:7px;flex:0 0 auto;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(100,181,255,.1)}
 .hero-kicker{font-size:clamp(15px,1.6vw,20px);color:#c6c8bc;margin:0 0 16px;animation:rise-in .65s .06s both}
 h1{font-size:clamp(60px,7.7vw,105px);letter-spacing:-.085em;line-height:.94;margin:0;font-weight:600;animation:rise-in .7s .12s both}
-.headline-accent{color:var(--blue);font-size:.8em;letter-spacing:-.075em}
+.headline-accent{color:var(--blue);font-size:.56em;letter-spacing:-.055em;white-space:nowrap}
 .headline-period{color:var(--paper)}
 .hero-description{max-width:480px;margin:28px 0 27px;color:#b9bcb0;font-size:16px;line-height:1.8;animation:rise-in .7s .2s both}
 .hero-actions,.contact-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
