@@ -451,6 +451,12 @@
     .comparison-candidate-head{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:9px}
     .comparison-candidate-head strong{font-size:13px;color:var(--ink)}
     .comparison-candidate-head span{font-size:10px;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:3px 6px}
+    .comparison-fit{display:inline-flex;align-items:center;width:fit-content;max-width:100%;font-size:10px;line-height:1.4;font-weight:850;padding:6px 9px;border-radius:999px;margin:0 0 9px}
+    .comparison-fit--direta{background:var(--softgreen);color:var(--green2);border:1px solid rgba(20,107,69,.22)}
+    .comparison-fit--parcial{background:rgba(255,206,69,.16);color:var(--ink);border:1px solid rgba(208,166,46,.45)}
+    .comparison-fit--incerta{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
+    .comparison-fit-note{font-size:11px!important;line-height:1.6!important;margin:0 0 11px!important;color:var(--muted)!important}
+    .comparison-fit-intro{font-size:11px;color:var(--muted);line-height:1.6;margin:8px 0 13px}
     .comparison-candidate p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 12px}
     .comparison-candidate a{font-size:11px;font-weight:850;color:var(--green);text-decoration:underline;text-underline-offset:3px}
     @media(max-width:760px){
@@ -578,9 +584,9 @@
           <section class="match-results" id="matchResults" aria-labelledby="match-title">
             <span class="eyebrow">Modo de comparação por perfil</span>
             <h3 id="match-title">Compare os planos nos temas das suas respostas</h3>
-            <p class="match-explainer">Em cada tema, mostramos a resposta que você marcou e um resumo de propostas publicadas por Flávio Bolsonaro e Lula. A sua resposta é usada como contexto de leitura — não como pontuação de afinidade, ranking ou recomendação de voto.</p>
+            <p class="match-explainer">Em cada tema, mostramos a alternativa que você marcou e como os resumos dos dois planos se relacionam com ela. Os rótulos são uma leitura editorial limitada ao texto resumido — não são notas de candidatos nem uma classificação geral.</p>
             <div class="profile-comparison-list" id="matchCandidateResults"></div>
-            <p class="match-footnote"><strong>Metodologia e limites:</strong> os resumos seguem os tópicos listados nas páginas oficiais dos planos no TSE. Os textos são sínteses editoriais, não equivalem a uma avaliação independente de viabilidade ou execução. Ausência de um tópico neste resumo não significa necessariamente oposição à ideia; consulte o programa completo e compare propostas, custos, metas e prazos. As respostas são processadas apenas neste navegador.</p>
+            <p class="match-footnote"><strong>Como ler os rótulos:</strong> “Relação direta no resumo” significa que o resumo cita proposta claramente ligada à alternativa; “Relação parcial” indica uma conexão indireta ou incompleta; “O resumo não permite concluir” significa que não há informação suficiente neste recorte. Isso não prova apoio ou oposição no plano completo. As classificações são editoriais, sem pontuação total, ranking ou recomendação de voto. Confira os documentos oficiais do TSE. As respostas ficam apenas no navegador.</p>
             <section class="profile-next-step" aria-labelledby="profile-next-step-title">
               <span class="eyebrow">Próximo passo</span>
               <h4 id="profile-next-step-title">Agora confira os dois planos completos</h4>
@@ -1299,6 +1305,71 @@
           lula:'O plano lista agricultura familiar, Plano Safra e Pronaf, sustentabilidade do agronegócio, regularização fundiária e reforma agrária.'
         }
       };
+      // Relação editorial por alternativa escolhida e por tema.
+      // "direta" indica tópico explicitamente relacionado no resumo; "parcial" indica relação indireta ou incompleta;
+      // "incerta" significa que o resumo não permite concluir. Não é nota nem classificação global de candidatos.
+      const proposalFitByAnswer = {
+        economia:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'parcial',lula:'parcial'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        trabalho:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'parcial',lula:'parcial'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        servicos:[
+          {flavio:'direta',lula:'incerta'},
+          {flavio:'parcial',lula:'parcial'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        seguranca:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'parcial',lula:'parcial'},
+          {flavio:'incerta',lula:'incerta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        direitos:[
+          {flavio:'incerta',lula:'incerta'},
+          {flavio:'parcial',lula:'parcial'},
+          {flavio:'direta',lula:'direta'},
+          {flavio:'parcial',lula:'parcial'}
+        ],
+        ambiente:[
+          {flavio:'parcial',lula:'incerta'},
+          {flavio:'direta',lula:'direta'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        governanca:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'direta',lula:'direta'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'direta',lula:'direta'}
+        ],
+        exterior:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        social:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'parcial',lula:'parcial'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ],
+        campo:[
+          {flavio:'direta',lula:'parcial'},
+          {flavio:'direta',lula:'direta'},
+          {flavio:'parcial',lula:'direta'},
+          {flavio:'incerta',lula:'incerta'}
+        ]
+      };
       const quizContainer = document.getElementById('politicalQuizQuestions');
       const quizForm = document.getElementById('politicalQuizForm');
       const quizResults = document.getElementById('politicalQuizResults');
@@ -1464,8 +1535,12 @@
           answerLabel.textContent = 'Sua resposta: ';
           answer.appendChild(answerLabel);
           answer.appendChild(document.createTextNode(q.options[optionIndex].label));
+          const fitIntro = document.createElement('p');
+          fitIntro.className = 'comparison-fit-intro';
+          fitIntro.textContent = 'Relação de cada plano com a alternativa escolhida (com base no resumo abaixo):';
           headingWrap.appendChild(heading);
           headingWrap.appendChild(answer);
+          headingWrap.appendChild(fitIntro);
           top.appendChild(number);
           top.appendChild(headingWrap);
           row.appendChild(top);
@@ -1473,8 +1548,8 @@
           const columns = document.createElement('div');
           columns.className = 'comparison-columns';
           [
-            {name:'Flávio Bolsonaro', party:'PL', text:proposalComparisons[q.id].flavio, url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'},
-            {name:'Lula', party:'PT', text:proposalComparisons[q.id].lula, url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'}
+            {id:'flavio',name:'Flávio Bolsonaro', party:'PL', text:proposalComparisons[q.id].flavio, url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'},
+            {id:'lula',name:'Lula', party:'PT', text:proposalComparisons[q.id].lula, url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'}
           ].forEach(function(candidate){
             const card = document.createElement('article');
             card.className = 'comparison-candidate';
@@ -1493,7 +1568,25 @@
             source.target = '_blank';
             source.rel = 'noopener noreferrer';
             source.textContent = 'Consultar plano completo no TSE ↗';
+            const relationRow = proposalFitByAnswer[q.id] && proposalFitByAnswer[q.id][optionIndex];
+            const relation = relationRow ? relationRow[candidate.id] : 'incerta';
+            const relationBadge = document.createElement('p');
+            relationBadge.className = 'comparison-fit comparison-fit--' + relation;
+            relationBadge.textContent = relation === 'direta'
+              ? 'Relação direta no resumo'
+              : relation === 'parcial'
+                ? 'Relação parcial no resumo'
+                : 'O resumo não permite concluir';
+            const relationNote = document.createElement('p');
+            relationNote.className = 'comparison-fit-note';
+            relationNote.textContent = relation === 'direta'
+              ? 'O recorte contém tópicos diretamente ligados à preferência marcada.'
+              : relation === 'parcial'
+                ? 'Há tópicos relacionados, mas o recorte não confirma todos os aspectos da preferência.'
+                : 'O recorte não traz informação suficiente para confirmar uma relação clara; consulte o plano completo.';
             card.appendChild(cardHead);
+            card.appendChild(relationBadge);
+            card.appendChild(relationNote);
             card.appendChild(summary);
             card.appendChild(source);
             columns.appendChild(card);
