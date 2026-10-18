@@ -534,6 +534,80 @@
       .hero-actions .btn{flex:1 1 180px}
     }
 
+  
+    /* Questionário principal com fotos e leitura rápida. */
+    .stats{display:none!important}
+    .hero{padding:22px 0 12px}
+    .hero-grid{display:block}
+    .hero-art{display:none}
+    .hero h1{font-size:clamp(30px,4.6vw,48px);letter-spacing:-1.4px;line-height:1.04;margin:10px 0}
+    .hero .lead{max-width:740px;font-size:15px;line-height:1.48}
+    .hero-actions{margin:14px 0}
+    .campaign-candidates{margin-top:12px;max-width:780px}
+    .campaign-candidates-note{font-size:11px;color:var(--muted);margin:0 0 8px;line-height:1.4}
+    .campaign-candidate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .campaign-person{display:flex;align-items:center;gap:11px;padding:8px 12px;background:var(--paper);border:1px solid var(--line);border-radius:16px;min-width:0}
+    .campaign-person img{width:50px;height:60px;object-fit:cover;object-position:top;border-radius:10px;background:var(--paper2);flex:none}
+    .campaign-person strong{display:block;font-size:13px;line-height:1.25}
+    .campaign-person small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+    #perfil-politico{padding-top:18px}
+    #perfil-politico .section-head{margin-bottom:14px}
+    #perfil-politico .section-head .copy{max-width:760px}
+    #perfil-politico .section-head p{font-size:13px;line-height:1.45}
+    .political-quiz{max-width:820px;margin:0 auto;padding:20px}
+    .quiz-step-header{margin-bottom:12px}
+    .quiz-question legend{font-size:21px;line-height:1.25}
+    .quiz-prompt{font-size:13px;margin:6px 0 12px}
+    .quiz-options{grid-template-columns:1fr;gap:9px}
+    .quiz-option{padding:12px 14px;font-size:14px;line-height:1.4}
+    .quiz-actions{margin-top:14px;gap:8px}
+    .quiz-results.panel{margin-top:18px;padding:20px}
+    .quiz-results-head p{font-size:13px;line-height:1.45}
+    .quiz-profile-banner{padding:14px;margin:14px 0}
+    .quiz-profile-banner p{margin:6px 0 0;font-size:13px;line-height:1.45}
+    .profile-comparison-list{display:block}
+    .campaign-count-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:16px}
+    .campaign-count-card{display:flex;align-items:center;gap:10px;padding:12px;background:var(--paper2);border:1px solid var(--line);border-radius:14px;min-width:0}
+    .campaign-count-card img{width:42px;height:50px;object-fit:cover;object-position:top;border-radius:8px;flex:none}
+    .campaign-count-card strong{font-size:13px;line-height:1.25}
+    .campaign-count-card p{font-size:12px;color:var(--muted);margin:4px 0}
+    .campaign-count-card a,.quiz-result-item a{font-size:12px;color:var(--green);font-weight:800}
+    .quiz-results-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+    .quiz-result-item{border:1px solid var(--line);border-radius:13px;padding:12px;background:var(--paper)}
+    .quiz-result-item strong{display:block;font-size:13px;line-height:1.35}
+    .quiz-result-item p{font-size:12px;line-height:1.45;margin:7px 0;color:var(--muted)}
+    .quiz-result-item .quiz-result-origin{color:var(--ink);font-weight:700}
+    .quiz-result-method{grid-column:1/-1;color:var(--muted);font-size:11px;line-height:1.5;margin:4px 0}
+    .quiz-results-actions{margin-top:14px}
+    #explorar,#pesquisas,#resultados,#prioridades,#metodologia{display:none!important}
+    @media(max-width:760px){
+      .shell{width:min(var(--max),calc(100% - 28px))}
+      .nav{height:60px;gap:8px}
+      .brandmark{width:34px;height:34px;border-radius:11px}
+      .brandname{font-size:16px}
+      .brandtag{font-size:8px;letter-spacing:.6px}
+      .navlinks{gap:8px;font-size:11px}
+      .hero{padding:20px 0 10px}
+      .hero h1{font-size:32px}
+      .campaign-candidate-grid{gap:7px}
+      .campaign-person{padding:7px;gap:7px;border-radius:12px}
+      .campaign-person img{width:39px;height:47px}
+      .campaign-person strong{font-size:11px}
+      .campaign-person small{font-size:9px}
+      #perfil-politico{padding-top:14px}
+      #perfil-politico h2{font-size:24px}
+      .political-quiz{padding:14px}
+      .quiz-question legend{font-size:18px}
+      .quiz-option{padding:11px;font-size:13px}
+      .quiz-actions{display:grid;grid-template-columns:1fr 1fr}
+      .quiz-actions .btn{width:100%;padding:10px 8px;font-size:12px}
+      .campaign-count-grid,.quiz-results-list{grid-template-columns:1fr}
+      .quiz-results.panel{padding:14px}
+      .quiz-result-item{padding:11px}
+      .quiz-results-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+      .quiz-results-actions .btn{padding:10px 7px;font-size:12px}
+    }
+
   </style>
 </head>
 <body>
@@ -560,10 +634,18 @@
         <div class="hero-copy">
           <span class="eyebrow">Cidadania com clareza</span>
           <h1>Planos presidenciais.<br><span class="accent">Sem enrolação.</span></h1>
-          <p class="lead">Resumos curtos dos planos de governo, duas perguntas rápidas e links diretos para as fontes oficiais do TSE.</p>
+          <p class="lead">Compare declarações e propostas públicas em 10 perguntas curtas, com fotos e fontes identificadas no resultado.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#candidatos">Ver planos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-outline" href="#perfil-politico">Responder 2 perguntas</a>
+            <a class="btn btn-outline" href="#perfil-politico">Responder 10 perguntas</a>
+          </div>
+
+          <div class="campaign-candidates" aria-label="Candidatos cujas posições públicas serão comparadas">
+            <p class="campaign-candidates-note">As alternativas não mostram a campanha associada até o resultado. As fontes são apresentadas ao final.</p>
+            <div class="campaign-candidate-grid">
+              <article class="campaign-person"><img src="https://www.tse.jus.br/imagens/imagens/flavio-bolsonaro/@@images/image-200-7092d276831e3453f70c59d07d5c9ae7.png" alt="Foto de Flávio Bolsonaro" width="76" height="88" fetchpriority="high"><span><strong>Flávio Bolsonaro</strong><small>PL · Foto oficial do TSE</small></span></article>
+              <article class="campaign-person"><img src="https://www.tse.jus.br/imagens/imagens/lula/@@images/image-200-93d51d895f8ebc8900bf3e02c7052bef.png" alt="Foto de Lula" width="76" height="88" fetchpriority="high"><span><strong>Lula</strong><small>PT · Foto oficial do TSE</small></span></article>
+            </div>
           </div>
           
         </div>
@@ -604,16 +686,16 @@
     <div class="section-head">
       <div class="copy">
         <span class="eyebrow">Questionário rápido</span>
-        <h2>Duas perguntas. Sua pauta em foco.</h2>
-        <p>Responda e veja um resumo das suas prioridades, junto dos dois planos. O questionário não recomenda voto.</p>
+        <h2>10 perguntas. Duas opções em cada uma.</h2>
+        <p>Escolha a posição que mais combina com você. Os nomes das campanhas só aparecem no resultado, junto das fontes.</p>
       </div>
     </div>
     <form id="politicalQuizForm" class="political-quiz">
       <div class="quiz-step-header" aria-live="polite">
-        <div><span class="eyebrow">Etapa rápida</span><strong id="quizStepTitle">Pergunta 1 de 2</strong></div>
-        <span class="quiz-step-percent" id="quizStepPercent">50%</span>
+        <div><span class="eyebrow">10 perguntas</span><strong id="quizStepTitle">Pergunta 1 de 10</strong></div>
+        <span class="quiz-step-percent" id="quizStepPercent">10%</span>
       </div>
-      <div class="quiz-progress" id="quizProgress" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1"><span class="quiz-progress-fill" id="quizProgressFill"></span></div>
+      <div class="quiz-progress" id="quizProgress" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1"><span class="quiz-progress-fill" id="quizProgressFill"></span></div>
       <div id="politicalQuizQuestions"></div>
       <div class="quiz-actions">
         <button class="btn btn-outline" type="button" id="quizPrevious" disabled>← Voltar</button>
@@ -623,9 +705,9 @@
       </div>
     </form>
     <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
-      <div class="quiz-results-head"><span class="eyebrow">Seu resultado</span><h3>Suas prioridades e os planos</h3><p>Este resumo organiza suas respostas. Compare as propostas e tire suas próprias conclusões.</p></div>
+      <div class="quiz-results-head"><span class="eyebrow">Seu resultado</span><h3>Como suas escolhas se distribuíram</h3><p>A associação aparece agora, com a fonte de cada posição. A contagem não é recomendação de voto.</p></div>
       <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
-      <div class="quiz-results-list" id="politicalQuizResultItems" hidden></div>
+      <div class="quiz-results-list" id="politicalQuizResultItems"></div>
       <section class="match-results" id="matchResults" aria-labelledby="match-title">
         <h3 id="match-title">Planos de governo em resumo</h3>
         <div class="profile-comparison-list comparison-columns" id="matchCandidateResults"></div>
@@ -1182,27 +1264,73 @@
 
       const quizQuestions = [
         {
-          id:'prioridade',theme:'Sua principal pauta',
-          title:'1. Qual pauta mais importa para você?',
-          prompt:'Escolha o tema que quer priorizar.',
+          id:'economia',theme:'Economia e contas públicas',title:'1. Como organizar as contas do país?',prompt:'Qual caminho faz mais sentido para você?',
           options:[
-            {label:'Emprego, renda e impostos',profile:'Sua pauta principal é emprego, renda e impostos.'},
-            {label:'Saúde e educação',profile:'Sua pauta principal é saúde e educação.'},
-            {label:'Segurança pública',profile:'Sua pauta principal é segurança pública.'},
-            {label:'Meio ambiente e direitos',profile:'Sua pauta principal é meio ambiente e direitos.'},
-            {label:'Todas são importantes',profile:'Você considera várias pautas importantes.'}
+            {label:'Reduzir despesas administrativas e vender imóveis públicos para ajustar as contas.',profile:'Corte de estruturas administrativas e venda de imóveis públicos.',candidate:'flavio',sourceLabel:'Sabatinas de campanha — Folha',sourceUrl:'https://www1.folha.uol.com.br/mercado/2026/10/lula-defende-crescimento-para-ajuste-fiscal-e-flavio-fala-em-corte-de-gastos-veja-o-que-disseram-nas-sabatinas.shtml'},
+            {label:'Estimular crescimento e investimento produtivo para melhorar as contas públicas.',profile:'Crescimento econômico e investimento produtivo como parte do ajuste.',candidate:'lula',sourceLabel:'Sabatinas de campanha — Folha',sourceUrl:'https://www1.folha.uol.com.br/mercado/2026/10/lula-defende-crescimento-para-ajuste-fiscal-e-flavio-fala-em-corte-de-gastos-veja-o-que-disseram-nas-sabatinas.shtml'}
           ]
         },
         {
-          id:'criterio',theme:'Como avaliar propostas',
-          title:'2. O que você mais valoriza em um plano?',
-          prompt:'Escolha o critério que mais pesa para você.',
+          id:'empreendedorismo',theme:'Impostos e pequenos negócios',title:'2. O que ajudaria mais a economia?',prompt:'Escolha a alternativa que mais combina com sua visão.',
           options:[
-            {label:'Metas claras e resultados práticos',profile:'Você valoriza metas claras e resultados práticos.'},
-            {label:'Serviços públicos e proteção social',profile:'Você valoriza serviços públicos e proteção social.'},
-            {label:'Menos burocracia e incentivo a negócios',profile:'Você valoriza menos burocracia e incentivo a negócios.'},
-            {label:'Equilíbrio entre crescimento e proteção',profile:'Você valoriza equilíbrio entre crescimento e proteção.'},
-            {label:'Analisar cada proposta caso a caso',profile:'Você prefere avaliar cada proposta caso a caso.'}
+            {label:'Apoiar MEIs com renegociação de dívidas, crédito e ferramentas próprias para pequenos negócios.',profile:'Medidas de apoio a MEIs e pequenos negócios.',candidate:'lula',sourceLabel:'Anúncios de campanha — Folha',sourceUrl:'https://www1.folha.uol.com.br/poder/2026/10/em-disputa-por-bandeiras-rivais-flavio-muda-discurso-sobre-6x1-e-lula-faz-aceno-a-empreendedores.shtml'},
+            {label:'Reduzir tributos e rever pontos da reforma tributária, como IOF e imposto de importação sobre petróleo.',profile:'Redução de tributos e revisão de pontos da reforma tributária.',candidate:'flavio',sourceLabel:'Propostas econômicas — UOL',sourceUrl:'https://economia.uol.com.br/noticias/redacao/2026/10/14/flavio-quer-alterar-reforma-tributaria-mas-lobbies-devem-limitar-mudancas.ghtm'}
+          ]
+        },
+        {
+          id:'trabalho',theme:'Trabalho e jornada',title:'3. Qual modelo de jornada você prefere?',prompt:'Pense em descanso, flexibilidade e renda.',
+          options:[
+            {label:'Permitir mais flexibilidade na jornada e espaço para negociação entre trabalhadores e empresas.',profile:'Mais flexibilidade e negociação sobre as regras de jornada.',candidate:'flavio',sourceLabel:'Debate de campanha sobre a escala 6x1 — Folha',sourceUrl:'https://www1.folha.uol.com.br/poder/2026/10/em-disputa-por-bandeiras-rivais-flavio-muda-discurso-sobre-6x1-e-lula-faz-aceno-a-empreendedores.shtml'},
+            {label:'Reduzir a jornada para 40 horas semanais e garantir dois dias de descanso com o fim da escala 6x1.',profile:'Fim da escala 6x1 e jornada de 40 horas semanais.',candidate:'lula',sourceLabel:'Sabatina de campanha — Folha',sourceUrl:'https://www1.folha.uol.com.br/mercado/2026/10/lula-defende-crescimento-para-ajuste-fiscal-e-flavio-fala-em-corte-de-gastos-veja-o-que-disseram-nas-sabatinas.shtml'}
+          ]
+        },
+        {
+          id:'protecao',theme:'Renda e proteção social',title:'4. Qual prioridade social pesa mais para você?',prompt:'Escolha a direção que considera mais importante.',
+          options:[
+            {label:'Reajustar benefícios sociais e ampliar apoio para jovens permanecerem nos estudos.',profile:'Ajuste do Bolsa Família e ampliação do Pé-de-Meia.',candidate:'lula',sourceLabel:'Anúncios de campanha — Folha',sourceUrl:'https://www1.folha.uol.com.br/poder/2026/10/em-disputa-por-bandeiras-rivais-flavio-muda-discurso-sobre-6x1-e-lula-faz-aceno-a-empreendedores.shtml'},
+            {label:'Preservar benefícios e garantir reajustes do salário mínimo acima da inflação, junto do ajuste fiscal.',profile:'Preservação de benefícios e reajuste real do salário mínimo.',candidate:'flavio',sourceLabel:'Entrevista de campanha — UOL',sourceUrl:'https://noticias.uol.com.br/eleicoes/2026/10/16/ataques-a-lula-critica-a-globo-contra-reeleicao-o-que-flavio-disse-no-jn.htm'}
+          ]
+        },
+        {
+          id:'seguranca',theme:'Segurança pública',title:'5. Qual abordagem de segurança priorizar?',prompt:'Pense em prevenção, investigação e combate ao crime organizado.',
+          options:[
+            {label:'Classificar grandes facções como narcoterroristas e intensificar o enfrentamento policial.',profile:'Classificação de facções como narcoterroristas e combate com força e inteligência.',candidate:'flavio',sourceLabel:'Comparação das propostas — Agência Brasil',sourceUrl:'https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/conheca-propostas-de-flavio-e-lula-para-seguranca-publica'},
+            {label:'Combater o dinheiro do crime e coordenar ações dentro dos limites constitucionais.',profile:'Asfixia financeira do crime e coordenação nacional de segurança.',candidate:'lula',sourceLabel:'Comparação das propostas — Agência Brasil',sourceUrl:'https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/conheca-propostas-de-flavio-e-lula-para-seguranca-publica'}
+          ]
+        },
+        {
+          id:'saude',theme:'Saúde',title:'6. O que melhoraria o atendimento de saúde?',prompt:'Escolha uma prioridade para o sistema de saúde.',
+          options:[
+            {label:'Reduzir filas e ampliar acesso a programas como Farmácia Popular e Mais Médicos.',profile:'Redução de filas e ampliação de programas de saúde.',candidate:'lula',sourceLabel:'Plano de governo oficial — TSE',sourceUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'},
+            {label:'Digitalizar atendimentos, ampliar telessaúde e usar tecnologia para organizar consultas.',profile:'Digitalização do SUS, telessaúde e tecnologia no agendamento.',candidate:'flavio',sourceLabel:'Plano de governo oficial — TSE',sourceUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'}
+          ]
+        },
+        {
+          id:'educacao',theme:'Educação',title:'7. Qual medida educacional deveria ganhar destaque?',prompt:'Pense em acesso, permanência e formação para o trabalho.',
+          options:[
+            {label:'Dar ênfase ao ensino técnico e ao uso de tecnologia, mantendo recursos para educação.',profile:'Ênfase em formação técnica e tecnologia.',candidate:'flavio',sourceLabel:'Entrevista e programa — UOL / TSE',sourceUrl:'https://noticias.uol.com.br/eleicoes/2026/10/16/ataques-a-lula-critica-a-globo-contra-reeleicao-o-que-flavio-disse-no-jn.htm'},
+            {label:'Expandir bolsas e apoio financeiro para estudantes continuarem os estudos, inclusive na universidade.',profile:'Expansão do Pé-de-Meia e apoio à permanência estudantil.',candidate:'lula',sourceLabel:'Anúncios de campanha — Folha',sourceUrl:'https://www1.folha.uol.com.br/poder/2026/10/em-disputa-por-bandeiras-rivais-flavio-muda-discurso-sobre-6x1-e-lula-faz-aceno-a-empreendedores.shtml'}
+          ]
+        },
+        {
+          id:'ambiente',theme:'Meio ambiente e clima',title:'8. Como equilibrar economia e meio ambiente?',prompt:'Escolha a prioridade que mais se aproxima da sua visão.',
+          options:[
+            {label:'Tratar a crise climática como prioridade e reforçar a transição ecológica e o combate ao desmatamento.',profile:'Transição ecológica e combate ao desmatamento como prioridades.',candidate:'lula',sourceLabel:'Comparação dos programas — Agência Brasil',sourceUrl:'https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/veja-como-os-planos-de-governo-de-flavio-e-lula-tratam-meio-ambiente'},
+            {label:'Transformar conservação ambiental em oportunidade econômica, com foco em produção e renda.',profile:'Conservação conectada a desenvolvimento e renda.',candidate:'flavio',sourceLabel:'Comparação dos programas — Agência Brasil',sourceUrl:'https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/veja-como-os-planos-de-governo-de-flavio-e-lula-tratam-meio-ambiente'}
+          ]
+        },
+        {
+          id:'exterior',theme:'Política externa',title:'9. Qual direção internacional prefere?',prompt:'Pense em comércio, alianças e cooperação entre países.',
+          options:[
+            {label:'Ampliar abertura comercial, acordos econômicos e aproximação a fóruns de comércio e investimento.',profile:'Abertura comercial e integração a fóruns econômicos.',candidate:'flavio',sourceLabel:'Plano de governo oficial — TSE',sourceUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'},
+            {label:'Fortalecer integração sul-americana, BRICS e cooperação em fóruns multilaterais.',profile:'Integração regional e diplomacia multilateral.',candidate:'lula',sourceLabel:'Plano de governo oficial — TSE',sourceUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'}
+          ]
+        },
+        {
+          id:'moradia',theme:'Moradia e campo',title:'10. Qual prioridade deve orientar o uso da terra?',prompt:'Considere moradia, propriedade, produção rural e infraestrutura.',
+          options:[
+            {label:'Usar imóveis públicos para habitação e ampliar políticas de moradia e regularização fundiária.',profile:'Uso de imóveis públicos e ampliação de políticas de habitação.',candidate:'lula',sourceLabel:'Plano de governo oficial — TSE',sourceUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'},
+            {label:'Proteger a propriedade e facilitar investimento, produção rural e infraestrutura.',profile:'Segurança da propriedade e incentivo à produção rural.',candidate:'flavio',sourceLabel:'Plano de governo oficial — TSE',sourceUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'}
           ]
         }
       ];
@@ -1387,60 +1515,60 @@
 
       quizForm.addEventListener('submit',function(e){
         e.preventDefault();
-        const answers = {};
-        let firstUnanswered = -1;
+        const answers={};let firstUnanswered=-1;
         quizQuestions.forEach(function(q,index){
-          const chosen = quizForm.querySelector('input[name="'+q.id+'"]:checked');
-          if(!chosen){ if(firstUnanswered < 0) firstUnanswered = index; return; }
-          answers[q.id] = Number(chosen.value);
+          const chosen=quizForm.querySelector('input[name="'+q.id+'"]:checked');
+          if(!chosen){if(firstUnanswered<0)firstUnanswered=index;return;}
+          answers[q.id]=Number(chosen.value);
         });
-        if(firstUnanswered >= 0){
-          currentQuestionIndex = firstUnanswered;
-          updateQuizStep();
-          focusCurrentQuestion();
-          return;
+        if(firstUnanswered>=0){currentQuestionIndex=firstUnanswered;updateQuizStep();focusCurrentQuestion();return;}
+        const names={flavio:'Flávio Bolsonaro',lula:'Lula'};
+        const photos={flavio:'https://www.tse.jus.br/imagens/imagens/flavio-bolsonaro/@@images/image-200-7092d276831e3453f70c59d07d5c9ae7.png',lula:'https://www.tse.jus.br/imagens/imagens/lula/@@images/image-200-93d51d895f8ebc8900bf3e02c7052bef.png'};
+        const planUrls={flavio:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro',lula:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'};
+        const counts={flavio:0,lula:0};
+        quizQuestions.forEach(function(q){counts[q.options[answers[q.id]].candidate]++;});
+        const profileBanner=document.getElementById('politicalProfileSummary');
+        profileBanner.innerHTML='';
+        const profileHeading=document.createElement('strong');
+        if(counts.flavio>counts.lula){
+          profileHeading.textContent='Nas suas escolhas, '+counts.flavio+' de 10 alternativas foram associadas a posições de Flávio Bolsonaro e '+counts.lula+' a posições de Lula.';
+        }else if(counts.lula>counts.flavio){
+          profileHeading.textContent='Nas suas escolhas, '+counts.lula+' de 10 alternativas foram associadas a posições de Lula e '+counts.flavio+' a posições de Flávio Bolsonaro.';
+        }else{
+          profileHeading.textContent='Suas escolhas ficaram divididas: '+counts.flavio+' alternativas associadas a cada campanha.';
         }
-        quizResultItems.innerHTML = '';
-        const profileBanner = document.getElementById('politicalProfileSummary');
-        profileBanner.innerHTML = '';
-        const profileHeading = document.createElement('strong');
-        profileHeading.textContent = 'Sua pauta: ' + quizQuestions[0].options[answers.prioridade].label + '.';
-        const profileText = document.createElement('p');
-        profileText.textContent = 'Você também valoriza: ' + quizQuestions[1].options[answers.criterio].label + '.';
-        profileBanner.appendChild(profileHeading);
-        profileBanner.appendChild(profileText);
-        const comparisonContainer = document.getElementById('matchCandidateResults');
-        comparisonContainer.innerHTML = '';
-        [
-          {
-            name:'Flávio Bolsonaro',party:'PL',
-            summary:'O resumo do plano destaca redução de impostos, reforma tributária, regras fiscais, incentivo a empresas, segurança nas fronteiras, digitalização da saúde e ensino técnico.',
-            url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'
-          },
-          {
-            name:'Lula',party:'PT',
-            summary:'O resumo do plano destaca reforma tributária, regras fiscais, política industrial, proposta de mudança na escala 6x1, ações em saúde e educação, inclusão social e transição ecológica.',
-            url:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'
-          }
-        ].forEach(function(candidate){
-          const card = document.createElement('article');
-          card.className = 'comparison-candidate';
-          const head = document.createElement('div');
-          head.className = 'comparison-candidate-head';
-          const name = document.createElement('strong');
-          name.textContent = candidate.name;
-          const party = document.createElement('span');
-          party.textContent = candidate.party;
-          head.appendChild(name); head.appendChild(party);
-          const summary = document.createElement('p');
-          summary.textContent = candidate.summary;
-          const source = document.createElement('a');
-          source.href = candidate.url; source.target = '_blank'; source.rel = 'noopener noreferrer';
-          source.textContent = 'Plano completo no TSE ↗';
-          card.appendChild(head); card.appendChild(summary); card.appendChild(source);
-          comparisonContainer.appendChild(card);
+        const profileText=document.createElement('p');
+        profileText.textContent='Isso mostra apenas as posições que você selecionou neste questionário — não é recomendação de voto, avaliação de candidato nem previsão de resultado.';
+        profileBanner.appendChild(profileHeading);profileBanner.appendChild(profileText);
+        const comparisonContainer=document.getElementById('matchCandidateResults');
+        comparisonContainer.innerHTML='';
+        const countPanel=document.createElement('div');countPanel.className='campaign-count-grid';
+        ['flavio','lula'].forEach(function(id){
+          const card=document.createElement('article');card.className='campaign-count-card';
+          const img=document.createElement('img');img.src=photos[id];img.alt='Foto de '+names[id];img.width=48;img.height=58;
+          const content=document.createElement('div');
+          const name=document.createElement('strong');name.textContent=names[id];
+          const count=document.createElement('p');count.textContent=counts[id]+' de 10 opções selecionadas';
+          const plan=document.createElement('a');plan.href=planUrls[id];plan.target='_blank';plan.rel='noopener noreferrer';plan.textContent='Plano oficial no TSE ↗';
+          content.appendChild(name);content.appendChild(count);content.appendChild(plan);
+          card.appendChild(img);card.appendChild(content);countPanel.appendChild(card);
         });
-        quizResults.hidden = false;
+        comparisonContainer.appendChild(countPanel);
+        const answersList=document.getElementById('politicalQuizResultItems');
+        answersList.innerHTML='';
+        quizQuestions.forEach(function(q,index){
+          const opt=q.options[answers[q.id]],item=document.createElement('article');
+          item.className='quiz-result-item';
+          const title=document.createElement('strong');title.textContent=(index+1)+'. '+q.theme;
+          const answer=document.createElement('p');answer.textContent='Você escolheu: '+opt.label;
+          const origin=document.createElement('p');origin.className='quiz-result-origin';origin.textContent='Posição associada a '+names[opt.candidate]+'.';
+          const source=document.createElement('a');source.href=opt.sourceUrl;source.target='_blank';source.rel='noopener noreferrer';source.textContent=opt.sourceLabel+' ↗';
+          item.appendChild(title);item.appendChild(answer);item.appendChild(origin);item.appendChild(source);answersList.appendChild(item);
+        });
+        const methodNote=document.createElement('p');methodNote.className='quiz-result-method';
+        methodNote.textContent='As alternativas resumem declarações públicas reportadas e pontos dos programas registrados. O mapeamento é editorial; leia as fontes e os planos completos antes de formar sua conclusão.';
+        answersList.appendChild(methodNote);
+        quizResults.hidden=false;
         quizResults.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
       });
       quizForm.addEventListener('reset',function(){
