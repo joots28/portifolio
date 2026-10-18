@@ -430,6 +430,16 @@
     .match-links a{font-size:11px;font-weight:850;color:var(--green);text-decoration:underline;text-underline-offset:3px}
     .match-footnote{font-size:11px;line-height:1.7;color:var(--muted);margin:16px 0 0;padding:13px 15px;background:var(--paper2);border-radius:13px}
     .profile-comparison-list{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
+    .profile-next-step{margin-top:20px;padding:clamp(18px,3vw,24px);border:1px solid var(--line);border-radius:18px;background:var(--paper2)}
+    .profile-next-step h4{font-size:19px;letter-spacing:-.35px;margin:7px 0}
+    .profile-next-step>p{color:var(--muted);font-size:13px;line-height:1.7;margin:0;max-width:850px}
+    .profile-plan-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}
+    .profile-plan-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none}
+    .profile-plan-link:hover{border-color:var(--green)}
+    .profile-plan-link strong{display:block;font-size:13px}
+    .profile-plan-link small{display:block;color:var(--muted);font-size:11px;line-height:1.5;margin-top:4px}
+    .profile-plan-link>span:last-child{font-size:19px;color:var(--green);flex:none}
+    .profile-neutral-note{font-size:11px!important;margin-top:13px!important}
     .comparison-topic{min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:18px;padding:19px}
     .comparison-topic-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:15px}
     .comparison-topic-number{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:12px;background:var(--softgreen);color:var(--green2);font-size:12px;font-weight:900}
@@ -448,6 +458,7 @@
       .match-candidate{padding:16px}
       .comparison-topic{padding:14px}
       .comparison-columns{grid-template-columns:1fr}
+      .profile-plan-links{grid-template-columns:1fr}
       .comparison-candidate{padding:14px}
       .pres-card-top{grid-template-columns:68px minmax(0,1fr)}
       .pres-photo{width:68px;height:86px}
@@ -570,6 +581,20 @@
             <p class="match-explainer">Em cada tema, mostramos a resposta que você marcou e um resumo de propostas publicadas por Flávio Bolsonaro e Lula. A sua resposta é usada como contexto de leitura — não como pontuação de afinidade, ranking ou recomendação de voto.</p>
             <div class="profile-comparison-list" id="matchCandidateResults"></div>
             <p class="match-footnote"><strong>Metodologia e limites:</strong> os resumos seguem os tópicos listados nas páginas oficiais dos planos no TSE. Os textos são sínteses editoriais, não equivalem a uma avaliação independente de viabilidade ou execução. Ausência de um tópico neste resumo não significa necessariamente oposição à ideia; consulte o programa completo e compare propostas, custos, metas e prazos. As respostas são processadas apenas neste navegador.</p>
+            <section class="profile-next-step" aria-labelledby="profile-next-step-title">
+              <span class="eyebrow">Próximo passo</span>
+              <h4 id="profile-next-step-title">Agora confira os dois planos completos</h4>
+              <p>Seu perfil resume as respostas que você marcou. Ele não determina qual candidatura seria “mais viável”: isso também exige analisar financiamento, metas, prazos, histórico e condições de execução. Consulte as fontes e faça sua própria avaliação.</p>
+              <div class="profile-plan-links">
+                <a class="profile-plan-link" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro" target="_blank" rel="noopener noreferrer">
+                  <span><strong>Plano de Flávio Bolsonaro</strong><small>Consultar o documento e as propostas no TSE</small></span><span aria-hidden="true">↗</span>
+                </a>
+                <a class="profile-plan-link" href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo" target="_blank" rel="noopener noreferrer">
+                  <span><strong>Plano de Lula</strong><small>Consultar o documento e as propostas no TSE</small></span><span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <p class="profile-neutral-note">Informação cívica independente — não é propaganda, endosso nem recomendação de voto.</p>
+            </section>
           </section>
           <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7h.01"/></svg><div><strong>Privacidade por design.</strong><br>As respostas são processadas no seu navegador e não são enviadas a servidor algum nem salvas em uma conta. Ao sair ou recarregar a página, o resultado desaparece.</div></div>
           <div class="quiz-results-actions"><a class="btn btn-primary" href="#candidatos">Comparar as propostas presidenciais</a><button class="btn btn-outline" id="editPoliticalQuiz" type="button">Editar respostas</button></div>
