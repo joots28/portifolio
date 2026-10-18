@@ -700,6 +700,43 @@
       .share-result-actions .btn{width:100%;min-height:44px;padding:10px 8px}
     }
 
+  
+    /* Resultados: conclusão imediata, cartões neutros e fontes à vista. */
+    #politicalQuizResults{scroll-margin-top:82px}
+    .quiz-results-head h3{font-size:clamp(24px,3vw,32px);line-height:1.12;letter-spacing:-.7px;margin:8px 0}
+    .quiz-results-head p{max-width:75ch}
+    .match-results{margin-top:18px;padding-top:8px;border-top:0}
+    .match-results h3,.quiz-answers-section h3{font-size:clamp(20px,2.5vw,25px);margin:8px 0}
+    .quiz-candidate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 24px}
+    .quiz-candidate-card{display:flex;align-items:flex-start;gap:14px;min-width:0;padding:17px;background:var(--paper);border:1px solid var(--line);border-radius:17px;box-shadow:0 7px 22px rgba(12,45,35,.05)}
+    .quiz-candidate-card img{display:block;flex:0 0 82px;width:82px;height:104px;object-fit:cover;object-position:center 20%;border-radius:12px;background:var(--paper2);border:1px solid var(--line)}
+    .quiz-candidate-body{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:6px}
+    .quiz-candidate-label{font-size:9px;font-weight:900;letter-spacing:.09em;color:var(--green)}
+    .quiz-candidate-body h4{font-size:19px;line-height:1.15;letter-spacing:-.3px;margin:0;color:var(--ink)}
+    .quiz-candidate-body p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}
+    .quiz-candidate-body a{display:inline-flex;align-items:center;min-height:38px;margin-top:3px;padding:8px 12px;border-radius:9px;background:var(--green);color:#fff;font-size:12px;font-weight:850;text-decoration:none}
+    .quiz-candidate-body a:hover{filter:brightness(1.08)}
+    .quiz-answers-section{margin-top:24px;padding-top:19px;border-top:1px solid var(--line)}
+    .quiz-result-answer{color:var(--ink)!important;font-weight:650}
+    .share-result-box{margin-top:22px;padding:19px;background:var(--paper2);border:1px solid var(--line);border-radius:17px}
+    .share-result-head h4{font-size:20px;margin:7px 0}
+    .share-result-head p,.share-result-foot{font-size:12px;line-height:1.65;color:var(--muted)}
+    .share-card-preview--neutral{padding:24px;border-radius:14px;background:linear-gradient(135deg,#0b2d26,#173c36 60%,#102b4c);color:#fff;margin:13px 0}
+    .share-card-preview--neutral .share-preview-brand{font-weight:900;font-size:19px;color:#ffce45}
+    .share-card-preview--neutral .share-preview-brand span{display:block;font-size:9px;letter-spacing:.1em;margin-top:5px;color:#dcebe3}
+    .share-card-preview--neutral h5{font-size:clamp(23px,3vw,34px);line-height:1.1;margin:22px 0 10px;color:#fff}
+    .share-card-preview--neutral .share-preview-note,.share-card-preview--neutral .share-preview-invite{font-size:13px;line-height:1.65;color:#e0ebe4}
+    .share-card-preview--neutral .share-preview-invite{font-weight:850;color:#ffce45}
+    .share-result-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+    @media(max-width:760px){
+      .quiz-candidate-grid{grid-template-columns:1fr;gap:10px}
+      .quiz-candidate-card{padding:14px}
+      .quiz-candidate-body h4{font-size:18px}
+      .quiz-candidate-body a{width:100%;justify-content:center}
+      .share-result-actions{display:grid;grid-template-columns:1fr}
+      .share-result-actions .btn{width:100%;justify-content:center}
+    }
+
   </style>
 </head>
 <body>
@@ -797,12 +834,16 @@
       </div>
     </form>
     <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
-      <div class="quiz-results-head"><span class="eyebrow">Seu resultado</span><h3>Como suas escolhas se distribuíram</h3><p>A associação aparece agora, com a fonte de cada posição. A contagem não é recomendação de voto.</p></div>
+      <div class="quiz-results-head"><span class="eyebrow">Questionário concluído</span><h3>Suas respostas e fontes oficiais</h3><p>Os cartões abaixo dão acesso aos programas oficiais. Depois, confira o resumo das respostas e as referências de cada tema. Não há pontuação, ranking ou recomendação de voto.</p></div>
       <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
-      <div class="quiz-results-list" id="politicalQuizResultItems"></div>
       <section class="match-results" id="matchResults" aria-labelledby="match-title">
-        <h3 id="match-title">Planos de governo em resumo</h3>
-        <div class="profile-comparison-list comparison-columns" id="matchCandidateResults"></div>
+        <h3 id="match-title">Consulte os planos oficiais</h3>
+        <p class="quiz-result-method">Os cartões têm o mesmo destaque e levam aos documentos oficiais para leitura e comparação independente.</p>
+        <div class="profile-comparison-list quiz-candidate-grid" id="matchCandidateResults"></div>
+      </section>
+      <section class="quiz-answers-section" aria-labelledby="quiz-answers-title">
+        <h3 id="quiz-answers-title">Suas respostas por tema</h3>
+        <div class="quiz-results-list" id="politicalQuizResultItems"></div>
       </section>
       <div class="quiz-results-actions">
         <button class="btn btn-outline" type="button" id="editPoliticalQuiz">Editar respostas</button>
@@ -1605,217 +1646,213 @@
 
       quizForm.addEventListener('submit',function(e){
         e.preventDefault();
-        const answers={};let firstUnanswered=-1;
+        const answers = {};
+        let firstUnanswered = -1;
         quizQuestions.forEach(function(q,index){
-          const chosen=quizForm.querySelector('input[name="'+q.id+'"]:checked');
-          if(!chosen){if(firstUnanswered<0)firstUnanswered=index;return;}
-          answers[q.id]=Number(chosen.value);
+          const chosen = quizForm.querySelector('input[name="'+q.id+'"]:checked');
+          if(!chosen){if(firstUnanswered < 0)firstUnanswered = index;return;}
+          answers[q.id] = Number(chosen.value);
         });
-        if(firstUnanswered>=0){currentQuestionIndex=firstUnanswered;updateQuizStep();focusCurrentQuestion();return;}
-        const names={flavio:'Flávio Bolsonaro',lula:'Lula'};
-        const photos={flavio:'https://www.tse.jus.br/imagens/imagens/flavio-bolsonaro/@@images/image-200-7092d276831e3453f70c59d07d5c9ae7.png',lula:'https://www.tse.jus.br/imagens/imagens/lula/@@images/image-200-93d51d895f8ebc8900bf3e02c7052bef.png'};
-        const planUrls={flavio:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro',lula:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'};
-        const counts={flavio:0,lula:0};
-        quizQuestions.forEach(function(q){counts[q.options[answers[q.id]].candidate]++;});
-        const percent={flavio:Math.round(counts.flavio/quizQuestions.length*100),lula:Math.round(counts.lula/quizQuestions.length*100)};
-        const profileBanner=document.getElementById('politicalProfileSummary');
-        profileBanner.innerHTML='';
-        const profileHeading=document.createElement('strong');
-        profileHeading.textContent='Distribuição das suas escolhas: '+percent.flavio+'% das alternativas selecionadas foram associadas editorialmente a posições públicas da campanha de Flávio Bolsonaro e '+percent.lula+'% à campanha de Lula.';
-        const profileText=document.createElement('p');
-        profileText.textContent='A porcentagem conta as opções marcadas neste questionário. Ela não mede afinidade política, não define sua identidade e não recomenda voto.';
-        profileBanner.appendChild(profileHeading);profileBanner.appendChild(profileText);
+        if(firstUnanswered >= 0){
+          currentQuestionIndex = firstUnanswered;
+          updateQuizStep();
+          focusCurrentQuestion();
+          return;
+        }
 
-        const comparisonContainer=document.getElementById('matchCandidateResults');
-        comparisonContainer.innerHTML='';
-        const countPanel=document.createElement('div');countPanel.className='campaign-count-grid';
-        ['flavio','lula'].forEach(function(id){
-          const card=document.createElement('article');card.className='campaign-count-card';
-          const img=document.createElement('img');img.src=photos[id];img.alt='Foto de '+names[id];img.width=48;img.height=58;
-          const content=document.createElement('div');
-          const name=document.createElement('strong');name.textContent=names[id];
-          const percentEl=document.createElement('div');percentEl.className='campaign-count-percent';percentEl.textContent=percent[id]+'%';
-          const count=document.createElement('p');count.textContent=counts[id]+' de 10 opções escolhidas';
-          const bar=document.createElement('div');bar.className='campaign-count-track';
-          const fill=document.createElement('span');fill.className=id==='flavio'?'campaign-count-fill campaign-count-fill--blue':'campaign-count-fill campaign-count-fill--green';fill.style.width=percent[id]+'%';bar.appendChild(fill);
-          const plan=document.createElement('a');plan.href=planUrls[id];plan.target='_blank';plan.rel='noopener noreferrer';plan.textContent='Plano oficial no TSE ↗';
-          content.appendChild(name);content.appendChild(percentEl);content.appendChild(count);content.appendChild(bar);content.appendChild(plan);
-          card.appendChild(img);card.appendChild(content);countPanel.appendChild(card);
+        const candidates = [
+          {name:'Flávio Bolsonaro',photo:'./share-flavio.jpg',photoAlt:'Foto de referência de Flávio Bolsonaro',planUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'},
+          {name:'Lula',photo:'./share-lula.jpg',photoAlt:'Foto de referência de Lula',planUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'}
+        ];
+
+        const profileBanner = document.getElementById('politicalProfileSummary');
+        profileBanner.innerHTML = '';
+        const profileHeading = document.createElement('strong');
+        profileHeading.textContent = 'Pronto! O resumo foi organizado por tema.';
+        const profileText = document.createElement('p');
+        profileText.textContent = 'Consulte os documentos oficiais abaixo e, em seguida, confira suas respostas com as fontes relacionadas. As escolhas não são convertidas em notas ou afinidade com candidaturas.';
+        profileBanner.append(profileHeading,profileText);
+
+        const comparisonContainer = document.getElementById('matchCandidateResults');
+        comparisonContainer.innerHTML = '';
+        candidates.forEach(function(candidate){
+          const card = document.createElement('article');
+          card.className = 'quiz-candidate-card';
+          const img = document.createElement('img');
+          img.src = candidate.photo;
+          img.alt = candidate.photoAlt;
+          img.width = 82;
+          img.height = 104;
+          img.loading = 'lazy';
+          const body = document.createElement('div');
+          body.className = 'quiz-candidate-body';
+          const label = document.createElement('span');
+          label.className = 'quiz-candidate-label';
+          label.textContent = 'DOCUMENTO OFICIAL';
+          const title = document.createElement('h4');
+          title.textContent = candidate.name;
+          const description = document.createElement('p');
+          description.textContent = 'Consulte o plano de governo completo publicado na página oficial da Justiça Eleitoral.';
+          const link = document.createElement('a');
+          link.href = candidate.planUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = 'Abrir plano no TSE ↗';
+          body.append(label,title,description,link);
+          card.append(img,body);
+          comparisonContainer.appendChild(card);
         });
-        comparisonContainer.appendChild(countPanel);
 
-        const shareBox=document.createElement('section');
-        shareBox.className='share-result-box';
-        shareBox.innerHTML='<div class="share-result-head"><span class="eyebrow">Compartilhe</span><h4>Seu card para as redes sociais</h4><p>Mostra a proporção das opções escolhidas associadas às posições públicas de cada campanha. Não é teste de personalidade nem nota de candidato.</p></div><div class="share-card-palette" role="group" aria-label="Escolha o estilo visual do card"><span>Escolha as cores do seu card · a paleta não altera o resultado</span><button class="share-palette-choice" type="button" data-share-palette="lula" aria-pressed="false"><span class="share-palette-dots" aria-hidden="true"><i style="background:#9c1c25"></i><i style="background:#e52e37"></i><i style="background:#f5d7d8"></i></span>Vermelho · Lula</button><button class="share-palette-choice" type="button" data-share-palette="flavio" aria-pressed="false"><span class="share-palette-dots" aria-hidden="true"><i style="background:#064f35"></i><i style="background:#159657"></i><i style="background:#ffce45"></i></span>Verde/amarelo · Flávio</button><button class="share-palette-choice" type="button" data-share-palette="azul" aria-pressed="false"><span class="share-palette-dots" aria-hidden="true"><i style="background:#071b35"></i><i style="background:#8fc8ff"></i><i style="background:#f1c66e"></i></span>Azul</button><button class="share-palette-choice" type="button" data-share-palette="claro" aria-pressed="true"><span class="share-palette-dots" aria-hidden="true"><i style="background:#f3f8f5;border:1px solid #9aa"></i><i style="background:#16835c"></i><i style="background:#2f66b1"></i></span>Claro/neutro</button></div><div class="share-card-preview" id="shareCardPreview" data-theme="brasil"><div class="share-preview-brand">EleiNexus <span>RESULTADO DO QUESTIONÁRIO</span></div><h5>Distribuição das minhas escolhas</h5><div class="share-preview-candidate"><img class="share-preview-photo" id="sharePhotoFlavio" src="./share-flavio.jpg" alt="Foto oficial de Flávio Bolsonaro, fonte TSE" loading="lazy"><div class="share-preview-candidate-info"><div class="share-preview-row"><span>Flávio Bolsonaro</span><strong id="sharePctFlavio">'+percent.flavio+'%</strong></div><div class="share-preview-bar"><span id="shareBarFlavio" style="width:'+percent.flavio+'%"></span></div></div></div><div class="share-preview-candidate"><img class="share-preview-photo" id="sharePhotoLula" src="./share-lula.jpg" alt="Foto oficial de Lula, fonte TSE" loading="lazy"><div class="share-preview-candidate-info"><div class="share-preview-row"><span>Lula</span><strong id="sharePctLula">'+percent.lula+'%</strong></div><div class="share-preview-bar share-preview-bar--green"><span id="shareBarLula" style="width:'+percent.lula+'%"></span></div></div></div><p class="share-preview-note">Percentual das alternativas que marquei, não uma medida de afinidade política ou recomendação de voto.</p><p class="share-preview-invite">Conheça o EleiNexus, consulte as fontes e compartilhe: eleinexus-civico.onrender.com</p></div><div class="share-result-actions"><button class="btn btn-primary" type="button" id="shareImageButton">Compartilhar card + convite</button><button class="btn btn-outline" type="button" id="downloadShareCard">Baixar card PNG</button><button class="btn btn-outline" type="button" id="shareWhatsAppButton">WhatsApp</button><button class="btn btn-outline" type="button" id="shareXButton">X</button><button class="btn btn-outline" type="button" id="downloadInstagramCard">Baixar para Instagram</button></div><p class="share-result-foot">O card já leva o endereço do EleiNexus. A opção de compartilhar envia também uma mensagem-convite e o link quando o aplicativo escolhido aceita texto junto da imagem; WhatsApp e X têm atalhos com convite e link.</p>';
-        comparisonContainer.appendChild(shareBox);
+        const answersList = document.getElementById('politicalQuizResultItems');
+        answersList.innerHTML = '';
+        quizQuestions.forEach(function(q,index){
+          const opt = q.options[answers[q.id]];
+          const item = document.createElement('article');
+          item.className = 'quiz-result-item';
+          const title = document.createElement('strong');
+          title.textContent = (index + 1) + '. ' + q.theme;
+          const answer = document.createElement('p');
+          answer.className = 'quiz-result-answer';
+          answer.textContent = 'Sua resposta: ' + opt.label;
+          const source = document.createElement('a');
+          source.href = opt.sourceUrl;
+          source.target = '_blank';
+          source.rel = 'noopener noreferrer';
+          source.textContent = (opt.sourceLabel || 'Consultar fonte relacionada') + ' ↗';
+          item.append(title,answer,source);
+          answersList.appendChild(item);
+        });
+        const methodNote = document.createElement('p');
+        methodNote.className = 'quiz-result-method';
+        methodNote.textContent = 'As respostas são apresentadas como foram selecionadas, com os links relacionados. Consulte os documentos completos e verifique o contexto de cada afirmação.';
+        answersList.appendChild(methodNote);
 
-        let selectedSharePalette='claro';
-        const sharePalettes={
-          lula:{start:'#5d1019',end:'#b51f2a',stripes:['#9c1c25','#e52e37','#f5d7d8'],accent:'#f5d7d8',chip:'#f5d7d8',chipText:'#68131c',orb:'#ffc3c7',heading:'#ffffff',subhead:'#ffe8e9',panel:'#fff7f7',panelText:'#421116',muted:'#76484b',pct:'#a51925',tracks:'#f0d9da',bar1:'#a51f2b',bar2:'#cf4b50',note:'#ffe7e9',url:'#ffd5d8',footer:'#f6cdd0',photoFallback:'#f5d7d8'},
-          flavio:{start:'#063622',end:'#117348',stripes:['#159657','#ffce45','#159657'],accent:'#ffce45',chip:'#ffce45',chipText:'#103e2a',orb:'#b5f0c8',heading:'#ffffff',subhead:'#d8f8e2',panel:'#f8fff9',panelText:'#12382a',muted:'#52665c',pct:'#0d643e',tracks:'#dceee2',bar1:'#16835c',bar2:'#dfa900',note:'#e0f6e7',url:'#ffce45',footer:'#c1e8cd',photoFallback:'#d9e5dc'},
-          azul:{start:'#071b35',end:'#174b80',stripes:['#8fc8ff','#f4f8ff','#2558a6'],accent:'#8fc8ff',chip:'#d9efff',chipText:'#09233d',orb:'#a7d3ff',heading:'#ffffff',subhead:'#e0eeff',panel:'#eef5fc',panelText:'#122844',muted:'#48617a',pct:'#174d92',tracks:'#d7e5f3',bar1:'#2d73c8',bar2:'#b98628',note:'#dce9f9',url:'#9dd4ff',footer:'#c3d8f1',photoFallback:'#d8e9fa'},
-          claro:{start:'#f3f8f5',end:'#dfeaf4',stripes:['#159657','#ffce45','#2355a6'],accent:'#16835c',chip:'#e6f5ec',chipText:'#124333',orb:'#a3d6bb',heading:'#173b2d',subhead:'#425f51',panel:'#ffffff',panelText:'#142b24',muted:'#53645d',pct:'#1b5b9d',tracks:'#d5e1e8',bar1:'#2f66b1',bar2:'#16835c',note:'#52665c',url:'#125c3e',footer:'#52665c',photoFallback:'#d9e5dc'}
-        };
-        const paletteButtons=shareBox.querySelectorAll('[data-share-palette]');
-        function setSharePalette(name){
-          if(!sharePalettes[name])name='claro';
-          selectedSharePalette=name;
-          document.getElementById('shareCardPreview').dataset.theme=name;
-          paletteButtons.forEach(function(button){button.setAttribute('aria-pressed',button.getAttribute('data-share-palette')===name?'true':'false');});
-        }
-        paletteButtons.forEach(function(button){button.addEventListener('click',function(){setSharePalette(button.getAttribute('data-share-palette'));});});
-        setSharePalette('claro');
+        const previousShareBox = document.getElementById('quizShareResultBox');
+        if(previousShareBox) previousShareBox.remove();
+        const shareBox = document.createElement('section');
+        shareBox.className = 'share-result-box';
+        shareBox.id = 'quizShareResultBox';
+        shareBox.innerHTML = '<div class="share-result-head"><span class="eyebrow">Compartilhe</span><h4>Convide alguém a conhecer o EleiNexus</h4><p>O card divulga o projeto e suas fontes públicas. Ele não inclui suas respostas nem associa seu perfil a uma candidatura.</p></div><div class="share-card-preview share-card-preview--neutral" id="shareCardPreview"><div class="share-preview-brand">EleiNexus <span>INFORMAÇÃO CÍVICA</span></div><h5>Sem enrolação.<br>Com fontes oficiais.</h5><p class="share-preview-note">Consulte planos presidenciais, leia as referências e forme sua própria conclusão.</p><p class="share-preview-invite">eleinexus-civico.onrender.com</p></div><div class="share-result-actions"><button class="btn btn-primary" type="button" id="shareImageButton">Compartilhar convite + card</button><button class="btn btn-outline" type="button" id="downloadShareCard">Baixar card PNG</button><button class="btn btn-outline" type="button" id="downloadInstagramCard">Card para Instagram</button><button class="btn btn-outline" type="button" id="shareWhatsAppButton">WhatsApp</button><button class="btn btn-outline" type="button" id="shareXButton">X</button></div><p class="share-result-foot">O convite contém apenas o endereço do EleiNexus e uma descrição neutra do projeto.</p>';
 
-        const eleiNexusUrl='https://eleinexus-civico.onrender.com/';
-        function shareCaption(){
-          return 'No EleiNexus, a distribuição das minhas respostas foi: '+percent.flavio+'% das opções escolhidas associadas editorialmente a posições públicas da campanha de Flávio Bolsonaro e '+percent.lula+'% à campanha de Lula. É uma contagem das respostas, não uma medida de afinidade política nem recomendação de voto.';
-        }
+        const eleiNexusUrl = 'https://eleinexus-civico.onrender.com/';
         function shareInviteMessage(){
-          return 'Fiz o questionário do EleiNexus e te convido a conhecer o sistema! Veja os planos presidenciais, consulte fontes oficiais e forme sua própria opinião.\nAcesse: '+eleiNexusUrl+'\n\n'+shareCaption();
-        }
-        function roundRect(ctx,x,y,w,h,r,fill){
-          ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();ctx.fillStyle=fill;ctx.fill();
-        }
-        function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
-          const words=text.split(/\s+/);let line='',lines=0;
-          for(let i=0;i<words.length;i++){
-            const test=line?line+' '+words[i]:words[i];
-            if(ctx.measureText(test).width>maxWidth&&line){
-              ctx.fillText(line,x,y);line=words[i];y+=lineHeight;lines++;
-              if(maxLines&&lines>=maxLines)return y;
-            }else line=test;
-          }
-          if(line){ctx.fillText(line,x,y);y+=lineHeight;}
-          return y;
-        }
-        function loadSharePortrait(src){
-          return new Promise(function(resolve){
-            const img=new Image();
-            img.crossOrigin='anonymous';
-            img.onload=function(){resolve(img);};
-            img.onerror=function(){resolve(null);};
-            img.src=src;
-          });
-        }
-        async function buildShareCardBlob(){
-          const portraitUrls=[
-            './share-flavio.jpg',
-            './share-lula.jpg'
-          ];
-          const portraits=await Promise.all(portraitUrls.map(loadSharePortrait));
-          const theme=sharePalettes[selectedSharePalette]||sharePalettes.brasil;
-          return new Promise(function(resolve,reject){
-            const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
-            const ctx=canvas.getContext('2d');
-            if(!ctx){reject(new Error('Canvas indisponível'));return;}
-            const gradient=ctx.createLinearGradient(0,0,1080,1350);gradient.addColorStop(0,theme.start);gradient.addColorStop(1,theme.end);
-            ctx.fillStyle=gradient;ctx.fillRect(0,0,1080,1350);
-            ctx.fillStyle=theme.stripes[0];ctx.fillRect(0,0,360,16);ctx.fillStyle=theme.stripes[1];ctx.fillRect(360,0,360,16);ctx.fillStyle=theme.stripes[2];ctx.fillRect(720,0,360,16);
-            ctx.globalAlpha=.14;ctx.fillStyle=theme.orb;ctx.beginPath();ctx.arc(950,210,175,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(90,1220,210,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
-            roundRect(ctx,76,66,280,48,24,theme.chip);
-            ctx.fillStyle=theme.chipText;ctx.font='bold 24px Arial';ctx.fillText('ELEINEXUS · 2026',98,97);
-            ctx.fillStyle=theme.heading;ctx.font='bold 57px Arial';ctx.fillText('Distribuição das',76,205);ctx.fillText('minhas escolhas',76,273);
-            ctx.fillStyle=theme.subhead;ctx.font='26px Arial';ctx.fillText('10 perguntas · 2 alternativas por tema',78,322);
-            roundRect(ctx,64,375,952,538,28,theme.panel);
-            ctx.fillStyle=theme.panelText;ctx.font='bold 28px Arial';ctx.fillText('Proporção de opções selecionadas',102,427);
-            const rows=[
-              {id:'flavio',name:'Flávio Bolsonaro',pct:percent.flavio,color:theme.bar1,y:490,portrait:portraits[0],fallback:'FB'},
-              {id:'lula',name:'Lula',pct:percent.lula,color:theme.bar2,y:690,portrait:portraits[1],fallback:'L'}
-            ];
-            rows.forEach(function(row){
-              const px=104,py=row.y-42,pw=76,ph=112,r=12;
-              if(row.portrait){
-                ctx.save();ctx.beginPath();ctx.moveTo(px+r,py);ctx.arcTo(px+pw,py,px+pw,py+ph,r);ctx.arcTo(px+pw,py+ph,px,py+ph,r);ctx.arcTo(px,py+ph,px,py,r);ctx.arcTo(px,py,px+pw,py,r);ctx.closePath();ctx.clip();
-                ctx.drawImage(row.portrait,px,py,pw,ph);ctx.restore();
-                ctx.save();ctx.beginPath();ctx.moveTo(px+r,py);ctx.arcTo(px+pw,py,px+pw,py+ph,r);ctx.arcTo(px+pw,py+ph,px,py+ph,r);ctx.arcTo(px,py+ph,px,py,r);ctx.arcTo(px,py,px+pw,py,r);ctx.closePath();ctx.strokeStyle=theme.tracks;ctx.lineWidth=3;ctx.stroke();ctx.restore();
-              }else{
-                roundRect(ctx,px,py,pw,ph,r,theme.photoFallback);ctx.fillStyle=theme.panelText;ctx.font='bold 25px Arial';ctx.textAlign='center';ctx.fillText(row.fallback,px+pw/2,py+ph/2+8);ctx.textAlign='left';
-              }
-              ctx.fillStyle=theme.muted;ctx.font='bold 27px Arial';ctx.fillText(row.name,198,row.y);
-              ctx.fillStyle=theme.pct;ctx.font='bold 58px Arial';ctx.textAlign='right';ctx.fillText(row.pct+'%',966,row.y+2);ctx.textAlign='left';
-              roundRect(ctx,198,row.y+38,768,25,12,theme.tracks);
-              if(row.pct>0)roundRect(ctx,198,row.y+38,768*row.pct/100,25,12,row.color);
-              ctx.fillStyle=theme.muted;ctx.font='22px Arial';ctx.fillText(counts[row.id]+' de 10 opções marcadas',198,row.y+101);
-            });
-            ctx.fillStyle=theme.heading;ctx.font='bold 27px Arial';ctx.fillText('Importante',76,987);
-            ctx.fillStyle=theme.note;ctx.font='22px Arial';
-            let yy=1030;
-            yy=wrapCanvasText(ctx,'Percentual das alternativas que escolhi, associadas editorialmente a posições públicas de cada campanha.',76,yy,930,32,3);
-            yy+=12;
-            wrapCanvasText(ctx,'Não mede afinidade política e não recomenda voto. Consulte as fontes antes de tirar conclusões.',76,yy,930,32,3);
-            ctx.fillStyle=theme.accent||theme.url;ctx.font='bold 21px Arial';ctx.fillText('CONHEÇA O ELEINEXUS · ACESSE E COMPARTILHE',76,1216);
-            ctx.fillStyle=theme.url;ctx.font='bold 24px Arial';ctx.fillText('eleinexus-civico.onrender.com',76,1288);
-            ctx.fillStyle=theme.footer;ctx.font='19px Arial';ctx.fillText('Informação cívica independente · Fotos oficiais: TSE',76,1320);
-            try{
-              canvas.toBlob(function(blob){if(blob)resolve(blob);else reject(new Error('Não foi possível criar a imagem'));},'image/png');
-            }catch(error){reject(error);}
-          });
+          return 'Conheça o EleiNexus: consulte propostas presidenciais, referências oficiais e informações cívicas para formar sua própria conclusão.\nAcesse: ' + eleiNexusUrl;
         }
         function downloadBlob(blob,filename){
-          const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();window.setTimeout(function(){URL.revokeObjectURL(url);},1500);
+          const url = URL.createObjectURL(blob);
+          const anchor = document.createElement('a');
+          anchor.href = url;
+          anchor.download = filename;
+          document.body.appendChild(anchor);
+          anchor.click();
+          anchor.remove();
+          window.setTimeout(function(){URL.revokeObjectURL(url);},1500);
+        }
+        async function buildShareCardBlob(){
+          return new Promise(function(resolve,reject){
+            const canvas = document.createElement('canvas');
+            canvas.width = 1080;
+            canvas.height = 1350;
+            const ctx = canvas.getContext('2d');
+            if(!ctx){reject(new Error('Canvas indisponível'));return;}
+            const gradient = ctx.createLinearGradient(0,0,1080,1350);
+            gradient.addColorStop(0,'#0b2d26');
+            gradient.addColorStop(0.58,'#173c36');
+            gradient.addColorStop(1,'#102b4c');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0,0,1080,1350);
+            ctx.fillStyle = '#159657';ctx.fillRect(0,0,360,16);
+            ctx.fillStyle = '#ffce45';ctx.fillRect(360,0,360,16);
+            ctx.fillStyle = '#2f66b1';ctx.fillRect(720,0,360,16);
+            ctx.globalAlpha = 0.13;
+            ctx.fillStyle = '#bce6c8';
+            ctx.beginPath();ctx.arc(920,220,190,0,Math.PI*2);ctx.fill();
+            ctx.beginPath();ctx.arc(120,1130,260,0,Math.PI*2);ctx.fill();
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = '#ffce45';ctx.font = 'bold 28px Arial';
+            ctx.fillText('ELEINEXUS · CIDADANIA DIGITAL',76,112);
+            ctx.fillStyle = '#ffffff';ctx.font = 'bold 76px Arial';
+            ctx.fillText('Sem enrolação.',76,270);
+            ctx.fillText('Com fontes oficiais.',76,365);
+            ctx.fillStyle = '#dcebe3';ctx.font = '32px Arial';
+            ctx.fillText('Planos presidenciais e informação pública.',76,445);
+            ctx.fillText('Consulte as referências. Forme sua conclusão.',76,500);
+            ctx.fillStyle = 'rgba(255,255,255,0.09)';ctx.fillRect(76,590,928,255);
+            ctx.fillStyle = '#ffce45';ctx.font = 'bold 31px Arial';
+            ctx.fillText('O que você encontra no EleiNexus',112,655);
+            ctx.fillStyle = '#ffffff';ctx.font = '28px Arial';
+            ctx.fillText('• Planos presidenciais e fontes oficiais',112,720);
+            ctx.fillText('• Informação cívica sem ranking de candidatos',112,775);
+            ctx.fillText('• Acesso pelo navegador',112,830);
+            ctx.fillStyle = '#ffce45';ctx.font = 'bold 25px Arial';
+            ctx.fillText('ACESSE E COMPARTILHE',76,1055);
+            ctx.fillStyle = '#ffffff';ctx.font = 'bold 37px Arial';
+            ctx.fillText('eleinexus-civico.onrender.com',76,1120);
+            ctx.fillStyle = '#dcebe3';ctx.font = '23px Arial';
+            ctx.fillText('Informação cívica independente · Fontes identificadas',76,1225);
+            try{canvas.toBlob(function(blob){if(blob)resolve(blob);else reject(new Error('Não foi possível criar a imagem'));},'image/png');}
+            catch(error){reject(error);}
+          });
         }
         async function downloadCard(){
-          try{const blob=await buildShareCardBlob();downloadBlob(blob,'EleiNexus-resultado.png');toast('Card PNG baixado.');}
-          catch(err){toast('Não foi possível gerar o card neste navegador.');}
+          try{const blob = await buildShareCardBlob();downloadBlob(blob,'EleiNexus-convite.png');toast('Card de convite baixado.');}
+          catch(error){toast('Não foi possível gerar a imagem neste navegador.');}
         }
-        document.getElementById('downloadShareCard').addEventListener('click',downloadCard);
-        document.getElementById('downloadInstagramCard').addEventListener('click',function(){downloadCard();toast('Baixe a imagem e publique no Instagram.');});
-        document.getElementById('shareWhatsAppButton').addEventListener('click',function(){
-          const text=shareInviteMessage();
-          window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');
+        shareBox.querySelector('#downloadShareCard').addEventListener('click',downloadCard);
+        shareBox.querySelector('#downloadInstagramCard').addEventListener('click',downloadCard);
+        shareBox.querySelector('#shareWhatsAppButton').addEventListener('click',function(){
+          window.open('https://wa.me/?text='+encodeURIComponent(shareInviteMessage()),'_blank','noopener,noreferrer');
         });
-        document.getElementById('shareXButton').addEventListener('click',function(){
-          const text=shareInviteMessage()+' #EleiNexus';
-          window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(eleiNexusUrl),'_blank','noopener,noreferrer');
+        shareBox.querySelector('#shareXButton').addEventListener('click',function(){
+          window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(shareInviteMessage()+' #EleiNexus'),'_blank','noopener,noreferrer');
         });
-        document.getElementById('shareImageButton').addEventListener('click',async function(){
+        shareBox.querySelector('#shareImageButton').addEventListener('click',async function(){
           try{
-            const blob=await buildShareCardBlob();
-            const cardFile=new File([blob],'EleiNexus-resultado.png',{type:'image/png'});
-            const shareData={title:'Conheça o EleiNexus',text:shareInviteMessage(),url:eleiNexusUrl,files:[cardFile]};
-            if(navigator.share&&navigator.canShare&&navigator.canShare({files:[cardFile]})){
+            const blob = await buildShareCardBlob();
+            const file = new File([blob],'EleiNexus-convite.png',{type:'image/png'});
+            const shareData = {title:'Conheça o EleiNexus',text:shareInviteMessage(),url:eleiNexusUrl,files:[file]};
+            if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
               await navigator.share(shareData);
-            }else if(navigator.share&&navigator.canShare&&navigator.canShare({title:shareData.title,text:shareData.text,url:shareData.url})){
+            }else if(navigator.share && navigator.canShare && navigator.canShare({title:shareData.title,text:shareData.text,url:shareData.url})){
               await navigator.share({title:shareData.title,text:shareData.text,url:shareData.url});
-              downloadBlob(blob,'EleiNexus-resultado.png');
+              downloadBlob(blob,'EleiNexus-convite.png');
               toast('Convite compartilhado. O card também foi baixado para anexar.');
             }else{
-              downloadBlob(blob,'EleiNexus-resultado.png');
-              toast('Card baixado com o convite e o endereço do EleiNexus impressos. Use WhatsApp ou X para enviar também a mensagem.');
+              downloadBlob(blob,'EleiNexus-convite.png');
+              toast('Card baixado. Compartilhe também o convite pelo WhatsApp ou X.');
             }
-          }catch(err){
-            if(err&&err.name==='AbortError')return;
-            toast('Não foi possível abrir o compartilhamento. Baixe o card ou use WhatsApp/X para enviar o convite.');
+          }catch(error){
+            if(error && error.name === 'AbortError')return;
+            toast('Não foi possível abrir o compartilhamento. Use o download ou os atalhos.');
           }
         });
 
-        const answersList=document.getElementById('politicalQuizResultItems');
-        answersList.innerHTML='';
-        quizQuestions.forEach(function(q,index){
-          const opt=q.options[answers[q.id]],item=document.createElement('article');
-          item.className='quiz-result-item';
-          const title=document.createElement('strong');title.textContent=(index+1)+'. '+q.theme;
-          const answer=document.createElement('p');answer.textContent='Você escolheu: '+opt.label;
-          const origin=document.createElement('p');origin.className='quiz-result-origin';origin.textContent='Posição associada a '+names[opt.candidate]+'.';
-          const source=document.createElement('a');source.href=opt.sourceUrl;source.target='_blank';source.rel='noopener noreferrer';source.textContent=opt.sourceLabel+' ↗';
-          item.appendChild(title);item.appendChild(answer);item.appendChild(origin);item.appendChild(source);answersList.appendChild(item);
+        const actions = quizResults.querySelector('.quiz-results-actions');
+        quizResults.insertBefore(shareBox,actions);
+        quizForm.hidden = true;
+        quizResults.hidden = false;
+        quizResults.scrollIntoView({
+          behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
+          block:'start'
         });
-        const methodNote=document.createElement('p');methodNote.className='quiz-result-method';
-        methodNote.textContent='As alternativas resumem declarações públicas reportadas e pontos dos programas registrados. O mapeamento é editorial; leia as fontes e os planos completos antes de formar sua conclusão.';
-        answersList.appendChild(methodNote);
-        quizResults.hidden=false;
-        quizResults.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+        const resultTitle = quizResults.querySelector('.quiz-results-head h3');
+        if(resultTitle)resultTitle.setAttribute('tabindex','-1');
+        window.setTimeout(function(){if(resultTitle)resultTitle.focus({preventScroll:true});},300);
       });
       quizForm.addEventListener('reset',function(){
         quizResults.hidden = true;
+        quizForm.hidden = false;
         quizResultItems.innerHTML = '';
         document.getElementById('matchCandidateResults').innerHTML = '';
         document.getElementById('politicalProfileSummary').innerHTML = '';
+        const shareBox = document.getElementById('quizShareResultBox');
+        if(shareBox)shareBox.remove();
         currentQuestionIndex = 0;
         window.setTimeout(updateQuizStep,0);
       });
       document.getElementById('editPoliticalQuiz').addEventListener('click',function(){
         quizResults.hidden = true;
+        quizForm.hidden = false;
         currentQuestionIndex = 0;
         updateQuizStep();
         document.getElementById('perfil-politico').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
