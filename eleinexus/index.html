@@ -754,6 +754,28 @@
       .quiz-candidate-card--result .campaign-count-percent{font-size:27px}
     }
 
+  
+    /* Separação explícita: percentuais no topo, cards completos abaixo, respostas no final. */
+    .quiz-percent-heading{display:block;font-size:18px;font-weight:900;line-height:1.3;margin-bottom:7px}
+    .quiz-percent-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:15px}
+    .quiz-percent-panel{min-width:0;padding:15px;background:var(--paper);border:1px solid var(--line);border-radius:13px}
+    .quiz-percent-panel-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .quiz-percent-panel-top strong{font-size:13px;color:var(--ink);line-height:1.35}
+    .quiz-percent-value{font-size:clamp(25px,3vw,32px);font-weight:950;letter-spacing:-.7px;color:var(--green);line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+    .quiz-percent-panel p{font-size:11px;color:var(--muted);line-height:1.45;margin:8px 0}
+    .quiz-percent-track{width:100%;height:9px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+    .quiz-percent-fill{display:block;height:100%;border-radius:99px;transition:width .35s ease}
+    .quiz-percent-fill.campaign-count-fill--blue{background:#2f66b1}
+    .quiz-percent-fill.campaign-count-fill--green{background:#16835c}
+    .quiz-candidate-card--result .campaign-count-percent{font-variant-numeric:tabular-nums}
+    #matchResults{margin-top:24px}
+    #quiz-answers-title{margin-top:2px}
+    @media(max-width:760px){
+      .quiz-percent-overview{grid-template-columns:1fr;gap:9px}
+      .quiz-percent-panel{padding:13px}
+      .quiz-percent-value{font-size:28px}
+    }
+
   </style>
 </head>
 <body>
@@ -854,8 +876,8 @@
       <div class="quiz-results-head"><span class="eyebrow">Questionário concluído</span><h3>Seu resultado, sem precisar procurar</h3><p>Veja a distribuição percentual das respostas e abra os planos oficiais nos próprios cartões. Suas respostas por tema e as referências aparecem logo abaixo.</p></div>
       <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
       <section class="match-results" id="matchResults" aria-labelledby="match-title">
-        <h3 id="match-title">Distribuição das suas respostas</h3>
-        <p class="quiz-result-method">Os percentuais mostram a proporção de alternativas selecionadas associadas editorialmente a posições públicas de cada campanha. Não representam afinidade política, nota ou recomendação de voto.</p>
+        <h3 id="match-title">Cards dos planos oficiais</h3>
+        <p class="quiz-result-method">Cada card repete seu percentual, mostra a quantidade de alternativas selecionadas e permite abrir o plano oficial no TSE.</p>
         <div class="profile-comparison-list quiz-candidate-grid" id="matchCandidateResults"></div>
       </section>
       <section class="quiz-answers-section" aria-labelledby="quiz-answers-title">
@@ -1696,10 +1718,41 @@
         const profileBanner = document.getElementById('politicalProfileSummary');
         profileBanner.innerHTML = '';
         const profileHeading = document.createElement('strong');
-        profileHeading.textContent = 'Aqui está a distribuição das suas escolhas.';
+        profileHeading.className = 'quiz-percent-heading';
+        profileHeading.textContent = 'Resultado percentual das suas respostas';
         const profileText = document.createElement('p');
-        profileText.textContent = 'Os percentuais contam as alternativas selecionadas que foram associadas editorialmente a posições públicas de cada campanha. Eles não medem afinidade política, não classificam candidaturas e não recomendam voto.';
-        profileBanner.append(profileHeading,profileText);
+        profileText.textContent = 'Veja primeiro a distribuição geral. Os percentuais contam alternativas associadas editorialmente a posições públicas de cada campanha; não medem afinidade política e não recomendam voto.';
+        const percentOverview = document.createElement('div');
+        percentOverview.className = 'quiz-percent-overview';
+        percentOverview.setAttribute('aria-label','Resumo percentual das respostas');
+        candidates.forEach(function(candidate){
+          const panel = document.createElement('article');
+          panel.className = 'quiz-percent-panel';
+          const top = document.createElement('div');
+          top.className = 'quiz-percent-panel-top';
+          const name = document.createElement('strong');
+          name.textContent = candidate.name;
+          const value = document.createElement('span');
+          value.className = 'quiz-percent-value';
+          value.textContent = percent[candidate.id] + '%';
+          top.append(name,value);
+          const countText = document.createElement('p');
+          countText.textContent = counts[candidate.id] + ' de ' + totalAnswers + ' alternativas selecionadas';
+          const track = document.createElement('div');
+          track.className = 'quiz-percent-track';
+          track.setAttribute('role','progressbar');
+          track.setAttribute('aria-label','Percentual de alternativas associadas editorialmente a posições públicas de '+candidate.name);
+          track.setAttribute('aria-valuemin','0');
+          track.setAttribute('aria-valuemax','100');
+          track.setAttribute('aria-valuenow',String(percent[candidate.id]));
+          const fill = document.createElement('span');
+          fill.className = 'quiz-percent-fill ' + candidate.barClass;
+          fill.style.width = percent[candidate.id] + '%';
+          track.appendChild(fill);
+          panel.append(top,countText,track);
+          percentOverview.appendChild(panel);
+        });
+        profileBanner.append(profileHeading,profileText,percentOverview);
 
         const comparisonContainer = document.getElementById('matchCandidateResults');
         comparisonContainer.innerHTML = '';
