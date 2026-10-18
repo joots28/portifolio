@@ -737,6 +737,23 @@
       .share-result-actions .btn{width:100%;justify-content:center}
     }
 
+  
+    .quiz-candidate-card--result{align-items:flex-start;gap:14px}
+    .quiz-candidate-card--result .quiz-candidate-body{flex:1}
+    .quiz-candidate-heading-row{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;flex-wrap:wrap}
+    .quiz-candidate-card--result .campaign-count-percent{font-size:clamp(24px,3vw,32px);color:var(--green);line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+    .quiz-candidate-card--result .campaign-count-caption{margin:0;font-size:12px;color:var(--muted);line-height:1.4}
+    .quiz-candidate-card--result .campaign-count-track{width:100%;height:9px;margin:3px 0 4px;background:var(--line);border-radius:999px;overflow:hidden}
+    .quiz-candidate-card--result .campaign-count-fill{display:block;height:100%;border-radius:999px;transition:width .35s ease}
+    .quiz-candidate-card--result .campaign-count-fill--blue{background:#2f66b1}
+    .quiz-candidate-card--result .campaign-count-fill--green{background:#16835c}
+    .quiz-candidate-card--result .quiz-candidate-description{margin-top:3px}
+    @media(max-width:760px){
+      .quiz-candidate-card--result{gap:11px}
+      .quiz-candidate-card--result img{flex-basis:68px;width:68px;height:86px}
+      .quiz-candidate-card--result .campaign-count-percent{font-size:27px}
+    }
+
   </style>
 </head>
 <body>
@@ -834,11 +851,11 @@
       </div>
     </form>
     <div class="quiz-results panel" id="politicalQuizResults" hidden aria-live="polite">
-      <div class="quiz-results-head"><span class="eyebrow">Questionário concluído</span><h3>Suas respostas e fontes oficiais</h3><p>Os cartões abaixo dão acesso aos programas oficiais. Depois, confira o resumo das respostas e as referências de cada tema. Não há pontuação, ranking ou recomendação de voto.</p></div>
+      <div class="quiz-results-head"><span class="eyebrow">Questionário concluído</span><h3>Seu resultado, sem precisar procurar</h3><p>Veja a distribuição percentual das respostas e abra os planos oficiais nos próprios cartões. Suas respostas por tema e as referências aparecem logo abaixo.</p></div>
       <div class="quiz-profile-banner" id="politicalProfileSummary" role="status"></div>
       <section class="match-results" id="matchResults" aria-labelledby="match-title">
-        <h3 id="match-title">Consulte os planos oficiais</h3>
-        <p class="quiz-result-method">Os cartões têm o mesmo destaque e levam aos documentos oficiais para leitura e comparação independente.</p>
+        <h3 id="match-title">Distribuição das suas respostas</h3>
+        <p class="quiz-result-method">Os percentuais mostram a proporção de alternativas selecionadas associadas editorialmente a posições públicas de cada campanha. Não representam afinidade política, nota ou recomendação de voto.</p>
         <div class="profile-comparison-list quiz-candidate-grid" id="matchCandidateResults"></div>
       </section>
       <section class="quiz-answers-section" aria-labelledby="quiz-answers-title">
@@ -1661,44 +1678,84 @@
         }
 
         const candidates = [
-          {name:'Flávio Bolsonaro',photo:'./share-flavio.jpg',photoAlt:'Foto de referência de Flávio Bolsonaro',planUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro'},
-          {name:'Lula',photo:'./share-lula.jpg',photoAlt:'Foto de referência de Lula',planUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo'}
+          {id:'flavio',name:'Flávio Bolsonaro',photo:'./share-flavio.jpg',photoAlt:'Foto de referência de Flávio Bolsonaro',planUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/flavio-bolsonaro',barClass:'campaign-count-fill--blue'},
+          {id:'lula',name:'Lula',photo:'./share-lula.jpg',photoAlt:'Foto de referência de Lula',planUrl:'https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/lula-propostas-de-governo',barClass:'campaign-count-fill--green'}
         ];
+        const counts = {flavio:0,lula:0};
+        quizQuestions.forEach(function(q){
+          const selectedOption = q.options[answers[q.id]];
+          const candidateId = selectedOption && selectedOption.candidate;
+          if(Object.prototype.hasOwnProperty.call(counts,candidateId)) counts[candidateId] += 1;
+        });
+        const totalAnswers = quizQuestions.length;
+        const percent = {
+          flavio:Math.round(counts.flavio/totalAnswers*100),
+          lula:Math.round(counts.lula/totalAnswers*100)
+        };
 
         const profileBanner = document.getElementById('politicalProfileSummary');
         profileBanner.innerHTML = '';
         const profileHeading = document.createElement('strong');
-        profileHeading.textContent = 'Pronto! O resumo foi organizado por tema.';
+        profileHeading.textContent = 'Aqui está a distribuição das suas escolhas.';
         const profileText = document.createElement('p');
-        profileText.textContent = 'Consulte os documentos oficiais abaixo e, em seguida, confira suas respostas com as fontes relacionadas. As escolhas não são convertidas em notas ou afinidade com candidaturas.';
+        profileText.textContent = 'Os percentuais contam as alternativas selecionadas que foram associadas editorialmente a posições públicas de cada campanha. Eles não medem afinidade política, não classificam candidaturas e não recomendam voto.';
         profileBanner.append(profileHeading,profileText);
 
         const comparisonContainer = document.getElementById('matchCandidateResults');
         comparisonContainer.innerHTML = '';
         candidates.forEach(function(candidate){
           const card = document.createElement('article');
-          card.className = 'quiz-candidate-card';
+          card.className = 'quiz-candidate-card quiz-candidate-card--result';
           const img = document.createElement('img');
           img.src = candidate.photo;
           img.alt = candidate.photoAlt;
           img.width = 82;
           img.height = 104;
           img.loading = 'lazy';
+
           const body = document.createElement('div');
           body.className = 'quiz-candidate-body';
           const label = document.createElement('span');
           label.className = 'quiz-candidate-label';
-          label.textContent = 'DOCUMENTO OFICIAL';
+          label.textContent = 'DISTRIBUIÇÃO DAS RESPOSTAS';
+
+          const headingRow = document.createElement('div');
+          headingRow.className = 'quiz-candidate-heading-row';
           const title = document.createElement('h4');
           title.textContent = candidate.name;
+          const percentage = document.createElement('strong');
+          percentage.className = 'campaign-count-percent';
+          percentage.textContent = percent[candidate.id] + '%';
+          percentage.setAttribute('aria-label',percent[candidate.id]+' por cento');
+          headingRow.append(title,percentage);
+
+          const count = document.createElement('p');
+          count.className = 'campaign-count-caption';
+          count.textContent = counts[candidate.id] + ' de ' + totalAnswers + ' alternativas selecionadas';
+
+          const track = document.createElement('div');
+          track.className = 'campaign-count-track';
+          track.setAttribute('role','progressbar');
+          track.setAttribute('aria-label','Alternativas associadas editorialmente a posições públicas de '+candidate.name);
+          track.setAttribute('aria-valuemin','0');
+          track.setAttribute('aria-valuemax','100');
+          track.setAttribute('aria-valuenow',String(percent[candidate.id]));
+          const fill = document.createElement('span');
+          fill.className = 'campaign-count-fill ' + candidate.barClass;
+          fill.style.width = percent[candidate.id] + '%';
+          track.appendChild(fill);
+
           const description = document.createElement('p');
-          description.textContent = 'Consulte o plano de governo completo publicado na página oficial da Justiça Eleitoral.';
+          description.className = 'quiz-candidate-description';
+          description.textContent = 'Veja as propostas completas no documento oficial da Justiça Eleitoral.';
+
           const link = document.createElement('a');
           link.href = candidate.planUrl;
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
           link.textContent = 'Abrir plano no TSE ↗';
-          body.append(label,title,description,link);
+
+          body.append(label,headingRow,count,track,description,link);
           card.append(img,body);
           comparisonContainer.appendChild(card);
         });
