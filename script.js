@@ -17,6 +17,21 @@
       kind: "01 / FULL-STACK"
     },
     {
+      repo: "EleiNexus",
+      repositoryUrl: "https://github.com/joots28/portifolio/tree/eleinexus-site/eleinexus",
+      repositoryLabel: "Ver arquivos no GitHub",
+      liveUrl: "https://eleinexus-civico.onrender.com/",
+      category: "frontend",
+      title: "EleiNexus",
+      description: "Plataforma cívica independente que organiza informações públicas sobre propostas presidenciais, fontes oficiais e pesquisas, com atenção à transparência e à neutralidade.",
+      detail: "O projeto reúne conteúdo de interesse público com referências para consulta direta. O questionário tem caráter informativo e não recomenda candidatos.",
+      tags: ["HTML", "CSS", "JavaScript", "Responsivo"],
+      status: "PUBLICADO",
+      visual: "visual-eleinexus",
+      code: "ELEI",
+      kind: "02 / WEB"
+    },
+    {
       repo: "SPIUsuarios_2DS",
       category: "backend",
       title: "SPI — API de usuários",
@@ -26,7 +41,7 @@
       status: "ESTUDO",
       visual: "visual-api",
       code: "{ API }",
-      kind: "02 / BACK-END"
+      kind: "03 / BACK-END"
     },
     {
       repo: "lanchonete",
@@ -38,7 +53,7 @@
       status: "PRÁTICA",
       visual: "visual-desktop",
       code: "DESK",
-      kind: "03 / DESKTOP"
+      kind: "04 / DESKTOP"
     },
     {
       repo: "estruturas-condicionais",
@@ -50,7 +65,7 @@
       status: "BASE",
       visual: "visual-logic",
       code: "if ( )",
-      kind: "04 / LÓGICA"
+      kind: "05 / LÓGICA"
     }
   ];
 
@@ -192,7 +207,7 @@
     visual.className = "project-visual " + config.visual;
     const stamp = document.createElement("span");
     stamp.className = "visual-stamp";
-    stamp.textContent = config.category === "fullstack" ? "PROJETO ACADÊMICO" : config.category === "backend" ? "API / ESTUDOS" : config.category === "desktop" ? "APLICAÇÃO DESKTOP" : "FUNDAMENTOS";
+    stamp.textContent = config.category === "fullstack" ? "PROJETO ACADÊMICO" : config.category === "backend" ? "API / ESTUDOS" : config.category === "frontend" ? "CIDADANIA DIGITAL" : config.category === "desktop" ? "APLICAÇÃO DESKTOP" : "FUNDAMENTOS";
     visual.appendChild(stamp);
 
     const graphic = document.createElement("div");
@@ -214,6 +229,18 @@
       caption.className = "api-caption mono";
       caption.textContent = "REQUEST → RESPONSE";
       visual.appendChild(caption);
+    } else if (config.category === "frontend") {
+      graphic.className = "eleinexus-mark";
+      const elei = document.createElement("span");
+      elei.textContent = "ELEI";
+      const nexus = document.createElement("strong");
+      nexus.textContent = "NEXUS";
+      graphic.append(elei, nexus);
+      visual.appendChild(graphic);
+      const label = document.createElement("div");
+      label.className = "logic-number mono";
+      label.textContent = "INFO · 2026";
+      visual.appendChild(label);
     } else if (config.category === "desktop") {
       graphic.className = "desktop-window";
       graphic.innerHTML = '<div class="desktop-bar"><i></i><i></i><i></i></div><div class="desktop-content"><span class="desktop-square"></span><span></span><span></span><span class="desktop-pill"></span></div>';
@@ -264,23 +291,36 @@
     const details = document.createElement("details");
     details.className = "project-details";
     const summary = document.createElement("summary");
-    summary.textContent = config.category === "fullstack" ? "O que a arquitetura reúne" : "Foco de estudo";
+    summary.textContent = config.category === "fullstack" ? "O que a arquitetura reúne" : config.category === "frontend" ? "Objetivo do projeto" : "Foco de estudo";
     const detailText = document.createElement("p");
     detailText.textContent = config.detail;
     details.append(summary, detailText);
 
     const link = document.createElement("a");
     link.className = "project-link";
-    link.href = repository && repository.html_url ? repository.html_url : "https://github.com/" + githubUser + "/" + config.repo;
+    link.href = config.repositoryUrl || (repository && repository.html_url ? repository.html_url : "https://github.com/" + githubUser + "/" + config.repo);
     link.target = "_blank";
-    link.rel = "noreferrer";
-    link.append(document.createTextNode("Explorar repositório "));
+    link.rel = "noopener noreferrer";
+    link.append(document.createTextNode(config.repositoryLabel || "Explorar repositório "));
     const arrow = document.createElement("span");
     arrow.textContent = "↗";
     arrow.setAttribute("aria-hidden", "true");
     link.appendChild(arrow);
 
     body.append(topline, title, description, tags, details, link);
+    if (config.liveUrl) {
+      const liveLink = document.createElement("a");
+      liveLink.className = "project-link project-live-link";
+      liveLink.href = config.liveUrl;
+      liveLink.target = "_blank";
+      liveLink.rel = "noopener noreferrer";
+      liveLink.append(document.createTextNode("Acessar projeto publicado "));
+      const liveArrow = document.createElement("span");
+      liveArrow.textContent = "↗";
+      liveArrow.setAttribute("aria-hidden", "true");
+      liveLink.appendChild(liveArrow);
+      body.appendChild(liveLink);
+    }
     if (config.category === "fullstack") {
       const caseLink = document.createElement("a");
       caseLink.className = "project-link project-case-link";
