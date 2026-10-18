@@ -176,16 +176,25 @@
 
   const statNote = document.getElementById("statsNote");
   const formatNumber = (value) => new Intl.NumberFormat("pt-BR").format(value);
+  let repositoriesRequest;
+
+  function getRepositories() {
+    if (!repositoriesRequest) {
+      repositoriesRequest = fetch("https://api.github.com/users/" + githubUser + "/repos?per_page=100&type=owner&sort=updated", {
+        headers: { Accept: "application/vnd.github+json" }
+      }).then((response) => {
+        if (!response.ok) throw new Error("GitHub API indisponível");
+        return response.json();
+      });
+    }
+    return repositoriesRequest;
+  }
 
   async function loadGitHubStats() {
     const repoCount = document.getElementById("repoCount");
     const starCount = document.getElementById("starCount");
     try {
-      const response = await fetch("https://api.github.com/users/" + githubUser + "/repos?per_page=100&type=owner&sort=updated", {
-        headers: { Accept: "application/vnd.github+json" }
-      });
-      if (!response.ok) throw new Error("GitHub API indisponível");
-      const repositories = await response.json();
+      const repositories = await getRepositories();
       const ownPublicRepos = repositories.filter((repo) => !repo.fork && !repo.private);
       const stars = ownPublicRepos.reduce((total, repo) => total + Number(repo.stargazers_count || 0), 0);
       if (repoCount) repoCount.textContent = formatNumber(ownPublicRepos.length) + (repositories.length === 100 ? "+" : "");
@@ -200,7 +209,7 @@
 
   function createProjectCard(config, repository) {
     const card = document.createElement("article");
-    card.className = "project-card";
+    card.className = config.category === "fullstack" ? "project-card project-featured" : "project-card";
     card.dataset.category = config.category;
 
     const visual = document.createElement("div");
@@ -280,7 +289,7 @@
     tags.className = "project-tags";
     const technologyTags = config.tags.slice();
     if (repository && repository.language && !technologyTags.includes(repository.language)) {
-      technologyTags[technologyTags.length - 1] = repository.language;
+      technologyTags.push(repository.language);
     }
     technologyTags.forEach((label) => {
       const tag = document.createElement("span");
@@ -338,15 +347,16 @@
 
   async function refreshProjectMetadata() {
     try {
-      const response = await fetch("https://api.github.com/users/" + githubUser + "/repos?per_page=100&type=owner&sort=updated", {
-        headers: { Accept: "application/vnd.github+json" }
-      });
-      if (!response.ok) return;
-      const repositories = await response.json();
+      const repositories = await getRepositories();
       const repositoryByName = new Map(repositories.map((repository) => [repository.name.toLowerCase(), repository]));
       const allCards = projectConfig.map((config) => createProjectCard(config, repositoryByName.get(config.repo.toLowerCase())));
       if (projectsGrid && allCards.length) {
         projectsGrid.replaceChildren(...allCards);
+        const activeFilter = document.querySelector(".filter-button.is-active");
+        const activeCategory = activeFilter ? activeFilter.dataset.filter || "all" : "all";
+        projectsGrid.querySelectorAll(".project-card").forEach((card) => {
+          card.hidden = activeCategory !== "all" && card.dataset.category !== activeCategory;
+        });
       }
     } catch (error) {
       // Os cartões estáticos do HTML continuam disponíveis sem conexão.
