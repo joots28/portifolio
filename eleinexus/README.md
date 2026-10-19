@@ -1,4 +1,4 @@
-# EleiNexus
+# EleiNex
 
 **Suas ideias. Informação transparente. Sua decisão.**
 
@@ -51,7 +51,7 @@ Fontes centrais:
 Configuração de publicação no Render:
 - Branch: `eleinexus-site`
 - Pasta publicada: `eleinexus`
-- Comando de build: `echo "EleiNexus static site ready"`
+- Comando de build: `echo "EleiNex static site ready"`
 - Deploy automático: ativado para novos commits nessa branch; se demorar, solicite deploy manual no painel.
 
 A hospedagem estática tem opção gratuita, mas sujeita aos limites de uso da plataforma. Não faça upgrade nem ative faturamento para manter-se no plano gratuito.
