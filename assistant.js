@@ -24,7 +24,7 @@
   function setOpen(open) {
     panel.hidden = !open;
     launcher.setAttribute("aria-expanded", String(open));
-    launcher.setAttribute("aria-label", open ? "Fechar assistente Nexus" : "Abrir assistente Nexus");
+    launcher.setAttribute("aria-label", open ? "Fechar Luo IA" : "Abrir Luo IA");
     if (open) window.setTimeout(() => input.focus(), 80);
     else launcher.focus();
   }
@@ -66,7 +66,7 @@
     if (/obrigad[oa]|valeu|thanks/i.test(text)) {
       return { text: "Por nada! 💙 Se quiser, posso apresentar os projetos do Jonathan ou ajudar com os conceitos técnicos que já estão disponíveis no meu guia local.", links: [{ label: "Voltar ao portfólio", url: "https://jhon-otiniel-portfolio.onrender.com/" }] };
     }
-    return { text: "Sou o Nexus, assistente gratuito do portfólio! Minha versão atual responde usando um guia local, sem API paga nem envio da sua pergunta a um serviço externo. Posso apresentar o portfólio, o currículo, o GitHub, o ChurchManager e explicar conceitos básicos de front-end, APIs REST, SQL e lógica de programação. Para perguntas muito específicas ou assuntos fora desse guia, ainda não consigo gerar uma resposta livre como um chatbot de IA.", links: [{ label: "Conhecer o portfólio", url: "https://jhon-otiniel-portfolio.onrender.com/#projetos" }, { label: "GitHub", url: "https://github.com/joots28" }] };
+    return { text: "Sou a Luo IA, assistente gratuita do portfólio! Minha versão atual responde usando um guia local, sem API paga nem envio da sua pergunta a um serviço externo. Posso apresentar o portfólio, o currículo, o GitHub, o ChurchManager e explicar conceitos básicos de front-end, APIs REST, SQL e lógica de programação. Para perguntas muito específicas ou assuntos fora desse guia, ainda não consigo gerar uma resposta livre como um chatbot de IA.", links: [{ label: "Conhecer o portfólio", url: "https://jhon-otiniel-portfolio.onrender.com/#projetos" }, { label: "GitHub", url: "https://github.com/joots28" }] };
   }
 
   function ask(rawText) {
