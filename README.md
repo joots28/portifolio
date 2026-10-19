@@ -104,6 +104,7 @@ Site publicado: [jhon-otiniel-portfolio.onrender.com](https://jhon-otiniel-portf
 ## Projetos em destaque
 
 - [ChurchMennager / ChurchManager](https://github.com/joots28/ChurchMennager) — projeto acadêmico full-stack para gestão comunitária.
+- [EleiNex](https://eleinexus-civico.onrender.com/) — plataforma cívica independente para consultar informações eleitorais e fontes públicas.
 - [SPIUsuarios_2DS](https://github.com/joots28/SPIUsuarios_2DS) — solução de estudos com o projeto APIUsuarios01.
 - [Lanchonete](https://github.com/joots28/lanchonete) — projeto desktop em Windows Forms.
 - [Estruturas condicionais](https://github.com/joots28/estruturas-condicionais) — estudos de lógica de programação.
@@ -136,7 +137,7 @@ Feito com intenção, curiosidade e commits reais.
 </div>
 
 
-## Nexus — assistente gratuito do portfólio
+## Luo IA — assistente gratuito do portfólio
 
 O site inclui um assistente responsivo com atalhos e respostas locais sobre o portfólio e conceitos introdutórios de programação. **A versão atual é 100% gratuita e não depende de chave de API, conta de IA paga, banco de dados ou servidor de chat.**
 
