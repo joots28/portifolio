@@ -26,11 +26,11 @@
   <path d="M135 291L162 304L189 291V307L162 323L135 307Z" fill="#6dd69c"/>
   <circle cx="211" cy="224" r="7" fill="#2355a6" stroke="#fff" stroke-opacity=".55" stroke-width="2"/>
 </g>
-<text x="278" y="268" font-family="Arial,Helvetica,sans-serif" font-size="83" font-weight="800" letter-spacing="-3" fill="#f7fbf8">Elei<tspan fill="#ffce45">Nexus</tspan></text>
+<text x="278" y="268" font-family="Arial,Helvetica,sans-serif" font-size="83" font-weight="800" letter-spacing="-3" fill="#f7fbf8">Elei<tspan fill="#ffce45">Nex</tspan></text>
 <text x="283" y="324" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="500" fill="#d1e5d8">Informação transparente. Decisão sua.</text>
 <rect x="283" y="359" width="95" height="5" rx="2.5" fill="#ffce45"/>
 <text x="94" y="461" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="2.4" fill="#a8d7b7">CIDADANIA COM CLAREZA</text>
 <text x="94" y="511" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#e1eee6">Planos presidenciais  •  Fontes oficiais do TSE</text>
-<text x="94" y="555" font-family="Arial,Helvetica,sans-serif" font-size="15" letter-spacing="1.3" fill="#8eafa0">ELEINEXUS-CIVICO.ONRENDER.COM</text>
+<text x="94" y="555" font-family="Arial,Helvetica,sans-serif" font-size="15" letter-spacing="1.3" fill="#8eafa0">ELEINEX-CIVICO.ONRENDER.COM</text>
 <path d="M0 620H420" stroke="#149451" stroke-width="10"/><path d="M420 620H800" stroke="#ffce45" stroke-width="10"/><path d="M800 620H1200" stroke="#2355a6" stroke-width="10"/>
 </svg>
