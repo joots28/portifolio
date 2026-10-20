@@ -1,9 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0B1423"/><stop offset="1" stop-color="#10110f"/></linearGradient><radialGradient id="glow"><stop stop-color="#2F7DCE" stop-opacity=".42"/><stop offset="1" stop-color="#2F7DCE" stop-opacity="0"/></radialGradient></defs>
-<rect width="1200" height="630" fill="url(#bg)"/><circle cx="940" cy="280" r="360" fill="url(#glow)"/>
-<g transform="translate(790 130)" fill="none" stroke="#64B5FF" stroke-width="8"><ellipse cx="150" cy="150" rx="126" ry="48"/><ellipse cx="150" cy="150" rx="126" ry="48" transform="rotate(60 150 150)"/><ellipse cx="150" cy="150" rx="126" ry="48" transform="rotate(120 150 150)"/></g><circle cx="940" cy="280" r="17" fill="#EAF5FF"/>
-<text x="90" y="155" fill="#94A3B8" font-family="Arial,Helvetica,sans-serif" font-size="22" letter-spacing="6">PORTFÓLIO • DESENVOLVIMENTO DE SISTEMAS</text>
-<text x="85" y="300" fill="#F8FAFC" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="700">JONATHAN</text><text x="85" y="390" fill="#F8FAFC" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="700">OTINIEL</text>
-<rect x="90" y="435" width="340" height="5" rx="2" fill="#64B5FF"/><text x="90" y="495" fill="#CBD5E1" font-family="Arial,Helvetica,sans-serif" font-size="27">C# / .NET  •  React  •  Kotlin</text>
-<text x="90" y="560" fill="#64748B" font-family="Arial,Helvetica,sans-serif" font-size="20">INTERFACES · APIs · APLICAÇÕES · SISTEMAS</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Jonathan Otiniel — Portfólio de desenvolvimento</title><desc id="desc">Portfólio de projetos em desenvolvimento web, APIs e sistemas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#09090b"/><stop offset=".55" stop-color="#111018"/><stop offset="1" stop-color="#101b28"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#766aff" stop-opacity=".26"/><stop offset="1" stop-color="#766aff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="bone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1eee8"/><stop offset="1" stop-color="#c9c4d1"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/><circle cx="930" cy="300" r="390" fill="url(#glow)"/>
+  <g opacity=".18" stroke="#756dff" fill="none"><path d="M0 520L390 130M45 630L540 135M660 630L1200 90"/><path d="M0 565H1200M0 585H1200" stroke-width="1"/></g>
+  <g transform="translate(760 115) scale(4.7)">
+    <path d="M11 11H53M32 12V55" fill="none" stroke="#756dff" stroke-width="4.2" stroke-linecap="square" opacity=".78"/>
+    <path d="M13 12H51M34 15V54" fill="none" stroke="#64b5ff" stroke-width="1.15" opacity=".62"/>
+    <path d="M8 22L18.5 15.5L29 22V43L18.5 49.5L8 43Z" fill="#10110f" stroke="url(#bone)" stroke-width="3.5" stroke-linejoin="miter"/>
+    <path d="M25 50V16H31L44 36V16H52V50H46L33 30V50Z" fill="url(#bone)"/>
+    <path d="M26.5 48V19H29.7L44.8 42V18.5H49.6" fill="none" stroke="#64b5ff" stroke-width="1.2" opacity=".76"/>
+    <path d="M7 30H11M47 23H55M41 53H49" fill="none" stroke="#8a7dff" stroke-width="1.6" stroke-linecap="square"/>
+  </g>
+  <text x="90" y="128" fill="#958da9" font-family="Arial,Helvetica,sans-serif" font-size="20" letter-spacing="5">PORTFÓLIO · DESENVOLVIMENTO DE SISTEMAS</text>
+  <text x="86" y="270" fill="#f1eee8" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700" letter-spacing="-3">JONATHAN</text><text x="86" y="357" fill="#f1eee8" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700" letter-spacing="-3">OTINIEL</text>
+  <path d="M91 400H405" stroke="#756dff" stroke-width="4"/><path d="M91 407H290" stroke="#64b5ff" stroke-width="1.2" opacity=".8"/>
+  <text x="90" y="462" fill="#c8c3d2" font-family="Arial,Helvetica,sans-serif" font-size="25">C# / .NET  ·  React  ·  JavaScript  ·  Kotlin</text>
+  <text x="90" y="535" fill="#778399" font-family="Arial,Helvetica,sans-serif" font-size="17" letter-spacing="2">INTERFACES · APIs · APLICAÇÕES · SISTEMAS</text>
 </svg>
